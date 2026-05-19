@@ -1,0 +1,78 @@
+name: Enhancement Request
+description: Suggest a new filter / transform / shortcode, or an improvement to an existing one.
+labels: ["enhancement"]
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Use this template to propose a new utility or a behavior change for something that already exists in dashly.
+
+    - type: dropdown
+      id: area
+      attributes:
+          label: What would you like to improve?
+          options:
+              - "New filter"
+              - "New transform"
+              - "New shortcode"
+              - "Existing filter"
+              - "Existing transform"
+              - "Existing shortcode"
+              - "Plugin options"
+              - "Tooling / scripts"
+              - "Documentation"
+              - "Other"
+      validations:
+          required: true
+
+    - type: input
+      id: utility-name
+      attributes:
+          label: Proposed or affected utility name
+          placeholder: "e.g. `slugify`, `excerpt`, `lazyImages`"
+      validations:
+          required: false
+
+    - type: textarea
+      id: current
+      attributes:
+          label: Current behavior
+          description: What does it do today? (Leave blank if proposing something new.)
+          placeholder: "`excerpt` returns the first N words and adds an ellipsis."
+      validations:
+          required: false
+
+    - type: textarea
+      id: desired
+      attributes:
+          label: Desired behavior
+          description: What should it do instead, or what should the new utility do? Be specific about the outcome and include a template-side usage example if you can.
+          placeholder: |
+              `excerpt` should accept a `unit: 'sentences'` option that trims on sentence boundaries.
+
+              Example: `{{ post.content | excerpt(2, 'sentences') }}`
+      validations:
+          required: true
+
+    - type: textarea
+      id: rationale
+      attributes:
+          label: Why would this be valuable?
+          description: Help us understand the use case and how many sites might benefit.
+      validations:
+          required: true
+
+    - type: textarea
+      id: alternatives
+      attributes:
+          label: Alternatives considered (optional)
+          description: Any workarounds you've tried, other plugins that cover this, or alternative approaches we should consider.
+      validations:
+          required: false
+
+    - type: checkboxes
+      id: contribution
+      attributes:
+          label: Contribution
+          options:
+              - label: I'm willing to implement this and open a PR.
