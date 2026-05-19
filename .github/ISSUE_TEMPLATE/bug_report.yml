@@ -1,0 +1,105 @@
+name: Bug Report
+description: Something isn't working correctly in dashly.
+labels: ["bug"]
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Thanks for taking the time to report a bug. Please fill out the sections below so we can reproduce and fix it quickly.
+
+    - type: dropdown
+      id: area
+      attributes:
+          label: Affected area
+          description: Which part of dashly is affected?
+          options:
+              - "Filter"
+              - "Transform"
+              - "Shortcode"
+              - "Plugin registration / options"
+              - "Tooling / scripts"
+              - "CI / GitHub Actions"
+              - "npm package / install"
+              - "Documentation"
+              - "Other"
+      validations:
+          required: true
+
+    - type: input
+      id: utility-name
+      attributes:
+          label: Utility name (if applicable)
+          description: The specific filter / transform / shortcode that's affected.
+          placeholder: "e.g. `excerpt`, `cleanForRSS`, `image`"
+      validations:
+          required: false
+
+    - type: textarea
+      id: description
+      attributes:
+          label: What happened?
+          description: A clear description of the bug. Include the template engine in use (Nunjucks / Liquid / JS / 11ty.js) if relevant.
+          placeholder: "When I run `{{ post.content | excerpt(-5) }}` in Nunjucks, the trailing ellipsis is on the wrong side."
+      validations:
+          required: true
+
+    - type: textarea
+      id: reproduction
+      attributes:
+          label: Steps to reproduce
+          description: Minimal steps that reliably reproduce the issue. A minimal `eleventy.config.js` + template snippet is ideal.
+          placeholder: |
+              1. `npm install @allons-y/dashly`
+              2. Add the plugin to `eleventy.config.js`
+              3. Render a template with `{{ ... }}`
+              4. See output ...
+      validations:
+          required: true
+
+    - type: textarea
+      id: expected
+      attributes:
+          label: Expected behavior
+          description: What did you expect to happen?
+      validations:
+          required: true
+
+    - type: input
+      id: dashly-version
+      attributes:
+          label: dashly version
+          placeholder: "0.1.0"
+      validations:
+          required: false
+
+    - type: input
+      id: eleventy-version
+      attributes:
+          label: Eleventy version
+          placeholder: "3.1.5"
+      validations:
+          required: false
+
+    - type: input
+      id: node-version
+      attributes:
+          label: Node.js version
+          placeholder: "v24.0.0"
+      validations:
+          required: false
+
+    - type: input
+      id: os
+      attributes:
+          label: Operating system
+          placeholder: "macOS 15.4 / Ubuntu 24.04 / Windows 11"
+      validations:
+          required: false
+
+    - type: textarea
+      id: context
+      attributes:
+          label: Additional context
+          description: Logs, screenshots, or anything else that might help.
+      validations:
+          required: false

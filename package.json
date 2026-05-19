@@ -1,0 +1,132 @@
+{
+  "name": "@allons-y/dashly",
+  "version": "0.1.0",
+  "description": "A standard-library of filters, transforms, and shortcodes for Eleventy.",
+  "license": "MPL-2.0",
+  "author": "Cassondra Roberts <castastrophe@users.noreply.github.com> (https://allons-y.studio)",
+  "homepage": "https://github.com/castastrophe/dashly#readme",
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/castastrophe"
+    },
+    {
+      "type": "buy-me-a-coffee",
+      "url": "https://www.buymeacoffee.com/castastrophe"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/castastrophe/dashly.git"
+  },
+  "bugs": {
+    "url": "https://github.com/castastrophe/dashly/issues"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./plugin": "./src/plugin.js",
+    "./filters": "./src/filters/index.js",
+    "./filters/*": "./src/filters/*.js",
+    "./transforms": "./src/transforms/index.js",
+    "./transforms/*": "./src/transforms/*.js",
+    "./shortcodes": "./src/shortcodes/index.js",
+    "./shortcodes/*": "./src/shortcodes/*.js"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "ci:test": "vitest run",
+    "coverage": "vitest run --coverage",
+    "format": "yarn lint --fix",
+    "lint": "eslint .",
+    "postinstall": "husky && envoy || true",
+    "postpack": "pinst --enable",
+    "precommit": "lint-staged",
+    "prepack": "pinst --disable",
+    "prepare": "husky",
+    "release": "semantic-release",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
+  },
+  "peerDependencies": {
+    "@11ty/eleventy": ">=3.0.0",
+    "html-minifier-terser": ">=7.0.0",
+    "markdown-it": ">=14.0.0",
+    "postcss": ">=8.0.0",
+    "posthtml": ">=0.16.0",
+    "prettier": ">=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "html-minifier-terser": {
+      "optional": true
+    },
+    "markdown-it": {
+      "optional": true
+    },
+    "postcss": {
+      "optional": true
+    },
+    "posthtml": {
+      "optional": true
+    },
+    "prettier": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.5",
+    "@allons-y/envoy": "^1.1.0",
+    "@commitlint/cli": "^21.0.1",
+    "@commitlint/config-conventional": "^21.0.1",
+    "@eslint/css": "^1.2.0",
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^1.2.0",
+    "@eslint/markdown": "^8.0.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.8",
+    "@semantic-release/npm": "^13.1.5",
+    "@semantic-release/release-notes-generator": "^14.1.1",
+    "@vitest/eslint-plugin": "^1.3.17",
+    "eslint": "^10.3.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jsonc": "^3.1.2",
+    "eslint-plugin-license-header": "^0.9.0",
+    "globals": "^17.6.0",
+    "html-minifier-terser": "^7.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
+    "markdown-it": "^14.1.1",
+    "pinst": "^3.0.0",
+    "postcss": "^8.5.10",
+    "posthtml": "^0.16.7",
+    "prettier": "^3.8.3",
+    "semantic-release": "^25.0.3",
+    "vitest": "^4.1.5"
+  },
+  "keywords": [
+    "eleventy",
+    "11ty",
+    "eleventy-plugin",
+    "filters",
+    "transforms",
+    "shortcodes",
+    "utilities"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "lint-staged": {
+    "*": [
+      "eslint --fix --format stylish"
+    ],
+    ".github/renovate.json": "npx --yes --package renovate -- renovate-config-validator --strict"
+  },
+  "packageManager": "yarn@4.14.1"
+}
