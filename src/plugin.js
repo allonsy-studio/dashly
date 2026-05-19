@@ -1,3 +1,11 @@
+/*
+ * SPDX-License-Identifier: MPL-2.0
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 /**
  * The dashly Eleventy plugin. Registers every filter, transform, and
  * shortcode under a sensible default name, and accepts an options object to
@@ -26,13 +34,11 @@ import * as debugFilters from './filters/debug.js';
 import * as arrayFilters from './filters/arrays.js';
 import * as numberFilters from './filters/numbers.js';
 import * as tagFilters from './filters/tags.js';
-import { createImgSrc } from './filters/images.js';
 
 import { createPrettierTransform } from './transforms/prettier.js';
 import { createHtmlMinTransform } from './transforms/htmlmin.js';
 import { createCleanAttrsTransform } from './transforms/clean-attrs.js';
 
-import { createImageShortcode } from './shortcodes/image.js';
 import { currentYear } from './shortcodes/year.js';
 
 /**
@@ -43,7 +49,7 @@ import { currentYear } from './shortcodes/year.js';
  * @property {string[]} [tagsExclude] Tag names stripped by the `tags` filter. Defaults to `['all', 'post', 'posts']`.
  * @property {false | { exclude?: string[] }} [filters] Pass false to skip filter registration.
  * @property {false | { exclude?: string[], prettier?: object, htmlmin?: object, cleanAttrs?: object }} [transforms]
- * @property {false | { exclude?: string[], image?: object }} [shortcodes]
+ * @property {false | { exclude?: string[] }} [shortcodes]
  */
 
 const FILTER_NAMES = [
@@ -168,12 +174,6 @@ export function dashlyPlugin(config, options = {}) {
 
 	if (options.shortcodes !== false) {
 		const exclude = new Set(options.shortcodes?.exclude ?? []);
-		const imageOptions = options.shortcodes?.image;
-
-		if (!exclude.has('image') && imageOptions) {
-			config.addShortcode('image', createImageShortcode(imageOptions));
-			config.addFilter('imgSrc', createImgSrc(imageOptions));
-		}
 
 		if (!exclude.has('year')) {
 			config.addShortcode('year', currentYear);

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A standard-library of filters, transforms, and shortcodes for Eleventy.",
   "license": "MPL-2.0",
-  "author": "Cassondra Roberts <castastrophe@users.noreply.github.com> (https://allons-y.llc)",
+  "author": "Cassondra Roberts <castastrophe@users.noreply.github.com> (https://allons-y.studio)",
   "homepage": "https://github.com/castastrophe/dashly#readme",
   "funding": [
     {
@@ -55,7 +55,6 @@
   },
   "peerDependencies": {
     "@11ty/eleventy": ">=3.0.0",
-    "@11ty/eleventy-img": ">=6.0.0",
     "html-minifier-terser": ">=7.0.0",
     "markdown-it": ">=14.0.0",
     "postcss": ">=8.0.0",
@@ -63,9 +62,6 @@
     "prettier": ">=3.0.0"
   },
   "peerDependenciesMeta": {
-    "@11ty/eleventy-img": {
-      "optional": true
-    },
     "html-minifier-terser": {
       "optional": true
     },
@@ -84,7 +80,6 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.5",
-    "@11ty/eleventy-img": "^6.0.4",
     "@allons-y/envoy": "^1.1.0",
     "@commitlint/cli": "^21.0.1",
     "@commitlint/config-conventional": "^21.0.1",
@@ -102,6 +97,7 @@
     "eslint": "^10.3.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsonc": "^3.1.2",
+    "eslint-plugin-license-header": "^0.9.0",
     "globals": "^17.6.0",
     "html-minifier-terser": "^7.2.0",
     "husky": "^9.1.7",

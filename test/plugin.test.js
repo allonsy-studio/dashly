@@ -1,3 +1,11 @@
+/*
+ * SPDX-License-Identifier: MPL-2.0
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 import { describe, it, expect } from 'vitest';
 import { dashlyPlugin } from '../src/plugin.js';
 
@@ -55,19 +63,7 @@ describe('dashlyPlugin', () => {
 		expect(cfg.transforms.prettier).toBeDefined();
 	});
 
-	it('only registers the image shortcode when imageOptions are supplied', () => {
-		const cfg = createFakeEleventyConfig();
-		dashlyPlugin(cfg);
-		expect(cfg.shortcodes.image).toBeUndefined();
-		expect(cfg.filters.imgSrc).toBeUndefined();
-
-		const cfg2 = createFakeEleventyConfig();
-		dashlyPlugin(cfg2, { shortcodes: { image: { urlPath: '/i/', outputDir: './public/i/' } } });
-		expect(cfg2.shortcodes.image).toBeDefined();
-		expect(cfg2.filters.imgSrc).toBeDefined();
-	});
-
-	it('applies dateLocale to longDate and shortDate', () => {
+it('applies dateLocale to longDate and shortDate', () => {
 		const cfg = createFakeEleventyConfig();
 		dashlyPlugin(cfg, { dateLocale: 'en-GB' });
 		expect(cfg.filters.longDate('2026-01-15')).toMatch(/15 January 2026/);

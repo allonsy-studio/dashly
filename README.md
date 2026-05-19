@@ -13,7 +13,7 @@ dashly is the standard-library helpers every 11ty site eventually rewrites from 
 npm install --save-dev @allons-y/dashly
 ```
 
-Heavy dependencies (`prettier`, `html-minifier-terser`, `posthtml`, `markdown-it`, `postcss`, `@11ty/eleventy-img`) are declared as **optional peers**. Install only the ones you use.
+Heavy dependencies (`prettier`, `html-minifier-terser`, `posthtml`, `markdown-it`, `postcss`) are declared as **optional peers**. Install only the ones you use.
 
 ## Quick start
 
@@ -24,13 +24,7 @@ import dashly from "@allons-y/dashly";
 export default function (config) {
 	config.addPlugin(dashly, {
 		dateLocale: "en-GB",
-		shortcodes: {
-			image: {
-				urlPath: "/images/",
-				outputDir: "./public/images/",
-				formats: ["webp", "png"],
-			},
-		},
+		baseUrl: "https://example.com",
 	});
 }
 ```
@@ -49,7 +43,6 @@ Templates can immediately use:
 {{ post.content | readingTime }}  {# 4 #}
 {{ post.content | excerpt(40) }}  {# first 40 words, ellipsised #}
 <pre>{{ page | dump }}</pre>      {# pretty-printed JSON, circular-safe #}
-{% image "src/cover.jpg", "Cover", [320, 640], "100vw" %}
 {{ page.url | absoluteUrl }}      {# https://example.com/posts/hello/ #}
 {{ post.date | timeAgo }}         {# "2 days ago" #}
 {{ product.price | currency }}    {# "$1,299.00" #}
@@ -91,7 +84,6 @@ import { validateURL } from "@allons-y/dashly/filters/urls";
 | `validateURL`                           | Force `https://` on bare hostnames; pass `mailto:`/`tel:`/relative URLs through | –                    |
 | `cleanForRSS`                           | Strip scripts, embeds, permalinks, custom elements from HTML                    | `posthtml`           |
 | `renderMarkdown`                        | Render a markdown string (with optional `\n\n` paragraph splitting)             | `markdown-it`        |
-| `imgSrc`                                | URL of a single emitted image variant                                           | `@11ty/eleventy-img` |
 | `wordCount`                             | Count words in a string (HTML stripped)                                         | –                    |
 | `readingTime`                           | Estimate minutes to read (configurable `wpm`, default 200)                      | –                    |
 | `excerpt`                               | First/last N words or chars, ellipsised. Negative N → trailing slice            | –                    |
@@ -127,10 +119,9 @@ The `postcss` helper (`@allons-y/dashly/transforms/postcss`) is exported separat
 
 ### Shortcodes
 
-| Name    | Purpose                                         | Peer dep             |
-| ------- | ----------------------------------------------- | -------------------- |
-| `image` | Responsive `<picture>` element                  | `@11ty/eleventy-img` |
-| `year`  | Current four-digit year (for footer copyrights) | –                    |
+| Name   | Purpose                                         | Peer dep |
+| ------ | ----------------------------------------------- | -------- |
+| `year` | Current four-digit year (for footer copyrights) | –        |
 
 ## Plugin options
 
@@ -149,12 +140,7 @@ interface DashlyOptions {
 				htmlmin?: { production?: boolean; minifier?: HtmlMinifierOptions };
 				cleanAttrs?: { attrs?: string[] };
 		  };
-	shortcodes?:
-		| false
-		| {
-				exclude?: string[];
-				image?: BaseImageOptions; // required to enable the image shortcode + imgSrc filter
-		  };
+	shortcodes?: false | { exclude?: string[] };
 }
 ```
 
@@ -172,6 +158,6 @@ Pass `false` for any category to skip it entirely. Pass `exclude` to omit specif
 
 dashly follows semver. Breaking API changes bump major; new utilities and non-breaking option additions bump minor; bug fixes bump patch.
 
-## License
+---
 
-MIT © Allons-y Consulting
+<sub>Built and maintained by [Allons-y Studio](https://allons-y.studio) — a US-based studio specializing in design systems, front-end architecture, and accessibility.</sub>

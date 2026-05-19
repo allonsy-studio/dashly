@@ -16,7 +16,6 @@ src/
     urls.js                     # validateURL, absoluteUrl
     objects.js                  # keys
     html.js                     # cleanForRSS, renderMarkdown, stripTags, nl2br
-    images.js                   # createImgSrc factory
     text.js                     # wordCount, readingTime, excerpt
     debug.js                    # dump, jsonify
     arrays.js                   # first, last, reverse, groupBy, sortBy, chunk, where, pluck
@@ -30,7 +29,6 @@ src/
     postcss.js                  # processCSS helper (for addBundle / addExtension)
   shortcodes/
     index.js
-    image.js                    # createImageShortcode factory (eleventy-img)
     year.js                     # currentYear (footer copyright)
 test/                           # Vitest specs mirroring src/ layout
 .github/workflows/              # CI: test, lint, release, code review, PR auto-update

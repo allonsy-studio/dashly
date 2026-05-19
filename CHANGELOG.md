@@ -7,9 +7,8 @@ All notable changes to `@allons-y/dashly` are documented here. This project foll
 ### Added
 
 - Initial extraction from `castastrophe/portfolio`.
-- Filters: `toISOString`, `year`, `dateFormat`, `longDate`, `shortDate`, `firstWord`, `lastWord`, `trim`, `stripWhitespace`, `digitsOnly`, `keys`, `validateURL`, `cleanForRSS`, `renderMarkdown`, `imgSrc` (via `createImgSrc` factory).
+- Filters: `toISOString`, `year`, `dateFormat`, `longDate`, `shortDate`, `firstWord`, `lastWord`, `trim`, `stripWhitespace`, `digitsOnly`, `keys`, `validateURL`, `cleanForRSS`, `renderMarkdown`.
 - Transforms: `cleanAttrs`, `prettier`, `htmlmin` (production-gated by default), `processCSS` helper.
-- Shortcode: `image` (via `createImageShortcode` factory).
 - Plugin entry that auto-registers everything with opt-out support.
 - Subpath exports for `/filters`, `/transforms`, `/shortcodes` and their submodules.
 
