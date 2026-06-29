@@ -4,7 +4,7 @@
   "description": "A standard-library of filters, transforms, and shortcodes for Eleventy.",
   "license": "MPL-2.0",
   "author": "Cassondra Roberts <castastrophe@users.noreply.github.com> (https://allons-y.studio)",
-  "homepage": "https://github.com/castastrophe/dashly#readme",
+  "homepage": "https://github.com/allonsy-studio/dashly#readme",
   "funding": [
     {
       "type": "github",
@@ -17,10 +17,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/castastrophe/dashly.git"
+    "url": "git+https://github.com/allonsy-studio/dashly.git"
   },
   "bugs": {
-    "url": "https://github.com/castastrophe/dashly/issues"
+    "url": "https://github.com/allonsy-studio/dashly/issues"
   },
   "type": "module",
   "exports": {

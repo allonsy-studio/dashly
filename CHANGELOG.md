@@ -12,4 +12,4 @@ All notable changes to `@allons-y/dashly` are documented here. This project foll
 - Plugin entry that auto-registers everything with opt-out support.
 - Subpath exports for `/filters`, `/transforms`, `/shortcodes` and their submodules.
 
-[Unreleased]: https://github.com/castastrophe/dashly/compare/HEAD...HEAD
+[Unreleased]: https://github.com/allonsy-studio/dashly/compare/HEAD...HEAD
