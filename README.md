@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/v/@allons-y/dashly.svg)](https://www.npmjs.com/package/@allons-y/dashly)
 [![license](https://img.shields.io/npm/l/@allons-y/dashly.svg)](./LICENSE)
 
-dashly is the standard-library helpers every 11ty site eventually rewrites from scratch — date formatting, RSS sanitization, responsive images, HTML minification, URL validation, and more — bundled into a single tree-shakeable package.
+dashly is the standard-library helpers every 11ty site eventually rewrites from scratch — date formatting, RSS sanitization, HTML minification, URL validation, reading-time and excerpt generation, locale-aware number/currency/percent formatting, and more — bundled into a single tree-shakeable package.
 
 ## Install
 

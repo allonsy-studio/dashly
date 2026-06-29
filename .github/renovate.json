@@ -13,10 +13,6 @@
 			"minimumReleaseAge": "1 month"
 		},
 		{
-			"groupName": "commitlint ecosystem",
-			"matchPackageNames": ["commitlint", "@commitlint/*"]
-		},
-		{
 			"groupName": "vitest ecosystem",
 			"matchPackageNames": ["vitest", "@vitest/*"]
 		},
@@ -29,8 +25,8 @@
 			"matchPackageNames": ["eslint", "typescript-eslint", "@eslint/*", "eslint-plugin-*"]
 		},
 		{
-			"groupName": "semantic-release ecosystem",
-			"matchPackageNames": ["semantic-release", "@semantic-release/*"]
+			"groupName": "changesets ecosystem",
+			"matchPackageNames": ["@changesets/*"]
 		}
 	],
 	"postUpdateOptions": ["yarnDedupeHighest"],

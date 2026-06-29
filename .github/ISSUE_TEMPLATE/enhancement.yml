@@ -1,6 +1,6 @@
 name: Enhancement Request
 description: Suggest a new filter / transform / shortcode, or an improvement to an existing one.
-labels: ["enhancement"]
+labels: ["enhancement", "type: feature"]
 body:
     - type: markdown
       attributes:

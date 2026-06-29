@@ -1,5 +1,7 @@
 # Contributing to @allons-y/dashly
 
+This project follows the [Allons-y Studio Contributing Guide](https://github.com/allonsy-studio/.github/blob/main/CONTRIBUTING.md) for the general workflow (forking, branching, conventional commits, PR etiquette). The notes below cover **dashly-specific** topics: how to add a new utility, the local test/lint commands, and how releases are cut with [Changesets](https://github.com/changesets/changesets).
+
 Allons-y — let's go! Contributions of all kinds are welcome: new filters/transforms/shortcodes, bug fixes, documentation improvements, and test coverage. If you're unsure whether your idea fits the project, open an issue first and we'll figure it out together.
 
 ## Before you start
@@ -54,6 +56,7 @@ yarn test                       # Run the Vitest suite once
 yarn test:watch                 # Watch mode
 yarn lint                       # ESLint over .js / .json / .md
 yarn format                     # yarn lint --fix
+yarn changeset                  # Add a changeset for your PR (see below)
 ```
 
 ### Testing
@@ -66,35 +69,13 @@ ESLint (flat config in `eslint.config.js`) covers `.js`, `.json`/`package.json`,
 
 ### Commit messages
 
-This project uses [Conventional Commits](https://www.conventionalcommits.org/). The format is:
-
-```md
-<type>(<optional scope>): <short description>
-
-[optional body]
-
-[optional footer(s)]
-```
-
-Common types:
-
-| Type       | When to use                                 |
-| ---------- | ------------------------------------------- |
-| `feat`     | A new feature (triggers a minor release)    |
-| `fix`      | A bug fix (triggers a patch release)        |
-| `perf`     | A performance improvement (patch release)   |
-| `docs`     | Documentation changes only                  |
-| `test`     | Adding or updating tests                    |
-| `refactor` | Code restructuring without behaviour change |
-| `chore`    | Tooling, config, dependency updates         |
-
-`commitlint` runs on every commit. Use a scope like `filters/dates` or `transforms/htmlmin` when the change is localized to one module — it makes the changelog easier to scan.
+Conventional Commits (`feat:`, `fix:`, `chore:`, …) are **encouraged** for scannable history, but no longer enforced — version bumps come from changesets, not commit messages. Use a scope like `filters/dates` when the change is localized to one module.
 
 ### Pull requests
 
 - Keep PRs focused — one logical change per PR.
 - Every new utility or changed behavior **must** include tests and a README update.
-- PR titles should follow Conventional Commits — the title becomes the squash-merge commit subject.
+- **Every PR that changes the published surface needs a changeset.** Run `yarn changeset` and commit the generated file alongside your changes. PRs without a changeset will not produce a release.
 - Fill out the PR description — explain the "why", not just the "what". If you're adding a filter, include a template-side usage example.
 - New peer dependencies require a brief justification in the PR description.
 
@@ -112,25 +93,33 @@ dashly/
 ├── test/                       # Vitest specs mirroring src/
 ├── eslint.config.js
 ├── prettier.config.js
-├── commitlint.config.js
-├── lint-staged.config.js
-├── .releaserc.js               # semantic-release config
+├── .changeset/                 # Pending changesets + Changesets config
 └── .github/
     └── workflows/              # CI automation
 ```
 
 ## Release process
 
-Releases run via `semantic-release` on every merge to `main`. The commit-message types determine the version bump:
+Releases are managed by [Changesets](https://github.com/changesets/changesets).
 
-- `feat:` → minor
-- `fix:` / `perf:` → patch
-- `BREAKING CHANGE:` footer or `!` suffix → major
+**As a contributor:**
 
-semantic-release updates `CHANGELOG.md`, publishes to npm, and commits the version bump back to `main`. **Do not** edit `version` in `package.json` or `CHANGELOG.md` by hand.
+1. Make your changes on a feature branch.
+2. Run `yarn changeset`, pick the bump type (`patch` / `minor` / `major`), and write a short user-facing summary.
+3. Commit the generated `.changeset/*.md` file with your PR.
+
+**What happens on merge:**
+
+1. On every push to `main`, the **Release** workflow runs `changesets/action`.
+2. If pending changesets exist, it opens (or updates) a **"Version packages"** PR that consumes them, bumps `package.json`, and prepends an entry to `CHANGELOG.md`.
+3. Merging the "Version packages" PR triggers the same workflow, which then publishes to npm and tags the release on GitHub.
+
+**Do not** edit `version` in `package.json` or the released sections of `CHANGELOG.md` by hand — those are owned by the Release workflow.
 
 ## Code of Conduct
 
-This project follows the [Contributor Covenant](https://www.contributor-covenant.org/) Code of Conduct. By participating you agree to uphold a welcoming and respectful environment for everyone.
+This project is governed by the [Allons-y Studio Code of Conduct](https://github.com/allonsy-studio/.github/blob/main/CODE_OF_CONDUCT.md). By participating you agree to uphold a welcoming and respectful environment for everyone. Report unacceptable behavior to **report@allons-y.studio**.
 
-If you experience or witness unacceptable behaviour, please report it by opening a private issue or emailing [castastrophe@users.noreply.github.com](mailto:castastrophe@users.noreply.github.com).
+## Security
+
+To report a security vulnerability, **do not open a public issue**. See the [Allons-y Studio Security Policy](https://github.com/allonsy-studio/.github/blob/main/SECURITY.md) for the disclosure process.
