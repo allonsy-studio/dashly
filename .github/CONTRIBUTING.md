@@ -1,5 +1,7 @@
 # Contributing to @allons-y/dashly
 
+This project follows the [Allons-y Studio Contributing Guide](https://github.com/allonsy-studio/.github/blob/main/CONTRIBUTING.md) for the general workflow (forking, branching, conventional commits, PR etiquette). The notes below cover **dashly-specific** topics: how to add a new utility, the local test/lint commands, and how releases are cut.
+
 Allons-y — let's go! Contributions of all kinds are welcome: new filters/transforms/shortcodes, bug fixes, documentation improvements, and test coverage. If you're unsure whether your idea fits the project, open an issue first and we'll figure it out together.
 
 ## Before you start
@@ -131,6 +133,8 @@ semantic-release updates `CHANGELOG.md`, publishes to npm, and commits the versi
 
 ## Code of Conduct
 
-This project follows the [Contributor Covenant](https://www.contributor-covenant.org/) Code of Conduct. By participating you agree to uphold a welcoming and respectful environment for everyone.
+This project is governed by the [Allons-y Studio Code of Conduct](https://github.com/allonsy-studio/.github/blob/main/CODE_OF_CONDUCT.md). By participating you agree to uphold a welcoming and respectful environment for everyone. Report unacceptable behavior to **report@allons-y.studio**.
 
-If you experience or witness unacceptable behaviour, please report it by opening a private issue or emailing [castastrophe@users.noreply.github.com](mailto:castastrophe@users.noreply.github.com).
+## Security
+
+To report a security vulnerability, **do not open a public issue**. See the [Allons-y Studio Security Policy](https://github.com/allonsy-studio/.github/blob/main/SECURITY.md) for the disclosure process.
