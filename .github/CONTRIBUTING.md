@@ -1,6 +1,6 @@
 # Contributing to @allons-y/dashly
 
-This project follows the [Allons-y Studio Contributing Guide](https://github.com/allonsy-studio/.github/blob/main/CONTRIBUTING.md) for the general workflow (forking, branching, conventional commits, PR etiquette). The notes below cover **dashly-specific** topics: how to add a new utility, the local test/lint commands, and how releases are cut.
+This project follows the [Allons-y Studio Contributing Guide](https://github.com/allonsy-studio/.github/blob/main/CONTRIBUTING.md) for the general workflow (forking, branching, conventional commits, PR etiquette). The notes below cover **dashly-specific** topics: how to add a new utility, the local test/lint commands, and how releases are cut with [Changesets](https://github.com/changesets/changesets).
 
 Allons-y — let's go! Contributions of all kinds are welcome: new filters/transforms/shortcodes, bug fixes, documentation improvements, and test coverage. If you're unsure whether your idea fits the project, open an issue first and we'll figure it out together.
 
