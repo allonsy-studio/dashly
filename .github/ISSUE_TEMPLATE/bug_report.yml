@@ -1,6 +1,6 @@
 name: Bug Report
 description: Something isn't working correctly in dashly.
-labels: ["bug"]
+labels: ["bug", "type: fix"]
 body:
     - type: markdown
       attributes:

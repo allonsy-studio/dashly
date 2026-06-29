@@ -31,6 +31,7 @@ src/
     index.js
     year.js                     # currentYear (footer copyright)
 test/                           # Vitest specs mirroring src/ layout
+.changeset/                     # Pending changesets + Changesets config (versioning)
 .github/workflows/              # CI: test, lint, release, code review, PR auto-update
 ```
 
@@ -42,7 +43,8 @@ yarn test:watch                 # Watch mode
 yarn lint                       # ESLint over .js / .json / .md
 yarn format                     # yarn lint --fix
 yarn ci:test                    # Test run used in CI
-yarn release                    # semantic-release (CI-only entry)
+yarn changeset                  # Record a version bump for your PR
+yarn release                    # changeset publish (CI-only entry)
 ```
 
 ## Adding a new utility
@@ -56,20 +58,21 @@ yarn release                    # semantic-release (CI-only entry)
     - If it consumes a plugin option (e.g. `baseUrl`, `dateLocale`), read it from `options` and curry the call.
 5. Write Vitest tests under `test/filters/<module>.test.js` mirroring the existing spec style. Cover nullish input, the happy path, and at least one edge case.
 6. Add the utility to the relevant table in `README.md`.
+7. Run `yarn changeset` and pick a bump type (`patch` for fixes, `minor` for new utilities, `major` for breaking changes). Commit the generated `.changeset/*.md` alongside your code — PRs without a changeset won't produce a release.
 
 ## Languages and tooling
 
-- **Node.js ≥ 24** (pinned in `.nvmrc`; package targets `engines.node >= 20`)
-- **Yarn 4** (pinned via the `packageManager` field once enabled)
+- **Node.js ≥ 24** (pinned in `.nvmrc`; package targets `engines.node >= 24`)
+- **Yarn 4** (pinned via the `packageManager` field)
 - **Vitest** for the test suite
 - **ESLint + Prettier** for linting and formatting
 - **Husky + lint-staged** wire formatters into pre-commit
-- **commitlint** enforces [Conventional Commits](https://www.conventionalcommits.org/) on commit messages
-- **semantic-release** drives versioning + npm publish from `main`
+- **Changesets** drives versioning + npm publish from `main`
+- Conventional Commits are encouraged for scannable git history but are no longer enforced — version bumps come from changesets, not commit messages
 
 ## Commits
 
-Commit messages will populate the changelog so it's important that their description be clear and succinct as well as written in a user-focused way. If a pull request has multiple commits, they must be squashed before merging into `main` to ensure a clean release message.
+Commit messages live in git history forever — write them with future-you (or a contributor reading blame) in mind. They're for code archaeology, not release notes; the user-facing changelog comes from changesets. If a pull request has multiple commits, squash before merging into `main` for a tidy history.
 
 ### Do
 
@@ -92,16 +95,17 @@ without rolling their own.
 
 ## Release process
 
-Releases are fully automated via `semantic-release`. Merging to `main` triggers:
+Releases are managed by [Changesets](https://github.com/changesets/changesets):
 
-1. Version bumps based on commit messages (`feat` → minor, `fix`/`perf` → patch, breaking change → major)
-2. Changelog update, npm publish, and a `chore(release):` commit back to `main`
+1. Contributors include a `.changeset/*.md` file in their PR via `yarn changeset` when the change is user-facing.
+2. On every push to `main`, the **Release** workflow runs `changesets/action`. If any unconsumed changesets exist, it opens (or updates) a **"Version packages"** PR that bumps `package.json`, prepends a new entry to `CHANGELOG.md`, and removes the consumed changeset files.
+3. Merging the "Version packages" PR triggers the same workflow, which publishes to npm with provenance and tags the release on GitHub.
 
-Do not manually update `package.json` version or `CHANGELOG.md`.
+Do not manually update `package.json#version` or the released sections of `CHANGELOG.md`.
 
 ## What NOT to do
 
 - Do not commit secrets, real API keys, or `.env` files.
-- Do not bump `version` in `package.json` by hand — semantic-release owns that.
-- Do not edit `CHANGELOG.md` by hand for release entries — semantic-release owns that too.
+- Do not bump `version` in `package.json` by hand — Changesets owns that.
+- Do not edit the released sections of `CHANGELOG.md` by hand — the Release workflow owns those.
 - Do not add new peer dependencies without making them **optional** in `peerDependenciesMeta` if they're only used by a subset of utilities.
