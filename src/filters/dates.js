@@ -40,6 +40,12 @@ export const year = (date) => {
 /**
  * Format a date using `Intl.DateTimeFormat`. Returns the input unchanged on
  * falsy or unparseable values so templates can render gracefully.
+ *
+ * Defaults to `timeZone: 'UTC'` so a date-only string like `'2026-01-15'`
+ * (which `Date` parses as midnight UTC) renders as "15 January" everywhere,
+ * not "14 January" on machines west of Greenwich. Pass `timeZone` in
+ * `options` to override.
+ *
  * @param {string | number | Date} value
  * @param {Intl.DateTimeFormatOptions} [options]
  * @param {Intl.LocalesArgument} [locale='en-US']
@@ -49,7 +55,7 @@ export const dateFormat = (value, options = {}, locale = 'en-US') => {
 	if (!value) return value;
 	const d = new Date(value);
 	if (isNaN(d.getTime())) return value;
-	return d.toLocaleDateString(locale, options);
+	return d.toLocaleDateString(locale, { timeZone: 'UTC', ...options });
 };
 
 /**
