@@ -1,9 +1,12 @@
+<!-- weaver:header:START -->
 # dashly
 
 > A standard-library of filters, transforms, and shortcodes for [Eleventy](https://www.11ty.dev). One install, one plugin line, done.
 
 [![npm](https://img.shields.io/npm/v/@allons-y/dashly.svg)](https://www.npmjs.com/package/@allons-y/dashly)
 [![license](https://img.shields.io/npm/l/@allons-y/dashly.svg)](./LICENSE)
+
+<!-- weaver:header:END -->
 
 dashly is the standard-library helpers every 11ty site eventually rewrites from scratch — date formatting, RSS sanitization, HTML minification, URL validation, reading-time and excerpt generation, locale-aware number/currency/percent formatting, and more — bundled into a single tree-shakeable package.
 
@@ -154,10 +157,13 @@ Pass `false` for any category to skip it entirely. Pass `exclude` to omit specif
 
 **Nunjucks-parity universals.** Nunjucks and Liquid templates ship many of these filters natively (`first`, `last`, `reverse`, `capitalize`, etc.) — dashly registers them through `addFilter` so they're available in **every** Eleventy template engine, including JS templates and shortcodes, with consistent semantics across engines. `first` and `last` accept an optional count argument so `{{ posts | first(3) }}` covers the common "limit to N" case without a separate filter name.
 
-## Versioning
 
-dashly follows semver. Breaking API changes bump major; new utilities and non-breaking option additions bump minor; bug fixes bump patch.
+<!-- weaver:contribution:START -->
+<!-- weaver:contribution:END -->
 
----
+<!-- weaver:license:START -->
+<!-- weaver:license:END -->
 
-<sub>Built and maintained by [Allons-y Studio](https://allons-y.studio) — a US-based studio specializing in design systems, front-end architecture, and accessibility.</sub>
+<!-- weaver:funding:START -->
+<!-- weaver:funding:END -->
+
