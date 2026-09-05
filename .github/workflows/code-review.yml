@@ -6,8 +6,12 @@ on:
 
 jobs:
   code-review:
-    # only run if the pull request is from the repository owner and the PR is not a draft
-    if: github.event.pull_request.user.login == github.repository_owner && github.event.pull_request.draft == false
+    # only run on ready-for-review pull requests from trusted authors on a branch of this repo,
+    # since fork pull requests cannot read the secrets this job needs
+    if: >-
+      github.event.pull_request.draft == false &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      contains(fromJSON('["OWNER", "MEMBER"]'), github.event.pull_request.author_association)
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -17,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 1
           persist-credentials: false

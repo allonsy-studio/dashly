@@ -22,10 +22,22 @@ jobs:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
+
+      # This workflow triggers on edits to itself, so the docs/ folder may not exist yet
+      # TODO: drop this check once docs/ lands in the project
+      - name: Check for docs
+        id: docs
+        run: |
+          if [ -d docs ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Publish docs/ to gh-pages root
-        uses: JamesIves/github-pages-deploy-action@v5
+        if: steps.docs.outputs.exists == 'true'
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: docs
@@ -37,10 +49,22 @@ jobs:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
+
+      # This workflow triggers on edits to itself, so the docs/ folder may not exist yet
+      # TODO: drop this check once docs/ lands in the project
+      - name: Check for docs
+        id: docs
+        run: |
+          if [ -d docs ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Deploy preview
-        uses: rossjrw/pr-preview-action@v2
+        if: steps.docs.outputs.exists == 'true'
+        uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: docs
           preview-branch: gh-pages
