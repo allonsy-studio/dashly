@@ -58,7 +58,7 @@ yarn release                    # changeset publish (CI-only entry)
 
 ## Commits
 
-Commit messages live in git history forever: write them with future-you (or a contributor reading blame) in mind. They're for code archaeology, not release notes; the user-facing changelog comes from changesets. If a pull request has multiple commits, squash before merging into `main` for a tidy history.
+Commit messages live in git history forever, so write them with future-you (or a contributor reading blame) in mind. They're for code archaeology, not release notes; the user-facing changelog comes from changesets. If a pull request has multiple commits, squash before merging into `main` for a tidy history.
 
 ### Do
 
