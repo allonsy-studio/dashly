@@ -9,31 +9,17 @@ package.json                    # npm package manifest
 src/
   index.js                      # Aggregate exports + default plugin export
   plugin.js                     # Eleventy plugin: registers filters, transforms, shortcodes
-  filters/
-    index.js                    # Re-exports every filter
-    dates.js                    # toISOString, year, dateFormat, longDate, shortDate, relativeDate, timeAgo
-    strings.js                  # firstWord, lastWord, trim, stripWhitespace, digitsOnly, capitalize, title
-    urls.js                     # validateURL, absoluteUrl
-    objects.js                  # keys
-    html.js                     # cleanForRSS, renderMarkdown, stripTags, nl2br
-    text.js                     # wordCount, readingTime, excerpt
-    debug.js                    # dump, jsonify
-    arrays.js                   # first, last, reverse, groupBy, sortBy, chunk, where, pluck
-    numbers.js                  # number, currency, percent
-    tags.js                     # tags filter + DEFAULT_EXCLUDED_TAGS
-  transforms/
-    index.js
-    prettier.js                 # createPrettierTransform factory
-    htmlmin.js                  # createHtmlMinTransform factory (production-gated)
-    clean-attrs.js              # createCleanAttrsTransform factory
-    postcss.js                  # processCSS helper (for addBundle / addExtension)
-  shortcodes/
-    index.js
-    year.js                     # currentYear (footer copyright)
+  filters/                      # dates, strings, urls, objects, html, text, debug, arrays, numbers, tags
+  transforms/                   # prettier, htmlmin (production-gated), clean-attrs, postcss
+  shortcodes/                   # year
 test/                           # Vitest specs mirroring src/ layout
 .changeset/                     # Pending changesets + Changesets config (versioning)
 .github/workflows/              # CI: test, lint, release, code review, PR auto-update
 ```
+
+Each category directory has an `index.js` re-exporting its modules. The README tables
+are the canonical list of what each module exports — this tree is deliberately
+module-level so it doesn't go stale every time a utility lands.
 
 ## Common commands
 
@@ -106,6 +92,7 @@ Do not manually update `package.json#version` or the released sections of `CHANG
 ## What NOT to do
 
 - Do not commit secrets, real API keys, or `.env` files.
-- Do not bump `version` in `package.json` by hand — Changesets owns that.
-- Do not edit the released sections of `CHANGELOG.md` by hand — the Release workflow owns those.
-- Do not add new peer dependencies without making them **optional** in `peerDependenciesMeta` if they're only used by a subset of utilities.
+- Do not add a new peer dependency without making it **optional** in
+  `peerDependenciesMeta` when only a subset of utilities needs it.
+- Never add AI attribution to a commit or a PR: no `Co-Authored-By` trailer, no
+  "Generated with …" footer, no session URLs.
