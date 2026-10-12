@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>numbers · dashly</title>
+		<meta name="color-scheme" content="light dark">
+		<meta name="description" content="Locale-aware number-formatting filters built on `Intl.NumberFormat`.">
+		<link rel="icon" type="image/svg+xml" href="/dashly/pr-preview/pr-14/assets/img/mark.svg">
+		<link rel="stylesheet" href="/dashly/pr-preview/pr-14/assets/css/main.css">
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<a class="studio-banner" href="https://allons-y.studio">
+			<img src="/dashly/pr-preview/pr-14/assets/img/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+		</a>
+		<header class="site-header">
+			<a class="site-title" href="/dashly/pr-preview/pr-14/">dashly</a>
+			<p class="site-tagline">A standard library of filters, transforms, &amp; shortcodes for Eleventy</p>
+			<a class="site-link" href="https://github.com/allonsy-studio/dashly">GitHub</a>
+			<a class="site-link" href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+		</header>
+		<div class="docs-shell">
+	<aside class="docs-sidebar">
+		<div id="search" class="docs-search" role="search"></div>
+<link rel="stylesheet" href="/dashly/pr-preview/pr-14/pagefind/pagefind-ui.css">
+<script src="/dashly/pr-preview/pr-14/pagefind/pagefind-ui.js" defer=""></script>
+<script>
+	window.addEventListener("DOMContentLoaded", () => {
+		if (typeof PagefindUI === "undefined") return;
+		new PagefindUI({
+			element: "#search",
+			showImages: false,
+			baseUrl: "/dashly/pr-preview/pr-14/",
+			translations: { placeholder: "Search the docs" },
+		});
+	});
+</script>
+
+		<nav class="sidebar-nav" aria-label="Documentation">
+	<ul>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/getting-started/">Getting started</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/concepts/">How it works</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/config/">Configuration</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/filters/">Filters</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/filters/arrays/">arrays</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/dates/">dates</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/debug/">debug</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/html/">html</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/numbers/" aria-current="page">numbers</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/objects/">objects</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/strings/">strings</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/tags/">tags</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/text/">text</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/urls/">urls</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/transforms/">Transforms</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/clean-attrs/">clean-attrs</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/htmlmin/">htmlmin</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/postcss/">postcss</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/prettier/">prettier</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/shortcodes/">Shortcodes</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/shortcodes/year/">year</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/guides/">Guides</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/guides/a-la-carte/">Use only what you need</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/guides/output/">Format &amp; minify output</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a></li>
+			</ul>
+		</li>
+	</ul>
+</nav>
+
+	</aside>
+	<main id="main" class="docs-content" data-pagefind-body="">
+		<h1 data-pagefind-meta="title">numbers</h1>
+		<p>Locale-aware number-formatting filters built on <code>Intl.NumberFormat</code>.</p>
+
+
+<div class="api-import">
+<pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>
+	number<span class="token punctuation">,</span>
+	currency<span class="token punctuation">,</span>
+	percent<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@allons-y/dashly/filters/numbers'</span><span class="token punctuation">;</span></code></pre>
+</div>
+
+
+<section class="api-entry">
+	<h2 id="number"><a class="header-anchor" href="#number"><code>number(value, options?, locale?)</code></a></h2>
+	<p>Format a number using <code>Intl.NumberFormat</code>. Returns an empty string for
+non-numeric input so templates render gracefully.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>number | string</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>options</code> <small>(optional)</small></td>
+				<td><code>Intl.NumberFormatOptions</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>locale</code> <small>(optional)</small></td>
+				<td><code>Intl.LocalesArgument</code></td>
+				<td><code>&#39;en-US&#39;</code></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>string</code></p>
+	
+
+	
+	<h3>Examples</h3>
+	
+	<pre class="language-javascript"><code><span class="token comment">// '1,234,567'</span>
+<span class="token function">number</span><span class="token punctuation">(</span><span class="token number">1234567</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-javascript"><code><span class="token comment">// '1 234 567,89'</span>
+<span class="token function">number</span><span class="token punctuation">(</span><span class="token number">1234567.89</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">maximumFractionDigits</span><span class="token operator">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'fr-FR'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> stats<span class="token punctuation">.</span>views <span class="token operator">|</span> number <span class="token delimiter punctuation">}}</span></span></code></pre>
+	
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="currency"><a class="header-anchor" href="#currency"><code>currency(value, currencyCode?, locale?, options?)</code></a></h2>
+	<p>Format a number as a localized currency string.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>number | string</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>currencyCode</code> <small>(optional)</small></td>
+				<td><code>string</code></td>
+				<td><code>&#39;USD&#39;</code></td>
+				<td>ISO 4217 currency code.</td>
+			</tr>
+			
+			<tr>
+				<td><code>locale</code> <small>(optional)</small></td>
+				<td><code>Intl.LocalesArgument</code></td>
+				<td><code>&#39;en-US&#39;</code></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>options</code> <small>(optional)</small></td>
+				<td><code>Intl.NumberFormatOptions</code></td>
+				<td></td>
+				<td>Extra <code>Intl.NumberFormat</code> options.</td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>string</code></p>
+	
+
+	
+	<h3>Examples</h3>
+	
+	<pre class="language-javascript"><code><span class="token comment">// '$1,299.00'</span>
+<span class="token function">currency</span><span class="token punctuation">(</span><span class="token number">1299</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-javascript"><code><span class="token comment">// '1 299,00 €'</span>
+<span class="token function">currency</span><span class="token punctuation">(</span><span class="token number">1299</span><span class="token punctuation">,</span> <span class="token string">'EUR'</span><span class="token punctuation">,</span> <span class="token string">'fr-FR'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> product<span class="token punctuation">.</span>price <span class="token operator">|</span> currency<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>USD<span class="token punctuation">'</span></span><span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span></code></pre>
+	
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="percent"><a class="header-anchor" href="#percent"><code>percent(value, options?)</code></a></h2>
+	<p>Format a number as a localized percentage. Input is treated as a fraction by
+default (<code>0.25</code> → <code>25%</code>); pass <code>{ asFraction: false }</code> to format whole-number
+percentages (<code>25</code> → <code>25%</code>).</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>number | string</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>options</code> <small>(optional)</small></td>
+				<td><code>object</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>options.asFraction</code> <small>(optional)</small></td>
+				<td><code>boolean</code></td>
+				<td><code>true</code></td>
+				<td>Treat input as a 0–1 fraction. Set false for whole-number percentages.</td>
+			</tr>
+			
+			<tr>
+				<td><code>options.maximumFractionDigits</code> <small>(optional)</small></td>
+				<td><code>number</code></td>
+				<td><code>0</code></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>options.locale</code> <small>(optional)</small></td>
+				<td><code>Intl.LocalesArgument</code></td>
+				<td><code>&#39;en-US&#39;</code></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>string</code></p>
+	
+
+	
+	<h3>Examples</h3>
+	
+	<pre class="language-javascript"><code><span class="token comment">// '25%'</span>
+<span class="token function">percent</span><span class="token punctuation">(</span><span class="token number">0.25</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-javascript"><code><span class="token comment">// '25%'</span>
+<span class="token function">percent</span><span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">asFraction</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-javascript"><code><span class="token comment">// '25.5%'</span>
+<span class="token function">percent</span><span class="token punctuation">(</span><span class="token number">0.255</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">maximumFractionDigits</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> survey<span class="token punctuation">.</span>completionRate <span class="token operator">|</span> percent <span class="token delimiter punctuation">}}</span></span></code></pre>
+	
+	
+</section>
+
+
+	</main>
+</div>
+
+		<footer class="site-footer">
+			<div class="site-footer-brand">
+				<p class="site-footer-title">dashly</p>
+				<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+				<p class="site-footer-meta"><a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE">Licensed under MPL-2.0</a></p>
+			</div>
+			<div>
+				<p class="site-footer-title">Project</p>
+				<ul>
+					<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+					<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+					<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+				</ul>
+			</div>
+			<div>
+				<p class="site-footer-title">Help</p>
+				<ul>
+					<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+					<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				</ul>
+			</div>
+			<div class="site-footer-studio">
+				<a href="https://allons-y.studio">
+					<picture>
+						<source media="(prefers-color-scheme: dark)" srcset="/dashly/pr-preview/pr-14/assets/img/oss-footer-dark.svg">
+						<img src="/dashly/pr-preview/pr-14/assets/img/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+					</picture>
+				</a>
+			</div>
+		</footer>
+	</body>
+</html>

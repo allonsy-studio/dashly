@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Format &amp; minify output · dashly</title>
+		<meta name="color-scheme" content="light dark">
+		<meta name="description" content="Run Prettier &amp; HTML minification, &amp; control when each runs.">
+		<link rel="icon" type="image/svg+xml" href="/dashly/pr-preview/pr-14/assets/img/mark.svg">
+		<link rel="stylesheet" href="/dashly/pr-preview/pr-14/assets/css/main.css">
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<a class="studio-banner" href="https://allons-y.studio">
+			<img src="/dashly/pr-preview/pr-14/assets/img/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+		</a>
+		<header class="site-header">
+			<a class="site-title" href="/dashly/pr-preview/pr-14/">dashly</a>
+			<p class="site-tagline">A standard library of filters, transforms, &amp; shortcodes for Eleventy</p>
+			<a class="site-link" href="https://github.com/allonsy-studio/dashly">GitHub</a>
+			<a class="site-link" href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+		</header>
+		<div class="docs-shell">
+	<aside class="docs-sidebar">
+		<div id="search" class="docs-search" role="search"></div>
+<link rel="stylesheet" href="/dashly/pr-preview/pr-14/pagefind/pagefind-ui.css">
+<script src="/dashly/pr-preview/pr-14/pagefind/pagefind-ui.js" defer=""></script>
+<script>
+	window.addEventListener("DOMContentLoaded", () => {
+		if (typeof PagefindUI === "undefined") return;
+		new PagefindUI({
+			element: "#search",
+			showImages: false,
+			baseUrl: "/dashly/pr-preview/pr-14/",
+			translations: { placeholder: "Search the docs" },
+		});
+	});
+</script>
+
+		<nav class="sidebar-nav" aria-label="Documentation">
+	<ul>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/getting-started/">Getting started</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/concepts/">How it works</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/config/">Configuration</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/filters/">Filters</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/filters/arrays/">arrays</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/dates/">dates</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/debug/">debug</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/html/">html</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/numbers/">numbers</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/objects/">objects</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/strings/">strings</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/tags/">tags</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/text/">text</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/urls/">urls</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/transforms/">Transforms</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/clean-attrs/">clean-attrs</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/htmlmin/">htmlmin</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/postcss/">postcss</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/prettier/">prettier</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/shortcodes/">Shortcodes</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/shortcodes/year/">year</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/guides/">Guides</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/guides/a-la-carte/">Use only what you need</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/guides/output/" aria-current="page">Format &amp; minify output</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a></li>
+			</ul>
+		</li>
+	</ul>
+</nav>
+
+	</aside>
+	<main id="main" class="docs-content" data-pagefind-body="">
+		<h1 data-pagefind-meta="title">Format &amp; minify output</h1>
+		<p>Three transforms act on built pages. Install the peer each one needs; see <a href="../../concepts/#optional-peers-load-on-first-use">How it works</a>.</p>
+<h2 id="format-with-prettier" tabindex="-1"><a class="header-anchor" href="#format-with-prettier">Format with Prettier</a></h2>
+<p>The <code>prettier</code> transform formats <code>.html</code>, <code>.xml</code>, &amp; <code>.svg</code> output. Defaults favor readable source over line wrapping: <code>printWidth: 512</code>, <code>tabWidth: 2</code>, &amp; <code>bracketSameLine: true</code>.</p>
+<pre class="language-javascript"><code>config<span class="token punctuation">.</span><span class="token function">addPlugin</span><span class="token punctuation">(</span>dashly<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+	<span class="token literal-property property">transforms</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+		<span class="token literal-property property">prettier</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+			<span class="token literal-property property">extensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">".html"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+			<span class="token literal-property property">prettier</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">printWidth</span><span class="token operator">:</span> <span class="token number">100</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><code>extensions</code> limits which outputs are formatted. <code>prettier</code> merges on top of the defaults.</p>
+<h2 id="minify-in-production" tabindex="-1"><a class="header-anchor" href="#minify-in-production">Minify in production</a></h2>
+<p>The <code>htmlmin</code> transform minifies <code>.html</code> output, but only when <code>ELEVENTY_ENV</code> is <code>production</code>.</p>
+<pre class="language-bash"><code><span class="token assign-left variable">ELEVENTY_ENV</span><span class="token operator">=</span>production npx @11ty/eleventy
+</code></pre>
+<p>Pass <code>production: false</code> to minify in every build. Forward any <code>html-minifier-terser</code> option through <code>minifier</code>.</p>
+<pre class="language-javascript"><code>config<span class="token punctuation">.</span><span class="token function">addPlugin</span><span class="token punctuation">(</span>dashly<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+	<span class="token literal-property property">transforms</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+		<span class="token literal-property property">htmlmin</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">minifier</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">removeAttributeQuotes</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="clean-leftover-attributes" tabindex="-1"><a class="header-anchor" href="#clean-leftover-attributes">Clean leftover attributes</a></h2>
+<p>The <code>cleanAttrs</code> transform removes <code>eleventy:ignore=&quot;&quot;</code> markers that Eleventy's image transform leaves on <code>&lt;img&gt;</code> elements inside <code>&lt;picture&gt;</code>. Add more attribute names with <code>attrs</code>. The list replaces the default, so include <code>eleventy:ignore</code> to keep it.</p>
+<h2 id="order" tabindex="-1"><a class="header-anchor" href="#order">Order</a></h2>
+<p>The plugin registers <code>cleanAttrs</code>, then <code>prettier</code>, then <code>htmlmin</code>, so minification runs last.</p>
+
+	</main>
+</div>
+
+		<footer class="site-footer">
+			<div class="site-footer-brand">
+				<p class="site-footer-title">dashly</p>
+				<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+				<p class="site-footer-meta"><a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE">Licensed under MPL-2.0</a></p>
+			</div>
+			<div>
+				<p class="site-footer-title">Project</p>
+				<ul>
+					<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+					<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+					<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+				</ul>
+			</div>
+			<div>
+				<p class="site-footer-title">Help</p>
+				<ul>
+					<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+					<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				</ul>
+			</div>
+			<div class="site-footer-studio">
+				<a href="https://allons-y.studio">
+					<picture>
+						<source media="(prefers-color-scheme: dark)" srcset="/dashly/pr-preview/pr-14/assets/img/oss-footer-dark.svg">
+						<img src="/dashly/pr-preview/pr-14/assets/img/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+					</picture>
+				</a>
+			</div>
+		</footer>
+	</body>
+</html>

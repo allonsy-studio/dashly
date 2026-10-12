@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>text · dashly</title>
+		<meta name="color-scheme" content="light dark">
+		<meta name="description" content="Text-analysis filters: word counting, excerpting, and reading-time estimation. Strip HTML so callers can feed rendered post content directly.">
+		<link rel="icon" type="image/svg+xml" href="/dashly/pr-preview/pr-14/assets/img/mark.svg">
+		<link rel="stylesheet" href="/dashly/pr-preview/pr-14/assets/css/main.css">
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<a class="studio-banner" href="https://allons-y.studio">
+			<img src="/dashly/pr-preview/pr-14/assets/img/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+		</a>
+		<header class="site-header">
+			<a class="site-title" href="/dashly/pr-preview/pr-14/">dashly</a>
+			<p class="site-tagline">A standard library of filters, transforms, &amp; shortcodes for Eleventy</p>
+			<a class="site-link" href="https://github.com/allonsy-studio/dashly">GitHub</a>
+			<a class="site-link" href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+		</header>
+		<div class="docs-shell">
+	<aside class="docs-sidebar">
+		<div id="search" class="docs-search" role="search"></div>
+<link rel="stylesheet" href="/dashly/pr-preview/pr-14/pagefind/pagefind-ui.css">
+<script src="/dashly/pr-preview/pr-14/pagefind/pagefind-ui.js" defer=""></script>
+<script>
+	window.addEventListener("DOMContentLoaded", () => {
+		if (typeof PagefindUI === "undefined") return;
+		new PagefindUI({
+			element: "#search",
+			showImages: false,
+			baseUrl: "/dashly/pr-preview/pr-14/",
+			translations: { placeholder: "Search the docs" },
+		});
+	});
+</script>
+
+		<nav class="sidebar-nav" aria-label="Documentation">
+	<ul>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/getting-started/">Getting started</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/concepts/">How it works</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/config/">Configuration</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/filters/">Filters</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/filters/arrays/">arrays</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/dates/">dates</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/debug/">debug</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/html/">html</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/numbers/">numbers</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/objects/">objects</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/strings/">strings</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/tags/">tags</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/text/" aria-current="page">text</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/urls/">urls</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/transforms/">Transforms</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/clean-attrs/">clean-attrs</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/htmlmin/">htmlmin</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/postcss/">postcss</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/prettier/">prettier</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/shortcodes/">Shortcodes</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/shortcodes/year/">year</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/guides/">Guides</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/guides/a-la-carte/">Use only what you need</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/guides/output/">Format &amp; minify output</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a></li>
+			</ul>
+		</li>
+	</ul>
+</nav>
+
+	</aside>
+	<main id="main" class="docs-content" data-pagefind-body="">
+		<h1 data-pagefind-meta="title">text</h1>
+		<p>Text-analysis filters: word counting, excerpting, and reading-time
+estimation. Strip HTML so callers can feed rendered post content directly.</p>
+
+
+<div class="api-import">
+<pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>
+	wordCount<span class="token punctuation">,</span>
+	readingTime<span class="token punctuation">,</span>
+	excerpt<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@allons-y/dashly/filters/text'</span><span class="token punctuation">;</span></code></pre>
+</div>
+
+
+<section class="api-entry">
+	<h2 id="wordCount"><a class="header-anchor" href="#wordCount"><code>wordCount(value)</code></a></h2>
+	<p>Count whitespace-delimited words in a string. HTML tags are stripped before
+counting so rendered post content can be passed in directly.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>string</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>number</code></p>
+	
+
+	
+	<h3>Examples</h3>
+	
+	<pre class="language-javascript"><code><span class="token comment">// Returns 5</span>
+<span class="token function">wordCount</span><span class="token punctuation">(</span><span class="token string">'The quick brown fox jumps'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> post<span class="token punctuation">.</span>content <span class="token operator">|</span> wordCount <span class="token delimiter punctuation">}}</span></span></code></pre>
+	
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="readingTime"><a class="header-anchor" href="#readingTime"><code>readingTime(value, wpm?)</code></a></h2>
+	<p>Estimate reading time in minutes for a block of text. Strips HTML, counts
+words, divides by <code>wpm</code> (default 200), and rounds to the nearest whole
+minute with a floor of 1.</p>
+<p>Accepts either a string (counted internally) or a pre-computed word count
+number.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>string | number</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>wpm</code> <small>(optional)</small></td>
+				<td><code>number</code></td>
+				<td><code>200</code></td>
+				<td>Words per minute.</td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>number</code>: Whole-minute estimate, minimum 1.</p>
+	
+
+	
+	<h3>Examples</h3>
+	
+	<pre class="language-javascript"><code><span class="token comment">// Returns 3</span>
+<span class="token function">readingTime</span><span class="token punctuation">(</span><span class="token string">'…a 600-word post…'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> post<span class="token punctuation">.</span>content <span class="token operator">|</span> readingTime <span class="token delimiter punctuation">}}</span></span> min read</code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> <span class="token number">1200</span> <span class="token operator">|</span> readingTime<span class="token punctuation">(</span><span class="token number">250</span><span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span></code></pre>
+	
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="excerpt"><a class="header-anchor" href="#excerpt"><code>excerpt(value, n?, unit?)</code></a></h2>
+	<p>Pull an excerpt from a string. Positive <code>n</code> returns the first N units;
+negative <code>n</code> returns the last |N| units. HTML tags are stripped first.
+Appends an ellipsis on the trimmed side when the input is actually cut.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>string</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>n</code> <small>(optional)</small></td>
+				<td><code>number</code></td>
+				<td><code>30</code></td>
+				<td>Word/char count. Negative for trailing slice.</td>
+			</tr>
+			
+			<tr>
+				<td><code>unit</code> <small>(optional)</small></td>
+				<td><code>&#39;words&#39; | &#39;chars&#39;</code></td>
+				<td><code>&#39;words&#39;</code></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>string</code></p>
+	
+
+	
+	<h3>Examples</h3>
+	
+	<pre class="language-javascript"><code><span class="token comment">// "The quick brown fox jumps…"</span>
+<span class="token function">excerpt</span><span class="token punctuation">(</span><span class="token string">'The quick brown fox jumps over the lazy dog'</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-javascript"><code><span class="token comment">// "…over the lazy dog"</span>
+<span class="token function">excerpt</span><span class="token punctuation">(</span><span class="token string">'The quick brown fox jumps over the lazy dog'</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> post<span class="token punctuation">.</span>content <span class="token operator">|</span> excerpt<span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span></code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> post<span class="token punctuation">.</span>content <span class="token operator">|</span> excerpt<span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token string"><span class="token punctuation">'</span>chars<span class="token punctuation">'</span></span><span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span></code></pre>
+	
+	
+</section>
+
+
+	</main>
+</div>
+
+		<footer class="site-footer">
+			<div class="site-footer-brand">
+				<p class="site-footer-title">dashly</p>
+				<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+				<p class="site-footer-meta"><a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE">Licensed under MPL-2.0</a></p>
+			</div>
+			<div>
+				<p class="site-footer-title">Project</p>
+				<ul>
+					<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+					<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+					<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+				</ul>
+			</div>
+			<div>
+				<p class="site-footer-title">Help</p>
+				<ul>
+					<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+					<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				</ul>
+			</div>
+			<div class="site-footer-studio">
+				<a href="https://allons-y.studio">
+					<picture>
+						<source media="(prefers-color-scheme: dark)" srcset="/dashly/pr-preview/pr-14/assets/img/oss-footer-dark.svg">
+						<img src="/dashly/pr-preview/pr-14/assets/img/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+					</picture>
+				</a>
+			</div>
+		</footer>
+	</body>
+</html>

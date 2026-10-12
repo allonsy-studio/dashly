@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>arrays · dashly</title>
+		<meta name="color-scheme" content="light dark">
+		<meta name="description" content="Array-manipulation filters for Eleventy. Universal across template engines — Nunjucks and Liquid have native `first` / `last` / `reverse` filters, but Eleventy&amp;#39;s JS templates and other engines do not. Registering these via dashly makes them available everywhere.">
+		<link rel="icon" type="image/svg+xml" href="/dashly/pr-preview/pr-14/assets/img/mark.svg">
+		<link rel="stylesheet" href="/dashly/pr-preview/pr-14/assets/css/main.css">
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<a class="studio-banner" href="https://allons-y.studio">
+			<img src="/dashly/pr-preview/pr-14/assets/img/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+		</a>
+		<header class="site-header">
+			<a class="site-title" href="/dashly/pr-preview/pr-14/">dashly</a>
+			<p class="site-tagline">A standard library of filters, transforms, &amp; shortcodes for Eleventy</p>
+			<a class="site-link" href="https://github.com/allonsy-studio/dashly">GitHub</a>
+			<a class="site-link" href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+		</header>
+		<div class="docs-shell">
+	<aside class="docs-sidebar">
+		<div id="search" class="docs-search" role="search"></div>
+<link rel="stylesheet" href="/dashly/pr-preview/pr-14/pagefind/pagefind-ui.css">
+<script src="/dashly/pr-preview/pr-14/pagefind/pagefind-ui.js" defer=""></script>
+<script>
+	window.addEventListener("DOMContentLoaded", () => {
+		if (typeof PagefindUI === "undefined") return;
+		new PagefindUI({
+			element: "#search",
+			showImages: false,
+			baseUrl: "/dashly/pr-preview/pr-14/",
+			translations: { placeholder: "Search the docs" },
+		});
+	});
+</script>
+
+		<nav class="sidebar-nav" aria-label="Documentation">
+	<ul>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/getting-started/">Getting started</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/concepts/">How it works</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/config/">Configuration</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/filters/">Filters</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/filters/arrays/" aria-current="page">arrays</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/dates/">dates</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/debug/">debug</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/html/">html</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/numbers/">numbers</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/objects/">objects</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/strings/">strings</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/tags/">tags</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/text/">text</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/urls/">urls</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/transforms/">Transforms</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/clean-attrs/">clean-attrs</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/htmlmin/">htmlmin</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/postcss/">postcss</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/prettier/">prettier</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/shortcodes/">Shortcodes</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/shortcodes/year/">year</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/guides/">Guides</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/guides/a-la-carte/">Use only what you need</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/guides/output/">Format &amp; minify output</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a></li>
+			</ul>
+		</li>
+	</ul>
+</nav>
+
+	</aside>
+	<main id="main" class="docs-content" data-pagefind-body="">
+		<h1 data-pagefind-meta="title">arrays</h1>
+		<p>Array-manipulation filters for Eleventy. Universal across template engines —
+Nunjucks and Liquid have native <code>first</code> / <code>last</code> / <code>reverse</code> filters, but
+Eleventy's JS templates and other engines do not. Registering these via
+dashly makes them available everywhere.</p>
+
+
+<div class="api-import">
+<pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>
+	first<span class="token punctuation">,</span>
+	last<span class="token punctuation">,</span>
+	reverse<span class="token punctuation">,</span>
+	groupBy<span class="token punctuation">,</span>
+	sortBy<span class="token punctuation">,</span>
+	chunk<span class="token punctuation">,</span>
+	where<span class="token punctuation">,</span>
+	pluck<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@allons-y/dashly/filters/arrays'</span><span class="token punctuation">;</span></code></pre>
+</div>
+
+
+<section class="api-entry">
+	<h2 id="first"><a class="header-anchor" href="#first"><code>first(value, n?)</code></a></h2>
+	<p>Return the first item of an array, or the first <code>n</code> items if a count is
+supplied. With no count, matches Nunjucks <code>first</code> (single item). With a
+count, returns the first N items — covers the &quot;limit / head&quot; use case.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>readonly T[]</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>n</code> <small>(optional)</small></td>
+				<td><code>number</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>T | T[] | undefined</code></p>
+	
+
+	
+	<h3>Examples</h3>
+	
+	<pre class="language-javascript"><code><span class="token comment">// 'a'</span>
+<span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-javascript"><code><span class="token comment">// ['a', 'b']</span>
+<span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> collections<span class="token punctuation">.</span>posts <span class="token operator">|</span> first <span class="token delimiter punctuation">}}</span></span></code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">for</span> post <span class="token operator">in</span> collections<span class="token punctuation">.</span>posts <span class="token operator">|</span> first<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token delimiter punctuation">%}</span></span> … <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">endfor</span> <span class="token delimiter punctuation">%}</span></span></code></pre>
+	
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="last"><a class="header-anchor" href="#last"><code>last(value, n?)</code></a></h2>
+	<p>Return the last item of an array, or the last <code>n</code> items if a count is
+supplied. Mirror of <code>first</code>.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>readonly T[]</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>n</code> <small>(optional)</small></td>
+				<td><code>number</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>T | T[] | undefined</code></p>
+	
+
+	
+	<h3>Examples</h3>
+	
+	<pre class="language-javascript"><code><span class="token comment">// 'c'</span>
+<span class="token function">last</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-javascript"><code><span class="token comment">// ['b', 'c']</span>
+<span class="token function">last</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> collections<span class="token punctuation">.</span>posts <span class="token operator">|</span> last <span class="token delimiter punctuation">}}</span></span></code></pre>
+	
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="reverse"><a class="header-anchor" href="#reverse"><code>reverse(value)</code></a></h2>
+	<p>Reverse an array or a string without mutating the input.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>readonly T[] | string</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>T[] | string</code></p>
+	
+
+	
+	<h3>Examples</h3>
+	
+	<pre class="language-javascript"><code><span class="token comment">// [3, 2, 1]</span>
+<span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-javascript"><code><span class="token comment">// 'cba'</span>
+<span class="token function">reverse</span><span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> collections<span class="token punctuation">.</span>posts <span class="token operator">|</span> reverse <span class="token delimiter punctuation">}}</span></span></code></pre>
+	
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="groupBy"><a class="header-anchor" href="#groupBy"><code>groupBy(value, keyOrFn)</code></a></h2>
+	<p>Group array items by a key, a dot-path, or a function. Returns a plain
+object keyed by the grouping value, with each value an array of items.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>readonly T[]</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>keyOrFn</code></td>
+				<td><code>string | ((item: T) =&gt; unknown)</code></td>
+				<td></td>
+				<td>Property name (dot-paths supported, e.g. <code>'data.year'</code>) or selector function.</td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>Record&lt;string, T[]&gt;</code></p>
+	
+
+	
+	<h3>Examples</h3>
+	
+	<pre class="language-javascript"><code><span class="token comment">// { 2025: [...], 2026: [...] }</span>
+<span class="token function">groupBy</span><span class="token punctuation">(</span>posts<span class="token punctuation">,</span> <span class="token string">'data.year'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-javascript"><code><span class="token function">groupBy</span><span class="token punctuation">(</span>posts<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">p</span><span class="token punctuation">)</span> <span class="token operator">=></span> p<span class="token punctuation">.</span>data<span class="token punctuation">.</span>tags<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">for</span> year<span class="token punctuation">,</span> items <span class="token operator">in</span> collections<span class="token punctuation">.</span>posts <span class="token operator">|</span> groupBy<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>data.year<span class="token punctuation">'</span></span><span class="token punctuation">)</span> <span class="token delimiter punctuation">%}</span></span> … <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">endfor</span> <span class="token delimiter punctuation">%}</span></span></code></pre>
+	
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="sortBy"><a class="header-anchor" href="#sortBy"><code>sortBy(value, keyOrFn, order?)</code></a></h2>
+	<p>Sort an array by a key, dot-path, or selector function, without mutating
+the input. String values are compared with <code>localeCompare</code>; everything else
+with standard <code>&lt;</code> / <code>&gt;</code>.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>readonly T[]</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>keyOrFn</code></td>
+				<td><code>string | ((item: T) =&gt; unknown)</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>order</code> <small>(optional)</small></td>
+				<td><code>&#39;asc&#39; | &#39;desc&#39;</code></td>
+				<td><code>&#39;asc&#39;</code></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>T[]</code></p>
+	
+
+	
+	<h3>Examples</h3>
+	
+	<pre class="language-javascript"><code><span class="token function">sortBy</span><span class="token punctuation">(</span>posts<span class="token punctuation">,</span> <span class="token string">'data.date'</span><span class="token punctuation">,</span> <span class="token string">'desc'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-javascript"><code><span class="token function">sortBy</span><span class="token punctuation">(</span>items<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=></span> item<span class="token punctuation">.</span>priority<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="chunk"><a class="header-anchor" href="#chunk"><code>chunk(value, size)</code></a></h2>
+	<p>Split an array into N-sized chunks. The final chunk may be smaller than
+<code>size</code>. Returns an empty array for non-array or invalid-size input.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>readonly T[]</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>size</code></td>
+				<td><code>number</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>T[][]</code></p>
+	
+
+	
+	<h3>Examples</h3>
+	
+	<pre class="language-javascript"><code><span class="token comment">// [[1, 2], [3, 4], [5]]</span>
+<span class="token function">chunk</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token comment">{# render a gallery grid #}</span></span>
+<span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">for</span> row <span class="token operator">in</span> images <span class="token operator">|</span> chunk<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token delimiter punctuation">%}</span></span> … <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">endfor</span> <span class="token delimiter punctuation">%}</span></span></code></pre>
+	
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="where"><a class="header-anchor" href="#where"><code>where(value, keyOrFn, expected?)</code></a></h2>
+	<p>Filter an array by a key/dot-path equality check. When <code>expected</code> is
+omitted, items where the keyed value is truthy are kept (useful for
+<code>where(posts, 'data.featured')</code>).</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>readonly T[]</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>keyOrFn</code></td>
+				<td><code>string | ((item: T) =&gt; unknown)</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>expected</code> <small>(optional)</small></td>
+				<td><code>unknown</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>T[]</code></p>
+	
+
+	
+	<h3>Examples</h3>
+	
+	<pre class="language-javascript"><code><span class="token function">where</span><span class="token punctuation">(</span>posts<span class="token punctuation">,</span> <span class="token string">'data.draft'</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-javascript"><code><span class="token function">where</span><span class="token punctuation">(</span>posts<span class="token punctuation">,</span> <span class="token string">'data.featured'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// truthy-only</span></code></pre>
+	
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="pluck"><a class="header-anchor" href="#pluck"><code>pluck(value, keyOrFn)</code></a></h2>
+	<p>Project an array of objects onto a single key or dot-path.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>readonly T[]</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>keyOrFn</code></td>
+				<td><code>string | ((item: T) =&gt; unknown)</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>unknown[]</code></p>
+	
+
+	
+	<h3>Examples</h3>
+	
+	<pre class="language-javascript"><code><span class="token comment">// ['Hello', 'World']</span>
+<span class="token function">pluck</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'Hello'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'World'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'title'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> collections<span class="token punctuation">.</span>posts <span class="token operator">|</span> pluck<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>data.title<span class="token punctuation">'</span></span><span class="token punctuation">)</span> <span class="token operator">|</span> join<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>, <span class="token punctuation">'</span></span><span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span></code></pre>
+	
+	
+</section>
+
+
+	</main>
+</div>
+
+		<footer class="site-footer">
+			<div class="site-footer-brand">
+				<p class="site-footer-title">dashly</p>
+				<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+				<p class="site-footer-meta"><a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE">Licensed under MPL-2.0</a></p>
+			</div>
+			<div>
+				<p class="site-footer-title">Project</p>
+				<ul>
+					<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+					<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+					<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+				</ul>
+			</div>
+			<div>
+				<p class="site-footer-title">Help</p>
+				<ul>
+					<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+					<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				</ul>
+			</div>
+			<div class="site-footer-studio">
+				<a href="https://allons-y.studio">
+					<picture>
+						<source media="(prefers-color-scheme: dark)" srcset="/dashly/pr-preview/pr-14/assets/img/oss-footer-dark.svg">
+						<img src="/dashly/pr-preview/pr-14/assets/img/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+					</picture>
+				</a>
+			</div>
+		</footer>
+	</body>
+</html>

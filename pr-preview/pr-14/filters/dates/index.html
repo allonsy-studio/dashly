@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>dates · dashly</title>
+		<meta name="color-scheme" content="light dark">
+		<meta name="description" content="Date-related filters for Eleventy.">
+		<link rel="icon" type="image/svg+xml" href="/dashly/pr-preview/pr-14/assets/img/mark.svg">
+		<link rel="stylesheet" href="/dashly/pr-preview/pr-14/assets/css/main.css">
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<a class="studio-banner" href="https://allons-y.studio">
+			<img src="/dashly/pr-preview/pr-14/assets/img/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+		</a>
+		<header class="site-header">
+			<a class="site-title" href="/dashly/pr-preview/pr-14/">dashly</a>
+			<p class="site-tagline">A standard library of filters, transforms, &amp; shortcodes for Eleventy</p>
+			<a class="site-link" href="https://github.com/allonsy-studio/dashly">GitHub</a>
+			<a class="site-link" href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+		</header>
+		<div class="docs-shell">
+	<aside class="docs-sidebar">
+		<div id="search" class="docs-search" role="search"></div>
+<link rel="stylesheet" href="/dashly/pr-preview/pr-14/pagefind/pagefind-ui.css">
+<script src="/dashly/pr-preview/pr-14/pagefind/pagefind-ui.js" defer=""></script>
+<script>
+	window.addEventListener("DOMContentLoaded", () => {
+		if (typeof PagefindUI === "undefined") return;
+		new PagefindUI({
+			element: "#search",
+			showImages: false,
+			baseUrl: "/dashly/pr-preview/pr-14/",
+			translations: { placeholder: "Search the docs" },
+		});
+	});
+</script>
+
+		<nav class="sidebar-nav" aria-label="Documentation">
+	<ul>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/getting-started/">Getting started</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/concepts/">How it works</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/config/">Configuration</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/filters/">Filters</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/filters/arrays/">arrays</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/dates/" aria-current="page">dates</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/debug/">debug</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/html/">html</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/numbers/">numbers</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/objects/">objects</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/strings/">strings</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/tags/">tags</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/text/">text</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/urls/">urls</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/transforms/">Transforms</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/clean-attrs/">clean-attrs</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/htmlmin/">htmlmin</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/postcss/">postcss</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/prettier/">prettier</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/shortcodes/">Shortcodes</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/shortcodes/year/">year</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/guides/">Guides</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/guides/a-la-carte/">Use only what you need</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/guides/output/">Format &amp; minify output</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a></li>
+			</ul>
+		</li>
+	</ul>
+</nav>
+
+	</aside>
+	<main id="main" class="docs-content" data-pagefind-body="">
+		<h1 data-pagefind-meta="title">dates</h1>
+		<p>Date-related filters for Eleventy.</p>
+
+
+<div class="api-import">
+<pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>
+	toISOString<span class="token punctuation">,</span>
+	year<span class="token punctuation">,</span>
+	dateFormat<span class="token punctuation">,</span>
+	longDate<span class="token punctuation">,</span>
+	shortDate<span class="token punctuation">,</span>
+	relativeDate<span class="token punctuation">,</span>
+	timeAgo<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@allons-y/dashly/filters/dates'</span><span class="token punctuation">;</span></code></pre>
+</div>
+
+
+<section class="api-entry">
+	<h2 id="toISOString"><a class="header-anchor" href="#toISOString"><code>toISOString(date)</code></a></h2>
+	<p>Convert a date-like value to an ISO 8601 string. Returns an empty string for
+falsy inputs or unparseable dates.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>date</code></td>
+				<td><code>string | number | Date</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>string</code></p>
+	
+
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="year"><a class="header-anchor" href="#year"><code>year(date)</code></a></h2>
+	<p>Extract the four-digit year from a date-like value. Returns an empty string
+for falsy or unparseable inputs.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>date</code></td>
+				<td><code>string | number | Date</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>number | &#39;&#39;</code></p>
+	
+
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="dateFormat"><a class="header-anchor" href="#dateFormat"><code>dateFormat(value, options?, locale?)</code></a></h2>
+	<p>Format a date using <code>Intl.DateTimeFormat</code>. Returns the input unchanged on
+falsy or unparseable values so templates can render gracefully.</p>
+<p>Defaults to <code>timeZone: 'UTC'</code> so a date-only string like <code>'2026-01-15'</code>
+(which <code>Date</code> parses as midnight UTC) renders as &quot;15 January&quot; everywhere,
+not &quot;14 January&quot; on machines west of Greenwich. Pass <code>timeZone</code> in
+<code>options</code> to override.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>string | number | Date</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>options</code> <small>(optional)</small></td>
+				<td><code>Intl.DateTimeFormatOptions</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>locale</code> <small>(optional)</small></td>
+				<td><code>Intl.LocalesArgument</code></td>
+				<td><code>&#39;en-US&#39;</code></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>string</code></p>
+	
+
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="longDate"><a class="header-anchor" href="#longDate"><code>longDate(value, locale?)</code></a></h2>
+	<p>Format a date as a long-form date (e.g. &quot;15 January 2026&quot;).</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>string | number | Date</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>locale</code> <small>(optional)</small></td>
+				<td><code>Intl.LocalesArgument</code></td>
+				<td><code>&#39;en-US&#39;</code></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>string</code></p>
+	
+
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="shortDate"><a class="header-anchor" href="#shortDate"><code>shortDate(value, locale?)</code></a></h2>
+	<p>Format a date as an abbreviated month-and-year (e.g. &quot;Jan 2026&quot;).</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>string | number | Date</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>locale</code> <small>(optional)</small></td>
+				<td><code>Intl.LocalesArgument</code></td>
+				<td><code>&#39;en-US&#39;</code></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>string</code></p>
+	
+
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="relativeDate"><a class="header-anchor" href="#relativeDate"><code>relativeDate(value, locale?, options?)</code></a></h2>
+	<p>Format a date as a locale-aware relative phrase (e.g. &quot;2 days ago&quot;,
+&quot;in 3 months&quot;). Wraps <code>Intl.RelativeTimeFormat</code>.</p>
+<p>The reference point is <code>now</code> by default but can be overridden — useful for
+stable build output and for testing.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>string | number | Date</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>locale</code> <small>(optional)</small></td>
+				<td><code>Intl.LocalesArgument</code></td>
+				<td><code>&#39;en-US&#39;</code></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>options</code> <small>(optional)</small></td>
+				<td><code>object</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>options.now</code> <small>(optional)</small></td>
+				<td><code>Date</code></td>
+				<td></td>
+				<td>Reference date to compare against. Defaults to <code>new Date()</code>.</td>
+			</tr>
+			
+			<tr>
+				<td><code>options.style</code> <small>(optional)</small></td>
+				<td><code>Intl.RelativeTimeFormatStyle</code></td>
+				<td><code>&#39;long&#39;</code></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>options.numeric</code> <small>(optional)</small></td>
+				<td><code>&#39;auto&#39; | &#39;always&#39;</code></td>
+				<td><code>&#39;auto&#39;</code></td>
+				<td><code>'auto'</code> produces &quot;yesterday&quot; / &quot;tomorrow&quot;; <code>'always'</code> forces &quot;1 day ago&quot;.</td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>string</code></p>
+	
+
+	
+	<h3>Examples</h3>
+	
+	<pre class="language-javascript"><code><span class="token comment">// 'yesterday'</span>
+<span class="token function">relativeDate</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">86_400_000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-javascript"><code><span class="token comment">// '2 mo. ago'</span>
+<span class="token function">relativeDate</span><span class="token punctuation">(</span><span class="token string">'2026-01-15'</span><span class="token punctuation">,</span> <span class="token string">'en-US'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">now</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token string">'2026-03-20'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token literal-property property">style</span><span class="token operator">:</span> <span class="token string">'short'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> post<span class="token punctuation">.</span>date <span class="token operator">|</span> timeAgo <span class="token delimiter punctuation">}}</span></span></code></pre>
+	
+	
+</section>
+
+<section class="api-entry">
+	<h2 id="timeAgo"><a class="header-anchor" href="#timeAgo"><code>timeAgo(value, locale?, options?)</code></a></h2>
+	<p>Alias for <code>relativeDate</code>. Some teams prefer the <code>| timeAgo</code> name.</p>
+
+
+	
+	<h3>Parameters</h3>
+	<table>
+		<thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+		<tbody>
+			
+			<tr>
+				<td><code>value</code></td>
+				<td><code>string | number | Date</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>locale</code> <small>(optional)</small></td>
+				<td><code>Intl.LocalesArgument</code></td>
+				<td><code>&#39;en-US&#39;</code></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>options</code> <small>(optional)</small></td>
+				<td><code>object</code></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>options.now</code> <small>(optional)</small></td>
+				<td><code>Date</code></td>
+				<td></td>
+				<td>Reference date to compare against. Defaults to <code>new Date()</code>.</td>
+			</tr>
+			
+			<tr>
+				<td><code>options.style</code> <small>(optional)</small></td>
+				<td><code>Intl.RelativeTimeFormatStyle</code></td>
+				<td><code>&#39;long&#39;</code></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td><code>options.numeric</code> <small>(optional)</small></td>
+				<td><code>&#39;auto&#39; | &#39;always&#39;</code></td>
+				<td><code>&#39;auto&#39;</code></td>
+				<td><code>'auto'</code> produces &quot;yesterday&quot; / &quot;tomorrow&quot;; <code>'always'</code> forces &quot;1 day ago&quot;.</td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+
+	
+	<h3>Returns</h3>
+	<p class="api-returns"><code>string</code></p>
+	
+
+	
+	<h3>Examples</h3>
+	
+	<pre class="language-javascript"><code><span class="token comment">// 'yesterday'</span>
+<span class="token function">relativeDate</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">86_400_000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-javascript"><code><span class="token comment">// '2 mo. ago'</span>
+<span class="token function">relativeDate</span><span class="token punctuation">(</span><span class="token string">'2026-01-15'</span><span class="token punctuation">,</span> <span class="token string">'en-US'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">now</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token string">'2026-03-20'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token literal-property property">style</span><span class="token operator">:</span> <span class="token string">'short'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	
+	<pre class="language-twig"><code><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> post<span class="token punctuation">.</span>date <span class="token operator">|</span> timeAgo <span class="token delimiter punctuation">}}</span></span></code></pre>
+	
+	
+</section>
+
+
+	</main>
+</div>
+
+		<footer class="site-footer">
+			<div class="site-footer-brand">
+				<p class="site-footer-title">dashly</p>
+				<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+				<p class="site-footer-meta"><a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE">Licensed under MPL-2.0</a></p>
+			</div>
+			<div>
+				<p class="site-footer-title">Project</p>
+				<ul>
+					<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+					<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+					<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+				</ul>
+			</div>
+			<div>
+				<p class="site-footer-title">Help</p>
+				<ul>
+					<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+					<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				</ul>
+			</div>
+			<div class="site-footer-studio">
+				<a href="https://allons-y.studio">
+					<picture>
+						<source media="(prefers-color-scheme: dark)" srcset="/dashly/pr-preview/pr-14/assets/img/oss-footer-dark.svg">
+						<img src="/dashly/pr-preview/pr-14/assets/img/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+					</picture>
+				</a>
+			</div>
+		</footer>
+	</body>
+</html>

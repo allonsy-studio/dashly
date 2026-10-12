@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>dashly</title>
+		<meta name="color-scheme" content="light dark">
+		<meta name="description" content="A standard library of filters, transforms, &amp; shortcodes for Eleventy. One install, one plugin line, done.">
+		<link rel="icon" type="image/svg+xml" href="/dashly/pr-preview/pr-14/assets/img/mark.svg">
+		<link rel="stylesheet" href="/dashly/pr-preview/pr-14/assets/css/main.css">
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<a class="studio-banner" href="https://allons-y.studio">
+			<img src="/dashly/pr-preview/pr-14/assets/img/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+		</a>
+		<header class="site-header">
+			<a class="site-title" href="/dashly/pr-preview/pr-14/">dashly</a>
+			<p class="site-tagline">A standard library of filters, transforms, &amp; shortcodes for Eleventy</p>
+			<a class="site-link" href="https://github.com/allonsy-studio/dashly">GitHub</a>
+			<a class="site-link" href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+		</header>
+		<main id="main">
+	<section class="hero">
+		<h1>dashly: the <em>standard library</em> every Eleventy site ends up writing.</h1>
+		<p class="lede">Date formatting, reading time, excerpts, RSS-safe HTML, URL handling, locale-aware numbers, & more: bundled into one tree-shakeable package, registered with one plugin line.</p>
+		<div class="hero-actions">
+			<a class="button" href="/dashly/pr-preview/pr-14/getting-started/">Get started</a>
+			<a class="button secondary" href="/dashly/pr-preview/pr-14/filters/">Filters</a>
+			<a class="button secondary" href="/dashly/pr-preview/pr-14/config/">Configuration</a>
+		</div>
+		<ul class="facts">
+			<li>Free & open source · MPL-2.0</li>
+			<li>Eleventy 3+</li>
+			<li>Node 24+</li>
+			<li>Currently in beta</li>
+		</ul>
+		<div class="hero-terminal">
+			<span class="terminal-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+<pre class="language-javascript"><code><span class="token comment">// eleventy.config.js</span>
+<span class="token keyword">import</span> dashly <span class="token keyword">from</span> <span class="token string">"@allons-y/dashly"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	config<span class="token punctuation">.</span><span class="token function">addPlugin</span><span class="token punctuation">(</span>dashly<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">baseUrl</span><span class="token operator">:</span> <span class="token string">"https://example.com"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+		</div>
+	</section>
+
+	<section class="features" aria-label="Highlights">
+		<div class="feature">
+			<h2>One plugin line</h2>
+			<p>Every filter, transform, & shortcode registers under a sensible default name. Templates can use them straight away.</p>
+		</div>
+		<div class="feature">
+			<h2>Works in every engine</h2>
+			<p>Filters register through <code>addFilter</code>, so Nunjucks, Liquid, JavaScript, & 11ty.js templates share the same behavior.</p>
+		</div>
+		<div class="feature">
+			<h2>Take only what you need</h2>
+			<p>Import from the narrowest subpath, or opt out per category or per name. Unused code never reaches the build.</p>
+		</div>
+		<div class="feature">
+			<h2>Optional peers</h2>
+			<p>Heavy dependencies such as Prettier, PostCSS, & markdown-it are optional peers, installed only when a utility needs them.</p>
+		</div>
+	</section>
+
+	<section class="landing-section">
+		<h2>What's included</h2>
+		<table>
+			<thead><tr><th>Kind</th><th>Covers</th></tr></thead>
+			<tbody>
+				<tr><td><a href="/dashly/pr-preview/pr-14/filters/">Filters</a></td><td>Dates, strings, arrays, HTML, text, numbers, URLs, tags, & debugging.</td></tr>
+				<tr><td><a href="/dashly/pr-preview/pr-14/transforms/">Transforms</a></td><td>Prettier formatting, HTML minification, attribute cleanup, & a PostCSS helper.</td></tr>
+				<tr><td><a href="/dashly/pr-preview/pr-14/shortcodes/">Shortcodes</a></td><td><code>{% year %}</code> for always-current footer copyrights.</td></tr>
+			</tbody>
+		</table>
+	</section>
+</main>
+
+		<footer class="site-footer">
+			<div class="site-footer-brand">
+				<p class="site-footer-title">dashly</p>
+				<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+				<p class="site-footer-meta"><a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE">Licensed under MPL-2.0</a></p>
+			</div>
+			<div>
+				<p class="site-footer-title">Project</p>
+				<ul>
+					<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+					<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+					<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+				</ul>
+			</div>
+			<div>
+				<p class="site-footer-title">Help</p>
+				<ul>
+					<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+					<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				</ul>
+			</div>
+			<div class="site-footer-studio">
+				<a href="https://allons-y.studio">
+					<picture>
+						<source media="(prefers-color-scheme: dark)" srcset="/dashly/pr-preview/pr-14/assets/img/oss-footer-dark.svg">
+						<img src="/dashly/pr-preview/pr-14/assets/img/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+					</picture>
+				</a>
+			</div>
+		</footer>
+	</body>
+</html>

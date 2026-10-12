@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Filters · dashly</title>
+		<meta name="color-scheme" content="light dark">
+		<meta name="description" content="Template filters for dates, strings, arrays, HTML, text, numbers, URLs, tags, &amp;amp; debugging.">
+		<link rel="icon" type="image/svg+xml" href="/dashly/pr-preview/pr-14/assets/img/mark.svg">
+		<link rel="stylesheet" href="/dashly/pr-preview/pr-14/assets/css/main.css">
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<a class="studio-banner" href="https://allons-y.studio">
+			<img src="/dashly/pr-preview/pr-14/assets/img/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+		</a>
+		<header class="site-header">
+			<a class="site-title" href="/dashly/pr-preview/pr-14/">dashly</a>
+			<p class="site-tagline">A standard library of filters, transforms, &amp; shortcodes for Eleventy</p>
+			<a class="site-link" href="https://github.com/allonsy-studio/dashly">GitHub</a>
+			<a class="site-link" href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+		</header>
+		<div class="docs-shell">
+	<aside class="docs-sidebar">
+		<div id="search" class="docs-search" role="search"></div>
+<link rel="stylesheet" href="/dashly/pr-preview/pr-14/pagefind/pagefind-ui.css">
+<script src="/dashly/pr-preview/pr-14/pagefind/pagefind-ui.js" defer=""></script>
+<script>
+	window.addEventListener("DOMContentLoaded", () => {
+		if (typeof PagefindUI === "undefined") return;
+		new PagefindUI({
+			element: "#search",
+			showImages: false,
+			baseUrl: "/dashly/pr-preview/pr-14/",
+			translations: { placeholder: "Search the docs" },
+		});
+	});
+</script>
+
+		<nav class="sidebar-nav" aria-label="Documentation">
+	<ul>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/getting-started/">Getting started</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/concepts/">How it works</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/config/">Configuration</a>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/filters/" aria-current="page">Filters</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/filters/arrays/">arrays</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/dates/">dates</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/debug/">debug</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/html/">html</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/numbers/">numbers</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/objects/">objects</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/strings/">strings</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/tags/">tags</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/text/">text</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/filters/urls/">urls</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/transforms/">Transforms</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/clean-attrs/">clean-attrs</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/htmlmin/">htmlmin</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/postcss/">postcss</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/transforms/prettier/">prettier</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/shortcodes/">Shortcodes</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/shortcodes/year/">year</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/dashly/pr-preview/pr-14/guides/">Guides</a>
+			<ul>
+				<li><a href="/dashly/pr-preview/pr-14/guides/a-la-carte/">Use only what you need</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/guides/output/">Format &amp; minify output</a></li>
+				<li><a href="/dashly/pr-preview/pr-14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a></li>
+			</ul>
+		</li>
+	</ul>
+</nav>
+
+	</aside>
+	<main id="main" class="docs-content" data-pagefind-body="">
+		<h1 data-pagefind-meta="title">Filters</h1>
+		<p>Filters are plain functions registered with <code>addFilter</code>, so they work in every Eleventy template engine: Nunjucks, Liquid, JavaScript, &amp; 11ty.js. Each module can also be imported on its own.</p>
+
+
+
+<h2 id="arrays"><a class="header-anchor" href="/dashly/pr-preview/pr-14/filters/arrays/"><code>arrays</code></a></h2>
+<p>Array-manipulation filters for Eleventy. Universal across template engines —
+Nunjucks and Liquid have native <code>first</code> / <code>last</code> / <code>reverse</code> filters, but
+Eleventy's JS templates and other engines do not. Registering these via
+dashly makes them available everywhere.</p>
+
+<table>
+	<thead><tr><th>Export</th></tr></thead>
+	<tbody>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/arrays/#first"><code>first(value, n?)</code></a>: Return the first item of an array, or the first <code>n</code> items if a count is supplied.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/arrays/#last"><code>last(value, n?)</code></a>: Return the last item of an array, or the last <code>n</code> items if a count is supplied.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/arrays/#reverse"><code>reverse(value)</code></a>: Reverse an array or a string without mutating the input.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/arrays/#groupBy"><code>groupBy(value, keyOrFn)</code></a>: Group array items by a key, a dot-path, or a function.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/arrays/#sortBy"><code>sortBy(value, keyOrFn, order?)</code></a>: Sort an array by a key, dot-path, or selector function, without mutating the input.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/arrays/#chunk"><code>chunk(value, size)</code></a>: Split an array into N-sized chunks.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/arrays/#where"><code>where(value, keyOrFn, expected?)</code></a>: Filter an array by a key/dot-path equality check.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/arrays/#pluck"><code>pluck(value, keyOrFn)</code></a>: Project an array of objects onto a single key or dot-path.</td></tr>
+		
+	</tbody>
+</table>
+
+<h2 id="dates"><a class="header-anchor" href="/dashly/pr-preview/pr-14/filters/dates/"><code>dates</code></a></h2>
+<p>Date-related filters for Eleventy.</p>
+
+<table>
+	<thead><tr><th>Export</th></tr></thead>
+	<tbody>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/dates/#toISOString"><code>toISOString(date)</code></a>: Convert a date-like value to an ISO 8601 string.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/dates/#year"><code>year(date)</code></a>: Extract the four-digit year from a date-like value.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/dates/#dateFormat"><code>dateFormat(value, options?, locale?)</code></a>: Format a date using <code>Intl.DateTimeFormat</code>.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/dates/#longDate"><code>longDate(value, locale?)</code></a>: Format a date as a long-form date (e.g.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/dates/#shortDate"><code>shortDate(value, locale?)</code></a>: Format a date as an abbreviated month-and-year (e.g.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/dates/#relativeDate"><code>relativeDate(value, locale?, options?)</code></a>: Format a date as a locale-aware relative phrase (e.g.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/dates/#timeAgo"><code>timeAgo(value, locale?, options?)</code></a>: Alias for <code>relativeDate</code>.</td></tr>
+		
+	</tbody>
+</table>
+
+<h2 id="debug"><a class="header-anchor" href="/dashly/pr-preview/pr-14/filters/debug/"><code>debug</code></a></h2>
+<p>Debugging filters for rendering template data into output for inspection.</p>
+
+<table>
+	<thead><tr><th>Export</th></tr></thead>
+	<tbody>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/debug/#dump"><code>dump(value, indent?)</code></a>: Serialize a value as pretty-printed JSON.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/debug/#jsonify"><code>jsonify(value, indent?)</code></a>: Alias for <code>dump</code>.</td></tr>
+		
+	</tbody>
+</table>
+
+<h2 id="html"><a class="header-anchor" href="/dashly/pr-preview/pr-14/filters/html/"><code>html</code></a></h2>
+<p>HTML-related filters for Eleventy.</p>
+<ul>
+<li><code>cleanForRSS</code> requires <code>posthtml</code> as a peer dependency.</li>
+<li><code>renderMarkdown</code> requires <code>markdown-it</code> as a peer dependency or a
+user-provided renderer instance.</li>
+</ul>
+
+<table>
+	<thead><tr><th>Export</th></tr></thead>
+	<tbody>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/html/#stripTags"><code>stripTags(value)</code></a>: Strip every HTML tag from a string, leaving only text content.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/html/#nl2br"><code>nl2br(value)</code></a>: Replace newline characters with <code>&lt;br&gt;</code> tags.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/html/#cleanForRSS"><code>cleanForRSS(html, options?)</code></a>: Strip tags and elements that are unsafe or undesirable in RSS/Atom feeds.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/html/#renderMarkdown"><code>renderMarkdown(value, options?)</code></a>: Render a markdown string to HTML.</td></tr>
+		
+	</tbody>
+</table>
+
+<h2 id="numbers"><a class="header-anchor" href="/dashly/pr-preview/pr-14/filters/numbers/"><code>numbers</code></a></h2>
+<p>Locale-aware number-formatting filters built on <code>Intl.NumberFormat</code>.</p>
+
+<table>
+	<thead><tr><th>Export</th></tr></thead>
+	<tbody>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/numbers/#number"><code>number(value, options?, locale?)</code></a>: Format a number using <code>Intl.NumberFormat</code>.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/numbers/#currency"><code>currency(value, currencyCode?, locale?, options?)</code></a>: Format a number as a localized currency string.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/numbers/#percent"><code>percent(value, options?)</code></a>: Format a number as a localized percentage.</td></tr>
+		
+	</tbody>
+</table>
+
+<h2 id="objects"><a class="header-anchor" href="/dashly/pr-preview/pr-14/filters/objects/"><code>objects</code></a></h2>
+<p>Object-related filters for Eleventy.</p>
+
+<table>
+	<thead><tr><th>Export</th></tr></thead>
+	<tbody>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/objects/#keys"><code>keys(value)</code></a>: Return the enumerable keys of an object.</td></tr>
+		
+	</tbody>
+</table>
+
+<h2 id="strings"><a class="header-anchor" href="/dashly/pr-preview/pr-14/filters/strings/"><code>strings</code></a></h2>
+<p>String-manipulation filters for Eleventy.</p>
+
+<table>
+	<thead><tr><th>Export</th></tr></thead>
+	<tbody>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/strings/#firstWord"><code>firstWord(value)</code></a>: Return the first whitespace-delimited word of a string.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/strings/#lastWord"><code>lastWord(value)</code></a>: Return the last whitespace-delimited word of a string.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/strings/#trim"><code>trim(value)</code></a>: Trim leading and trailing whitespace.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/strings/#stripWhitespace"><code>stripWhitespace(value)</code></a>: Remove all whitespace characters from a string.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/strings/#digitsOnly"><code>digitsOnly(value)</code></a>: Strip every non-digit character from a string.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/strings/#capitalize"><code>capitalize(value)</code></a>: Uppercase the first character of a string and lowercase the rest.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/strings/#title"><code>title(value)</code></a>: Title-case a string by uppercasing the first letter of each whitespace- delimited word and lowercasing the rest.</td></tr>
+		
+	</tbody>
+</table>
+
+<h2 id="tags"><a class="header-anchor" href="/dashly/pr-preview/pr-14/filters/tags/"><code>tags</code></a></h2>
+<p>Tag-list helpers for Eleventy. Use to clean Eleventy's system-tag noise
+(<code>all</code>, <code>post</code>, <code>posts</code>, etc.) out of a tag list before rendering it.</p>
+
+<table>
+	<thead><tr><th>Export</th></tr></thead>
+	<tbody>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/tags/#tags"><code>tags(tagList, extraExclude?, defaultExclude?)</code></a>: Filter an array of tag strings to exclude system tags and any additional names supplied either as plugin defaults or as a per-call extra list.</td></tr>
+		
+	</tbody>
+</table>
+
+<h2 id="text"><a class="header-anchor" href="/dashly/pr-preview/pr-14/filters/text/"><code>text</code></a></h2>
+<p>Text-analysis filters: word counting, excerpting, and reading-time
+estimation. Strip HTML so callers can feed rendered post content directly.</p>
+
+<table>
+	<thead><tr><th>Export</th></tr></thead>
+	<tbody>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/text/#wordCount"><code>wordCount(value)</code></a>: Count whitespace-delimited words in a string.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/text/#readingTime"><code>readingTime(value, wpm?)</code></a>: Estimate reading time in minutes for a block of text.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/text/#excerpt"><code>excerpt(value, n?, unit?)</code></a>: Pull an excerpt from a string.</td></tr>
+		
+	</tbody>
+</table>
+
+<h2 id="urls"><a class="header-anchor" href="/dashly/pr-preview/pr-14/filters/urls/"><code>urls</code></a></h2>
+<p>URL-related filters for Eleventy.</p>
+
+<table>
+	<thead><tr><th>Export</th></tr></thead>
+	<tbody>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/urls/#validateURL"><code>validateURL(url)</code></a>: Ensure a URL is safe to render.</td></tr>
+		
+		<tr><td><a href="/dashly/pr-preview/pr-14/filters/urls/#absoluteUrl"><code>absoluteUrl(path, baseUrl?)</code></a>: Resolve a path or URL against a base, producing an absolute URL.</td></tr>
+		
+	</tbody>
+</table>
+
+
+	</main>
+</div>
+
+		<footer class="site-footer">
+			<div class="site-footer-brand">
+				<p class="site-footer-title">dashly</p>
+				<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+				<p class="site-footer-meta"><a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE">Licensed under MPL-2.0</a></p>
+			</div>
+			<div>
+				<p class="site-footer-title">Project</p>
+				<ul>
+					<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+					<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+					<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+				</ul>
+			</div>
+			<div>
+				<p class="site-footer-title">Help</p>
+				<ul>
+					<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+					<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				</ul>
+			</div>
+			<div class="site-footer-studio">
+				<a href="https://allons-y.studio">
+					<picture>
+						<source media="(prefers-color-scheme: dark)" srcset="/dashly/pr-preview/pr-14/assets/img/oss-footer-dark.svg">
+						<img src="/dashly/pr-preview/pr-14/assets/img/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+					</picture>
+				</a>
+			</div>
+		</footer>
+	</body>
+</html>
