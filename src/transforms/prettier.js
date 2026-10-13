@@ -37,6 +37,7 @@ export const createPrettierTransform = (options = {}) => {
 	const extensions = options.extensions ?? DEFAULT_EXTENSIONS;
 	const prettierOptions = { ...DEFAULT_OPTIONS, ...(options.prettier ?? {}) };
 
+	/** @this {{ page?: { outputPath?: string }, outputPath?: string }} Eleventy's transform context. */
 	return async function prettierTransform(content) {
 		const outputPath = this?.page?.outputPath || this?.outputPath || '';
 		if (!extensions.includes(path.extname(outputPath))) return content;

@@ -109,6 +109,7 @@ export function dashlyPlugin(config, options = {}) {
 
 	if (options.filters !== false) {
 		const exclude = new Set(options.filters?.exclude ?? []);
+		/** @type {Record<string, (...args: any[]) => unknown>} */
 		const filters = {
 			toISOString: dateFilters.toISOString,
 			year: dateFilters.year,
@@ -163,6 +164,7 @@ export function dashlyPlugin(config, options = {}) {
 
 	if (options.transforms !== false) {
 		const exclude = new Set(options.transforms?.exclude ?? []);
+		/** @type {Record<string, (this: any, content: string, outputPath?: string) => unknown>} */
 		const transforms = {
 			cleanAttrs: createCleanAttrsTransform(options.transforms?.cleanAttrs ?? {}),
 			prettier: createPrettierTransform(options.transforms?.prettier ?? {}),

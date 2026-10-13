@@ -15,8 +15,13 @@
 
 import { arg } from '../validate.js';
 
+/** @param {unknown} value */
 const stripHtml = (value) => String(value).replace(/<[^>]*>/g, ' ');
 
+/**
+ * @param {unknown} value
+ * @returns {string[]}
+ */
 const words = (value) => {
 	if (value == null) return [];
 	const text = stripHtml(value).trim();

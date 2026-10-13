@@ -1,10 +1,15 @@
 {
 	"compilerOptions": {
+		"allowJs": true,
 		"checkJs": true,
-		"strict": true,
+		"maxNodeModuleJsDepth": 0,
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
-		"target": "ESNext"
+		"noEmit": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "ESNext",
+		"types": ["node"]
 	},
-	"include": ["*.js"]
+	"include": ["src/**/*.js", "types/**/*.d.ts"]
 }

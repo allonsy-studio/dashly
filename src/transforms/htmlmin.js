@@ -35,6 +35,7 @@ export const createHtmlMinTransform = (options = {}) => {
 	const productionOnly = options.production !== false;
 	const minifierOptions = { ...DEFAULT_OPTIONS, ...(options.minifier ?? {}) };
 
+	/** @this {{ page?: { outputPath?: string }, outputPath?: string }} Eleventy's transform context. */
 	return async function htmlminTransform(content, outputPath) {
 		if (productionOnly && process.env.ELEVENTY_ENV !== 'production') return content;
 		const path = outputPath ?? this?.page?.outputPath ?? '';

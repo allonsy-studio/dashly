@@ -43,7 +43,7 @@ import { arg, isHelperOptions, need } from '../validate.js';
  */
 export const first = (value, n) => {
 	const count = arg.number('first', 'n', n);
-	if (!Array.isArray(value)) return value;
+	if (!isArray(value)) return value;
 	if (count === undefined) return value[0];
 	if (count <= 0) return [];
 	return value.slice(0, count);
@@ -71,7 +71,7 @@ export const first = (value, n) => {
  */
 export const last = (value, n) => {
 	const count = arg.number('last', 'n', n);
-	if (!Array.isArray(value)) return value;
+	if (!isArray(value)) return value;
 	if (count === undefined) return value[value.length - 1];
 	if (count <= 0) return [];
 	return value.slice(-count);
@@ -96,11 +96,24 @@ export const last = (value, n) => {
  * {{ collections.posts | reverse }}
  */
 export const reverse = (value) => {
-	if (Array.isArray(value)) return value.slice().reverse();
+	if (isArray(value)) return value.slice().reverse();
 	if (typeof value === 'string') return Array.from(value).reverse().join('');
 	return value;
 };
 
+/**
+ * `Array.isArray` narrows `readonly T[]` to `any[]`; this keeps the element type.
+ *
+ * @param {unknown} value
+ * @returns {value is readonly unknown[]}
+ */
+const isArray = (value) => Array.isArray(value);
+
+/**
+ * @param {any} obj
+ * @param {string | ((item: any) => unknown)} path
+ * @returns {unknown}
+ */
 const getPath = (obj, path) => {
 	if (obj == null) return undefined;
 	if (typeof path === 'function') return path(obj);
@@ -135,6 +148,7 @@ const getPath = (obj, path) => {
 export const groupBy = (value, keyOrFn) => {
 	need.keyOrFn('groupBy', 'keyOrFn', keyOrFn);
 	if (!Array.isArray(value)) return {};
+	/** @type {Record<string, T[]>} */
 	const out = {};
 	for (const item of value) {
 		const k = String(getPath(item, keyOrFn));
@@ -163,7 +177,7 @@ export const groupBy = (value, keyOrFn) => {
 export const sortBy = (value, keyOrFn, order) => {
 	need.keyOrFn('sortBy', 'keyOrFn', keyOrFn);
 	const direction = arg.oneOf(['asc', 'desc'])('sortBy', 'order', order) ?? 'asc';
-	if (!Array.isArray(value)) return value;
+	if (!isArray(value)) return value;
 	const dir = direction === 'desc' ? -1 : 1;
 	return value.slice().sort((a, b) => {
 		const av = getPath(a, keyOrFn);
@@ -224,7 +238,7 @@ export const chunk = (value, size) => {
  */
 export const where = (value, keyOrFn, expected) => {
 	need.keyOrFn('where', 'keyOrFn', keyOrFn);
-	if (!Array.isArray(value)) return [];
+	if (!isArray(value)) return [];
 	if (expected === undefined || isHelperOptions(expected)) {
 		return value.filter((item) => Boolean(getPath(item, keyOrFn)));
 	}

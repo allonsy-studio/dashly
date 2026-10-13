@@ -51,7 +51,7 @@ export const year = (date) => {
  * @param {string | number | Date} value
  * @param {Intl.DateTimeFormatOptions} [options]
  * @param {Intl.LocalesArgument} [locale='en-US']
- * @returns {string}
+ * @returns {string | number | Date} The formatted string, or `value` unchanged when it is falsy or unparseable.
  */
 export const dateFormat = (value, options, locale) => {
 	const formatOptions = arg.object('dateFormat', 'options', options) ?? {};
@@ -66,7 +66,7 @@ export const dateFormat = (value, options, locale) => {
  * Format a date as a long-form date (e.g. "15 January 2026").
  * @param {string | number | Date} value
  * @param {Intl.LocalesArgument} [locale='en-US']
- * @returns {string}
+ * @returns {string | number | Date} The formatted date, or `value` unchanged when it is falsy or unparseable.
  */
 export const longDate = (value, locale) =>
 	dateFormat(value, { day: 'numeric', month: 'long', year: 'numeric' }, arg.locale('longDate', 'locale', locale));
@@ -75,7 +75,7 @@ export const longDate = (value, locale) =>
  * Format a date as an abbreviated month-and-year (e.g. "Jan 2026").
  * @param {string | number | Date} value
  * @param {Intl.LocalesArgument} [locale='en-US']
- * @returns {string}
+ * @returns {string | number | Date} The formatted date, or `value` unchanged when it is falsy or unparseable.
  */
 export const shortDate = (value, locale) =>
 	dateFormat(value, { month: 'short', year: 'numeric' }, arg.locale('shortDate', 'locale', locale));

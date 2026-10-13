@@ -14,6 +14,7 @@
 
 import { arg } from '../validate.js';
 
+/** @returns {(key: string, value: unknown) => unknown} */
 const circularSafeReplacer = () => {
 	const seen = new WeakSet();
 	return (_key, value) => {

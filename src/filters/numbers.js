@@ -14,6 +14,10 @@
 
 import { arg, intl } from '../validate.js';
 
+/**
+ * @param {unknown} value
+ * @returns {number}
+ */
 const toNumber = (value) => {
 	if (value == null || value === '') return NaN;
 	if (typeof value === 'number') return value;

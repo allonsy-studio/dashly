@@ -116,10 +116,12 @@ export const cleanForRSS = async (html, options) => {
 				node.attrs?.class?.split(' ').map((c) => c.trim().toLowerCase()) ?? [];
 			const isPermalink =
 				stripPermalinks && node.tag === 'a' && classes.includes('header-anchor');
-			const isUnsafe = unsafe.includes(node.tag);
-			const isCustom = custom.includes(node.tag);
+			const tag = typeof node.tag === 'string' ? node.tag : '';
+			const isUnsafe = unsafe.includes(tag);
+			const isCustom = custom.includes(tag);
 			if (isPermalink || isUnsafe || isCustom) {
-				node.tag = false;
+				// posthtml drops a node whose tag is `false`; its types only allow strings.
+				/** @type {any} */ (node).tag = false;
 				node.content = [];
 			}
 			return node;
