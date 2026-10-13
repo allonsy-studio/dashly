@@ -180,7 +180,15 @@
 </tbody>
 </table>
 <h2 id="async-utilities" tabindex="-1"><a class="header-anchor" href="#async-utilities">Async utilities</a></h2>
-<p><code>cleanForRSS</code> &amp; <code>renderMarkdown</code> return promises because they load their peer on demand. The reference lists the return type of every utility.</p>
+<p><code>cleanForRSS</code> &amp; <code>renderMarkdown</code> return promises because they load their peer on demand with a dynamic <code>import()</code>. Nunjucks, Liquid, &amp; 11ty.js await them. The reference lists the return type of every utility.</p>
+<h3 id="not-supported-in-handlebars" tabindex="-1"><a class="header-anchor" href="#not-supported-in-handlebars">Not supported in Handlebars</a></h3>
+<p>Handlebars helpers are synchronous: Handlebars calls the helper, takes whatever it returns, &amp; writes it into the page without waiting. An async filter returns a promise, so <code>{{cleanForRSS html}}</code> renders <code>[object Promise]</code>.</p>
+<p>Compute the value somewhere that can wait, then hand the finished string to the Handlebars template:</p>
+<ul>
+<li>a <a href="https://www.11ty.dev/docs/data-js/">data file</a> that exports an async function</li>
+<li><code>eleventyComputed</code> in a JS template or data file</li>
+<li>a <code>.11ty.js</code> template, in place of the Handlebars one</li>
+</ul>
 
 	</main>
 </div>
