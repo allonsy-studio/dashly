@@ -43,7 +43,7 @@ yarn release                    # changeset publish (CI-only entry)
     - Add the name to `FILTER_NAMES` (or `TRANSFORM_NAMES`).
     - Add the factory/function to the filters/transforms object inside `dashlyPlugin`.
     - If it consumes a plugin option (e.g. `baseUrl`, `dateLocale`), read it from `options` and curry the call.
-5. Write Vitest tests under `test/filters/<module>.test.js` mirroring the existing spec style. Cover nullish input, the happy path, and at least one edge case.
+5. Write Vitest tests under `test/filters/<module>.test.js` mirroring the existing spec style. Cover nullish input, the happy path, and at least one edge case. For a filter or shortcode, also add a case to `test/engines.test.js` so it runs through real template engines; that spec fails if a registered utility has neither an engine case nor an entry in its `UNIT_ONLY` list (which should only shrink).
 6. Add the utility to the relevant table in `README.md`.
 7. Run `yarn changeset` and pick a bump type (`patch` for fixes, `minor` for new utilities, `major` for breaking changes). Commit the generated `.changeset/*.md` alongside your code: PRs without a changeset won't produce a release.
 

@@ -11,6 +11,8 @@
  * @module @allons-y/dashly/filters/urls
  */
 
+import { arg } from '../validate.js';
+
 /**
  * Ensure a URL is safe to render. Passes through `mailto:`, `tel:`, fragments,
  * relative paths, and URLs already prefixed with `http(s):`. Everything else is
@@ -58,16 +60,17 @@ export const validateURL = (url) => {
  * <link rel="canonical" href="{{ page.url | absoluteUrl }}">
  */
 export const absoluteUrl = (path, baseUrl) => {
+	const base = arg.string('absoluteUrl', 'baseUrl', baseUrl);
 	if (path == null || path === '') return '';
 	if (typeof path !== 'string') return path;
 	if (/^(https?:|mailto:|tel:|#)/.test(path)) return path;
-	if (!baseUrl) return path;
+	if (!base) return path;
 
 	try {
-		return new URL(path, baseUrl).toString();
+		return new URL(path, base).toString();
 	} catch {
-		const base = String(baseUrl).replace(/\/+$/, '');
+		const trimmed = base.replace(/\/+$/, '');
 		const rest = path.replace(/^\/+/, '');
-		return `${base}/${rest}`;
+		return `${trimmed}/${rest}`;
 	}
 };

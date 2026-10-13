@@ -87,6 +87,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy-plugin-handlebars": "^1.0.0",
     "@allons-y/envoy": "^1.1.0",
     "@changesets/changelog-github": "^0.7.0",
     "@changesets/cli": "^2.31.0",
@@ -103,6 +104,7 @@
     "eslint-plugin-jsonc": "^3.2.0",
     "eslint-plugin-license-header": "^0.9.0",
     "globals": "^17.7.0",
+    "handlebars": "^4.7.10",
     "html-minifier-terser": "^7.2.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.8",

@@ -15,6 +15,8 @@
  * @module @allons-y/dashly/filters/arrays
  */
 
+import { arg, isHelperOptions, need } from '../validate.js';
+
 /**
  * Return the first item of an array, or the first `n` items if a count is
  * supplied. With no count, matches Nunjucks `first` (single item). With a
@@ -40,10 +42,11 @@
  * {% for post in collections.posts | first(3) %} … {% endfor %}
  */
 export const first = (value, n) => {
+	const count = arg.number('first', 'n', n);
 	if (!isArray(value)) return value;
-	if (n === undefined) return value[0];
-	if (n <= 0) return [];
-	return value.slice(0, n);
+	if (count === undefined) return value[0];
+	if (count <= 0) return [];
+	return value.slice(0, count);
 };
 
 /**
@@ -67,10 +70,11 @@ export const first = (value, n) => {
  * {{ collections.posts | last }}
  */
 export const last = (value, n) => {
+	const count = arg.number('last', 'n', n);
 	if (!isArray(value)) return value;
-	if (n === undefined) return value[value.length - 1];
-	if (n <= 0) return [];
-	return value.slice(-n);
+	if (count === undefined) return value[value.length - 1];
+	if (count <= 0) return [];
+	return value.slice(-count);
 };
 
 /**
@@ -142,6 +146,7 @@ const getPath = (obj, path) => {
  * {% for year, items in collections.posts | groupBy('data.year') %} … {% endfor %}
  */
 export const groupBy = (value, keyOrFn) => {
+	need.keyOrFn('groupBy', 'keyOrFn', keyOrFn);
 	if (!Array.isArray(value)) return {};
 	/** @type {Record<string, T[]>} */
 	const out = {};
@@ -169,9 +174,11 @@ export const groupBy = (value, keyOrFn) => {
  * @example
  * sortBy(items, (item) => item.priority);
  */
-export const sortBy = (value, keyOrFn, order = 'asc') => {
+export const sortBy = (value, keyOrFn, order) => {
+	need.keyOrFn('sortBy', 'keyOrFn', keyOrFn);
+	const direction = arg.oneOf(['asc', 'desc'])('sortBy', 'order', order) ?? 'asc';
 	if (!isArray(value)) return value;
-	const dir = order === 'desc' ? -1 : 1;
+	const dir = direction === 'desc' ? -1 : 1;
 	return value.slice().sort((a, b) => {
 		const av = getPath(a, keyOrFn);
 		const bv = getPath(b, keyOrFn);
@@ -203,6 +210,7 @@ export const sortBy = (value, keyOrFn, order = 'asc') => {
  * {% for row in images | chunk(3) %} … {% endfor %}
  */
 export const chunk = (value, size) => {
+	need.number('chunk', 'size', size);
 	if (!Array.isArray(value) || !Number.isInteger(size) || size <= 0) return [];
 	const out = [];
 	for (let i = 0; i < value.length; i += size) {
@@ -210,8 +218,6 @@ export const chunk = (value, size) => {
 	}
 	return out;
 };
-
-const WHERE_TRUTHY = Symbol('where:truthy');
 
 /**
  * Filter an array by a key/dot-path equality check. When `expected` is
@@ -230,9 +236,10 @@ const WHERE_TRUTHY = Symbol('where:truthy');
  * @example
  * where(posts, 'data.featured'); // truthy-only
  */
-export const where = (value, keyOrFn, expected = WHERE_TRUTHY) => {
-	if (!Array.isArray(value)) return [];
-	if (expected === WHERE_TRUTHY) {
+export const where = (value, keyOrFn, expected) => {
+	need.keyOrFn('where', 'keyOrFn', keyOrFn);
+	if (!isArray(value)) return [];
+	if (expected === undefined || isHelperOptions(expected)) {
 		return value.filter((item) => Boolean(getPath(item, keyOrFn)));
 	}
 	return value.filter((item) => getPath(item, keyOrFn) === expected);
@@ -254,6 +261,7 @@ export const where = (value, keyOrFn, expected = WHERE_TRUTHY) => {
  * {{ collections.posts | pluck('data.title') | join(', ') }}
  */
 export const pluck = (value, keyOrFn) => {
+	need.keyOrFn('pluck', 'keyOrFn', keyOrFn);
 	if (!Array.isArray(value)) return [];
 	return value.map((item) => getPath(item, keyOrFn));
 };

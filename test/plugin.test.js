@@ -6,7 +6,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { dashlyPlugin } from '../src/plugin.js';
 
 const createFakeEleventyConfig = () => {
@@ -84,16 +84,25 @@ it('applies dateLocale to longDate and shortDate', () => {
 		expect(cfg.filters.readingTime(300)).toBe(3);
 	});
 
-	it('registers the year shortcode by default', () => {
+	it('registers the currentYear shortcode by default', () => {
 		const cfg = createFakeEleventyConfig();
 		dashlyPlugin(cfg);
-		expect(cfg.shortcodes.year()).toBe(new Date().getFullYear());
+		expect(cfg.shortcodes.currentYear()).toBe(new Date().getFullYear());
+		expect(cfg.shortcodes.year).toBeUndefined();
 	});
 
-	it('honors shortcodes.exclude for the year shortcode', () => {
+	it('honors shortcodes.exclude for the currentYear shortcode', () => {
+		const cfg = createFakeEleventyConfig();
+		dashlyPlugin(cfg, { shortcodes: { exclude: ['currentYear'] } });
+		expect(cfg.shortcodes.currentYear).toBeUndefined();
+	});
+
+	it('warns when shortcodes.exclude still names the renamed year shortcode', () => {
+		const warn = vi.spyOn(process, 'emitWarning').mockImplementation(() => {});
 		const cfg = createFakeEleventyConfig();
 		dashlyPlugin(cfg, { shortcodes: { exclude: ['year'] } });
-		expect(cfg.shortcodes.year).toBeUndefined();
+		expect(warn).toHaveBeenCalledWith(expect.stringContaining('renamed to "currentYear"'), expect.objectContaining({ code: 'DASHLY_YEAR_SHORTCODE_RENAMED' }));
+		warn.mockRestore();
 	});
 
 	it('applies baseUrl to absoluteUrl', () => {

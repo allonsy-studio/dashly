@@ -42,7 +42,7 @@ Each new utility must:
 2. **Carry full JSDoc** with `@param`, `@returns`, and at least one `@example` per export.
 3. **Handle nullish input gracefully** — return an empty string, `undefined`, or `[]` as the category convention dictates rather than throwing.
 4. **Be tree-shakeable** — exported individually and reachable via its subpath (`@allons-y/dashly/filters/<category>`).
-5. **Have a Vitest spec** under `test/filters/<category>.test.js` covering nullish input, the happy path, and at least one edge case.
+5. **Have a Vitest spec** under `test/filters/<category>.test.js` covering nullish input, the happy path, and at least one edge case. Filters & shortcodes also need a case in `test/engines.test.js`, which runs them through Nunjucks, Liquid, 11ty.js, & Handlebars; the spec fails if a registered utility has neither an engine case nor an entry in its `UNIT_ONLY` list (which should only shrink).
 6. **Be documented in `README.md`** — added to the appropriate feature table.
 
 ### Peer dependencies
