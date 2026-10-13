@@ -12,6 +12,10 @@
  * @module @allons-y/dashly/filters/numbers
  */
 
+/**
+ * @param {unknown} value
+ * @returns {number}
+ */
 const toNumber = (value) => {
 	if (value == null || value === '') return NaN;
 	if (typeof value === 'number') return value;

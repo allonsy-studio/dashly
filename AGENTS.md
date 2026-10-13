@@ -28,6 +28,7 @@ yarn test                       # Run the Vitest suite once
 yarn test:watch                 # Watch mode
 yarn lint                       # ESLint over .js / .json / .md
 yarn format                     # yarn lint --fix
+yarn typecheck                  # tsc over src/ using the JSDoc types (checkJs, strict)
 yarn ci:test                    # Test run used in CI
 yarn changeset                  # Record a version bump for your PR
 yarn release                    # changeset publish (CI-only entry)
@@ -36,7 +37,7 @@ yarn release                    # changeset publish (CI-only entry)
 ## Adding a new utility
 
 1. Pick (or create) the right module under `src/filters/`, `src/transforms/`, or `src/shortcodes/`.
-2. Export a small, pure function with full JSDoc: include `@param`, `@returns`, and at least one `@example` per function. Match the existing style (tabs, named exports, no default exports for utilities).
+2. Export a small, pure function with full JSDoc: include `@param`, `@returns`, and at least one `@example` per function. The JSDoc types are checked by `yarn typecheck`. Match the existing style (tabs, named exports, no default exports for utilities).
 3. Re-export it from the category's `index.js`.
 4. Wire it into `src/plugin.js`:
     - Add the name to `FILTER_NAMES` (or `TRANSFORM_NAMES`).

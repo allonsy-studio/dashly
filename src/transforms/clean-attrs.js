@@ -28,6 +28,7 @@ export const createCleanAttrsTransform = (options = {}) => {
 	const attrs = options.attrs ?? EXTRA_ATTRS;
 	const patterns = attrs.map((attr) => new RegExp(`\\s+${escapeRegExp(attr)}=""`, 'g'));
 
+	/** @this {{ page?: { outputPath?: string }, outputPath?: string }} Eleventy's transform context. */
 	return function cleanAttrsTransform(content) {
 		const outputPath = this?.page?.outputPath || '';
 		if (!outputPath.endsWith('.html')) return content;
@@ -35,4 +36,5 @@ export const createCleanAttrsTransform = (options = {}) => {
 	};
 };
 
+/** @param {string} str */
 const escapeRegExp = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
