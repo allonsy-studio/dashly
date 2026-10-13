@@ -40,7 +40,7 @@
  * {% for post in collections.posts | first(3) %} … {% endfor %}
  */
 export const first = (value, n) => {
-	if (!Array.isArray(value)) return value;
+	if (!isArray(value)) return value;
 	if (n === undefined) return value[0];
 	if (n <= 0) return [];
 	return value.slice(0, n);
@@ -67,7 +67,7 @@ export const first = (value, n) => {
  * {{ collections.posts | last }}
  */
 export const last = (value, n) => {
-	if (!Array.isArray(value)) return value;
+	if (!isArray(value)) return value;
 	if (n === undefined) return value[value.length - 1];
 	if (n <= 0) return [];
 	return value.slice(-n);
@@ -92,11 +92,24 @@ export const last = (value, n) => {
  * {{ collections.posts | reverse }}
  */
 export const reverse = (value) => {
-	if (Array.isArray(value)) return value.slice().reverse();
+	if (isArray(value)) return value.slice().reverse();
 	if (typeof value === 'string') return Array.from(value).reverse().join('');
 	return value;
 };
 
+/**
+ * `Array.isArray` narrows `readonly T[]` to `any[]`; this keeps the element type.
+ *
+ * @param {unknown} value
+ * @returns {value is readonly unknown[]}
+ */
+const isArray = (value) => Array.isArray(value);
+
+/**
+ * @param {any} obj
+ * @param {string | ((item: any) => unknown)} path
+ * @returns {unknown}
+ */
 const getPath = (obj, path) => {
 	if (obj == null) return undefined;
 	if (typeof path === 'function') return path(obj);
@@ -130,6 +143,7 @@ const getPath = (obj, path) => {
  */
 export const groupBy = (value, keyOrFn) => {
 	if (!Array.isArray(value)) return {};
+	/** @type {Record<string, T[]>} */
 	const out = {};
 	for (const item of value) {
 		const k = String(getPath(item, keyOrFn));
@@ -156,7 +170,7 @@ export const groupBy = (value, keyOrFn) => {
  * sortBy(items, (item) => item.priority);
  */
 export const sortBy = (value, keyOrFn, order = 'asc') => {
-	if (!Array.isArray(value)) return value;
+	if (!isArray(value)) return value;
 	const dir = order === 'desc' ? -1 : 1;
 	return value.slice().sort((a, b) => {
 		const av = getPath(a, keyOrFn);
@@ -197,6 +211,8 @@ export const chunk = (value, size) => {
 	return out;
 };
 
+const WHERE_TRUTHY = Symbol('where:truthy');
+
 /**
  * Filter an array by a key/dot-path equality check. When `expected` is
  * omitted, items where the keyed value is truthy are kept (useful for
@@ -214,7 +230,6 @@ export const chunk = (value, size) => {
  * @example
  * where(posts, 'data.featured'); // truthy-only
  */
-const WHERE_TRUTHY = Symbol('where:truthy');
 export const where = (value, keyOrFn, expected = WHERE_TRUTHY) => {
 	if (!Array.isArray(value)) return [];
 	if (expected === WHERE_TRUTHY) {

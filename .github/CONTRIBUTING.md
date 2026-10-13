@@ -56,6 +56,7 @@ yarn test                       # Run the Vitest suite once
 yarn test:watch                 # Watch mode
 yarn lint                       # ESLint over .js / .json / .md
 yarn format                     # yarn lint --fix
+yarn typecheck                  # tsc over src/ using the JSDoc types (checkJs, strict)
 yarn changeset                  # Add a changeset for your PR (see below)
 ```
 

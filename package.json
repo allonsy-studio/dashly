@@ -57,6 +57,7 @@
     "release": "changeset publish",
     "test": "vitest run",
     "test:watch": "vitest watch",
+    "typecheck": "tsc -p jsconfig.json",
     "version": "changeset version"
   },
   "peerDependencies": {
@@ -93,6 +94,9 @@
     "@eslint/js": "^10.0.1",
     "@eslint/json": "^2.0.0",
     "@eslint/markdown": "^8.0.2",
+    "@types/html-minifier-terser": "^7.0.2",
+    "@types/markdown-it": "^14.2.0",
+    "@types/node": "^24",
     "@vitest/eslint-plugin": "^1.6.20",
     "eslint": "^10.6.0",
     "eslint-config-prettier": "^10.1.8",
@@ -107,6 +111,7 @@
     "postcss": "^8.5.16",
     "posthtml": "^0.16.7",
     "prettier": "^3.9.3",
+    "typescript": "^6.0.2",
     "vitest": "^4.1.9"
   },
   "keywords": [
