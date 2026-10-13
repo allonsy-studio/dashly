@@ -1,5 +1,5 @@
 ---
-"@allons-y/dashly": minor
+"@allons-y/dashly": major
 ---
 
 **Breaking:** the `year` shortcode is now `currentYear`. Shortcodes & filters share one namespace in Handlebars & 11ty.js, where the shortcode shadowed the `year` filter. Replace `{% year %}` with `{% currentYear %}` & `shortcodes: { exclude: ["year"] }` with `["currentYear"]`; a stale exclude emits a deprecation warning. The `year` filter is unchanged.
