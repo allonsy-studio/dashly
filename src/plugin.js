@@ -41,6 +41,8 @@ import { createCleanAttrsTransform } from './transforms/clean-attrs.js';
 
 import { currentYear } from './shortcodes/year.js';
 
+import { arg, omitted } from './validate.js';
+
 /**
  * @typedef {Object} DashlyOptions
  * @property {Intl.LocalesArgument} [dateLocale='en-US'] Default locale for `longDate`/`shortDate`/`relativeDate`.
@@ -123,7 +125,7 @@ export function dashlyPlugin(config, options = {}) {
 			cleanForRSS: htmlFilters.cleanForRSS,
 			renderMarkdown: htmlFilters.renderMarkdown,
 			wordCount: textFilters.wordCount,
-			readingTime: (value, wpm) => textFilters.readingTime(value, wpm ?? readingTimeWpm),
+			readingTime: (value, wpm) => textFilters.readingTime(value, omitted(wpm) ? readingTimeWpm : wpm),
 			excerpt: textFilters.excerpt,
 			dump: debugFilters.dump,
 			jsonify: debugFilters.jsonify,
@@ -134,16 +136,17 @@ export function dashlyPlugin(config, options = {}) {
 			title: stringFilters.title,
 			stripTags: htmlFilters.stripTags,
 			nl2br: htmlFilters.nl2br,
-			absoluteUrl: (path, override) => urlFilters.absoluteUrl(path, override ?? baseUrl),
+			absoluteUrl: (path, override) => urlFilters.absoluteUrl(path, omitted(override) ? baseUrl : override),
 			relativeDate: (value, locale, opts) =>
-				dateFilters.relativeDate(value, locale ?? dateLocale, opts),
+				dateFilters.relativeDate(value, omitted(locale) ? dateLocale : locale, opts),
 			timeAgo: (value, locale, opts) =>
-				dateFilters.timeAgo(value, locale ?? dateLocale, opts),
-			number: (value, opts, locale) => numberFilters.number(value, opts, locale ?? dateLocale),
+				dateFilters.timeAgo(value, omitted(locale) ? dateLocale : locale, opts),
+			number: (value, opts, locale) =>
+				numberFilters.number(value, opts, omitted(locale) ? dateLocale : locale),
 			currency: (value, code, locale, opts) =>
-				numberFilters.currency(value, code, locale ?? dateLocale, opts),
+				numberFilters.currency(value, code, omitted(locale) ? dateLocale : locale, opts),
 			percent: (value, opts) =>
-				numberFilters.percent(value, { locale: dateLocale, ...(opts ?? {}) }),
+				numberFilters.percent(value, { locale: dateLocale, ...(arg.object('percent', 'options', opts) ?? {}) }),
 			groupBy: arrayFilters.groupBy,
 			sortBy: arrayFilters.sortBy,
 			chunk: arrayFilters.chunk,
@@ -175,8 +178,15 @@ export function dashlyPlugin(config, options = {}) {
 	if (options.shortcodes !== false) {
 		const exclude = new Set(options.shortcodes?.exclude ?? []);
 
-		if (!exclude.has('year')) {
-			config.addShortcode('year', currentYear);
+		if (exclude.has('year')) {
+			process.emitWarning(
+				'The "year" shortcode was renamed to "currentYear", so excluding "year" has no effect. Exclude "currentYear" instead.',
+				{ type: 'DeprecationWarning', code: 'DASHLY_YEAR_SHORTCODE_RENAMED' }
+			);
+		}
+
+		if (!exclude.has('currentYear')) {
+			config.addShortcode('currentYear', currentYear);
 		}
 	}
 }

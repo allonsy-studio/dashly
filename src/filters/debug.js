@@ -12,6 +12,8 @@
  * @module @allons-y/dashly/filters/debug
  */
 
+import { arg } from '../validate.js';
+
 const circularSafeReplacer = () => {
 	const seen = new WeakSet();
 	return (_key, value) => {
@@ -45,7 +47,7 @@ const circularSafeReplacer = () => {
  * // '{"a":1}'
  * dump({ a: 1 }, 0);
  */
-export const dump = (value, indent = 2) => JSON.stringify(value, circularSafeReplacer(), indent);
+export const dump = (value, indent) => JSON.stringify(value, circularSafeReplacer(), arg.indent('dump', 'indent', indent) ?? 2);
 
 /**
  * Alias for {@link dump}. Some teams prefer the `| jsonify` name.

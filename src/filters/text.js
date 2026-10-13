@@ -13,6 +13,8 @@
  * @module @allons-y/dashly/filters/text
  */
 
+import { arg } from '../validate.js';
+
 const stripHtml = (value) => String(value).replace(/<[^>]*>/g, ' ');
 
 const words = (value) => {
@@ -60,10 +62,11 @@ export const wordCount = (value) => words(value).length;
  * @example
  * {{ 1200 | readingTime(250) }}
  */
-export const readingTime = (value, wpm = 200) => {
+export const readingTime = (value, wpm) => {
+	const perMinute = arg.number('readingTime', 'wpm', wpm) ?? 200;
 	const count = typeof value === 'number' ? value : wordCount(value);
-	if (!count || !wpm) return 1;
-	return Math.max(1, Math.round(count / wpm));
+	if (!count || !perMinute) return 1;
+	return Math.max(1, Math.round(count / perMinute));
 };
 
 /**
@@ -90,15 +93,17 @@ export const readingTime = (value, wpm = 200) => {
  * @example
  * {{ post.content | excerpt(200, 'chars') }}
  */
-export const excerpt = (value, n = 30, unit = 'words') => {
+export const excerpt = (value, n, unit) => {
+	const limit = arg.number('excerpt', 'n', n) ?? 30;
+	const unitOfLength = arg.oneOf(['words', 'chars'])('excerpt', 'unit', unit) ?? 'words';
 	if (value == null) return '';
 	const text = stripHtml(value).replace(/\s+/g, ' ').trim();
-	if (!text || !n) return text;
+	if (!text || !limit) return text;
 
-	const fromEnd = n < 0;
-	const count = Math.abs(n);
+	const fromEnd = limit < 0;
+	const count = Math.abs(limit);
 
-	if (unit === 'chars') {
+	if (unitOfLength === 'chars') {
 		if (text.length <= count) return text;
 		return fromEnd ? '…' + text.slice(-count) : text.slice(0, count) + '…';
 	}
