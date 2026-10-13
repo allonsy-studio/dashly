@@ -112,6 +112,7 @@
 <li><code>cleanForRSS</code> requires <code>posthtml</code> as a peer dependency.</li>
 <li><code>renderMarkdown</code> requires <code>markdown-it</code> as a peer dependency or a
 user-provided renderer instance.</li>
+<li>Both are async &amp; do not work in Handlebars; see each filter for why.</li>
 </ul>
 
 
@@ -213,6 +214,12 @@ source stays readable.</p>
 <p>By default this removes script/style/embed/etc. tags and <code>header-anchor</code>
 permalink <code>&lt;a&gt;</code> elements inserted by markdown-it-anchor. Pass <code>customTags</code>
 to strip additional tags (e.g. web components like <code>lite-youtube</code>).</p>
+<p>Async, so it does not work in Handlebars. The filter returns a Promise
+because it loads <code>posthtml</code> with a dynamic <code>import()</code> on first use.
+Nunjucks, Liquid, &amp; 11ty.js await it. Handlebars helpers are synchronous &amp;
+cannot await, so <code>{{cleanForRSS html}}</code> renders <code>[object Promise]</code>. Compute
+the value in a data file, <code>eleventyComputed</code>, or a JS template instead, &amp;
+pass the resulting string to the Handlebars template.</p>
 
 
 	

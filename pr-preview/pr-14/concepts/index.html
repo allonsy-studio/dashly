@@ -182,12 +182,18 @@
 <h2 id="async-utilities" tabindex="-1"><a class="header-anchor" href="#async-utilities">Async utilities</a></h2>
 <p><code>cleanForRSS</code> &amp; <code>renderMarkdown</code> return promises because they load their peer on demand with a dynamic <code>import()</code>. Nunjucks, Liquid, &amp; 11ty.js await them. The reference lists the return type of every utility.</p>
 <h3 id="not-supported-in-handlebars" tabindex="-1"><a class="header-anchor" href="#not-supported-in-handlebars">Not supported in Handlebars</a></h3>
-<p>Handlebars helpers are synchronous: Handlebars calls the helper, takes whatever it returns, &amp; writes it into the page without waiting. An async filter returns a promise, so <code>{{cleanForRSS html}}</code> renders <code>[object Promise]</code>.</p>
-<p>Either compute the value somewhere that can wait &amp; pass the finished string to the Handlebars template, or render that page in a language that awaits filters:</p>
-<ul>
-<li>Compute it in a <a href="https://www.11ty.dev/docs/data-js/">data file</a> that exports an async function, or with <code>eleventyComputed</code>.</li>
-<li>Render the page with Nunjucks, Liquid, or 11ty.js instead.</li>
-</ul>
+<p><strong>Do not use <code>cleanForRSS</code> or <code>renderMarkdown</code> in Handlebars templates.</strong> Every other filter works there. Handlebars helpers are synchronous: Handlebars calls the helper, takes whatever it returns, &amp; writes it into the page without waiting. An async filter returns a promise, so <code>{{cleanForRSS html}}</code> renders <code>[object Promise]</code>. There is no template-side fix: Handlebars has no way to wait on a helper, &amp; both filters need an async <code>import()</code> of an optional peer.</p>
+<p>To get their output onto a Handlebars page, resolve it before the template renders &amp; hand the template a finished string. Use <a href="https://www.11ty.dev/docs/data-computed/"><code>eleventyComputed</code></a> in a directory or template data file:</p>
+<pre class="language-javascript"><code><span class="token comment">// post.11tydata.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> renderMarkdown <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@allons-y/dashly/filters/html'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+	<span class="token literal-property property">eleventyComputed</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+		<span class="token function-variable function">summaryHtml</span><span class="token operator">:</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">renderMarkdown</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>summary<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">splitParagraphs</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Then write <code>{{{summaryHtml}}}</code> in the template. Or write that page in Nunjucks, Liquid, or 11ty.js, which await filters.</p>
 
 	</main>
 </div>
