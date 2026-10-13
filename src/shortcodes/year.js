@@ -19,7 +19,7 @@
  * @returns {number}
  *
  * @example
- * // <p>&copy; {% year %} Acme Corp.</p>
+ * // <p>&copy; {% currentYear %} Acme Corp.</p>
  *
  * @example
  * // 2026

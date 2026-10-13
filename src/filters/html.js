@@ -12,9 +12,12 @@
  * - `cleanForRSS` requires `posthtml` as a peer dependency.
  * - `renderMarkdown` requires `markdown-it` as a peer dependency or a
  *   user-provided renderer instance.
+ * - Both are async & do not work in Handlebars; see each filter for why.
  *
  * @module @allons-y/dashly/filters/html
  */
+
+import { arg } from '../validate.js';
 
 /**
  * Strip every HTML tag from a string, leaving only text content. Zero-dep
@@ -82,6 +85,13 @@ const DEFAULT_UNSAFE_TAGS = Object.freeze([
  * permalink `<a>` elements inserted by markdown-it-anchor. Pass `customTags`
  * to strip additional tags (e.g. web components like `lite-youtube`).
  *
+ * Async, so it does not work in Handlebars. The filter returns a Promise
+ * because it loads `posthtml` with a dynamic `import()` on first use.
+ * Nunjucks, Liquid, & 11ty.js await it. Handlebars helpers are synchronous &
+ * cannot await, so `{{cleanForRSS html}}` renders `[object Promise]`. Compute
+ * the value in a data file, `eleventyComputed`, or a JS template instead, &
+ * pass the resulting string to the Handlebars template.
+ *
  * @param {string} html
  * @param {object} [options]
  * @param {string[]} [options.unsafeTags] Override the default unsafe-tag list.
@@ -89,13 +99,14 @@ const DEFAULT_UNSAFE_TAGS = Object.freeze([
  * @param {boolean} [options.stripPermalinks=true] Remove `<a class="header-anchor">` nodes.
  * @returns {Promise<string>}
  */
-export const cleanForRSS = async (html, options = {}) => {
+export const cleanForRSS = async (html, options) => {
+	const opts = arg.object('cleanForRSS', 'options', options) ?? {};
+	const unsafe = arg.stringArray('cleanForRSS', 'options.unsafeTags', opts.unsafeTags) ?? DEFAULT_UNSAFE_TAGS;
+	const custom = arg.stringArray('cleanForRSS', 'options.customTags', opts.customTags) ?? [];
+	const stripPermalinks = arg.boolean('cleanForRSS', 'options.stripPermalinks', opts.stripPermalinks) ?? true;
 	if (!html || typeof html !== 'string') return html;
 
 	const { default: posthtml } = await import('posthtml');
-	const unsafe = options.unsafeTags ?? DEFAULT_UNSAFE_TAGS;
-	const custom = options.customTags ?? [];
-	const stripPermalinks = options.stripPermalinks !== false;
 
 	const modifier = posthtml().use((tree) => {
 		if (!Array.isArray(tree) || !tree.length) return tree;
@@ -129,22 +140,28 @@ export const cleanForRSS = async (html, options = {}) => {
  * literal `\n\n` (paragraph) and `\n` (line break) escape sequences — useful
  * for rendering markdown stored as a single-line string in YAML data files.
  *
+ * Async, so it does not work in Handlebars. The filter returns a Promise
+ * because it loads `markdown-it` with a dynamic `import()` on first use.
+ * Nunjucks, Liquid, & 11ty.js await it. Handlebars helpers are synchronous &
+ * cannot await, so `{{renderMarkdown text}}` renders `[object Promise]`.
+ * Compute the value in a data file, `eleventyComputed`, or a JS template
+ * instead, & pass the resulting string to the Handlebars template.
+ *
  * @param {string} value
  * @param {object} [options]
  * @param {import('markdown-it').default} [options.renderer] A pre-configured `markdown-it` instance.
  * @param {boolean} [options.splitParagraphs=true]
  * @returns {Promise<string>}
  */
-export const renderMarkdown = async (value, options = {}) => {
+export const renderMarkdown = async (value, options) => {
+	const opts = arg.object('renderMarkdown', 'options', options) ?? {};
+	const custom = arg.renderer('renderMarkdown', 'options.renderer', opts.renderer);
+	const splitParagraphs = arg.boolean('renderMarkdown', 'options.splitParagraphs', opts.splitParagraphs) ?? true;
 	if (!value || typeof value !== 'string') return value;
 
-	let renderer = options.renderer;
-	if (!renderer) {
-		const { default: MarkdownIt } = await import('markdown-it');
-		renderer = new MarkdownIt({ html: true, linkify: true });
-	}
+	const renderer = custom ?? new (await import('markdown-it')).default({ html: true, linkify: true });
 
-	if (options.splitParagraphs === false) return renderer.render(value);
+	if (!splitParagraphs) return renderer.render(value);
 
 	const paragraphs = value
 		.split('\\n\\n')

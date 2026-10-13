@@ -45,9 +45,7 @@ const ENGINES = [
 	},
 ];
 
-const HANDLEBARS_OPTIONS = 'Handlebars passes its options object as the last helper argument';
 const HANDLEBARS_ASYNC = 'Handlebars helpers are synchronous';
-const SHARED_NAMESPACE = 'filters & shortcodes share one namespace here, so the year shortcode shadows the year filter';
 
 const DATA = {
 	post: { date: '2026-01-15', content: `<p>${'word '.repeat(450)}</p>` },
@@ -115,7 +113,6 @@ const CASES = [
 		hbs: '{{readingTime post.content}}',
 		js: (t, d) => t.readingTime(d.post.content),
 		expected: '2',
-		gaps: { hbs: HANDLEBARS_OPTIONS },
 	},
 	{
 		name: 'lets a per-call argument beat the plugin option',
@@ -134,7 +131,6 @@ const CASES = [
 		hbs: '{{absoluteUrl "/posts/hi"}}',
 		js: (t) => t.absoluteUrl('/posts/hi'),
 		expected: 'https://example.com/posts/hi',
-		gaps: { hbs: HANDLEBARS_OPTIONS },
 	},
 	{
 		name: 'applies tagsExclude',
@@ -144,7 +140,6 @@ const CASES = [
 		hbs: '{{tags tagList}}',
 		js: (t, d) => t.tags(d.tagList).join(','),
 		expected: 'all,design',
-		gaps: { hbs: HANDLEBARS_OPTIONS },
 	},
 	{
 		name: 'formats a fraction as a percent',
@@ -173,11 +168,11 @@ const CASES = [
 		gaps: { hbs: HANDLEBARS_ASYNC },
 	},
 	{
-		name: 'registers the year shortcode',
-		njk: '{% year %}',
-		liquid: '{% year %}',
-		hbs: '{{year}}',
-		js: (t) => t.year(),
+		name: 'registers the currentYear shortcode',
+		njk: '{% currentYear %}',
+		liquid: '{% currentYear %}',
+		hbs: '{{currentYear}}',
+		js: (t) => t.currentYear(),
 		expected: String(new Date().getFullYear()),
 	},
 	{
@@ -187,7 +182,6 @@ const CASES = [
 		hbs: '{{year "2020-05-05"}}',
 		js: (t) => t.year('2020-05-05'),
 		expected: '2020',
-		gaps: { js: SHARED_NAMESPACE, hbs: SHARED_NAMESPACE },
 	},
 ];
 
@@ -214,10 +208,10 @@ const OPT_OUTS = [
 	{
 		name: 'shortcodes: false registers no shortcodes',
 		options: { shortcodes: false },
-		njk: '{% year %}',
-		liquid: '{% year %}',
-		hbs: '{{year}}',
-		js: (t) => t.year(),
+		njk: '{% currentYear %}',
+		liquid: '{% currentYear %}',
+		hbs: '{{currentYear}}',
+		js: (t) => t.currentYear(),
 		absent: String(new Date().getFullYear()),
 	},
 ];
@@ -295,6 +289,23 @@ const render = async (engine, template, options = {}) => {
 /** Like {@link render}, but a template error becomes the string `ERROR`. */
 const attempt = (...args) => render(...args).catch(() => 'ERROR');
 
+/**
+ * Render a template that is expected to fail & return every message in the
+ * error chain, since each engine wraps the original error differently.
+ *
+ * @returns {Promise<string>}
+ */
+const errorText = async (...args) => {
+	try {
+		await render(...args);
+		return '';
+	} catch (error) {
+		const messages = [];
+		for (let e = error; e; e = e.originalError ?? e.cause) messages.push(e.message);
+		return messages.join('\n');
+	}
+};
+
 describe.each(ENGINES)('$name templates', (engine) => {
 	const rows = CASES.map((c) => ({ ...c, gap: c.gaps?.[engine.key] }));
 	const check = async ({ njk, liquid, hbs, js, options, expected }) => {
@@ -315,6 +326,17 @@ describe.each(ENGINES)('$name templates', (engine) => {
 	it.each(OPT_OUTS)('$name', async ({ njk, liquid, hbs, js, options, absent }) => {
 		const template = { njk, liquid, hbs, js }[engine.key];
 		expect(await attempt(engine, template, options)).not.toBe(absent);
+	});
+
+	it('surfaces the argument error, naming the filter & parameter', async () => {
+		const template = {
+			njk: '{{ post.content | readingTime("fast") }}',
+			liquid: '{{ post.content | readingTime: "fast" }}',
+			hbs: '{{readingTime post.content "fast"}}',
+			js: (t, d) => t.readingTime(d.post.content, 'fast'),
+		}[engine.key];
+		const text = await errorText(engine, template);
+		expect(text).toContain('dashly: readingTime(): "wpm" must be a finite number');
 	});
 
 	it('keeps other filters available when one is excluded', async () => {

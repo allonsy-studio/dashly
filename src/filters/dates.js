@@ -11,6 +11,8 @@
  * @module @allons-y/dashly/filters/dates
  */
 
+import { arg, intl } from '../validate.js';
+
 /**
  * Convert a date-like value to an ISO 8601 string. Returns an empty string for
  * falsy inputs or unparseable dates.
@@ -51,11 +53,13 @@ export const year = (date) => {
  * @param {Intl.LocalesArgument} [locale='en-US']
  * @returns {string}
  */
-export const dateFormat = (value, options = {}, locale = 'en-US') => {
+export const dateFormat = (value, options, locale) => {
+	const formatOptions = arg.object('dateFormat', 'options', options) ?? {};
+	const tag = arg.locale('dateFormat', 'locale', locale) ?? 'en-US';
 	if (!value) return value;
 	const d = new Date(value);
 	if (isNaN(d.getTime())) return value;
-	return d.toLocaleDateString(locale, { timeZone: 'UTC', ...options });
+	return intl('dateFormat', 'locale or options', () => d.toLocaleDateString(tag, { timeZone: 'UTC', ...formatOptions }));
 };
 
 /**
@@ -64,8 +68,8 @@ export const dateFormat = (value, options = {}, locale = 'en-US') => {
  * @param {Intl.LocalesArgument} [locale='en-US']
  * @returns {string}
  */
-export const longDate = (value, locale = 'en-US') =>
-	dateFormat(value, { day: 'numeric', month: 'long', year: 'numeric' }, locale);
+export const longDate = (value, locale) =>
+	dateFormat(value, { day: 'numeric', month: 'long', year: 'numeric' }, arg.locale('longDate', 'locale', locale));
 
 /**
  * Format a date as an abbreviated month-and-year (e.g. "Jan 2026").
@@ -73,8 +77,8 @@ export const longDate = (value, locale = 'en-US') =>
  * @param {Intl.LocalesArgument} [locale='en-US']
  * @returns {string}
  */
-export const shortDate = (value, locale = 'en-US') =>
-	dateFormat(value, { month: 'short', year: 'numeric' }, locale);
+export const shortDate = (value, locale) =>
+	dateFormat(value, { month: 'short', year: 'numeric' }, arg.locale('shortDate', 'locale', locale));
 
 const UNITS = /** @type {const} */ ([
 	['year', 60 * 60 * 24 * 365],
@@ -112,16 +116,17 @@ const UNITS = /** @type {const} */ ([
  * @example
  * {{ post.date | timeAgo }}
  */
-export const relativeDate = (value, locale = 'en-US', options = {}) => {
+export const relativeDate = (value, locale, options) => {
+	const tag = arg.locale('relativeDate', 'locale', locale) ?? 'en-US';
+	const opts = arg.object('relativeDate', 'options', options) ?? {};
+	const now = arg.date('relativeDate', 'options.now', opts.now) ?? new Date();
+	const style = arg.oneOf(['long', 'short', 'narrow'])('relativeDate', 'options.style', opts.style) ?? 'long';
+	const numeric = arg.oneOf(['always', 'auto'])('relativeDate', 'options.numeric', opts.numeric) ?? 'auto';
 	if (!value) return '';
 	const d = new Date(value);
 	if (isNaN(d.getTime())) return '';
-	const now = options.now ?? new Date();
 	const diffSeconds = (d.getTime() - now.getTime()) / 1000;
-	const formatter = new Intl.RelativeTimeFormat(locale, {
-		style: options.style ?? 'long',
-		numeric: options.numeric ?? 'auto',
-	});
+	const formatter = intl('relativeDate', 'locale', () => new Intl.RelativeTimeFormat(tag, { style, numeric }));
 	for (const [unit, secondsPerUnit] of UNITS) {
 		if (Math.abs(diffSeconds) >= secondsPerUnit || unit === 'second') {
 			const value = Math.round(diffSeconds / secondsPerUnit);
