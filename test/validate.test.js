@@ -8,7 +8,7 @@
 
 import { describe, it, expect } from 'vitest';
 import { helperOptions } from './helpers.js';
-import { DashlyArgumentError, arg, describe as describeValue, intl, isHelperOptions, need, omitted } from '../src/validate.js';
+import { DashlyArgumentError, arg, describeValue, intl, isHelperOptions, need, omitted } from '../src/validate.js';
 
 describe('isHelperOptions & omitted', () => {
 	it('recognizes the Handlebars options object', () => {

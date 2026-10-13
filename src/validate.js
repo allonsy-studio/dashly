@@ -45,7 +45,7 @@ export const omitted = (value) => value === undefined || value === null || isHel
  * @param {unknown} value
  * @returns {string}
  */
-export const describe = (value) => {
+export const describeValue = (value) => {
 	if (isHelperOptions(value)) return 'the Handlebars options object (the argument was not supplied)';
 	if (value === null) return 'null';
 	if (value === undefined) return 'undefined';
@@ -81,7 +81,7 @@ export class DashlyArgumentError extends TypeError {
 	 *   `message` replaces the generated text, for failures that are not a plain type mismatch.
 	 */
 	constructor({ fn, param, expected, received, hint, message }) {
-		super(message ?? `dashly: ${fn}(): "${param}" must be ${expected}, but received ${describe(received)}.${hint ? ` ${hint}` : ''}`);
+		super(message ?? `dashly: ${fn}(): "${param}" must be ${expected}, but received ${describeValue(received)}.${hint ? ` ${hint}` : ''}`);
 		this.name = 'DashlyArgumentError';
 		this.fn = fn;
 		this.param = param;
