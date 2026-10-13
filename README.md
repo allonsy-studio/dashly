@@ -184,7 +184,22 @@ Pass `false` for any category to skip it entirely. Pass `exclude` to omit specif
 
 **Nunjucks-parity universals.** Nunjucks & Liquid templates ship many of these filters natively (`first`, `last`, `reverse`, `capitalize`, etc.). Registering them through `addFilter`, dashly makes them available in **every** Eleventy template engine, including JS templates & shortcodes, with consistent semantics across engines. `first` and `last` accept an optional count argument so `{{ posts | first(3) }}` covers the common "limit to N" case without a separate filter name.
 
-**Handlebars.** Eleventy's official Handlebars plugin turns filters & shortcodes into helpers, so add it after dashly so it sees them. Handlebars helpers are synchronous, so the async filters `cleanForRSS` & `renderMarkdown` render `[object Promise]`: both load an optional peer with a dynamic `import()`. Compute their output in a data file, `eleventyComputed`, or a JS template, then pass the string to the Handlebars template.
+**Handlebars.** Eleventy's official Handlebars plugin turns filters & shortcodes into helpers, so add it after dashly so it sees them. Every filter works there except two: **do not use `cleanForRSS` or `renderMarkdown` in Handlebars templates.** They are async, & Handlebars helpers are synchronous, so `{{cleanForRSS html}}` renders `[object Promise]`. There is no template-side fix: Handlebars has no way to wait on a helper, & both filters need an async `import()` of an optional peer (`posthtml`, `markdown-it`).
+
+To get their output onto a Handlebars page, run them before the template renders & hand the template a finished string:
+
+```js
+// post.11tydata.js
+import { renderMarkdown } from '@allons-y/dashly/filters/html';
+
+export default {
+	eleventyComputed: {
+		summaryHtml: async (data) => renderMarkdown(data.summary, { splitParagraphs: false }),
+	},
+};
+```
+
+Then use `{{{summaryHtml}}}` in the template. Or write that page in Nunjucks, Liquid, or 11ty.js, which await filters.
 
 **Argument errors.** A present but wrongly typed argument throws a `DashlyArgumentError` naming the filter, the parameter, & what arrived, such as `dashly: readingTime(): "wpm" must be a finite number, but received the string "fast".` Omitted arguments, nullish values, & the options object Handlebars appends to every helper call fall back to defaults.
 
