@@ -37,10 +37,10 @@ export const createHtmlMinTransform = (options = {}) => {
 
 	/** @this {{ page?: { outputPath?: string }, outputPath?: string }} Eleventy's transform context. */
 	return async function htmlminTransform(content, outputPath) {
-		if (productionOnly && process.env.ELEVENTY_ENV !== 'production') return content;
-		const path = outputPath ?? this?.page?.outputPath ?? '';
-		if (!path.endsWith('.html')) return content;
-		const { minify } = await import('html-minifier-terser');
+		if (productionOnly && process.env.ELEVENTY_ENV !== "production") return content;
+		const path = outputPath ?? this?.page?.outputPath ?? "";
+		if (!path.endsWith(".html")) return content;
+		const { minify } = await import("html-minifier-terser");
 		return minify(content, minifierOptions);
 	};
 };

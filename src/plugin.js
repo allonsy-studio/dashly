@@ -24,24 +24,24 @@
  * @module @allons-y/dashly/plugin
  */
 
-import * as dateFilters from './filters/dates.js';
-import * as stringFilters from './filters/strings.js';
-import * as urlFilters from './filters/urls.js';
-import * as objectFilters from './filters/objects.js';
-import * as htmlFilters from './filters/html.js';
-import * as textFilters from './filters/text.js';
-import * as debugFilters from './filters/debug.js';
-import * as arrayFilters from './filters/arrays.js';
-import * as numberFilters from './filters/numbers.js';
-import * as tagFilters from './filters/tags.js';
+import * as dateFilters from "./filters/dates.js";
+import * as stringFilters from "./filters/strings.js";
+import * as urlFilters from "./filters/urls.js";
+import * as objectFilters from "./filters/objects.js";
+import * as htmlFilters from "./filters/html.js";
+import * as textFilters from "./filters/text.js";
+import * as debugFilters from "./filters/debug.js";
+import * as arrayFilters from "./filters/arrays.js";
+import * as numberFilters from "./filters/numbers.js";
+import * as tagFilters from "./filters/tags.js";
 
-import { createPrettierTransform } from './transforms/prettier.js';
-import { createHtmlMinTransform } from './transforms/htmlmin.js';
-import { createCleanAttrsTransform } from './transforms/clean-attrs.js';
+import { createPrettierTransform } from "./transforms/prettier.js";
+import { createHtmlMinTransform } from "./transforms/htmlmin.js";
+import { createCleanAttrsTransform } from "./transforms/clean-attrs.js";
 
-import { currentYear } from './shortcodes/year.js';
+import { currentYear } from "./shortcodes/year.js";
 
-import { arg, omitted } from './validate.js';
+import { arg, omitted } from "./validate.js";
 
 /**
  * @typedef {Object} DashlyOptions
@@ -55,54 +55,54 @@ import { arg, omitted } from './validate.js';
  */
 
 const FILTER_NAMES = [
-	'toISOString',
-	'year',
-	'dateFormat',
-	'longDate',
-	'shortDate',
-	'firstWord',
-	'lastWord',
-	'trim',
-	'stripWhitespace',
-	'digitsOnly',
-	'keys',
-	'validateURL',
-	'cleanForRSS',
-	'renderMarkdown',
-	'wordCount',
-	'readingTime',
-	'excerpt',
-	'dump',
-	'jsonify',
-	'first',
-	'last',
-	'reverse',
-	'capitalize',
-	'title',
-	'stripTags',
-	'nl2br',
-	'absoluteUrl',
-	'relativeDate',
-	'timeAgo',
-	'number',
-	'currency',
-	'percent',
-	'groupBy',
-	'sortBy',
-	'chunk',
-	'where',
-	'pluck',
-	'tags',
+	"toISOString",
+	"year",
+	"dateFormat",
+	"longDate",
+	"shortDate",
+	"firstWord",
+	"lastWord",
+	"trim",
+	"stripWhitespace",
+	"digitsOnly",
+	"keys",
+	"validateURL",
+	"cleanForRSS",
+	"renderMarkdown",
+	"wordCount",
+	"readingTime",
+	"excerpt",
+	"dump",
+	"jsonify",
+	"first",
+	"last",
+	"reverse",
+	"capitalize",
+	"title",
+	"stripTags",
+	"nl2br",
+	"absoluteUrl",
+	"relativeDate",
+	"timeAgo",
+	"number",
+	"currency",
+	"percent",
+	"groupBy",
+	"sortBy",
+	"chunk",
+	"where",
+	"pluck",
+	"tags",
 ];
 
-const TRANSFORM_NAMES = ['cleanAttrs', 'prettier', 'htmlmin'];
+const TRANSFORM_NAMES = ["cleanAttrs", "prettier", "htmlmin"];
 
 /**
  * @param {import('@11ty/eleventy').UserConfig} config
  * @param {DashlyOptions} [options]
  */
 export function dashlyPlugin(config, options = {}) {
-	const dateLocale = options.dateLocale ?? 'en-US';
+	const dateLocale = options.dateLocale ?? "en-US";
 	const readingTimeWpm = options.readingTimeWpm ?? 200;
 	const baseUrl = options.baseUrl;
 	const tagsExclude = options.tagsExclude ?? tagFilters.DEFAULT_EXCLUDED_TAGS;
@@ -147,7 +147,7 @@ export function dashlyPlugin(config, options = {}) {
 			currency: (value, code, locale, opts) =>
 				numberFilters.currency(value, code, omitted(locale) ? dateLocale : locale, opts),
 			percent: (value, opts) =>
-				numberFilters.percent(value, { locale: dateLocale, ...(arg.object('percent', 'options', opts) ?? {}) }),
+				numberFilters.percent(value, { locale: dateLocale, ...(arg.object("percent", "options", opts) ?? {}) }),
 			groupBy: arrayFilters.groupBy,
 			sortBy: arrayFilters.sortBy,
 			chunk: arrayFilters.chunk,
@@ -180,15 +180,15 @@ export function dashlyPlugin(config, options = {}) {
 	if (options.shortcodes !== false) {
 		const exclude = new Set(options.shortcodes?.exclude ?? []);
 
-		if (exclude.has('year')) {
+		if (exclude.has("year")) {
 			process.emitWarning(
 				'The "year" shortcode was renamed to "currentYear", so excluding "year" has no effect. Exclude "currentYear" instead.',
-				{ type: 'DeprecationWarning', code: 'DASHLY_YEAR_SHORTCODE_RENAMED' }
+				{ type: "DeprecationWarning", code: "DASHLY_YEAR_SHORTCODE_RENAMED" },
 			);
 		}
 
-		if (!exclude.has('currentYear')) {
-			config.addShortcode('currentYear', currentYear);
+		if (!exclude.has("currentYear")) {
+			config.addShortcode("currentYear", currentYear);
 		}
 	}
 }

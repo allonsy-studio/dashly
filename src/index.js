@@ -29,11 +29,11 @@
  * @module @allons-y/dashly
  */
 
-import { dashlyPlugin } from './plugin.js';
+import { dashlyPlugin } from "./plugin.js";
 
 export { dashlyPlugin };
 export default dashlyPlugin;
 
-export * as filters from './filters/index.js';
-export * as transforms from './transforms/index.js';
-export * as shortcodes from './shortcodes/index.js';
+export * as filters from "./filters/index.js";
+export * as transforms from "./transforms/index.js";
+export * as shortcodes from "./shortcodes/index.js";

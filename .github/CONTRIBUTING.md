@@ -54,7 +54,7 @@ Heavy dependencies (HTML formatters, markdown renderers, image pipelines) belong
 ```sh
 yarn test                       # Run the Vitest suite once
 yarn test:watch                 # Watch mode
-yarn lint                       # ESLint over .js / .json / .md
+yarn lint                       # opx lint (ESLint) over .js / .json / .md
 yarn format                     # yarn lint --fix
 yarn typecheck                  # tsc over src/ using the JSDoc types (checkJs, strict)
 yarn changeset                  # Add a changeset for your PR (see below)
@@ -66,7 +66,7 @@ We use [Vitest](https://vitest.dev). Tests live under `test/` mirroring `src/`. 
 
 ### Linting and formatting
 
-ESLint (flat config in `eslint.config.js`) covers `.js`, `.json`/`package.json`, and `.md`. Prettier handles formatting via `prettier.config.js`. Husky runs `lint-staged` on pre-commit so formatting is automatic.
+`opx lint` (flat config in `eslint.config.js`, presets from `@allons-y/opx-lint-*`) covers `.js`, `.json`/`package.json`, and `.md`, & formats JavaScript through @stylistic. Husky runs `lint-staged` on pre-commit so formatting is automatic.
 
 ### Commit messages
 

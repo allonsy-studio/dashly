@@ -12,15 +12,15 @@
  * @module @allons-y/dashly/filters/numbers
  */
 
-import { arg, intl } from '../validate.js';
+import { arg, intl } from "../validate.js";
 
 /**
  * @param {unknown} value
  * @returns {number}
  */
 const toNumber = (value) => {
-	if (value == null || value === '') return NaN;
-	if (typeof value === 'number') return value;
+	if (value == null || value === "") return NaN;
+	if (typeof value === "number") return value;
 	const n = Number(value);
 	return Number.isFinite(n) ? n : NaN;
 };
@@ -46,11 +46,11 @@ const toNumber = (value) => {
  * {{ stats.views | number }}
  */
 export const number = (value, options, locale) => {
-	const formatOptions = arg.object('number', 'options', options) ?? {};
-	const tag = arg.locale('number', 'locale', locale) ?? 'en-US';
+	const formatOptions = arg.object("number", "options", options) ?? {};
+	const tag = arg.locale("number", "locale", locale) ?? "en-US";
 	const n = toNumber(value);
-	if (isNaN(n)) return '';
-	return intl('number', 'locale or options', () => new Intl.NumberFormat(tag, formatOptions).format(n));
+	if (isNaN(n)) return "";
+	return intl("number", "locale or options", () => new Intl.NumberFormat(tag, formatOptions).format(n));
 };
 
 /**
@@ -74,13 +74,13 @@ export const number = (value, options, locale) => {
  * {{ product.price | currency('USD') }}
  */
 export const currency = (value, currencyCode, locale, options) => {
-	const code = arg.string('currency', 'currencyCode', currencyCode) ?? 'USD';
-	const tag = arg.locale('currency', 'locale', locale) ?? 'en-US';
-	const formatOptions = arg.object('currency', 'options', options) ?? {};
+	const code = arg.string("currency", "currencyCode", currencyCode) ?? "USD";
+	const tag = arg.locale("currency", "locale", locale) ?? "en-US";
+	const formatOptions = arg.object("currency", "options", options) ?? {};
 	const n = toNumber(value);
-	if (isNaN(n)) return '';
-	return intl('currency', 'currencyCode, locale, or options', () =>
-		new Intl.NumberFormat(tag, { style: 'currency', currency: code, ...formatOptions }).format(n)
+	if (isNaN(n)) return "";
+	return intl("currency", "currencyCode, locale, or options", () =>
+		new Intl.NumberFormat(tag, { style: "currency", currency: code, ...formatOptions }).format(n),
 	);
 };
 
@@ -112,14 +112,14 @@ export const currency = (value, currencyCode, locale, options) => {
  * {{ survey.completionRate | percent }}
  */
 export const percent = (value, options) => {
-	const { asFraction, maximumFractionDigits, locale, ...rest } = arg.object('percent', 'options', options) ?? {};
-	const asFractionValue = arg.boolean('percent', 'options.asFraction', asFraction) ?? true;
-	const digits = arg.number('percent', 'options.maximumFractionDigits', maximumFractionDigits) ?? 0;
-	const tag = arg.locale('percent', 'options.locale', locale) ?? 'en-US';
+	const { asFraction, maximumFractionDigits, locale, ...rest } = arg.object("percent", "options", options) ?? {};
+	const asFractionValue = arg.boolean("percent", "options.asFraction", asFraction) ?? true;
+	const digits = arg.number("percent", "options.maximumFractionDigits", maximumFractionDigits) ?? 0;
+	const tag = arg.locale("percent", "options.locale", locale) ?? "en-US";
 	const n = toNumber(value);
-	if (isNaN(n)) return '';
+	if (isNaN(n)) return "";
 	const fraction = asFractionValue ? n : n / 100;
-	return intl('percent', 'options', () =>
-		new Intl.NumberFormat(tag, { style: 'percent', maximumFractionDigits: digits, ...rest }).format(fraction)
+	return intl("percent", "options", () =>
+		new Intl.NumberFormat(tag, { style: "percent", maximumFractionDigits: digits, ...rest }).format(fraction),
 	);
 };

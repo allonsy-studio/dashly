@@ -45,7 +45,7 @@ export const trim = (value) => (value == null ? undefined : String(value).trim()
  * @returns {string | undefined}
  */
 export const stripWhitespace = (value) =>
-	value == null ? undefined : String(value).replace(/\s/g, '');
+	value == null ? undefined : String(value).replace(/\s/g, "");
 
 /**
  * Strip every non-digit character from a string. Useful for phone-number
@@ -54,7 +54,7 @@ export const stripWhitespace = (value) =>
  * @returns {string | undefined}
  */
 export const digitsOnly = (value) =>
-	value == null ? undefined : String(value).replace(/\D/g, '').trim();
+	value == null ? undefined : String(value).replace(/\D/g, "").trim();
 
 /**
  * Uppercase the first character of a string and lowercase the rest. Matches

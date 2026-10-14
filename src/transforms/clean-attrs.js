@@ -15,7 +15,7 @@
  * @module @allons-y/dashly/transforms/clean-attrs
  */
 
-const EXTRA_ATTRS = ['eleventy:ignore'];
+const EXTRA_ATTRS = ["eleventy:ignore"];
 
 /**
  * Create the attribute-cleanup transform.
@@ -26,15 +26,15 @@ const EXTRA_ATTRS = ['eleventy:ignore'];
  */
 export const createCleanAttrsTransform = (options = {}) => {
 	const attrs = options.attrs ?? EXTRA_ATTRS;
-	const patterns = attrs.map((attr) => new RegExp(`\\s+${escapeRegExp(attr)}=""`, 'g'));
+	const patterns = attrs.map((attr) => new RegExp(`\\s+${escapeRegExp(attr)}=""`, "g"));
 
 	/** @this {{ page?: { outputPath?: string }, outputPath?: string }} Eleventy's transform context. */
 	return function cleanAttrsTransform(content) {
-		const outputPath = this?.page?.outputPath || '';
-		if (!outputPath.endsWith('.html')) return content;
-		return patterns.reduce((html, re) => html.replace(re, ''), content);
+		const outputPath = this?.page?.outputPath || "";
+		if (!outputPath.endsWith(".html")) return content;
+		return patterns.reduce((html, re) => html.replace(re, ""), content);
 	};
 };
 
 /** @param {string} str */
-const escapeRegExp = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const escapeRegExp = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");

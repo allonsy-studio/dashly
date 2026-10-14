@@ -15,7 +15,7 @@
  * @module @allons-y/dashly/filters/arrays
  */
 
-import { arg, isHelperOptions, need } from '../validate.js';
+import { arg, isHelperOptions, need } from "../validate.js";
 
 /**
  * Return the first item of an array, or the first `n` items if a count is
@@ -42,7 +42,7 @@ import { arg, isHelperOptions, need } from '../validate.js';
  * {% for post in collections.posts | first(3) %} … {% endfor %}
  */
 export const first = (value, n) => {
-	const count = arg.number('first', 'n', n);
+	const count = arg.number("first", "n", n);
 	if (!isArray(value)) return value;
 	if (count === undefined) return value[0];
 	if (count <= 0) return [];
@@ -70,7 +70,7 @@ export const first = (value, n) => {
  * {{ collections.posts | last }}
  */
 export const last = (value, n) => {
-	const count = arg.number('last', 'n', n);
+	const count = arg.number("last", "n", n);
 	if (!isArray(value)) return value;
 	if (count === undefined) return value[value.length - 1];
 	if (count <= 0) return [];
@@ -97,7 +97,7 @@ export const last = (value, n) => {
  */
 export const reverse = (value) => {
 	if (isArray(value)) return value.slice().reverse();
-	if (typeof value === 'string') return Array.from(value).reverse().join('');
+	if (typeof value === "string") return Array.from(value).reverse().join("");
 	return value;
 };
 
@@ -116,8 +116,8 @@ const isArray = (value) => Array.isArray(value);
  */
 const getPath = (obj, path) => {
 	if (obj == null) return undefined;
-	if (typeof path === 'function') return path(obj);
-	const keys = String(path).split('.');
+	if (typeof path === "function") return path(obj);
+	const keys = String(path).split(".");
 	let cur = obj;
 	for (const k of keys) {
 		if (cur == null) return undefined;
@@ -146,7 +146,7 @@ const getPath = (obj, path) => {
  * {% for year, items in collections.posts | groupBy('data.year') %} … {% endfor %}
  */
 export const groupBy = (value, keyOrFn) => {
-	need.keyOrFn('groupBy', 'keyOrFn', keyOrFn);
+	need.keyOrFn("groupBy", "keyOrFn", keyOrFn);
 	if (!Array.isArray(value)) return {};
 	/** @type {Record<string, T[]>} */
 	const out = {};
@@ -175,17 +175,17 @@ export const groupBy = (value, keyOrFn) => {
  * sortBy(items, (item) => item.priority);
  */
 export const sortBy = (value, keyOrFn, order) => {
-	need.keyOrFn('sortBy', 'keyOrFn', keyOrFn);
-	const direction = arg.oneOf(['asc', 'desc'])('sortBy', 'order', order) ?? 'asc';
+	need.keyOrFn("sortBy", "keyOrFn", keyOrFn);
+	const direction = arg.oneOf(["asc", "desc"])("sortBy", "order", order) ?? "asc";
 	if (!isArray(value)) return value;
-	const dir = direction === 'desc' ? -1 : 1;
+	const dir = direction === "desc" ? -1 : 1;
 	return value.slice().sort((a, b) => {
 		const av = getPath(a, keyOrFn);
 		const bv = getPath(b, keyOrFn);
 		if (av === bv) return 0;
 		if (av == null) return 1;
 		if (bv == null) return -1;
-		if (typeof av === 'string' && typeof bv === 'string') {
+		if (typeof av === "string" && typeof bv === "string") {
 			return av.localeCompare(bv) * dir;
 		}
 		return (av < bv ? -1 : 1) * dir;
@@ -210,7 +210,7 @@ export const sortBy = (value, keyOrFn, order) => {
  * {% for row in images | chunk(3) %} … {% endfor %}
  */
 export const chunk = (value, size) => {
-	need.number('chunk', 'size', size);
+	need.number("chunk", "size", size);
 	if (!Array.isArray(value) || !Number.isInteger(size) || size <= 0) return [];
 	const out = [];
 	for (let i = 0; i < value.length; i += size) {
@@ -237,7 +237,7 @@ export const chunk = (value, size) => {
  * where(posts, 'data.featured'); // truthy-only
  */
 export const where = (value, keyOrFn, expected) => {
-	need.keyOrFn('where', 'keyOrFn', keyOrFn);
+	need.keyOrFn("where", "keyOrFn", keyOrFn);
 	if (!isArray(value)) return [];
 	if (expected === undefined || isHelperOptions(expected)) {
 		return value.filter((item) => Boolean(getPath(item, keyOrFn)));
@@ -261,7 +261,7 @@ export const where = (value, keyOrFn, expected) => {
  * {{ collections.posts | pluck('data.title') | join(', ') }}
  */
 export const pluck = (value, keyOrFn) => {
-	need.keyOrFn('pluck', 'keyOrFn', keyOrFn);
+	need.keyOrFn("pluck", "keyOrFn", keyOrFn);
 	if (!Array.isArray(value)) return [];
 	return value.map((item) => getPath(item, keyOrFn));
 };

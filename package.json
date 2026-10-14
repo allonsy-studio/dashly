@@ -47,8 +47,8 @@
     "changeset": "changeset",
     "ci:test": "vitest run",
     "coverage": "vitest run --coverage",
-    "format": "yarn lint --fix",
-    "lint": "eslint .",
+    "format": "opx lint --fix",
+    "lint": "opx lint",
     "postinstall": "husky && envoy || true",
     "postpack": "pinst --enable",
     "precommit": "lint-staged",
@@ -89,19 +89,17 @@
     "@11ty/eleventy": "^3.1.6",
     "@11ty/eleventy-plugin-handlebars": "^1.0.0",
     "@allons-y/envoy": "^1.1.0",
+    "@allons-y/opx-cli": "^0.1.0-beta.0",
+    "@allons-y/opx-lint-js": "^0.1.0-beta.0",
+    "@allons-y/opx-lint-json": "^0.1.0-beta.0",
+    "@allons-y/opx-lint-md": "^0.1.0-beta.0",
     "@changesets/changelog-github": "^0.7.0",
     "@changesets/cli": "^2.31.0",
-    "@eslint/css": "^1.3.0",
-    "@eslint/js": "^10.0.1",
-    "@eslint/json": "^2.0.0",
-    "@eslint/markdown": "^8.0.2",
     "@types/html-minifier-terser": "^7.0.2",
     "@types/markdown-it": "^14.2.0",
     "@types/node": "^24",
     "@vitest/eslint-plugin": "^1.6.20",
     "eslint": "^10.6.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-jsonc": "^3.2.0",
     "eslint-plugin-license-header": "^0.9.0",
     "globals": "^17.7.0",
     "handlebars": "^4.7.10",
@@ -130,7 +128,7 @@
   },
   "lint-staged": {
     "*": [
-      "eslint --fix --format stylish"
+      "opx lint --fix"
     ],
     ".github/renovate.json": "npx --yes --package renovate -- renovate-config-validator --strict"
   },

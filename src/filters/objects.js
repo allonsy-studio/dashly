@@ -18,6 +18,6 @@
  * @returns {string[]}
  */
 export const keys = (value) => {
-	if (value == null || typeof value !== 'object') return [];
+	if (value == null || typeof value !== "object") return [];
 	return Object.keys(value);
 };
