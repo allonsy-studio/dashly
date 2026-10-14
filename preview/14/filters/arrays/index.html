@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="en">
+<head>
+		<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>arrays: dashly</title>
+<meta name="description" content="A standard-library of filters, transforms, and shortcodes for Eleventy.">
+<link rel="canonical" href="https://projects.allons-y.studio/dashly/">
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="dashly: A standard library of filters, transforms, &amp; shortcodes for Eleventy">
+<meta property="og:description" content="A standard-library of filters, transforms, and shortcodes for Eleventy.">
+<meta property="og:url" content="https://projects.allons-y.studio/dashly/">
+
+<link rel="icon" href="/dashly/preview/14/assets/img/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Mono&amp;display=swap">
+
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/tokens.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/reset.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/layout.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/components.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/studio.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/project.css">
+<script src="https://kit.fontawesome.com/42e99b4632.js" crossorigin="anonymous" defer=""></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/copy-code.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/code-highlight.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/search.js"></script>
+
+	</head>
+	<body>
+		<a href="#main">Skip to content</a>
+		<header>
+			<a data-studio="banner" href="https://allons-y.studio">
+	<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+</a>
+
+			<div>
+	<a rel="home" href="/dashly/preview/14/">
+		
+		<span>dashly</span>
+	</a>
+	<span data-tagline="">A standard library of filters, transforms, &amp; shortcodes for Eleventy</span>
+	<nav aria-label="Primary">
+		
+		
+		
+		<a href="/dashly/preview/14/getting-started/">Docs</a>
+		<a href="https://github.com/allonsy-studio/dashly"><span aria-hidden="true" class="fa-brands fa-github"></span> GitHub</a>
+		<a href="https://www.npmjs.com/package/@allons-y/dashly"><span aria-hidden="true" class="fa-brands fa-npm"></span> npm</a>
+	</nav>
+</div>
+
+		</header>
+		<main id="main" tabindex="-1">
+			<div>
+	<nav aria-label="Documentation">
+	<div data-search="" role="search"></div>
+	<ul>
+		<li>
+			<a href="/dashly/preview/14/getting-started/"><span aria-hidden="true" class="fa-solid fa-rocket fa-fw"></span> <span>Getting started</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/concepts/"><span aria-hidden="true" class="fa-solid fa-diagram-project fa-fw"></span> <span>How it works</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/config/"><span aria-hidden="true" class="fa-solid fa-sliders fa-fw"></span> <span>Configuration</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/filters/" aria-current="true"><span aria-hidden="true" class="fa-solid fa-filter fa-fw"></span> <span>Filters</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/filters/arrays/" aria-current="page">arrays</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/dates/">dates</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/debug/">debug</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/html/">html</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/numbers/">numbers</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/objects/">objects</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/strings/">strings</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/tags/">tags</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/text/">text</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/urls/">urls</a>
+				</li>
+			</ul>
+		</li>
+<li>
+			<a href="/dashly/preview/14/transforms/"><span aria-hidden="true" class="fa-solid fa-wand-magic-sparkles fa-fw"></span> <span>Transforms</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/transforms/clean-attrs/">clean-attrs</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/htmlmin/">htmlmin</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/postcss/">postcss</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/prettier/">prettier</a>
+				</li>
+			</ul>
+		</li>
+<li>
+			<a href="/dashly/preview/14/shortcodes/"><span aria-hidden="true" class="fa-solid fa-code fa-fw"></span> <span>Shortcodes</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/shortcodes/year/">year</a>
+				</li>
+			</ul>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/a-la-carte/"><span aria-hidden="true" class="fa-solid fa-feather-pointed fa-fw"></span> <span>Use only what you need</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/output/"><span aria-hidden="true" class="fa-solid fa-file-code fa-fw"></span> <span>Format &amp; minify output</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/metadata-and-feeds/"><span aria-hidden="true" class="fa-solid fa-rss fa-fw"></span> <span>Metadata, feeds, &amp; absolute URLs</span></a>
+			
+		</li>
+	</ul>
+</nav>
+
+	<article data-pagefind-body="">
+		<h1>arrays</h1>
+		
+	<p>In <a href="/dashly/preview/14/filters/">Filters</a></p>
+<p>Array-manipulation filters for Eleventy. Nunjucks &amp; Liquid have native
+<code>first</code> / <code>last</code> / <code>reverse</code> filters, but 11ty.js (JavaScript) templates &amp;
+Handlebars do not. Registering these via dashly makes them available in all
+four, as checked by <code>test/engines.test.js</code>.</p>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,15,16],[&quot;punctuation&quot;,22,23],[&quot;punctuation&quot;,32,33],[&quot;punctuation&quot;,42,43],[&quot;punctuation&quot;,51,52],[&quot;punctuation&quot;,59,60],[&quot;punctuation&quot;,67,68],[&quot;punctuation&quot;,75,76],[&quot;punctuation&quot;,77,78],[&quot;keyword&quot;,79,83],[&quot;string&quot;,84,117],[&quot;punctuation&quot;,117,118]]">import {
+	first,
+	last,
+	reverse,
+	groupBy,
+	sortBy,
+	chunk,
+	where,
+	pluck,
+} from '@allons-y/dashly/filters/arrays';</code></pre>
+</figure>
+
+
+<article aria-labelledby="first">
+	<h2 id="first"><code>first(value, n?)</code></h2>
+	<p>Return the first item of an array, or the first <code>n</code> items if a count is
+supplied. With no count, matches Nunjucks <code>first</code> (single item). With a
+count, returns the first N items — covers the "limit / head" use case.</p>
+
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>value</code>
+						
+					</td>
+					<td><code>readonly T[]</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>n</code>
+						<small>(optional)</small>
+					</td>
+					<td><code>number</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>T | T[] | undefined</code>
+			
+		</p>
+	</section>
+
+	<section>
+		<h3>Examples</h3>
+		<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,6],[&quot;function&quot;,7,12],[&quot;punctuation&quot;,12,13],[&quot;punctuation&quot;,13,14],[&quot;string&quot;,14,17],[&quot;punctuation&quot;,17,18],[&quot;string&quot;,19,22],[&quot;punctuation&quot;,22,23],[&quot;string&quot;,24,27],[&quot;punctuation&quot;,27,28],[&quot;punctuation&quot;,28,29],[&quot;punctuation&quot;,29,30]]">// 'a'
+first(['a', 'b', 'c']);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,13],[&quot;function&quot;,14,19],[&quot;punctuation&quot;,19,20],[&quot;punctuation&quot;,20,21],[&quot;string&quot;,21,24],[&quot;punctuation&quot;,24,25],[&quot;string&quot;,26,29],[&quot;punctuation&quot;,29,30],[&quot;string&quot;,31,34],[&quot;punctuation&quot;,34,35],[&quot;punctuation&quot;,35,36],[&quot;number&quot;,37,38],[&quot;punctuation&quot;,38,39],[&quot;punctuation&quot;,39,40]]">// ['a', 'b']
+first(['a', 'b', 'c'], 2);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ collections.posts | first }}</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{% for post in collections.posts | first(3) %} … {% endfor %}</code></pre>
+</figure>
+
+	</section>
+</article>
+<article aria-labelledby="last">
+	<h2 id="last"><code>last(value, n?)</code></h2>
+	<p>Return the last item of an array, or the last <code>n</code> items if a count is
+supplied. Mirror of <code>first</code>.</p>
+
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>value</code>
+						
+					</td>
+					<td><code>readonly T[]</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>n</code>
+						<small>(optional)</small>
+					</td>
+					<td><code>number</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>T | T[] | undefined</code>
+			
+		</p>
+	</section>
+
+	<section>
+		<h3>Examples</h3>
+		<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,6],[&quot;function&quot;,7,11],[&quot;punctuation&quot;,11,12],[&quot;punctuation&quot;,12,13],[&quot;string&quot;,13,16],[&quot;punctuation&quot;,16,17],[&quot;string&quot;,18,21],[&quot;punctuation&quot;,21,22],[&quot;string&quot;,23,26],[&quot;punctuation&quot;,26,27],[&quot;punctuation&quot;,27,28],[&quot;punctuation&quot;,28,29]]">// 'c'
+last(['a', 'b', 'c']);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,13],[&quot;function&quot;,14,18],[&quot;punctuation&quot;,18,19],[&quot;punctuation&quot;,19,20],[&quot;string&quot;,20,23],[&quot;punctuation&quot;,23,24],[&quot;string&quot;,25,28],[&quot;punctuation&quot;,28,29],[&quot;string&quot;,30,33],[&quot;punctuation&quot;,33,34],[&quot;punctuation&quot;,34,35],[&quot;number&quot;,36,37],[&quot;punctuation&quot;,37,38],[&quot;punctuation&quot;,38,39]]">// ['b', 'c']
+last(['a', 'b', 'c'], 2);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ collections.posts | last }}</code></pre>
+</figure>
+
+	</section>
+</article>
+<article aria-labelledby="reverse">
+	<h2 id="reverse"><code>reverse(value)</code></h2>
+	<p>Reverse an array or a string without mutating the input.</p>
+
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>value</code>
+						
+					</td>
+					<td><code>readonly T[] | string</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>T[] | string</code>
+			
+		</p>
+	</section>
+
+	<section>
+		<h3>Examples</h3>
+		<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,12],[&quot;function&quot;,13,20],[&quot;punctuation&quot;,20,21],[&quot;punctuation&quot;,21,22],[&quot;number&quot;,22,23],[&quot;punctuation&quot;,23,24],[&quot;number&quot;,25,26],[&quot;punctuation&quot;,26,27],[&quot;number&quot;,28,29],[&quot;punctuation&quot;,29,30],[&quot;punctuation&quot;,30,31],[&quot;punctuation&quot;,31,32]]">// [3, 2, 1]
+reverse([1, 2, 3]);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,8],[&quot;function&quot;,9,16],[&quot;punctuation&quot;,16,17],[&quot;string&quot;,17,22],[&quot;punctuation&quot;,22,23],[&quot;punctuation&quot;,23,24]]">// 'cba'
+reverse('abc');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ collections.posts | reverse }}</code></pre>
+</figure>
+
+	</section>
+</article>
+<article aria-labelledby="groupBy">
+	<h2 id="groupBy"><code>groupBy(value, keyOrFn)</code></h2>
+	<p>Group array items by a key, a dot-path, or a function. Returns a plain
+object keyed by the grouping value, with each value an array of items.</p>
+
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>value</code>
+						
+					</td>
+					<td><code>readonly T[]</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>keyOrFn</code>
+						
+					</td>
+					<td><code>string | ((item: T) =&gt; unknown)</code></td>
+					<td></td>
+					<td>Property name (dot-paths supported, e.g. <code>'data.year'</code>) or selector function.</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>Record&lt;string, T[]&gt;</code>
+			
+		</p>
+	</section>
+
+	<section>
+		<h3>Examples</h3>
+		<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,31],[&quot;function&quot;,32,39],[&quot;punctuation&quot;,39,40],[&quot;punctuation&quot;,45,46],[&quot;string&quot;,47,58],[&quot;punctuation&quot;,58,59],[&quot;punctuation&quot;,59,60]]">// { 2025: [...], 2026: [...] }
+groupBy(posts, 'data.year');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;function&quot;,0,7],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,13,14],[&quot;punctuation&quot;,15,16],[&quot;number&quot;,16,17],[&quot;punctuation&quot;,17,18],[&quot;punctuation&quot;,19,21],[&quot;punctuation&quot;,23,24],[&quot;punctuation&quot;,28,29],[&quot;punctuation&quot;,33,34],[&quot;number&quot;,34,35],[&quot;punctuation&quot;,35,36],[&quot;punctuation&quot;,36,37],[&quot;punctuation&quot;,37,38]]">groupBy(posts, (p) =&gt; p.data.tags[0]);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{% for year, items in collections.posts | groupBy('data.year') %} … {% endfor %}</code></pre>
+</figure>
+
+	</section>
+</article>
+<article aria-labelledby="sortBy">
+	<h2 id="sortBy"><code>sortBy(value, keyOrFn, order?)</code></h2>
+	<p>Sort an array by a key, dot-path, or selector function, without mutating
+the input. String values are compared with <code>localeCompare</code>; everything else
+with standard <code>&lt;</code> / <code>&gt;</code>.</p>
+
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>value</code>
+						
+					</td>
+					<td><code>readonly T[]</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>keyOrFn</code>
+						
+					</td>
+					<td><code>string | ((item: T) =&gt; unknown)</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>order</code>
+						<small>(optional)</small>
+					</td>
+					<td><code>'asc' | 'desc'</code></td>
+					<td><code>'asc'</code></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>T[]</code>
+			
+		</p>
+	</section>
+
+	<section>
+		<h3>Examples</h3>
+		<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;function&quot;,0,6],[&quot;punctuation&quot;,6,7],[&quot;punctuation&quot;,12,13],[&quot;string&quot;,14,25],[&quot;punctuation&quot;,25,26],[&quot;string&quot;,27,33],[&quot;punctuation&quot;,33,34],[&quot;punctuation&quot;,34,35]]">sortBy(posts, 'data.date', 'desc');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;function&quot;,0,6],[&quot;punctuation&quot;,6,7],[&quot;punctuation&quot;,12,13],[&quot;punctuation&quot;,14,15],[&quot;number&quot;,15,19],[&quot;punctuation&quot;,19,20],[&quot;punctuation&quot;,21,23],[&quot;punctuation&quot;,28,29],[&quot;punctuation&quot;,37,38],[&quot;punctuation&quot;,38,39]]">sortBy(items, (item) =&gt; item.priority);</code></pre>
+</figure>
+
+	</section>
+</article>
+<article aria-labelledby="chunk">
+	<h2 id="chunk"><code>chunk(value, size)</code></h2>
+	<p>Split an array into N-sized chunks. The final chunk may be smaller than
+<code>size</code>. Returns an empty array for non-array or invalid-size input.</p>
+
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>value</code>
+						
+					</td>
+					<td><code>readonly T[]</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>size</code>
+						
+					</td>
+					<td><code>number</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>T[][]</code>
+			
+		</p>
+	</section>
+
+	<section>
+		<h3>Examples</h3>
+		<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,24],[&quot;function&quot;,25,30],[&quot;punctuation&quot;,30,31],[&quot;punctuation&quot;,31,32],[&quot;number&quot;,32,33],[&quot;punctuation&quot;,33,34],[&quot;number&quot;,35,36],[&quot;punctuation&quot;,36,37],[&quot;number&quot;,38,39],[&quot;punctuation&quot;,39,40],[&quot;number&quot;,41,42],[&quot;punctuation&quot;,42,43],[&quot;number&quot;,44,45],[&quot;punctuation&quot;,45,46],[&quot;punctuation&quot;,46,47],[&quot;number&quot;,48,49],[&quot;punctuation&quot;,49,50],[&quot;punctuation&quot;,50,51]]">// [[1, 2], [3, 4], [5]]
+chunk([1, 2, 3, 4, 5], 2);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{# render a gallery grid #}
+{% for row in images | chunk(3) %} … {% endfor %}</code></pre>
+</figure>
+
+	</section>
+</article>
+<article aria-labelledby="where">
+	<h2 id="where"><code>where(value, keyOrFn, expected?)</code></h2>
+	<p>Filter an array by a key/dot-path equality check. When <code>expected</code> is
+omitted, items where the keyed value is truthy are kept (useful for
+<code>where(posts, 'data.featured')</code>).</p>
+
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>value</code>
+						
+					</td>
+					<td><code>readonly T[]</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>keyOrFn</code>
+						
+					</td>
+					<td><code>string | ((item: T) =&gt; unknown)</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>expected</code>
+						<small>(optional)</small>
+					</td>
+					<td><code>unknown</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>T[]</code>
+			
+		</p>
+	</section>
+
+	<section>
+		<h3>Examples</h3>
+		<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;function&quot;,0,5],[&quot;punctuation&quot;,5,6],[&quot;punctuation&quot;,11,12],[&quot;string&quot;,13,25],[&quot;punctuation&quot;,25,26],[&quot;number&quot;,27,32],[&quot;punctuation&quot;,32,33],[&quot;punctuation&quot;,33,34]]">where(posts, 'data.draft', false);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;function&quot;,0,5],[&quot;punctuation&quot;,5,6],[&quot;punctuation&quot;,11,12],[&quot;string&quot;,13,28],[&quot;punctuation&quot;,28,29],[&quot;punctuation&quot;,29,30],[&quot;comment&quot;,31,45]]">where(posts, 'data.featured'); // truthy-only</code></pre>
+</figure>
+
+	</section>
+</article>
+<article aria-labelledby="pluck">
+	<h2 id="pluck"><code>pluck(value, keyOrFn)</code></h2>
+	<p>Project an array of objects onto a single key or dot-path.</p>
+
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>value</code>
+						
+					</td>
+					<td><code>readonly T[]</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>keyOrFn</code>
+						
+					</td>
+					<td><code>string | ((item: T) =&gt; unknown)</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>unknown[]</code>
+			
+		</p>
+	</section>
+
+	<section>
+		<h3>Examples</h3>
+		<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,21],[&quot;function&quot;,22,27],[&quot;punctuation&quot;,27,28],[&quot;punctuation&quot;,28,29],[&quot;punctuation&quot;,29,30],[&quot;function&quot;,31,36],[&quot;punctuation&quot;,36,37],[&quot;string&quot;,38,45],[&quot;punctuation&quot;,46,47],[&quot;punctuation&quot;,47,48],[&quot;punctuation&quot;,49,50],[&quot;function&quot;,51,56],[&quot;punctuation&quot;,56,57],[&quot;string&quot;,58,65],[&quot;punctuation&quot;,66,67],[&quot;punctuation&quot;,67,68],[&quot;punctuation&quot;,68,69],[&quot;string&quot;,70,77],[&quot;punctuation&quot;,77,78],[&quot;punctuation&quot;,78,79]]">// ['Hello', 'World']
+pluck([{ title: 'Hello' }, { title: 'World' }], 'title');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ collections.posts | pluck('data.title') | join(', ') }}</code></pre>
+</figure>
+
+	</section>
+</article>
+
+<nav aria-label="Pager">
+	<a rel="prev" href="/dashly/preview/14/filters/">Filters</a>
+	<a rel="next" href="/dashly/preview/14/filters/dates/">dates</a>
+</nav>
+
+
+	
+
+	</article>
+</div>
+
+
+		</main>
+		<footer>
+	<div>
+		<div>
+			<p><strong>dashly</strong></p>
+			<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+			<p>
+				<small>
+					Licensed under
+					<a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE" data-license="">MPL-2.0</a>
+				</small>
+			</p>
+		</div>
+		<nav aria-label="Project links">
+			<p><strong>Project</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+				<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+			</ul>
+		</nav>
+		<nav aria-label="Help links">
+			<p><strong>Help</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/CODE_OF_CONDUCT.md">Code of conduct</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/SECURITY.md">Security policy</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div>
+		<div data-studio="cta">
+	<p>Work with Allons-y Studio</p>
+	<p>Design systems, front-end engineering, &amp; accessibility consulting for teams that depend on open source.</p>
+	<a href="mailto:consulting@allons-y.studio">consulting@allons-y.studio</a>
+</div>
+
+		<a data-studio="footer" href="https://allons-y.studio">
+	<picture>
+		<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-dark.svg">
+		<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+	</picture>
+	
+</a>
+
+	</div>
+</footer>
+
+	
+
+</body>
+</html>

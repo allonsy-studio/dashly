@@ -25,8 +25,10 @@
 <link rel="stylesheet" href="/dashly/preview/14/assets/styles/components.css">
 <link rel="stylesheet" href="/dashly/preview/14/assets/styles/studio.css">
 <link rel="stylesheet" href="/dashly/preview/14/assets/styles/project.css">
+<script src="https://kit.fontawesome.com/42e99b4632.js" crossorigin="anonymous" defer=""></script>
 <script type="module" src="/dashly/preview/14/assets/scripts/copy-code.js"></script>
 <script type="module" src="/dashly/preview/14/assets/scripts/code-highlight.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/search.js"></script>
 
 	</head>
 	<body>
@@ -41,13 +43,14 @@
 		
 		<span>dashly</span>
 	</a>
+	<span data-tagline="">A standard library of filters, transforms, &amp; shortcodes for Eleventy</span>
 	<nav aria-label="Primary">
 		
 		
 		
 		<a href="/dashly/preview/14/getting-started/">Docs</a>
-		<a href="https://github.com/allonsy-studio/dashly">GitHub</a>
-		<a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+		<a href="https://github.com/allonsy-studio/dashly"><span aria-hidden="true" class="fa-brands fa-github"></span> GitHub</a>
+		<a href="https://www.npmjs.com/package/@allons-y/dashly"><span aria-hidden="true" class="fa-brands fa-npm"></span> npm</a>
 	</nav>
 </div>
 
@@ -55,38 +58,96 @@
 		<main id="main" tabindex="-1">
 			<div>
 	<nav aria-label="Documentation">
+	<div data-search="" role="search"></div>
 	<ul>
 		<li>
-			<a href="/dashly/preview/14/getting-started/">Getting started</a>
+			<a href="/dashly/preview/14/getting-started/"><span aria-hidden="true" class="fa-solid fa-rocket fa-fw"></span> <span>Getting started</span></a>
+			
 		</li>
 <li>
-			<a href="/dashly/preview/14/concepts/">How it works</a>
+			<a href="/dashly/preview/14/concepts/"><span aria-hidden="true" class="fa-solid fa-diagram-project fa-fw"></span> <span>How it works</span></a>
+			
 		</li>
 <li>
-			<a href="/dashly/preview/14/config/" aria-current="page">Configuration</a>
+			<a href="/dashly/preview/14/config/" aria-current="page"><span aria-hidden="true" class="fa-solid fa-sliders fa-fw"></span> <span>Configuration</span></a>
+			
 		</li>
 <li>
-			<a href="/dashly/preview/14/filters/">Filters</a>
+			<a href="/dashly/preview/14/filters/"><span aria-hidden="true" class="fa-solid fa-filter fa-fw"></span> <span>Filters</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/filters/arrays/">arrays</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/dates/">dates</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/debug/">debug</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/html/">html</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/numbers/">numbers</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/objects/">objects</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/strings/">strings</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/tags/">tags</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/text/">text</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/urls/">urls</a>
+				</li>
+			</ul>
 		</li>
 <li>
-			<a href="/dashly/preview/14/transforms/">Transforms</a>
+			<a href="/dashly/preview/14/transforms/"><span aria-hidden="true" class="fa-solid fa-wand-magic-sparkles fa-fw"></span> <span>Transforms</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/transforms/clean-attrs/">clean-attrs</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/htmlmin/">htmlmin</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/postcss/">postcss</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/prettier/">prettier</a>
+				</li>
+			</ul>
 		</li>
 <li>
-			<a href="/dashly/preview/14/shortcodes/">Shortcodes</a>
+			<a href="/dashly/preview/14/shortcodes/"><span aria-hidden="true" class="fa-solid fa-code fa-fw"></span> <span>Shortcodes</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/shortcodes/year/">year</a>
+				</li>
+			</ul>
 		</li>
 <li>
-			<a href="/dashly/preview/14/guides/a-la-carte/">Use only what you need</a>
+			<a href="/dashly/preview/14/guides/a-la-carte/"><span aria-hidden="true" class="fa-solid fa-feather-pointed fa-fw"></span> <span>Use only what you need</span></a>
+			
 		</li>
 <li>
-			<a href="/dashly/preview/14/guides/output/">Format &amp; minify output</a>
+			<a href="/dashly/preview/14/guides/output/"><span aria-hidden="true" class="fa-solid fa-file-code fa-fw"></span> <span>Format &amp; minify output</span></a>
+			
 		</li>
 <li>
-			<a href="/dashly/preview/14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a>
+			<a href="/dashly/preview/14/guides/metadata-and-feeds/"><span aria-hidden="true" class="fa-solid fa-rss fa-fw"></span> <span>Metadata, feeds, &amp; absolute URLs</span></a>
+			
 		</li>
 	</ul>
 </nav>
 
-	<article>
+	<article data-pagefind-body="">
 		<h1>Configuration</h1>
 		
 	<p>Pass options as the second argument to <code>addPlugin</code>:</p>

@@ -25,8 +25,10 @@
 <link rel="stylesheet" href="/dashly/preview/14/assets/styles/components.css">
 <link rel="stylesheet" href="/dashly/preview/14/assets/styles/studio.css">
 <link rel="stylesheet" href="/dashly/preview/14/assets/styles/project.css">
+<script src="https://kit.fontawesome.com/42e99b4632.js" crossorigin="anonymous" defer=""></script>
 <script type="module" src="/dashly/preview/14/assets/scripts/copy-code.js"></script>
 <script type="module" src="/dashly/preview/14/assets/scripts/code-highlight.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/search.js"></script>
 
 	</head>
 	<body>
@@ -41,13 +43,14 @@
 		
 		<span>dashly</span>
 	</a>
+	<span data-tagline="">A standard library of filters, transforms, &amp; shortcodes for Eleventy</span>
 	<nav aria-label="Primary">
 		
 		
 		
 		<a href="/dashly/preview/14/getting-started/">Docs</a>
-		<a href="https://github.com/allonsy-studio/dashly">GitHub</a>
-		<a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+		<a href="https://github.com/allonsy-studio/dashly"><span aria-hidden="true" class="fa-brands fa-github"></span> GitHub</a>
+		<a href="https://www.npmjs.com/package/@allons-y/dashly"><span aria-hidden="true" class="fa-brands fa-npm"></span> npm</a>
 	</nav>
 </div>
 
@@ -55,91 +58,120 @@
 		<main id="main" tabindex="-1">
 			<div>
 	<nav aria-label="Documentation">
+	<div data-search="" role="search"></div>
 	<ul>
 		<li>
-			<a href="/dashly/preview/14/getting-started/">Getting started</a>
+			<a href="/dashly/preview/14/getting-started/"><span aria-hidden="true" class="fa-solid fa-rocket fa-fw"></span> <span>Getting started</span></a>
+			
 		</li>
 <li>
-			<a href="/dashly/preview/14/concepts/">How it works</a>
+			<a href="/dashly/preview/14/concepts/"><span aria-hidden="true" class="fa-solid fa-diagram-project fa-fw"></span> <span>How it works</span></a>
+			
 		</li>
 <li>
-			<a href="/dashly/preview/14/config/">Configuration</a>
+			<a href="/dashly/preview/14/config/"><span aria-hidden="true" class="fa-solid fa-sliders fa-fw"></span> <span>Configuration</span></a>
+			
 		</li>
 <li>
-			<a href="/dashly/preview/14/filters/">Filters</a>
+			<a href="/dashly/preview/14/filters/"><span aria-hidden="true" class="fa-solid fa-filter fa-fw"></span> <span>Filters</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/filters/arrays/">arrays</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/dates/">dates</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/debug/">debug</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/html/">html</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/numbers/">numbers</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/objects/">objects</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/strings/">strings</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/tags/">tags</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/text/">text</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/urls/">urls</a>
+				</li>
+			</ul>
 		</li>
 <li>
-			<a href="/dashly/preview/14/transforms/">Transforms</a>
+			<a href="/dashly/preview/14/transforms/"><span aria-hidden="true" class="fa-solid fa-wand-magic-sparkles fa-fw"></span> <span>Transforms</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/transforms/clean-attrs/">clean-attrs</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/htmlmin/">htmlmin</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/postcss/">postcss</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/prettier/">prettier</a>
+				</li>
+			</ul>
 		</li>
 <li>
-			<a href="/dashly/preview/14/shortcodes/" aria-current="page">Shortcodes</a>
+			<a href="/dashly/preview/14/shortcodes/" aria-current="page"><span aria-hidden="true" class="fa-solid fa-code fa-fw"></span> <span>Shortcodes</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/shortcodes/year/">year</a>
+				</li>
+			</ul>
 		</li>
 <li>
-			<a href="/dashly/preview/14/guides/a-la-carte/">Use only what you need</a>
+			<a href="/dashly/preview/14/guides/a-la-carte/"><span aria-hidden="true" class="fa-solid fa-feather-pointed fa-fw"></span> <span>Use only what you need</span></a>
+			
 		</li>
 <li>
-			<a href="/dashly/preview/14/guides/output/">Format &amp; minify output</a>
+			<a href="/dashly/preview/14/guides/output/"><span aria-hidden="true" class="fa-solid fa-file-code fa-fw"></span> <span>Format &amp; minify output</span></a>
+			
 		</li>
 <li>
-			<a href="/dashly/preview/14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a>
+			<a href="/dashly/preview/14/guides/metadata-and-feeds/"><span aria-hidden="true" class="fa-solid fa-rss fa-fw"></span> <span>Metadata, feeds, &amp; absolute URLs</span></a>
+			
 		</li>
 	</ul>
 </nav>
 
-	<article>
+	<article data-pagefind-body="">
 		<h1>Shortcodes</h1>
 		
 	<p>Shortcodes are registered with <code>addShortcode</code> &amp; called as <code>{% name %}</code> in
 templates. This entry re-exports every shortcode module.</p>
 
 
-<ul>
-	<li>
-		<a href="#module-year">year</a>: <span>Current-year shortcode for footer copyrights and similar.</span>
-	</li>
-</ul>
-
 <section aria-labelledby="module-year">
-	<h2 id="module-year"><code>year</code></h2>
+	<h2 id="module-year"><a href="/dashly/preview/14/shortcodes/year/"><code>year</code></a></h2>
 	<p>Current-year shortcode for footer copyrights and similar.</p>
 
-	<figure>
-	
-	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,21,22],[&quot;keyword&quot;,23,27],[&quot;string&quot;,28,62],[&quot;punctuation&quot;,62,63]]">import { currentYear } from '@allons-y/dashly/shortcodes/year';</code></pre>
-</figure>
-
-
-	<article aria-labelledby="currentYear">
-		<h3 id="currentYear"><code>currentYear()</code></h3>
-		<p>Return the current four-digit year. Distinct from the <code>year</code> filter, which
-extracts the year from a passed-in date.</p>
-
-
-		
-
-		<section>
-			<h4>Returns</h4>
-			<p>
-				<code>number</code>
-				
-			</p>
-		</section>
-
-		<section>
-			<h4>Examples</h4>
-			<figure>
-	
-	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,45]]">// &lt;p&gt;&amp;copy; {% currentYear %} Acme Corp.&lt;/p&gt;</code></pre>
-</figure>
-
-<figure>
-	
-	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,7],[&quot;function&quot;,8,19],[&quot;punctuation&quot;,19,20],[&quot;punctuation&quot;,20,21],[&quot;punctuation&quot;,21,22]]">// 2026
-currentYear();</code></pre>
-</figure>
-
-		</section>
-	</article>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col">Export</th>
+				<th scope="col">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="/dashly/preview/14/shortcodes/year/#currentYear"><code>currentYear()</code></a></td>
+				<td>Return the current four-digit year.</td>
+			</tr>
+		</tbody>
+	</table>
 </section>
 
 	<nav aria-label="Pager">

@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+		<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>text: dashly</title>
+<meta name="description" content="A standard-library of filters, transforms, and shortcodes for Eleventy.">
+<link rel="canonical" href="https://projects.allons-y.studio/dashly/">
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="dashly: A standard library of filters, transforms, &amp; shortcodes for Eleventy">
+<meta property="og:description" content="A standard-library of filters, transforms, and shortcodes for Eleventy.">
+<meta property="og:url" content="https://projects.allons-y.studio/dashly/">
+
+<link rel="icon" href="/dashly/preview/14/assets/img/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Mono&amp;display=swap">
+
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/tokens.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/reset.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/layout.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/components.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/studio.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/project.css">
+<script src="https://kit.fontawesome.com/42e99b4632.js" crossorigin="anonymous" defer=""></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/copy-code.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/code-highlight.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/search.js"></script>
+
+	</head>
+	<body>
+		<a href="#main">Skip to content</a>
+		<header>
+			<a data-studio="banner" href="https://allons-y.studio">
+	<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+</a>
+
+			<div>
+	<a rel="home" href="/dashly/preview/14/">
+		
+		<span>dashly</span>
+	</a>
+	<span data-tagline="">A standard library of filters, transforms, &amp; shortcodes for Eleventy</span>
+	<nav aria-label="Primary">
+		
+		
+		
+		<a href="/dashly/preview/14/getting-started/">Docs</a>
+		<a href="https://github.com/allonsy-studio/dashly"><span aria-hidden="true" class="fa-brands fa-github"></span> GitHub</a>
+		<a href="https://www.npmjs.com/package/@allons-y/dashly"><span aria-hidden="true" class="fa-brands fa-npm"></span> npm</a>
+	</nav>
+</div>
+
+		</header>
+		<main id="main" tabindex="-1">
+			<div>
+	<nav aria-label="Documentation">
+	<div data-search="" role="search"></div>
+	<ul>
+		<li>
+			<a href="/dashly/preview/14/getting-started/"><span aria-hidden="true" class="fa-solid fa-rocket fa-fw"></span> <span>Getting started</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/concepts/"><span aria-hidden="true" class="fa-solid fa-diagram-project fa-fw"></span> <span>How it works</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/config/"><span aria-hidden="true" class="fa-solid fa-sliders fa-fw"></span> <span>Configuration</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/filters/" aria-current="true"><span aria-hidden="true" class="fa-solid fa-filter fa-fw"></span> <span>Filters</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/filters/arrays/">arrays</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/dates/">dates</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/debug/">debug</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/html/">html</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/numbers/">numbers</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/objects/">objects</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/strings/">strings</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/tags/">tags</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/text/" aria-current="page">text</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/urls/">urls</a>
+				</li>
+			</ul>
+		</li>
+<li>
+			<a href="/dashly/preview/14/transforms/"><span aria-hidden="true" class="fa-solid fa-wand-magic-sparkles fa-fw"></span> <span>Transforms</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/transforms/clean-attrs/">clean-attrs</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/htmlmin/">htmlmin</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/postcss/">postcss</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/prettier/">prettier</a>
+				</li>
+			</ul>
+		</li>
+<li>
+			<a href="/dashly/preview/14/shortcodes/"><span aria-hidden="true" class="fa-solid fa-code fa-fw"></span> <span>Shortcodes</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/shortcodes/year/">year</a>
+				</li>
+			</ul>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/a-la-carte/"><span aria-hidden="true" class="fa-solid fa-feather-pointed fa-fw"></span> <span>Use only what you need</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/output/"><span aria-hidden="true" class="fa-solid fa-file-code fa-fw"></span> <span>Format &amp; minify output</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/metadata-and-feeds/"><span aria-hidden="true" class="fa-solid fa-rss fa-fw"></span> <span>Metadata, feeds, &amp; absolute URLs</span></a>
+			
+		</li>
+	</ul>
+</nav>
+
+	<article data-pagefind-body="">
+		<h1>text</h1>
+		
+	<p>In <a href="/dashly/preview/14/filters/">Filters</a></p>
+<p>Text-analysis filters: word counting, excerpting, and reading-time
+estimation. Strip HTML so callers can feed rendered post content directly.</p>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,19,20],[&quot;punctuation&quot;,33,34],[&quot;punctuation&quot;,43,44],[&quot;punctuation&quot;,45,46],[&quot;keyword&quot;,47,51],[&quot;string&quot;,52,83],[&quot;punctuation&quot;,83,84]]">import {
+	wordCount,
+	readingTime,
+	excerpt,
+} from '@allons-y/dashly/filters/text';</code></pre>
+</figure>
+
+
+<article aria-labelledby="wordCount">
+	<h2 id="wordCount"><code>wordCount(value)</code></h2>
+	<p>Count whitespace-delimited words in a string. HTML tags are stripped before
+counting so rendered post content can be passed in directly.</p>
+
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>value</code>
+						
+					</td>
+					<td><code>string</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>number</code>
+			
+		</p>
+	</section>
+
+	<section>
+		<h3>Examples</h3>
+		<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,12],[&quot;function&quot;,13,22],[&quot;punctuation&quot;,22,23],[&quot;string&quot;,23,50],[&quot;punctuation&quot;,50,51],[&quot;punctuation&quot;,51,52]]">// Returns 5
+wordCount('The quick brown fox jumps');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ post.content | wordCount }}</code></pre>
+</figure>
+
+	</section>
+</article>
+<article aria-labelledby="readingTime">
+	<h2 id="readingTime"><code>readingTime(value, wpm?)</code></h2>
+	<p>Estimate reading time in minutes for a block of text. Strips HTML, counts
+words, divides by <code>wpm</code> (default 200), and rounds to the nearest whole
+minute with a floor of 1.</p>
+<p>Accepts either a string (counted internally) or a pre-computed word count
+number.</p>
+
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>value</code>
+						
+					</td>
+					<td><code>string | number</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>wpm</code>
+						<small>(optional)</small>
+					</td>
+					<td><code>number</code></td>
+					<td><code>200</code></td>
+					<td>Words per minute.</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>number</code>
+			: Whole-minute estimate, minimum 1.
+		</p>
+	</section>
+
+	<section>
+		<h3>Examples</h3>
+		<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,12],[&quot;function&quot;,13,24],[&quot;punctuation&quot;,24,25],[&quot;string&quot;,25,44],[&quot;punctuation&quot;,44,45],[&quot;punctuation&quot;,45,46]]">// Returns 3
+readingTime('…a 600-word post…');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ post.content | readingTime }} min read</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ 1200 | readingTime(250) }}</code></pre>
+</figure>
+
+	</section>
+</article>
+<article aria-labelledby="excerpt">
+	<h2 id="excerpt"><code>excerpt(value, n?, unit?)</code></h2>
+	<p>Pull an excerpt from a string. Positive <code>n</code> returns the first N units;
+negative <code>n</code> returns the last |N| units. HTML tags are stripped first.
+Appends an ellipsis on the trimmed side when the input is actually cut.</p>
+
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>value</code>
+						
+					</td>
+					<td><code>string</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>n</code>
+						<small>(optional)</small>
+					</td>
+					<td><code>number</code></td>
+					<td><code>30</code></td>
+					<td>Word/char count. Negative for trailing slice.</td>
+				</tr>
+<tr>
+					<td>
+						<code>unit</code>
+						<small>(optional)</small>
+					</td>
+					<td><code>'words' | 'chars'</code></td>
+					<td><code>'words'</code></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>string</code>
+			
+		</p>
+	</section>
+
+	<section>
+		<h3>Examples</h3>
+		<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,31],[&quot;function&quot;,32,39],[&quot;punctuation&quot;,39,40],[&quot;string&quot;,40,85],[&quot;punctuation&quot;,85,86],[&quot;number&quot;,87,88],[&quot;punctuation&quot;,88,89],[&quot;punctuation&quot;,89,90]]">// "The quick brown fox jumps…"
+excerpt('The quick brown fox jumps over the lazy dog', 5);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,23],[&quot;function&quot;,24,31],[&quot;punctuation&quot;,31,32],[&quot;string&quot;,32,77],[&quot;punctuation&quot;,77,78],[&quot;punctuation&quot;,79,80],[&quot;number&quot;,80,81],[&quot;punctuation&quot;,81,82],[&quot;punctuation&quot;,82,83]]">// "…over the lazy dog"
+excerpt('The quick brown fox jumps over the lazy dog', -4);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ post.content | excerpt(40) }}</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ post.content | excerpt(200, 'chars') }}</code></pre>
+</figure>
+
+	</section>
+</article>
+
+<nav aria-label="Pager">
+	<a rel="prev" href="/dashly/preview/14/filters/tags/">tags</a>
+	<a rel="next" href="/dashly/preview/14/filters/urls/">urls</a>
+</nav>
+
+
+	
+
+	</article>
+</div>
+
+
+		</main>
+		<footer>
+	<div>
+		<div>
+			<p><strong>dashly</strong></p>
+			<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+			<p>
+				<small>
+					Licensed under
+					<a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE" data-license="">MPL-2.0</a>
+				</small>
+			</p>
+		</div>
+		<nav aria-label="Project links">
+			<p><strong>Project</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+				<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+			</ul>
+		</nav>
+		<nav aria-label="Help links">
+			<p><strong>Help</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/CODE_OF_CONDUCT.md">Code of conduct</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/SECURITY.md">Security policy</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div>
+		<div data-studio="cta">
+	<p>Work with Allons-y Studio</p>
+	<p>Design systems, front-end engineering, &amp; accessibility consulting for teams that depend on open source.</p>
+	<a href="mailto:consulting@allons-y.studio">consulting@allons-y.studio</a>
+</div>
+
+		<a data-studio="footer" href="https://allons-y.studio">
+	<picture>
+		<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-dark.svg">
+		<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+	</picture>
+	
+</a>
+
+	</div>
+</footer>
+
+	
+
+</body>
+</html>

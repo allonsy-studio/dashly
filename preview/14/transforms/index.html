@@ -25,8 +25,10 @@
 <link rel="stylesheet" href="/dashly/preview/14/assets/styles/components.css">
 <link rel="stylesheet" href="/dashly/preview/14/assets/styles/studio.css">
 <link rel="stylesheet" href="/dashly/preview/14/assets/styles/project.css">
+<script src="https://kit.fontawesome.com/42e99b4632.js" crossorigin="anonymous" defer=""></script>
 <script type="module" src="/dashly/preview/14/assets/scripts/copy-code.js"></script>
 <script type="module" src="/dashly/preview/14/assets/scripts/code-highlight.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/search.js"></script>
 
 	</head>
 	<body>
@@ -41,13 +43,14 @@
 		
 		<span>dashly</span>
 	</a>
+	<span data-tagline="">A standard library of filters, transforms, &amp; shortcodes for Eleventy</span>
 	<nav aria-label="Primary">
 		
 		
 		
 		<a href="/dashly/preview/14/getting-started/">Docs</a>
-		<a href="https://github.com/allonsy-studio/dashly">GitHub</a>
-		<a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+		<a href="https://github.com/allonsy-studio/dashly"><span aria-hidden="true" class="fa-brands fa-github"></span> GitHub</a>
+		<a href="https://www.npmjs.com/package/@allons-y/dashly"><span aria-hidden="true" class="fa-brands fa-npm"></span> npm</a>
 	</nav>
 </div>
 
@@ -55,38 +58,96 @@
 		<main id="main" tabindex="-1">
 			<div>
 	<nav aria-label="Documentation">
+	<div data-search="" role="search"></div>
 	<ul>
 		<li>
-			<a href="/dashly/preview/14/getting-started/">Getting started</a>
+			<a href="/dashly/preview/14/getting-started/"><span aria-hidden="true" class="fa-solid fa-rocket fa-fw"></span> <span>Getting started</span></a>
+			
 		</li>
 <li>
-			<a href="/dashly/preview/14/concepts/">How it works</a>
+			<a href="/dashly/preview/14/concepts/"><span aria-hidden="true" class="fa-solid fa-diagram-project fa-fw"></span> <span>How it works</span></a>
+			
 		</li>
 <li>
-			<a href="/dashly/preview/14/config/">Configuration</a>
+			<a href="/dashly/preview/14/config/"><span aria-hidden="true" class="fa-solid fa-sliders fa-fw"></span> <span>Configuration</span></a>
+			
 		</li>
 <li>
-			<a href="/dashly/preview/14/filters/">Filters</a>
+			<a href="/dashly/preview/14/filters/"><span aria-hidden="true" class="fa-solid fa-filter fa-fw"></span> <span>Filters</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/filters/arrays/">arrays</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/dates/">dates</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/debug/">debug</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/html/">html</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/numbers/">numbers</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/objects/">objects</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/strings/">strings</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/tags/">tags</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/text/">text</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/urls/">urls</a>
+				</li>
+			</ul>
 		</li>
 <li>
-			<a href="/dashly/preview/14/transforms/" aria-current="page">Transforms</a>
+			<a href="/dashly/preview/14/transforms/" aria-current="page"><span aria-hidden="true" class="fa-solid fa-wand-magic-sparkles fa-fw"></span> <span>Transforms</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/transforms/clean-attrs/">clean-attrs</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/htmlmin/">htmlmin</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/postcss/">postcss</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/prettier/">prettier</a>
+				</li>
+			</ul>
 		</li>
 <li>
-			<a href="/dashly/preview/14/shortcodes/">Shortcodes</a>
+			<a href="/dashly/preview/14/shortcodes/"><span aria-hidden="true" class="fa-solid fa-code fa-fw"></span> <span>Shortcodes</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/shortcodes/year/">year</a>
+				</li>
+			</ul>
 		</li>
 <li>
-			<a href="/dashly/preview/14/guides/a-la-carte/">Use only what you need</a>
+			<a href="/dashly/preview/14/guides/a-la-carte/"><span aria-hidden="true" class="fa-solid fa-feather-pointed fa-fw"></span> <span>Use only what you need</span></a>
+			
 		</li>
 <li>
-			<a href="/dashly/preview/14/guides/output/">Format &amp; minify output</a>
+			<a href="/dashly/preview/14/guides/output/"><span aria-hidden="true" class="fa-solid fa-file-code fa-fw"></span> <span>Format &amp; minify output</span></a>
+			
 		</li>
 <li>
-			<a href="/dashly/preview/14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a>
+			<a href="/dashly/preview/14/guides/metadata-and-feeds/"><span aria-hidden="true" class="fa-solid fa-rss fa-fw"></span> <span>Metadata, feeds, &amp; absolute URLs</span></a>
+			
 		</li>
 	</ul>
 </nav>
 
-	<article>
+	<article data-pagefind-body="">
 		<h1>Transforms</h1>
 		
 	<p>Transforms process built output. The <code>prettier</code>, <code>htmlmin</code>, &amp; <code>clean-attrs</code>
@@ -95,313 +156,87 @@ modules export factories that return a function to pass to <code>addTransform</c
 use, so a transform only needs its package when it runs.</p>
 
 
-<ul>
-	<li>
-		<a href="#module-clean-attrs">clean-attrs</a>: <span>Eleventy transform that strips eleventy:ignore="" markers left on &lt;img&gt; tags inside &lt;picture&gt; elements.</span>
-	</li>
-<li>
-		<a href="#module-htmlmin">htmlmin</a>: <span>Eleventy transform that minifies HTML output via html-minifier-terser.</span>
-	</li>
-<li>
-		<a href="#module-postcss">postcss</a>: <span>PostCSS processing helper for Eleventy bundles or addExtension('css', ...) setups.</span>
-	</li>
-<li>
-		<a href="#module-prettier">prettier</a>: <span>Eleventy transform that runs Prettier over HTML, XML, and SVG output.</span>
-	</li>
-</ul>
-
 <section aria-labelledby="module-clean-attrs">
-	<h2 id="module-clean-attrs"><code>clean-attrs</code></h2>
+	<h2 id="module-clean-attrs"><a href="/dashly/preview/14/transforms/clean-attrs/"><code>clean-attrs</code></a></h2>
 	<p>Eleventy transform that strips <code>eleventy:ignore=""</code> markers left on <code>&lt;img&gt;</code>
 tags inside <code>&lt;picture&gt;</code> elements. The official
 <code>eleventyImageTransformPlugin</code> only clears the attribute on bare <code>&lt;img&gt;</code>
 elements; this transform finishes the job.</p>
 
-	<figure>
-	
-	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,35,36],[&quot;punctuation&quot;,37,38],[&quot;keyword&quot;,39,43],[&quot;string&quot;,44,85],[&quot;punctuation&quot;,85,86]]">import {
-	createCleanAttrsTransform,
-} from '@allons-y/dashly/transforms/clean-attrs';</code></pre>
-</figure>
-
-
-	<article aria-labelledby="createCleanAttrsTransform">
-		<h3 id="createCleanAttrsTransform"><code>createCleanAttrsTransform(options?)</code></h3>
-		<p>Create the attribute-cleanup transform.</p>
-
-
-		<section>
-			<h4>Parameters</h4>
-			<table>
-				<thead>
-					<tr>
-						<th scope="col">Name</th>
-						<th scope="col">Type</th>
-						<th scope="col">Default</th>
-						<th scope="col">Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<code>options</code>
-							<small>(optional)</small>
-						</td>
-						<td><code>object</code></td>
-						<td></td>
-						<td></td>
-					</tr>
-<tr>
-						<td>
-							<code>options.attrs</code>
-							<small>(optional)</small>
-						</td>
-						<td><code>string[]</code></td>
-						<td></td>
-						<td>Additional attribute names to strip. Defaults to ['eleventy:ignore'].</td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
-
-		<section>
-			<h4>Returns</h4>
-			<p>
-				<code>(content: string) =&gt; string</code>
-				
-			</p>
-		</section>
-
-		
-	</article>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col">Export</th>
+				<th scope="col">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="/dashly/preview/14/transforms/clean-attrs/#createCleanAttrsTransform"><code>createCleanAttrsTransform(options?)</code></a></td>
+				<td>Create the attribute-cleanup transform.</td>
+			</tr>
+		</tbody>
+	</table>
 </section>
 <section aria-labelledby="module-htmlmin">
-	<h2 id="module-htmlmin"><code>htmlmin</code></h2>
+	<h2 id="module-htmlmin"><a href="/dashly/preview/14/transforms/htmlmin/"><code>htmlmin</code></a></h2>
 	<p>Eleventy transform that minifies HTML output via <code>html-minifier-terser</code>.
 Requires <code>html-minifier-terser</code> as a peer dependency.</p>
 
-	<figure>
-	
-	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,32,33],[&quot;punctuation&quot;,34,35],[&quot;keyword&quot;,36,40],[&quot;string&quot;,41,78],[&quot;punctuation&quot;,78,79]]">import {
-	createHtmlMinTransform,
-} from '@allons-y/dashly/transforms/htmlmin';</code></pre>
-</figure>
-
-
-	<article aria-labelledby="createHtmlMinTransform">
-		<h3 id="createHtmlMinTransform"><code>createHtmlMinTransform(options?)</code></h3>
-		<p>Create the HTML minification transform. By default it runs only when
-<code>process.env.ELEVENTY_ENV === 'production'</code>; pass <code>production: false</code> to
-always run or <code>production: true</code> to enforce the gate explicitly.</p>
-
-
-		<section>
-			<h4>Parameters</h4>
-			<table>
-				<thead>
-					<tr>
-						<th scope="col">Name</th>
-						<th scope="col">Type</th>
-						<th scope="col">Default</th>
-						<th scope="col">Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<code>options</code>
-							<small>(optional)</small>
-						</td>
-						<td><code>object</code></td>
-						<td></td>
-						<td></td>
-					</tr>
-<tr>
-						<td>
-							<code>options.production</code>
-							<small>(optional)</small>
-						</td>
-						<td><code>boolean</code></td>
-						<td></td>
-						<td>When true, only run in production. Defaults to true.</td>
-					</tr>
-<tr>
-						<td>
-							<code>options.minifier</code>
-							<small>(optional)</small>
-						</td>
-						<td><code>import('html-minifier-terser').Options</code></td>
-						<td></td>
-						<td>Options forwarded to html-minifier-terser.</td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
-
-		<section>
-			<h4>Returns</h4>
-			<p>
-				<code>(content: string, outputPath?: string) =&gt; Promise&lt;string&gt;</code>
-				
-			</p>
-		</section>
-
-		
-	</article>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col">Export</th>
+				<th scope="col">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="/dashly/preview/14/transforms/htmlmin/#createHtmlMinTransform"><code>createHtmlMinTransform(options?)</code></a></td>
+				<td>Create the HTML minification transform.</td>
+			</tr>
+		</tbody>
+	</table>
 </section>
 <section aria-labelledby="module-postcss">
-	<h2 id="module-postcss"><code>postcss</code></h2>
+	<h2 id="module-postcss"><a href="/dashly/preview/14/transforms/postcss/"><code>postcss</code></a></h2>
 	<p>PostCSS processing helper for Eleventy bundles or <code>addExtension('css', ...)</code>
 setups. Requires <code>postcss</code> as a peer dependency.</p>
 
-	<figure>
-	
-	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,20,21],[&quot;keyword&quot;,22,26],[&quot;string&quot;,27,64],[&quot;punctuation&quot;,64,65]]">import { processCSS } from '@allons-y/dashly/transforms/postcss';</code></pre>
-</figure>
-
-
-	<article aria-labelledby="processCSS">
-		<h3 id="processCSS"><code>processCSS(content, inputPath, outputPath, config?)</code></h3>
-		<p>Run a CSS string through PostCSS using the plugins and options supplied in
-<code>config</code> (the shape returned by <code>postcss-load-config</code>). If a source map is
-produced it is written next to the CSS output as <code>&lt;name&gt;.css.map</code>.</p>
-
-
-		<section>
-			<h4>Parameters</h4>
-			<table>
-				<thead>
-					<tr>
-						<th scope="col">Name</th>
-						<th scope="col">Type</th>
-						<th scope="col">Default</th>
-						<th scope="col">Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<code>content</code>
-							
-						</td>
-						<td><code>string</code></td>
-						<td></td>
-						<td></td>
-					</tr>
-<tr>
-						<td>
-							<code>inputPath</code>
-							
-						</td>
-						<td><code>string</code></td>
-						<td></td>
-						<td></td>
-					</tr>
-<tr>
-						<td>
-							<code>outputPath</code>
-							
-						</td>
-						<td><code>string</code></td>
-						<td></td>
-						<td></td>
-					</tr>
-<tr>
-						<td>
-							<code>config</code>
-							<small>(optional)</small>
-						</td>
-						<td><code>{ plugins?: import('postcss').AcceptedPlugin[], options?: import('postcss').ProcessOptions }</code></td>
-						<td></td>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
-
-		<section>
-			<h4>Returns</h4>
-			<p>
-				<code>Promise&lt;string&gt;</code>
-				
-			</p>
-		</section>
-
-		
-	</article>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col">Export</th>
+				<th scope="col">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="/dashly/preview/14/transforms/postcss/#processCSS"><code>processCSS(content, inputPath, outputPath, config?)</code></a></td>
+				<td>Run a CSS string through PostCSS using the plugins and options supplied in config (the shape returned by postcss-load-config).</td>
+			</tr>
+		</tbody>
+	</table>
 </section>
 <section aria-labelledby="module-prettier">
-	<h2 id="module-prettier"><code>prettier</code></h2>
+	<h2 id="module-prettier"><a href="/dashly/preview/14/transforms/prettier/"><code>prettier</code></a></h2>
 	<p>Eleventy transform that runs Prettier over HTML, XML, and SVG output.
 Requires <code>prettier</code> as a peer dependency.</p>
 
-	<figure>
-	
-	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,33,34],[&quot;punctuation&quot;,35,36],[&quot;keyword&quot;,37,41],[&quot;string&quot;,42,80],[&quot;punctuation&quot;,80,81]]">import {
-	createPrettierTransform,
-} from '@allons-y/dashly/transforms/prettier';</code></pre>
-</figure>
-
-
-	<article aria-labelledby="createPrettierTransform">
-		<h3 id="createPrettierTransform"><code>createPrettierTransform(options?)</code></h3>
-		<p>Create the Prettier transform. Bind to an Eleventy transform with
-<code>config.addTransform('prettier', createPrettierTransform())</code>.</p>
-
-
-		<section>
-			<h4>Parameters</h4>
-			<table>
-				<thead>
-					<tr>
-						<th scope="col">Name</th>
-						<th scope="col">Type</th>
-						<th scope="col">Default</th>
-						<th scope="col">Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<code>options</code>
-							<small>(optional)</small>
-						</td>
-						<td><code>object</code></td>
-						<td></td>
-						<td></td>
-					</tr>
-<tr>
-						<td>
-							<code>options.extensions</code>
-							<small>(optional)</small>
-						</td>
-						<td><code>string[]</code></td>
-						<td></td>
-						<td>File extensions to format (default: html/xml/svg).</td>
-					</tr>
-<tr>
-						<td>
-							<code>options.prettier</code>
-							<small>(optional)</small>
-						</td>
-						<td><code>import('prettier').Options</code></td>
-						<td></td>
-						<td>Prettier options (merged on top of dashly defaults).</td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
-
-		<section>
-			<h4>Returns</h4>
-			<p>
-				<code>(content: string) =&gt; Promise&lt;string&gt;</code>
-				
-			</p>
-		</section>
-
-		
-	</article>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col">Export</th>
+				<th scope="col">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="/dashly/preview/14/transforms/prettier/#createPrettierTransform"><code>createPrettierTransform(options?)</code></a></td>
+				<td>Create the Prettier transform.</td>
+			</tr>
+		</tbody>
+	</table>
 </section>
 
 	<nav aria-label="Pager">

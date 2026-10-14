@@ -5,3 +5,257 @@
 	--font-sans: "Your Sans", var(--sans-stack);
 	--font-display: "Your Display", var(--font-sans); */
 }
+
+/* Brand palette: the stripe, card tops, & window dots. Decorative only, never text. */
+:root {
+	--brand-1: #d22d6f;
+	--brand-2: #ff944d;
+	--brand-3: #ffd36b;
+	--brand-4: #1f91ad;
+}
+
+/* Header: tagline beside the name, & the brand stripe underneath. */
+body > header > div {
+	position: relative;
+	border-block-end: 0;
+	column-gap: var(--space-m);
+}
+
+body > header > div::after {
+	content: "";
+	position: absolute;
+	inset: auto 0 0;
+	block-size: 4px;
+	background: linear-gradient(
+		90deg,
+		var(--brand-1) 0 25%,
+		var(--brand-2) 0 50%,
+		var(--brand-3) 0 75%,
+		var(--brand-4) 0
+	);
+}
+
+body > header [data-tagline] {
+	flex: 1 1 14rem;
+	color: var(--fg-muted);
+	font-size: 0.95rem;
+}
+
+body > header nav a:has(> .fa-brands) {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+}
+
+@media (max-width: 40rem) {
+	body > header [data-tagline] {
+		display: none;
+	}
+}
+
+/* Home: headline, actions, & facts. */
+.hero h1 {
+	display: block;
+	max-inline-size: 22ch;
+	font-size: clamp(2rem, 6vw, 3.4rem);
+	font-weight: 700;
+	letter-spacing: -0.01em;
+}
+
+.hero h1 em {
+	color: var(--accent-text);
+	font-size: inherit;
+	font-style: normal;
+	font-weight: inherit;
+}
+
+.hero nav a,
+.hero > ul > li {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.hero nav a {
+	display: inline-flex;
+}
+
+.hero > ul {
+	gap: var(--space-xs) var(--space-s);
+}
+
+/* Home: usage sample framed as a terminal window. */
+#usage figure {
+	overflow: hidden;
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	background: var(--code-bg);
+}
+
+#usage figure::before {
+	grid-area: 1 / 1;
+	content: "";
+	block-size: 2.25rem;
+	border-block-end: 1px solid var(--border);
+	background:
+		radial-gradient(circle, var(--brand-1) 0.3rem, transparent 0.32rem) 1rem 50% / 1rem 1rem no-repeat,
+		radial-gradient(circle, var(--brand-2) 0.3rem, transparent 0.32rem) 2.1rem 50% / 1rem 1rem no-repeat,
+		radial-gradient(circle, var(--brand-3) 0.3rem, transparent 0.32rem) 3.2rem 50% / 1rem 1rem no-repeat,
+		var(--bg-elev);
+}
+
+#usage figure > pre {
+	border: 0;
+	border-radius: 0;
+}
+
+/* Code: two-space tabs. */
+pre {
+	tab-size: 2;
+}
+
+/* Home: feature cards with an icon & a brand-colored top edge. */
+#features > ul {
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+}
+
+#features > ul > li > article {
+	border-block-start: 4px solid var(--brand-1);
+}
+
+#features > ul > li:nth-child(4n + 2) > article {
+	border-block-start-color: var(--brand-2);
+}
+
+#features > ul > li:nth-child(4n + 3) > article {
+	border-block-start-color: var(--brand-3);
+}
+
+#features > ul > li:nth-child(4n + 4) > article {
+	border-block-start-color: var(--brand-4);
+}
+
+.icon {
+	display: inline-grid;
+	place-items: center;
+	inline-size: 3rem;
+	block-size: 3rem;
+	border-radius: var(--radius);
+	background: color-mix(in oklab, var(--accent) 22%, var(--bg));
+	color: var(--fg);
+	font-size: 1.3rem;
+}
+
+/* Home: what's included. */
+#included table {
+	inline-size: 100%;
+	border-collapse: collapse;
+	border-block: 1px solid var(--border);
+}
+
+#included :is(th, td) {
+	padding: var(--space-xs) var(--space-s);
+	border-block-end: 1px solid var(--border);
+	text-align: start;
+}
+
+#included td:last-child,
+#included th:last-child {
+	text-align: end;
+}
+
+/* Docs sidebar: icons, nested modules, & search. */
+nav[aria-label="Documentation"] {
+	min-inline-size: 0;
+}
+
+nav[aria-label="Documentation"] a {
+	display: inline-flex;
+	align-items: baseline;
+	gap: 0.45rem;
+}
+
+nav[aria-label="Documentation"] a[aria-current="page"] {
+	padding-inline-start: 0.5rem;
+	margin-inline-start: -0.65rem;
+	border-inline-start: 3px solid var(--brand-1);
+}
+
+/* A category that holds the current module page. */
+nav[aria-label="Documentation"] a[aria-current="true"] {
+	color: var(--fg);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+nav[aria-label="Documentation"] li > ul a[aria-current="page"] {
+	color: var(--fg);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+nav[aria-label="Documentation"] li > ul {
+	gap: 0.25rem;
+	margin-block: 0.4rem 0.2rem;
+	padding-inline-start: 1.55rem;
+	font-size: 0.9rem;
+}
+
+nav[aria-label="Documentation"] li > ul a {
+	color: var(--fg-muted);
+}
+
+/* Search: Pagefind UI, themed from the site tokens. Results float over the page. */
+[data-search] {
+	position: relative;
+	margin-block-end: var(--space-m);
+	--pagefind-ui-scale: 0.8;
+	--pagefind-ui-primary: var(--accent-text);
+	--pagefind-ui-text: var(--fg);
+	--pagefind-ui-background: var(--bg);
+	--pagefind-ui-border: var(--border);
+	--pagefind-ui-tag: var(--bg-elev);
+	--pagefind-ui-border-width: 1px;
+	--pagefind-ui-border-radius: 0.5rem;
+	--pagefind-ui-font: var(--font-sans);
+}
+
+[data-search] .pagefind-ui__drawer:not(.pagefind-ui__hidden) {
+	position: absolute;
+	z-index: 20;
+	inset-inline-start: 0;
+	inset-block-start: calc(100% + 0.5rem);
+	box-sizing: border-box;
+	inline-size: min(34rem, 100vw - 2 * var(--space-m));
+	max-block-size: 70vh;
+	overflow-y: auto;
+	padding: var(--space-s);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	background: var(--bg);
+	box-shadow: var(--shadow);
+}
+
+[data-search] ul {
+	display: block;
+}
+
+[data-search] input.pagefind-ui__search-input::placeholder {
+	color: var(--fg-muted);
+	opacity: 1;
+}
+
+/* Narrow screens: wide tables, samples, & code wrap inside the article instead of widening the page. */
+main > div > article {
+	grid-template-columns: minmax(0, 1fr);
+	min-inline-size: 0;
+}
+
+main > div > article figure {
+	grid-template-columns: minmax(0, 1fr);
+}
+
+main > div > article code:not(pre code),
+main > div > article :is(td, th) {
+	overflow-wrap: anywhere;
+}

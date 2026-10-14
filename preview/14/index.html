@@ -25,8 +25,10 @@
 <link rel="stylesheet" href="/dashly/preview/14/assets/styles/components.css">
 <link rel="stylesheet" href="/dashly/preview/14/assets/styles/studio.css">
 <link rel="stylesheet" href="/dashly/preview/14/assets/styles/project.css">
+<script src="https://kit.fontawesome.com/42e99b4632.js" crossorigin="anonymous" defer=""></script>
 <script type="module" src="/dashly/preview/14/assets/scripts/copy-code.js"></script>
 <script type="module" src="/dashly/preview/14/assets/scripts/code-highlight.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/search.js"></script>
 
 	</head>
 	<body>
@@ -41,30 +43,47 @@
 		
 		<span>dashly</span>
 	</a>
+	<span data-tagline="">A standard library of filters, transforms, &amp; shortcodes for Eleventy</span>
 	<nav aria-label="Primary">
 		
 		
 		
 		<a href="/dashly/preview/14/getting-started/">Docs</a>
-		<a href="https://github.com/allonsy-studio/dashly">GitHub</a>
-		<a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+		<a href="https://github.com/allonsy-studio/dashly"><span aria-hidden="true" class="fa-brands fa-github"></span> GitHub</a>
+		<a href="https://www.npmjs.com/package/@allons-y/dashly"><span aria-hidden="true" class="fa-brands fa-npm"></span> npm</a>
 	</nav>
 </div>
 
 		</header>
 		<main id="main" tabindex="-1">
-			<header>
+			<header class="hero">
 	<h1>
-		<span>dashly</span>
-		<span>A standard library of filters, transforms, &amp; shortcodes for Eleventy</span>
+		dashly: the <em>standard library</em> every Eleventy site ends up writing.
 	</h1>
+	
 	<p>Date formatting, reading time, excerpts, RSS-safe HTML, URL handling, locale-aware numbers, &amp; more: bundled into one tree-shakeable package, registered with one plugin line.</p>
 	<nav aria-label="Get started">
 		<ul>
-			<li><a href="/dashly/preview/14/getting-started/">Read the docs</a></li>
-			<li><a href="https://github.com/allonsy-studio/dashly">View on GitHub</a></li>
+			<li>
+				<a href="/dashly/preview/14/getting-started/"><span aria-hidden="true" class="fa-solid fa-rocket"></span> <span>Get started</span></a>
+			</li>
+<li>
+				<a href="/dashly/preview/14/filters/"><span aria-hidden="true" class="fa-solid fa-filter"></span> <span>Filters</span></a>
+			</li>
+<li>
+				<a href="/dashly/preview/14/config/"><span aria-hidden="true" class="fa-solid fa-sliders"></span> <span>Configuration</span></a>
+			</li>
+			<li>
+				<a href="https://github.com/allonsy-studio/dashly"><span aria-hidden="true" class="fa-brands fa-github"></span> View on GitHub</a>
+			</li>
 		</ul>
 	</nav>
+	<ul>
+		<li><span aria-hidden="true" class="fa-brands fa-osi"></span> <span>Free &amp; open source · MPL-2.0</span></li>
+		<li><span aria-hidden="true" class="fa-solid fa-plug"></span> <span>Eleventy 3+</span></li>
+		<li><span aria-hidden="true" class="fa-brands fa-node-js"></span> <span>Node 24+</span></li>
+		<li><span aria-hidden="true" class="fa-solid fa-flask"></span> <span>Currently in beta</span></li>
+	</ul>
 </header>
 
 <section id="install" aria-labelledby="install-title">
@@ -74,6 +93,90 @@
 	<pre tabindex="0"><code data-tokens="[[&quot;function&quot;,0,3],[&quot;function&quot;,4,11]]">npm install --save-dev @allons-y/dashly</code></pre>
 </figure>
 
+</section>
+
+<section id="usage" aria-labelledby="usage-title">
+	<h2 id="usage-title">Usage</h2>
+	<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,21],[&quot;keyword&quot;,22,28],[&quot;keyword&quot;,36,40],[&quot;string&quot;,41,59],[&quot;punctuation&quot;,59,60],[&quot;keyword&quot;,62,68],[&quot;keyword&quot;,69,76],[&quot;keyword&quot;,77,85],[&quot;punctuation&quot;,86,87],[&quot;number&quot;,87,93],[&quot;punctuation&quot;,93,94],[&quot;punctuation&quot;,95,96],[&quot;punctuation&quot;,104,105],[&quot;function&quot;,105,114],[&quot;punctuation&quot;,114,115],[&quot;punctuation&quot;,121,122],[&quot;punctuation&quot;,123,124],[&quot;function&quot;,125,132],[&quot;punctuation&quot;,132,133],[&quot;string&quot;,134,155],[&quot;punctuation&quot;,156,157],[&quot;punctuation&quot;,157,158],[&quot;punctuation&quot;,158,159],[&quot;punctuation&quot;,160,161]]">// eleventy.config.js
+import dashly from "@allons-y/dashly";
+
+export default function (config) {
+	config.addPlugin(dashly, { baseUrl: "https://example.com" });
+}</code></pre>
+</figure>
+
+</section>
+
+<section id="features" aria-labelledby="features-title">
+	<h2 id="features-title">Features</h2>
+	<ul>
+		<li>
+			<article>
+				<span aria-hidden="true" class="icon"><span class="fa-solid fa-plug"></span></span>
+				<h3>One plugin line</h3>
+				<p>Every filter, transform, &amp; shortcode registers under a sensible default name. Templates can use them straight away.</p>
+			</article>
+		</li>
+<li>
+			<article>
+				<span aria-hidden="true" class="icon"><span class="fa-solid fa-gears"></span></span>
+				<h3>Works across engines</h3>
+				<p>Filters register through addFilter, so Nunjucks, Liquid, 11ty.js, &amp; Handlebars templates share the same behavior. Two async filters cannot run in Handlebars.</p>
+			</article>
+		</li>
+<li>
+			<article>
+				<span aria-hidden="true" class="icon"><span class="fa-solid fa-feather-pointed"></span></span>
+				<h3>Take only what you need</h3>
+				<p>Import from the narrowest subpath, or opt out per category or per name. Unused code never reaches the build.</p>
+			</article>
+		</li>
+<li>
+			<article>
+				<span aria-hidden="true" class="icon"><span class="fa-solid fa-puzzle-piece"></span></span>
+				<h3>Optional peers</h3>
+				<p>Heavy dependencies such as Prettier, PostCSS, &amp; markdown-it are optional peers, installed only when a utility needs them.</p>
+			</article>
+		</li>
+	</ul>
+</section>
+
+<section id="included" aria-labelledby="included-title">
+	<h2 id="included-title">What's included</h2>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col">Kind</th>
+				<th scope="col">Modules</th>
+				<th scope="col">Exports</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<a href="/dashly/preview/14/filters/"><span aria-hidden="true" class="fa-solid fa-filter"></span> <span>Filters</span></a>
+				</td>
+				<td>arrays, dates, debug, html, numbers, objects, strings, tags, text, urls</td>
+				<td>38</td>
+			</tr>
+<tr>
+				<td>
+					<a href="/dashly/preview/14/transforms/"><span aria-hidden="true" class="fa-solid fa-wand-magic-sparkles"></span> <span>Transforms</span></a>
+				</td>
+				<td>clean-attrs, htmlmin, postcss, prettier</td>
+				<td>4</td>
+			</tr>
+<tr>
+				<td>
+					<a href="/dashly/preview/14/shortcodes/"><span aria-hidden="true" class="fa-solid fa-code"></span> <span>Shortcodes</span></a>
+				</td>
+				<td>year</td>
+				<td>1</td>
+			</tr>
+		</tbody>
+	</table>
 </section>
 
 <section aria-labelledby="docs-title">

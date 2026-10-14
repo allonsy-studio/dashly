@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+		<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>debug: dashly</title>
+<meta name="description" content="A standard-library of filters, transforms, and shortcodes for Eleventy.">
+<link rel="canonical" href="https://projects.allons-y.studio/dashly/">
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="dashly: A standard library of filters, transforms, &amp; shortcodes for Eleventy">
+<meta property="og:description" content="A standard-library of filters, transforms, and shortcodes for Eleventy.">
+<meta property="og:url" content="https://projects.allons-y.studio/dashly/">
+
+<link rel="icon" href="/dashly/preview/14/assets/img/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Mono&amp;display=swap">
+
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/tokens.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/reset.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/layout.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/components.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/studio.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/project.css">
+<script src="https://kit.fontawesome.com/42e99b4632.js" crossorigin="anonymous" defer=""></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/copy-code.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/code-highlight.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/search.js"></script>
+
+	</head>
+	<body>
+		<a href="#main">Skip to content</a>
+		<header>
+			<a data-studio="banner" href="https://allons-y.studio">
+	<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+</a>
+
+			<div>
+	<a rel="home" href="/dashly/preview/14/">
+		
+		<span>dashly</span>
+	</a>
+	<span data-tagline="">A standard library of filters, transforms, &amp; shortcodes for Eleventy</span>
+	<nav aria-label="Primary">
+		
+		
+		
+		<a href="/dashly/preview/14/getting-started/">Docs</a>
+		<a href="https://github.com/allonsy-studio/dashly"><span aria-hidden="true" class="fa-brands fa-github"></span> GitHub</a>
+		<a href="https://www.npmjs.com/package/@allons-y/dashly"><span aria-hidden="true" class="fa-brands fa-npm"></span> npm</a>
+	</nav>
+</div>
+
+		</header>
+		<main id="main" tabindex="-1">
+			<div>
+	<nav aria-label="Documentation">
+	<div data-search="" role="search"></div>
+	<ul>
+		<li>
+			<a href="/dashly/preview/14/getting-started/"><span aria-hidden="true" class="fa-solid fa-rocket fa-fw"></span> <span>Getting started</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/concepts/"><span aria-hidden="true" class="fa-solid fa-diagram-project fa-fw"></span> <span>How it works</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/config/"><span aria-hidden="true" class="fa-solid fa-sliders fa-fw"></span> <span>Configuration</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/filters/" aria-current="true"><span aria-hidden="true" class="fa-solid fa-filter fa-fw"></span> <span>Filters</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/filters/arrays/">arrays</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/dates/">dates</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/debug/" aria-current="page">debug</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/html/">html</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/numbers/">numbers</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/objects/">objects</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/strings/">strings</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/tags/">tags</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/text/">text</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/urls/">urls</a>
+				</li>
+			</ul>
+		</li>
+<li>
+			<a href="/dashly/preview/14/transforms/"><span aria-hidden="true" class="fa-solid fa-wand-magic-sparkles fa-fw"></span> <span>Transforms</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/transforms/clean-attrs/">clean-attrs</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/htmlmin/">htmlmin</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/postcss/">postcss</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/prettier/">prettier</a>
+				</li>
+			</ul>
+		</li>
+<li>
+			<a href="/dashly/preview/14/shortcodes/"><span aria-hidden="true" class="fa-solid fa-code fa-fw"></span> <span>Shortcodes</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/shortcodes/year/">year</a>
+				</li>
+			</ul>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/a-la-carte/"><span aria-hidden="true" class="fa-solid fa-feather-pointed fa-fw"></span> <span>Use only what you need</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/output/"><span aria-hidden="true" class="fa-solid fa-file-code fa-fw"></span> <span>Format &amp; minify output</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/metadata-and-feeds/"><span aria-hidden="true" class="fa-solid fa-rss fa-fw"></span> <span>Metadata, feeds, &amp; absolute URLs</span></a>
+			
+		</li>
+	</ul>
+</nav>
+
+	<article data-pagefind-body="">
+		<h1>debug</h1>
+		
+	<p>In <a href="/dashly/preview/14/filters/">Filters</a></p>
+<p>Debugging filters for rendering template data into output for inspection.</p>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,13,14],[&quot;punctuation&quot;,23,24],[&quot;keyword&quot;,25,29],[&quot;string&quot;,30,62],[&quot;punctuation&quot;,62,63]]">import { dump, jsonify } from '@allons-y/dashly/filters/debug';</code></pre>
+</figure>
+
+
+<article aria-labelledby="dump">
+	<h2 id="dump"><code>dump(value, indent?)</code></h2>
+	<p>Serialize a value as pretty-printed JSON. Handles circular references,
+functions, BigInts, Dates, and RegExps so it never throws inside a template.</p>
+
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>value</code>
+						
+					</td>
+					<td><code>unknown</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>indent</code>
+						<small>(optional)</small>
+					</td>
+					<td><code>number</code></td>
+					<td><code>2</code></td>
+					<td>Indent width passed to <code>JSON.stringify</code>.</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>string</code>
+			
+		</p>
+	</section>
+
+	<section>
+		<h3>Examples</h3>
+		<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,31]]">// &lt;pre&gt;{{ page | dump }}&lt;/pre&gt;</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ collections.posts[0] | dump(0) }}</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,12],[&quot;function&quot;,13,17],[&quot;punctuation&quot;,17,18],[&quot;punctuation&quot;,18,19],[&quot;function&quot;,20,21],[&quot;punctuation&quot;,21,22],[&quot;number&quot;,23,24],[&quot;punctuation&quot;,25,26],[&quot;punctuation&quot;,26,27],[&quot;number&quot;,28,29],[&quot;punctuation&quot;,29,30],[&quot;punctuation&quot;,30,31]]">// '{"a":1}'
+dump({ a: 1 }, 0);</code></pre>
+</figure>
+
+	</section>
+</article>
+<article aria-labelledby="jsonify">
+	<h2 id="jsonify"><code>jsonify(value, indent?)</code></h2>
+	<p>Alias for <code>dump</code>. Some teams prefer the <code>| jsonify</code> name.</p>
+
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>value</code>
+						
+					</td>
+					<td><code>unknown</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>indent</code>
+						<small>(optional)</small>
+					</td>
+					<td><code>number</code></td>
+					<td><code>2</code></td>
+					<td>Indent width passed to <code>JSON.stringify</code>.</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>string</code>
+			
+		</p>
+	</section>
+
+	<section>
+		<h3>Examples</h3>
+		<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,31]]">// &lt;pre&gt;{{ page | dump }}&lt;/pre&gt;</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ collections.posts[0] | dump(0) }}</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,12],[&quot;function&quot;,13,17],[&quot;punctuation&quot;,17,18],[&quot;punctuation&quot;,18,19],[&quot;function&quot;,20,21],[&quot;punctuation&quot;,21,22],[&quot;number&quot;,23,24],[&quot;punctuation&quot;,25,26],[&quot;punctuation&quot;,26,27],[&quot;number&quot;,28,29],[&quot;punctuation&quot;,29,30],[&quot;punctuation&quot;,30,31]]">// '{"a":1}'
+dump({ a: 1 }, 0);</code></pre>
+</figure>
+
+	</section>
+</article>
+
+<nav aria-label="Pager">
+	<a rel="prev" href="/dashly/preview/14/filters/dates/">dates</a>
+	<a rel="next" href="/dashly/preview/14/filters/html/">html</a>
+</nav>
+
+
+	
+
+	</article>
+</div>
+
+
+		</main>
+		<footer>
+	<div>
+		<div>
+			<p><strong>dashly</strong></p>
+			<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+			<p>
+				<small>
+					Licensed under
+					<a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE" data-license="">MPL-2.0</a>
+				</small>
+			</p>
+		</div>
+		<nav aria-label="Project links">
+			<p><strong>Project</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+				<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+			</ul>
+		</nav>
+		<nav aria-label="Help links">
+			<p><strong>Help</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/CODE_OF_CONDUCT.md">Code of conduct</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/SECURITY.md">Security policy</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div>
+		<div data-studio="cta">
+	<p>Work with Allons-y Studio</p>
+	<p>Design systems, front-end engineering, &amp; accessibility consulting for teams that depend on open source.</p>
+	<a href="mailto:consulting@allons-y.studio">consulting@allons-y.studio</a>
+</div>
+
+		<a data-studio="footer" href="https://allons-y.studio">
+	<picture>
+		<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-dark.svg">
+		<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+	</picture>
+	
+</a>
+
+	</div>
+</footer>
+
+	
+
+</body>
+</html>

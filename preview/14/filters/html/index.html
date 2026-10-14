@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+<head>
+		<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>html: dashly</title>
+<meta name="description" content="A standard-library of filters, transforms, and shortcodes for Eleventy.">
+<link rel="canonical" href="https://projects.allons-y.studio/dashly/">
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="dashly: A standard library of filters, transforms, &amp; shortcodes for Eleventy">
+<meta property="og:description" content="A standard-library of filters, transforms, and shortcodes for Eleventy.">
+<meta property="og:url" content="https://projects.allons-y.studio/dashly/">
+
+<link rel="icon" href="/dashly/preview/14/assets/img/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Mono&amp;display=swap">
+
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/tokens.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/reset.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/layout.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/components.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/studio.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/project.css">
+<script src="https://kit.fontawesome.com/42e99b4632.js" crossorigin="anonymous" defer=""></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/copy-code.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/code-highlight.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/search.js"></script>
+
+	</head>
+	<body>
+		<a href="#main">Skip to content</a>
+		<header>
+			<a data-studio="banner" href="https://allons-y.studio">
+	<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+</a>
+
+			<div>
+	<a rel="home" href="/dashly/preview/14/">
+		
+		<span>dashly</span>
+	</a>
+	<span data-tagline="">A standard library of filters, transforms, &amp; shortcodes for Eleventy</span>
+	<nav aria-label="Primary">
+		
+		
+		
+		<a href="/dashly/preview/14/getting-started/">Docs</a>
+		<a href="https://github.com/allonsy-studio/dashly"><span aria-hidden="true" class="fa-brands fa-github"></span> GitHub</a>
+		<a href="https://www.npmjs.com/package/@allons-y/dashly"><span aria-hidden="true" class="fa-brands fa-npm"></span> npm</a>
+	</nav>
+</div>
+
+		</header>
+		<main id="main" tabindex="-1">
+			<div>
+	<nav aria-label="Documentation">
+	<div data-search="" role="search"></div>
+	<ul>
+		<li>
+			<a href="/dashly/preview/14/getting-started/"><span aria-hidden="true" class="fa-solid fa-rocket fa-fw"></span> <span>Getting started</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/concepts/"><span aria-hidden="true" class="fa-solid fa-diagram-project fa-fw"></span> <span>How it works</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/config/"><span aria-hidden="true" class="fa-solid fa-sliders fa-fw"></span> <span>Configuration</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/filters/" aria-current="true"><span aria-hidden="true" class="fa-solid fa-filter fa-fw"></span> <span>Filters</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/filters/arrays/">arrays</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/dates/">dates</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/debug/">debug</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/html/" aria-current="page">html</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/numbers/">numbers</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/objects/">objects</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/strings/">strings</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/tags/">tags</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/text/">text</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/filters/urls/">urls</a>
+				</li>
+			</ul>
+		</li>
+<li>
+			<a href="/dashly/preview/14/transforms/"><span aria-hidden="true" class="fa-solid fa-wand-magic-sparkles fa-fw"></span> <span>Transforms</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/transforms/clean-attrs/">clean-attrs</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/htmlmin/">htmlmin</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/postcss/">postcss</a>
+				</li>
+<li>
+					<a href="/dashly/preview/14/transforms/prettier/">prettier</a>
+				</li>
+			</ul>
+		</li>
+<li>
+			<a href="/dashly/preview/14/shortcodes/"><span aria-hidden="true" class="fa-solid fa-code fa-fw"></span> <span>Shortcodes</span></a>
+			<ul>
+				<li>
+					<a href="/dashly/preview/14/shortcodes/year/">year</a>
+				</li>
+			</ul>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/a-la-carte/"><span aria-hidden="true" class="fa-solid fa-feather-pointed fa-fw"></span> <span>Use only what you need</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/output/"><span aria-hidden="true" class="fa-solid fa-file-code fa-fw"></span> <span>Format &amp; minify output</span></a>
+			
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/metadata-and-feeds/"><span aria-hidden="true" class="fa-solid fa-rss fa-fw"></span> <span>Metadata, feeds, &amp; absolute URLs</span></a>
+			
+		</li>
+	</ul>
+</nav>
+
+	<article data-pagefind-body="">
+		<h1>html</h1>
+		
+	<p>In <a href="/dashly/preview/14/filters/">Filters</a></p>
+<p>HTML-related filters for Eleventy.</p>
+<ul>
+<li><code>cleanForRSS</code> requires <code>posthtml</code> as a peer dependency.</li>
+<li><code>renderMarkdown</code> requires <code>markdown-it</code> as a peer dependency or a
+user-provided renderer instance.</li>
+<li>Both are async &amp; do not work in Handlebars; see each filter for why.</li>
+</ul>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,19,20],[&quot;punctuation&quot;,27,28],[&quot;punctuation&quot;,41,42],[&quot;punctuation&quot;,58,59],[&quot;punctuation&quot;,60,61],[&quot;keyword&quot;,62,66],[&quot;string&quot;,67,98],[&quot;punctuation&quot;,98,99]]">import {
+	stripTags,
+	nl2br,
+	cleanForRSS,
+	renderMarkdown,
+} from '@allons-y/dashly/filters/html';</code></pre>
+</figure>
+
+
+<article aria-labelledby="stripTags">
+	<h2 id="stripTags"><code>stripTags(value)</code></h2>
+	<p>Strip every HTML tag from a string, leaving only text content. Zero-dep
+regex pass — for opinionated tag-aware stripping (RSS feeds, custom
+elements, permalinks), use <code>cleanForRSS</code> instead.</p>
+<p>Internal whitespace is collapsed and the result is trimmed.</p>
+
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>value</code>
+						
+					</td>
+					<td><code>string</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>string</code>
+			
+		</p>
+	</section>
+
+	<section>
+		<h3>Examples</h3>
+		<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,16],[&quot;function&quot;,17,26],[&quot;punctuation&quot;,26,27],[&quot;string&quot;,27,64],[&quot;punctuation&quot;,64,65],[&quot;punctuation&quot;,65,66]]">// 'Hello world'
+stripTags('&lt;p&gt;Hello &lt;strong&gt;world&lt;/strong&gt;&lt;/p&gt;');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ post.content | stripTags | excerpt(40) }}</code></pre>
+</figure>
+
+	</section>
+</article>
+<article aria-labelledby="nl2br">
+	<h2 id="nl2br"><code>nl2br(value)</code></h2>
+	<p>Replace newline characters with <code>&lt;br&gt;</code> tags. Handles <code>\r\n</code>, <code>\r</code>, and <code>\n</code>.
+Useful for rendering plain-text strings (form responses, YAML data) as HTML
+while preserving line breaks. Preserves the trailing newline so the HTML
+source stays readable.</p>
+
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>value</code>
+						
+					</td>
+					<td><code>string</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>string</code>
+			
+		</p>
+	</section>
+
+	<section>
+		<h3>Examples</h3>
+		<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,28],[&quot;function&quot;,29,34],[&quot;punctuation&quot;,34,35],[&quot;string&quot;,35,52],[&quot;punctuation&quot;,52,53],[&quot;punctuation&quot;,53,54]]">// 'one&lt;br&gt;\ntwo&lt;br&gt;\nthree'
+nl2br('one\ntwo\nthree');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ user.bio | nl2br | safe }}</code></pre>
+</figure>
+
+	</section>
+</article>
+<article aria-labelledby="cleanForRSS">
+	<h2 id="cleanForRSS"><code>cleanForRSS(html, options?)</code></h2>
+	<p>Strip tags and elements that are unsafe or undesirable in RSS/Atom feeds.</p>
+<p>By default this removes script/style/embed/etc. tags and <code>header-anchor</code>
+permalink <code>&lt;a&gt;</code> elements inserted by markdown-it-anchor. Pass <code>customTags</code>
+to strip additional tags (e.g. web components like <code>lite-youtube</code>).</p>
+<p>Async, so it does not work in Handlebars. The filter returns a Promise
+because it loads <code>posthtml</code> with a dynamic <code>import()</code> on first use.
+Nunjucks, Liquid, &amp; 11ty.js await it. Handlebars helpers are synchronous &amp;
+cannot await, so <code>{{cleanForRSS html}}</code> renders <code>[object Promise]</code>. Compute
+the value in a data file, <code>eleventyComputed</code>, or a JS template instead, &amp;
+pass the resulting string to the Handlebars template.</p>
+
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>html</code>
+						
+					</td>
+					<td><code>string</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>options</code>
+						<small>(optional)</small>
+					</td>
+					<td><code>object</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>options.unsafeTags</code>
+						<small>(optional)</small>
+					</td>
+					<td><code>string[]</code></td>
+					<td></td>
+					<td>Override the default unsafe-tag list.</td>
+				</tr>
+<tr>
+					<td>
+						<code>options.customTags</code>
+						<small>(optional)</small>
+					</td>
+					<td><code>string[]</code></td>
+					<td><code>[]</code></td>
+					<td>Additional tag names to strip (e.g. custom elements).</td>
+				</tr>
+<tr>
+					<td>
+						<code>options.stripPermalinks</code>
+						<small>(optional)</small>
+					</td>
+					<td><code>boolean</code></td>
+					<td><code>true</code></td>
+					<td>Remove <code>&lt;a class="header-anchor"&gt;</code> nodes.</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>Promise&lt;string&gt;</code>
+			
+		</p>
+	</section>
+
+	
+</article>
+<article aria-labelledby="renderMarkdown">
+	<h2 id="renderMarkdown"><code>renderMarkdown(value, options?)</code></h2>
+	
+
+	<section>
+		<h3>Parameters</h3>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Default</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<code>value</code>
+						
+					</td>
+					<td><code>string</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>options</code>
+						<small>(optional)</small>
+					</td>
+					<td><code>object</code></td>
+					<td></td>
+					<td></td>
+				</tr>
+<tr>
+					<td>
+						<code>options.renderer</code>
+						<small>(optional)</small>
+					</td>
+					<td><code>import('markdown-it').default</code></td>
+					<td></td>
+					<td>A pre-configured <code>markdown-it</code> instance.</td>
+				</tr>
+<tr>
+					<td>
+						<code>options.splitParagraphs</code>
+						<small>(optional)</small>
+					</td>
+					<td><code>boolean</code></td>
+					<td><code>true</code></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h3>Returns</h3>
+		<p>
+			<code>Promise&lt;string&gt;</code>
+			
+		</p>
+	</section>
+
+	
+</article>
+
+<nav aria-label="Pager">
+	<a rel="prev" href="/dashly/preview/14/filters/debug/">debug</a>
+	<a rel="next" href="/dashly/preview/14/filters/numbers/">numbers</a>
+</nav>
+
+
+	
+
+	</article>
+</div>
+
+
+		</main>
+		<footer>
+	<div>
+		<div>
+			<p><strong>dashly</strong></p>
+			<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+			<p>
+				<small>
+					Licensed under
+					<a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE" data-license="">MPL-2.0</a>
+				</small>
+			</p>
+		</div>
+		<nav aria-label="Project links">
+			<p><strong>Project</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+				<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+			</ul>
+		</nav>
+		<nav aria-label="Help links">
+			<p><strong>Help</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/CODE_OF_CONDUCT.md">Code of conduct</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/SECURITY.md">Security policy</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div>
+		<div data-studio="cta">
+	<p>Work with Allons-y Studio</p>
+	<p>Design systems, front-end engineering, &amp; accessibility consulting for teams that depend on open source.</p>
+	<a href="mailto:consulting@allons-y.studio">consulting@allons-y.studio</a>
+</div>
+
+		<a data-studio="footer" href="https://allons-y.studio">
+	<picture>
+		<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-dark.svg">
+		<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+	</picture>
+	
+</a>
+
+	</div>
+</footer>
+
+	
+
+</body>
+</html>
