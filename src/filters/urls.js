@@ -11,7 +11,7 @@
  * @module @allons-y/dashly/filters/urls
  */
 
-import { arg } from '../validate.js';
+import { arg } from "../validate.js";
 
 /**
  * Ensure a URL is safe to render. Passes through `mailto:`, `tel:`, fragments,
@@ -23,7 +23,7 @@ import { arg } from '../validate.js';
  * @returns {string}
  */
 export const validateURL = (url) => {
-	if (!url || typeof url !== 'string') return url;
+	if (!url || typeof url !== "string") return url;
 	if (/^(https?:|mailto:|tel:|\/|#)/.test(url)) return encodeURI(url);
 	return `https://${encodeURI(url)}`;
 };
@@ -60,17 +60,17 @@ export const validateURL = (url) => {
  * <link rel="canonical" href="{{ page.url | absoluteUrl }}">
  */
 export const absoluteUrl = (path, baseUrl) => {
-	const base = arg.string('absoluteUrl', 'baseUrl', baseUrl);
-	if (path == null || path === '') return '';
-	if (typeof path !== 'string') return path;
+	const base = arg.string("absoluteUrl", "baseUrl", baseUrl);
+	if (path == null || path === "") return "";
+	if (typeof path !== "string") return path;
 	if (/^(https?:|mailto:|tel:|#)/.test(path)) return path;
 	if (!base) return path;
 
 	try {
 		return new URL(path, base).toString();
 	} catch {
-		const trimmed = base.replace(/\/+$/, '');
-		const rest = path.replace(/^\/+/, '');
+		const trimmed = base.replace(/\/+$/, "");
+		const rest = path.replace(/^\/+/, "");
 		return `${trimmed}/${rest}`;
 	}
 };

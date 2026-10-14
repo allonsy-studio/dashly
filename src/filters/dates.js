@@ -11,7 +11,7 @@
  * @module @allons-y/dashly/filters/dates
  */
 
-import { arg, intl } from '../validate.js';
+import { arg, intl } from "../validate.js";
 
 /**
  * Convert a date-like value to an ISO 8601 string. Returns an empty string for
@@ -20,9 +20,9 @@ import { arg, intl } from '../validate.js';
  * @returns {string}
  */
 export const toISOString = (date) => {
-	if (!date) return '';
+	if (!date) return "";
 	const d = new Date(date);
-	if (isNaN(d.getTime())) return '';
+	if (isNaN(d.getTime())) return "";
 	return d.toISOString();
 };
 
@@ -33,9 +33,9 @@ export const toISOString = (date) => {
  * @returns {number | ''}
  */
 export const year = (date) => {
-	if (!date) return '';
+	if (!date) return "";
 	const d = new Date(date);
-	if (isNaN(d.getTime())) return '';
+	if (isNaN(d.getTime())) return "";
 	return d.getFullYear();
 };
 
@@ -54,12 +54,12 @@ export const year = (date) => {
  * @returns {string | number | Date} The formatted string, or `value` unchanged when it is falsy or unparseable.
  */
 export const dateFormat = (value, options, locale) => {
-	const formatOptions = arg.object('dateFormat', 'options', options) ?? {};
-	const tag = arg.locale('dateFormat', 'locale', locale) ?? 'en-US';
+	const formatOptions = arg.object("dateFormat", "options", options) ?? {};
+	const tag = arg.locale("dateFormat", "locale", locale) ?? "en-US";
 	if (!value) return value;
 	const d = new Date(value);
 	if (isNaN(d.getTime())) return value;
-	return intl('dateFormat', 'locale or options', () => d.toLocaleDateString(tag, { timeZone: 'UTC', ...formatOptions }));
+	return intl("dateFormat", "locale or options", () => d.toLocaleDateString(tag, { timeZone: "UTC", ...formatOptions }));
 };
 
 /**
@@ -69,7 +69,7 @@ export const dateFormat = (value, options, locale) => {
  * @returns {string | number | Date} The formatted date, or `value` unchanged when it is falsy or unparseable.
  */
 export const longDate = (value, locale) =>
-	dateFormat(value, { day: 'numeric', month: 'long', year: 'numeric' }, arg.locale('longDate', 'locale', locale));
+	dateFormat(value, { day: "numeric", month: "long", year: "numeric" }, arg.locale("longDate", "locale", locale));
 
 /**
  * Format a date as an abbreviated month-and-year (e.g. "Jan 2026").
@@ -78,16 +78,16 @@ export const longDate = (value, locale) =>
  * @returns {string | number | Date} The formatted date, or `value` unchanged when it is falsy or unparseable.
  */
 export const shortDate = (value, locale) =>
-	dateFormat(value, { month: 'short', year: 'numeric' }, arg.locale('shortDate', 'locale', locale));
+	dateFormat(value, { month: "short", year: "numeric" }, arg.locale("shortDate", "locale", locale));
 
 const UNITS = /** @type {const} */ ([
-	['year', 60 * 60 * 24 * 365],
-	['month', 60 * 60 * 24 * 30],
-	['week', 60 * 60 * 24 * 7],
-	['day', 60 * 60 * 24],
-	['hour', 60 * 60],
-	['minute', 60],
-	['second', 1],
+	["year", 60 * 60 * 24 * 365],
+	["month", 60 * 60 * 24 * 30],
+	["week", 60 * 60 * 24 * 7],
+	["day", 60 * 60 * 24],
+	["hour", 60 * 60],
+	["minute", 60],
+	["second", 1],
 ]);
 
 /**
@@ -117,23 +117,23 @@ const UNITS = /** @type {const} */ ([
  * {{ post.date | timeAgo }}
  */
 export const relativeDate = (value, locale, options) => {
-	const tag = arg.locale('relativeDate', 'locale', locale) ?? 'en-US';
-	const opts = arg.object('relativeDate', 'options', options) ?? {};
-	const now = arg.date('relativeDate', 'options.now', opts.now) ?? new Date();
-	const style = arg.oneOf(['long', 'short', 'narrow'])('relativeDate', 'options.style', opts.style) ?? 'long';
-	const numeric = arg.oneOf(['always', 'auto'])('relativeDate', 'options.numeric', opts.numeric) ?? 'auto';
-	if (!value) return '';
+	const tag = arg.locale("relativeDate", "locale", locale) ?? "en-US";
+	const opts = arg.object("relativeDate", "options", options) ?? {};
+	const now = arg.date("relativeDate", "options.now", opts.now) ?? new Date();
+	const style = arg.oneOf(["long", "short", "narrow"])("relativeDate", "options.style", opts.style) ?? "long";
+	const numeric = arg.oneOf(["always", "auto"])("relativeDate", "options.numeric", opts.numeric) ?? "auto";
+	if (!value) return "";
 	const d = new Date(value);
-	if (isNaN(d.getTime())) return '';
+	if (isNaN(d.getTime())) return "";
 	const diffSeconds = (d.getTime() - now.getTime()) / 1000;
-	const formatter = intl('relativeDate', 'locale', () => new Intl.RelativeTimeFormat(tag, { style, numeric }));
+	const formatter = intl("relativeDate", "locale", () => new Intl.RelativeTimeFormat(tag, { style, numeric }));
 	for (const [unit, secondsPerUnit] of UNITS) {
-		if (Math.abs(diffSeconds) >= secondsPerUnit || unit === 'second') {
+		if (Math.abs(diffSeconds) >= secondsPerUnit || unit === "second") {
 			const value = Math.round(diffSeconds / secondsPerUnit);
 			return formatter.format(value, unit);
 		}
 	}
-	return formatter.format(0, 'second');
+	return formatter.format(0, "second");
 };
 
 /**

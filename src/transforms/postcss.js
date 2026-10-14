@@ -13,8 +13,8 @@
  * @module @allons-y/dashly/transforms/postcss
  */
 
-import path from 'node:path';
-import { writeFile } from 'node:fs/promises';
+import path from "node:path";
+import { writeFile } from "node:fs/promises";
 
 /**
  * Run a CSS string through PostCSS using the plugins and options supplied in
@@ -28,7 +28,7 @@ import { writeFile } from 'node:fs/promises';
  * @returns {Promise<string>}
  */
 export const processCSS = async (content, inputPath, outputPath, config = {}) => {
-	const { default: postcss } = await import('postcss');
+	const { default: postcss } = await import("postcss");
 	const parsed = path.parse(inputPath);
 
 	const result = await postcss(config.plugins ?? []).process(content, {
@@ -38,7 +38,7 @@ export const processCSS = async (content, inputPath, outputPath, config = {}) =>
 	});
 
 	if (result.map && outputPath) {
-		const outputFolder = path.join(path.dirname(outputPath), 'css');
+		const outputFolder = path.join(path.dirname(outputPath), "css");
 		await writeFile(path.join(outputFolder, `${parsed.name}.css.map`), result.map.toString());
 	}
 

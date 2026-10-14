@@ -12,18 +12,18 @@
  * @module @allons-y/dashly/filters/debug
  */
 
-import { arg } from '../validate.js';
+import { arg } from "../validate.js";
 
 /** @returns {(key: string, value: unknown) => unknown} */
 const circularSafeReplacer = () => {
 	const seen = new WeakSet();
 	return (_key, value) => {
-		if (typeof value === 'object' && value !== null) {
-			if (seen.has(value)) return '[Circular]';
+		if (typeof value === "object" && value !== null) {
+			if (seen.has(value)) return "[Circular]";
 			seen.add(value);
 		}
-		if (typeof value === 'function') return `[Function: ${value.name || 'anonymous'}]`;
-		if (typeof value === 'bigint') return value.toString() + 'n';
+		if (typeof value === "function") return `[Function: ${value.name || "anonymous"}]`;
+		if (typeof value === "bigint") return value.toString() + "n";
 		if (value instanceof Date) return value.toISOString();
 		if (value instanceof RegExp) return value.toString();
 		return value;
@@ -48,7 +48,7 @@ const circularSafeReplacer = () => {
  * // '{"a":1}'
  * dump({ a: 1 }, 0);
  */
-export const dump = (value, indent) => JSON.stringify(value, circularSafeReplacer(), arg.indent('dump', 'indent', indent) ?? 2);
+export const dump = (value, indent) => JSON.stringify(value, circularSafeReplacer(), arg.indent("dump", "indent", indent) ?? 2);
 
 /**
  * Alias for {@link dump}. Some teams prefer the `| jsonify` name.

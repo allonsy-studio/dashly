@@ -7,9 +7,10 @@
  */
 
 /**
- * Aggregate re-export for every shortcode in dashly.
+ * Shortcodes are registered with `addShortcode` & called as `{% name %}` in
+ * templates. This entry re-exports every shortcode module.
  *
  * @module @allons-y/dashly/shortcodes
  */
 
-export * from './year.js';
+export * from "./year.js";

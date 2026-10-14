@@ -13,14 +13,14 @@
  * @module @allons-y/dashly/transforms/prettier
  */
 
-import path from 'node:path';
+import path from "node:path";
 
-const DEFAULT_EXTENSIONS = ['.html', '.xml', '.svg'];
+const DEFAULT_EXTENSIONS = [".html", ".xml", ".svg"];
 
 const DEFAULT_OPTIONS = {
 	bracketSameLine: true,
 	printWidth: 512,
-	parser: 'html',
+	parser: "html",
 	tabWidth: 2,
 };
 
@@ -39,9 +39,9 @@ export const createPrettierTransform = (options = {}) => {
 
 	/** @this {{ page?: { outputPath?: string }, outputPath?: string }} Eleventy's transform context. */
 	return async function prettierTransform(content) {
-		const outputPath = this?.page?.outputPath || this?.outputPath || '';
+		const outputPath = this?.page?.outputPath || this?.outputPath || "";
 		if (!extensions.includes(path.extname(outputPath))) return content;
-		const { default: prettier } = await import('prettier');
+		const { default: prettier } = await import("prettier");
 		return prettier.format(content, prettierOptions);
 	};
 };

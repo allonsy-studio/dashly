@@ -6,13 +6,13 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-import { describe, it, expect } from 'vitest';
-import { createCleanAttrsTransform } from '../../src/transforms/clean-attrs.js';
+import { describe, it, expect } from "vitest";
+import { createCleanAttrsTransform } from "../../src/transforms/clean-attrs.js";
 
-describe('createCleanAttrsTransform', () => {
+describe("createCleanAttrsTransform", () => {
 	it('strips eleventy:ignore="" from .html output', () => {
 		const transform = createCleanAttrsTransform();
-		const ctx = { page: { outputPath: '/site/index.html' } };
+		const ctx = { page: { outputPath: "/site/index.html" } };
 		const input =
 			'<picture><img eleventy:ignore="" src="a.png" alt="a"></picture>';
 		const out = transform.call(ctx, input);
@@ -20,16 +20,16 @@ describe('createCleanAttrsTransform', () => {
 		expect(out).toMatch(/<img src="a.png" alt="a">/);
 	});
 
-	it('passes through non-HTML output untouched', () => {
+	it("passes through non-HTML output untouched", () => {
 		const transform = createCleanAttrsTransform();
-		const ctx = { page: { outputPath: '/site/feed.xml' } };
+		const ctx = { page: { outputPath: "/site/feed.xml" } };
 		const input = '<x eleventy:ignore="" />';
 		expect(transform.call(ctx, input)).toBe(input);
 	});
 
-	it('accepts additional attribute names', () => {
-		const transform = createCleanAttrsTransform({ attrs: ['data-foo'] });
-		const ctx = { page: { outputPath: 'index.html' } };
-		expect(transform.call(ctx, '<p data-foo="">x</p>')).toBe('<p>x</p>');
+	it("accepts additional attribute names", () => {
+		const transform = createCleanAttrsTransform({ attrs: ["data-foo"] });
+		const ctx = { page: { outputPath: "index.html" } };
+		expect(transform.call(ctx, '<p data-foo="">x</p>')).toBe("<p>x</p>");
 	});
 });

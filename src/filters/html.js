@@ -17,7 +17,7 @@
  * @module @allons-y/dashly/filters/html
  */
 
-import { arg } from '../validate.js';
+import { arg } from "../validate.js";
 
 /**
  * Strip every HTML tag from a string, leaving only text content. Zero-dep
@@ -37,10 +37,10 @@ import { arg } from '../validate.js';
  * {{ post.content | stripTags | excerpt(40) }}
  */
 export const stripTags = (value) => {
-	if (value == null) return '';
+	if (value == null) return "";
 	return String(value)
-		.replace(/<[^>]*>/g, ' ')
-		.replace(/\s+/g, ' ')
+		.replace(/<[^>]*>/g, " ")
+		.replace(/\s+/g, " ")
 		.trim();
 };
 
@@ -61,21 +61,21 @@ export const stripTags = (value) => {
  * {{ user.bio | nl2br | safe }}
  */
 export const nl2br = (value) => {
-	if (value == null) return '';
-	return String(value).replace(/\r\n|\r|\n/g, '<br>\n');
+	if (value == null) return "";
+	return String(value).replace(/\r\n|\r|\n/g, "<br>\n");
 };
 
 const DEFAULT_UNSAFE_TAGS = Object.freeze([
-	'comment',
-	'embed',
-	'link',
-	'listing',
-	'meta',
-	'noscript',
-	'object',
-	'plaintext',
-	'script',
-	'xmp',
+	"comment",
+	"embed",
+	"link",
+	"listing",
+	"meta",
+	"noscript",
+	"object",
+	"plaintext",
+	"script",
+	"xmp",
 ]);
 
 /**
@@ -100,23 +100,23 @@ const DEFAULT_UNSAFE_TAGS = Object.freeze([
  * @returns {Promise<string>}
  */
 export const cleanForRSS = async (html, options) => {
-	const opts = arg.object('cleanForRSS', 'options', options) ?? {};
-	const unsafe = arg.stringArray('cleanForRSS', 'options.unsafeTags', opts.unsafeTags) ?? DEFAULT_UNSAFE_TAGS;
-	const custom = arg.stringArray('cleanForRSS', 'options.customTags', opts.customTags) ?? [];
-	const stripPermalinks = arg.boolean('cleanForRSS', 'options.stripPermalinks', opts.stripPermalinks) ?? true;
-	if (!html || typeof html !== 'string') return html;
+	const opts = arg.object("cleanForRSS", "options", options) ?? {};
+	const unsafe = arg.stringArray("cleanForRSS", "options.unsafeTags", opts.unsafeTags) ?? DEFAULT_UNSAFE_TAGS;
+	const custom = arg.stringArray("cleanForRSS", "options.customTags", opts.customTags) ?? [];
+	const stripPermalinks = arg.boolean("cleanForRSS", "options.stripPermalinks", opts.stripPermalinks) ?? true;
+	if (!html || typeof html !== "string") return html;
 
-	const { default: posthtml } = await import('posthtml');
+	const { default: posthtml } = await import("posthtml");
 
 	const modifier = posthtml().use((tree) => {
 		if (!Array.isArray(tree) || !tree.length) return tree;
 		tree.walk((node) => {
-			if (!node || typeof node !== 'object') return node;
+			if (!node || typeof node !== "object") return node;
 			const classes =
-				node.attrs?.class?.split(' ').map((c) => c.trim().toLowerCase()) ?? [];
+				node.attrs?.class?.split(" ").map((c) => c.trim().toLowerCase()) ?? [];
 			const isPermalink =
-				stripPermalinks && node.tag === 'a' && classes.includes('header-anchor');
-			const tag = typeof node.tag === 'string' ? node.tag : '';
+				stripPermalinks && node.tag === "a" && classes.includes("header-anchor");
+			const tag = typeof node.tag === "string" ? node.tag : "";
 			const isUnsafe = unsafe.includes(tag);
 			const isCustom = custom.includes(tag);
 			if (isPermalink || isUnsafe || isCustom) {
@@ -156,18 +156,18 @@ export const cleanForRSS = async (html, options) => {
  * @returns {Promise<string>}
  */
 export const renderMarkdown = async (value, options) => {
-	const opts = arg.object('renderMarkdown', 'options', options) ?? {};
-	const custom = arg.renderer('renderMarkdown', 'options.renderer', opts.renderer);
-	const splitParagraphs = arg.boolean('renderMarkdown', 'options.splitParagraphs', opts.splitParagraphs) ?? true;
-	if (!value || typeof value !== 'string') return value;
+	const opts = arg.object("renderMarkdown", "options", options) ?? {};
+	const custom = arg.renderer("renderMarkdown", "options.renderer", opts.renderer);
+	const splitParagraphs = arg.boolean("renderMarkdown", "options.splitParagraphs", opts.splitParagraphs) ?? true;
+	if (!value || typeof value !== "string") return value;
 
-	const renderer = custom ?? new (await import('markdown-it')).default({ html: true, linkify: true });
+	const renderer = custom ?? new (await import("markdown-it")).default({ html: true, linkify: true });
 
 	if (!splitParagraphs) return renderer.render(value);
 
 	const paragraphs = value
-		.split('\\n\\n')
-		.map((p) => `<p>${p.replace(/\\n/g, '<br>').trim()}</p>`);
+		.split("\\n\\n")
+		.map((p) => `<p>${p.replace(/\\n/g, "<br>").trim()}</p>`);
 	if (paragraphs.length === 0) return renderer.render(value);
-	return renderer.render(paragraphs.join(''));
+	return renderer.render(paragraphs.join(""));
 };

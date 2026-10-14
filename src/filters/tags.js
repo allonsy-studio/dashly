@@ -13,9 +13,9 @@
  * @module @allons-y/dashly/filters/tags
  */
 
-import { arg } from '../validate.js';
+import { arg } from "../validate.js";
 
-export const DEFAULT_EXCLUDED_TAGS = Object.freeze(['all', 'post', 'posts']);
+export const DEFAULT_EXCLUDED_TAGS = Object.freeze(["all", "post", "posts"]);
 
 /**
  * Filter an array of tag strings to exclude system tags and any additional
@@ -41,9 +41,9 @@ export const DEFAULT_EXCLUDED_TAGS = Object.freeze(['all', 'post', 'posts']);
  * {% for tag in collections.all | getAllTags | tags %} … {% endfor %}
  */
 export const tags = (tagList, extraExclude, defaultExclude) => {
-	const extra = arg.stringArray('tags', 'extraExclude', extraExclude) ?? [];
-	const base = arg.stringArray('tags', 'defaultExclude', defaultExclude) ?? DEFAULT_EXCLUDED_TAGS;
+	const extra = arg.stringArray("tags", "extraExclude", extraExclude) ?? [];
+	const base = arg.stringArray("tags", "defaultExclude", defaultExclude) ?? DEFAULT_EXCLUDED_TAGS;
 	if (!Array.isArray(tagList)) return [];
 	const excluded = new Set([...base, ...extra]);
-	return tagList.filter((t) => typeof t === 'string' && !excluded.has(t));
+	return tagList.filter((t) => typeof t === "string" && !excluded.has(t));
 };

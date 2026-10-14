@@ -13,10 +13,10 @@
  * @module @allons-y/dashly/filters/text
  */
 
-import { arg } from '../validate.js';
+import { arg } from "../validate.js";
 
 /** @param {unknown} value */
-const stripHtml = (value) => String(value).replace(/<[^>]*>/g, ' ');
+const stripHtml = (value) => String(value).replace(/<[^>]*>/g, " ");
 
 /**
  * @param {unknown} value
@@ -68,8 +68,8 @@ export const wordCount = (value) => words(value).length;
  * {{ 1200 | readingTime(250) }}
  */
 export const readingTime = (value, wpm) => {
-	const perMinute = arg.number('readingTime', 'wpm', wpm) ?? 200;
-	const count = typeof value === 'number' ? value : wordCount(value);
+	const perMinute = arg.number("readingTime", "wpm", wpm) ?? 200;
+	const count = typeof value === "number" ? value : wordCount(value);
 	if (!count || !perMinute) return 1;
 	return Math.max(1, Math.round(count / perMinute));
 };
@@ -99,23 +99,23 @@ export const readingTime = (value, wpm) => {
  * {{ post.content | excerpt(200, 'chars') }}
  */
 export const excerpt = (value, n, unit) => {
-	const limit = arg.number('excerpt', 'n', n) ?? 30;
-	const unitOfLength = arg.oneOf(['words', 'chars'])('excerpt', 'unit', unit) ?? 'words';
-	if (value == null) return '';
-	const text = stripHtml(value).replace(/\s+/g, ' ').trim();
+	const limit = arg.number("excerpt", "n", n) ?? 30;
+	const unitOfLength = arg.oneOf(["words", "chars"])("excerpt", "unit", unit) ?? "words";
+	if (value == null) return "";
+	const text = stripHtml(value).replace(/\s+/g, " ").trim();
 	if (!text || !limit) return text;
 
 	const fromEnd = limit < 0;
 	const count = Math.abs(limit);
 
-	if (unitOfLength === 'chars') {
+	if (unitOfLength === "chars") {
 		if (text.length <= count) return text;
-		return fromEnd ? '…' + text.slice(-count) : text.slice(0, count) + '…';
+		return fromEnd ? "…" + text.slice(-count) : text.slice(0, count) + "…";
 	}
 
 	const tokens = text.split(/\s+/);
 	if (tokens.length <= count) return text;
 	return fromEnd
-		? '… ' + tokens.slice(-count).join(' ')
-		: tokens.slice(0, count).join(' ') + '…';
+		? "… " + tokens.slice(-count).join(" ")
+		: tokens.slice(0, count).join(" ") + "…";
 };

@@ -7,12 +7,15 @@
  */
 
 /**
- * Aggregate re-export for every transform in dashly.
+ * Transforms process built output. The `prettier`, `htmlmin`, & `clean-attrs`
+ * modules export factories that return a function to pass to `addTransform`;
+ * `postcss` exports a helper for CSS bundles. Peer dependencies load on first
+ * use, so a transform only needs its package when it runs.
  *
  * @module @allons-y/dashly/transforms
  */
 
-export * from './prettier.js';
-export * from './htmlmin.js';
-export * from './clean-attrs.js';
-export * from './postcss.js';
+export * from "./prettier.js";
+export * from "./htmlmin.js";
+export * from "./clean-attrs.js";
+export * from "./postcss.js";

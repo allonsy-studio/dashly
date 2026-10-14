@@ -7,4 +7,4 @@
  */
 
 /** The options object Handlebars appends to every helper call. */
-export const helperOptions = () => ({ name: 'helper', hash: {}, data: {}, loc: {}, lookupProperty() {} });
+export const helperOptions = () => ({ name: "helper", hash: {}, data: {}, loc: {}, lookupProperty() {} });
