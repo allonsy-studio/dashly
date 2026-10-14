@@ -1,0 +1,2779 @@
+<!doctype html>
+<html lang="en">
+<head>
+		<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Filters: dashly</title>
+<meta name="description" content="A standard library of filters, transforms, &amp; shortcodes for Eleventy. One install, one plugin line, done.">
+<link rel="canonical" href="https://projects.allons-y.studio/dashly/">
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="dashly: A standard library of filters, transforms, &amp; shortcodes for Eleventy">
+<meta property="og:description" content="A standard library of filters, transforms, &amp; shortcodes for Eleventy. One install, one plugin line, done.">
+<meta property="og:url" content="https://projects.allons-y.studio/dashly/">
+
+<link rel="icon" href="/dashly/preview/14/assets/img/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Mono&amp;display=swap">
+
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/tokens.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/reset.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/layout.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/components.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/studio.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/project.css">
+<script type="module" src="/dashly/preview/14/assets/scripts/copy-code.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/code-highlight.js"></script>
+
+	</head>
+	<body>
+		<a href="#main">Skip to content</a>
+		<header>
+			<a data-studio="banner" href="https://allons-y.studio">
+	<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+</a>
+
+			<div>
+	<a rel="home" href="/dashly/preview/14/">
+		
+		<span>dashly</span>
+	</a>
+	<nav aria-label="Primary">
+		
+		
+		
+		<a href="/dashly/preview/14/getting-started/">Docs</a>
+		<a href="https://github.com/allonsy-studio/dashly">GitHub</a>
+		<a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+	</nav>
+</div>
+
+		</header>
+		<main id="main" tabindex="-1">
+			<div>
+	<nav aria-label="Documentation">
+	<ul>
+		<li>
+			<a href="/dashly/preview/14/getting-started/">Getting started</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/concepts/">How it works</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/config/">Configuration</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/filters/" aria-current="page">Filters</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/transforms/">Transforms</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/shortcodes/">Shortcodes</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/a-la-carte/">Use only what you need</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/output/">Format &amp; minify output</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a>
+		</li>
+	</ul>
+</nav>
+
+	<article>
+		<h1>Filters</h1>
+		
+	<p>Filters are plain functions registered with <code>addFilter</code>, so they work in
+Nunjucks, Liquid, &amp; 11ty.js (JavaScript) templates.
+This entry re-exports every filter module; for narrower bundles, import
+directly from a subpath (e.g. <code>@allons-y/dashly/filters/dates</code>).</p>
+
+
+<ul>
+	<li>
+		<a href="#module-arrays">arrays</a>: <span>Array-manipulation filters for Eleventy.</span>
+	</li>
+<li>
+		<a href="#module-dates">dates</a>: <span>Date-related filters for Eleventy.</span>
+	</li>
+<li>
+		<a href="#module-debug">debug</a>: <span>Debugging filters for rendering template data into output for inspection.</span>
+	</li>
+<li>
+		<a href="#module-html">html</a>: <span>HTML-related filters for Eleventy.</span>
+	</li>
+<li>
+		<a href="#module-numbers">numbers</a>: <span>Locale-aware number-formatting filters built on Intl.NumberFormat.</span>
+	</li>
+<li>
+		<a href="#module-objects">objects</a>: <span>Object-related filters for Eleventy.</span>
+	</li>
+<li>
+		<a href="#module-strings">strings</a>: <span>String-manipulation filters for Eleventy.</span>
+	</li>
+<li>
+		<a href="#module-tags">tags</a>: <span>Tag-list helpers for Eleventy.</span>
+	</li>
+<li>
+		<a href="#module-text">text</a>: <span>Text-analysis filters: word counting, excerpting, and reading-time estimation.</span>
+	</li>
+<li>
+		<a href="#module-urls">urls</a>: <span>URL-related filters for Eleventy.</span>
+	</li>
+</ul>
+
+<section aria-labelledby="module-arrays">
+	<h2 id="module-arrays"><code>arrays</code></h2>
+	<p>Array-manipulation filters for Eleventy. Nunjucks &amp; Liquid have native
+<code>first</code> / <code>last</code> / <code>reverse</code> filters, but 11ty.js (JavaScript) templates &amp;
+Handlebars do not. Registering these via dashly makes them available in all
+four, as checked by <code>test/engines.test.js</code>.</p>
+
+	<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,15,16],[&quot;punctuation&quot;,22,23],[&quot;punctuation&quot;,32,33],[&quot;punctuation&quot;,42,43],[&quot;punctuation&quot;,51,52],[&quot;punctuation&quot;,59,60],[&quot;punctuation&quot;,67,68],[&quot;punctuation&quot;,75,76],[&quot;punctuation&quot;,77,78],[&quot;keyword&quot;,79,83],[&quot;string&quot;,84,117],[&quot;punctuation&quot;,117,118]]">import {
+	first,
+	last,
+	reverse,
+	groupBy,
+	sortBy,
+	chunk,
+	where,
+	pluck,
+} from '@allons-y/dashly/filters/arrays';</code></pre>
+</figure>
+
+
+	<article aria-labelledby="first">
+		<h3 id="first"><code>first(value, n?)</code></h3>
+		<p>Return the first item of an array, or the first <code>n</code> items if a count is
+supplied. With no count, matches Nunjucks <code>first</code> (single item). With a
+count, returns the first N items — covers the "limit / head" use case.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>readonly T[]</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>n</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>number</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>T | T[] | undefined</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,6],[&quot;function&quot;,7,12],[&quot;punctuation&quot;,12,13],[&quot;punctuation&quot;,13,14],[&quot;string&quot;,14,17],[&quot;punctuation&quot;,17,18],[&quot;string&quot;,19,22],[&quot;punctuation&quot;,22,23],[&quot;string&quot;,24,27],[&quot;punctuation&quot;,27,28],[&quot;punctuation&quot;,28,29],[&quot;punctuation&quot;,29,30]]">// 'a'
+first(['a', 'b', 'c']);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,13],[&quot;function&quot;,14,19],[&quot;punctuation&quot;,19,20],[&quot;punctuation&quot;,20,21],[&quot;string&quot;,21,24],[&quot;punctuation&quot;,24,25],[&quot;string&quot;,26,29],[&quot;punctuation&quot;,29,30],[&quot;string&quot;,31,34],[&quot;punctuation&quot;,34,35],[&quot;punctuation&quot;,35,36],[&quot;number&quot;,37,38],[&quot;punctuation&quot;,38,39],[&quot;punctuation&quot;,39,40]]">// ['a', 'b']
+first(['a', 'b', 'c'], 2);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ collections.posts | first }}</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{% for post in collections.posts | first(3) %} … {% endfor %}</code></pre>
+</figure>
+
+		</section>
+	</article>
+<article aria-labelledby="last">
+		<h3 id="last"><code>last(value, n?)</code></h3>
+		<p>Return the last item of an array, or the last <code>n</code> items if a count is
+supplied. Mirror of <code>first</code>.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>readonly T[]</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>n</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>number</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>T | T[] | undefined</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,6],[&quot;function&quot;,7,11],[&quot;punctuation&quot;,11,12],[&quot;punctuation&quot;,12,13],[&quot;string&quot;,13,16],[&quot;punctuation&quot;,16,17],[&quot;string&quot;,18,21],[&quot;punctuation&quot;,21,22],[&quot;string&quot;,23,26],[&quot;punctuation&quot;,26,27],[&quot;punctuation&quot;,27,28],[&quot;punctuation&quot;,28,29]]">// 'c'
+last(['a', 'b', 'c']);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,13],[&quot;function&quot;,14,18],[&quot;punctuation&quot;,18,19],[&quot;punctuation&quot;,19,20],[&quot;string&quot;,20,23],[&quot;punctuation&quot;,23,24],[&quot;string&quot;,25,28],[&quot;punctuation&quot;,28,29],[&quot;string&quot;,30,33],[&quot;punctuation&quot;,33,34],[&quot;punctuation&quot;,34,35],[&quot;number&quot;,36,37],[&quot;punctuation&quot;,37,38],[&quot;punctuation&quot;,38,39]]">// ['b', 'c']
+last(['a', 'b', 'c'], 2);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ collections.posts | last }}</code></pre>
+</figure>
+
+		</section>
+	</article>
+<article aria-labelledby="reverse">
+		<h3 id="reverse"><code>reverse(value)</code></h3>
+		<p>Reverse an array or a string without mutating the input.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>readonly T[] | string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>T[] | string</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,12],[&quot;function&quot;,13,20],[&quot;punctuation&quot;,20,21],[&quot;punctuation&quot;,21,22],[&quot;number&quot;,22,23],[&quot;punctuation&quot;,23,24],[&quot;number&quot;,25,26],[&quot;punctuation&quot;,26,27],[&quot;number&quot;,28,29],[&quot;punctuation&quot;,29,30],[&quot;punctuation&quot;,30,31],[&quot;punctuation&quot;,31,32]]">// [3, 2, 1]
+reverse([1, 2, 3]);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,8],[&quot;function&quot;,9,16],[&quot;punctuation&quot;,16,17],[&quot;string&quot;,17,22],[&quot;punctuation&quot;,22,23],[&quot;punctuation&quot;,23,24]]">// 'cba'
+reverse('abc');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ collections.posts | reverse }}</code></pre>
+</figure>
+
+		</section>
+	</article>
+<article aria-labelledby="groupBy">
+		<h3 id="groupBy"><code>groupBy(value, keyOrFn)</code></h3>
+		<p>Group array items by a key, a dot-path, or a function. Returns a plain
+object keyed by the grouping value, with each value an array of items.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>readonly T[]</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>keyOrFn</code>
+							
+						</td>
+						<td><code>string | ((item: T) =&gt; unknown)</code></td>
+						<td></td>
+						<td>Property name (dot-paths supported, e.g. <code>'data.year'</code>) or selector function.</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>Record&lt;string, T[]&gt;</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,31],[&quot;function&quot;,32,39],[&quot;punctuation&quot;,39,40],[&quot;punctuation&quot;,45,46],[&quot;string&quot;,47,58],[&quot;punctuation&quot;,58,59],[&quot;punctuation&quot;,59,60]]">// { 2025: [...], 2026: [...] }
+groupBy(posts, 'data.year');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;function&quot;,0,7],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,13,14],[&quot;punctuation&quot;,15,16],[&quot;number&quot;,16,17],[&quot;punctuation&quot;,17,18],[&quot;punctuation&quot;,19,21],[&quot;punctuation&quot;,23,24],[&quot;punctuation&quot;,28,29],[&quot;punctuation&quot;,33,34],[&quot;number&quot;,34,35],[&quot;punctuation&quot;,35,36],[&quot;punctuation&quot;,36,37],[&quot;punctuation&quot;,37,38]]">groupBy(posts, (p) =&gt; p.data.tags[0]);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{% for year, items in collections.posts | groupBy('data.year') %} … {% endfor %}</code></pre>
+</figure>
+
+		</section>
+	</article>
+<article aria-labelledby="sortBy">
+		<h3 id="sortBy"><code>sortBy(value, keyOrFn, order?)</code></h3>
+		<p>Sort an array by a key, dot-path, or selector function, without mutating
+the input. String values are compared with <code>localeCompare</code>; everything else
+with standard <code>&lt;</code> / <code>&gt;</code>.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>readonly T[]</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>keyOrFn</code>
+							
+						</td>
+						<td><code>string | ((item: T) =&gt; unknown)</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>order</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>'asc' | 'desc'</code></td>
+						<td><code>'asc'</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>T[]</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;function&quot;,0,6],[&quot;punctuation&quot;,6,7],[&quot;punctuation&quot;,12,13],[&quot;string&quot;,14,25],[&quot;punctuation&quot;,25,26],[&quot;string&quot;,27,33],[&quot;punctuation&quot;,33,34],[&quot;punctuation&quot;,34,35]]">sortBy(posts, 'data.date', 'desc');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;function&quot;,0,6],[&quot;punctuation&quot;,6,7],[&quot;punctuation&quot;,12,13],[&quot;punctuation&quot;,14,15],[&quot;number&quot;,15,19],[&quot;punctuation&quot;,19,20],[&quot;punctuation&quot;,21,23],[&quot;punctuation&quot;,28,29],[&quot;punctuation&quot;,37,38],[&quot;punctuation&quot;,38,39]]">sortBy(items, (item) =&gt; item.priority);</code></pre>
+</figure>
+
+		</section>
+	</article>
+<article aria-labelledby="chunk">
+		<h3 id="chunk"><code>chunk(value, size)</code></h3>
+		<p>Split an array into N-sized chunks. The final chunk may be smaller than
+<code>size</code>. Returns an empty array for non-array or invalid-size input.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>readonly T[]</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>size</code>
+							
+						</td>
+						<td><code>number</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>T[][]</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,24],[&quot;function&quot;,25,30],[&quot;punctuation&quot;,30,31],[&quot;punctuation&quot;,31,32],[&quot;number&quot;,32,33],[&quot;punctuation&quot;,33,34],[&quot;number&quot;,35,36],[&quot;punctuation&quot;,36,37],[&quot;number&quot;,38,39],[&quot;punctuation&quot;,39,40],[&quot;number&quot;,41,42],[&quot;punctuation&quot;,42,43],[&quot;number&quot;,44,45],[&quot;punctuation&quot;,45,46],[&quot;punctuation&quot;,46,47],[&quot;number&quot;,48,49],[&quot;punctuation&quot;,49,50],[&quot;punctuation&quot;,50,51]]">// [[1, 2], [3, 4], [5]]
+chunk([1, 2, 3, 4, 5], 2);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{# render a gallery grid #}
+{% for row in images | chunk(3) %} … {% endfor %}</code></pre>
+</figure>
+
+		</section>
+	</article>
+<article aria-labelledby="where">
+		<h3 id="where"><code>where(value, keyOrFn, expected?)</code></h3>
+		<p>Filter an array by a key/dot-path equality check. When <code>expected</code> is
+omitted, items where the keyed value is truthy are kept (useful for
+<code>where(posts, 'data.featured')</code>).</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>readonly T[]</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>keyOrFn</code>
+							
+						</td>
+						<td><code>string | ((item: T) =&gt; unknown)</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>expected</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>unknown</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>T[]</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;function&quot;,0,5],[&quot;punctuation&quot;,5,6],[&quot;punctuation&quot;,11,12],[&quot;string&quot;,13,25],[&quot;punctuation&quot;,25,26],[&quot;number&quot;,27,32],[&quot;punctuation&quot;,32,33],[&quot;punctuation&quot;,33,34]]">where(posts, 'data.draft', false);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;function&quot;,0,5],[&quot;punctuation&quot;,5,6],[&quot;punctuation&quot;,11,12],[&quot;string&quot;,13,28],[&quot;punctuation&quot;,28,29],[&quot;punctuation&quot;,29,30],[&quot;comment&quot;,31,45]]">where(posts, 'data.featured'); // truthy-only</code></pre>
+</figure>
+
+		</section>
+	</article>
+<article aria-labelledby="pluck">
+		<h3 id="pluck"><code>pluck(value, keyOrFn)</code></h3>
+		<p>Project an array of objects onto a single key or dot-path.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>readonly T[]</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>keyOrFn</code>
+							
+						</td>
+						<td><code>string | ((item: T) =&gt; unknown)</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>unknown[]</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,21],[&quot;function&quot;,22,27],[&quot;punctuation&quot;,27,28],[&quot;punctuation&quot;,28,29],[&quot;punctuation&quot;,29,30],[&quot;function&quot;,31,36],[&quot;punctuation&quot;,36,37],[&quot;string&quot;,38,45],[&quot;punctuation&quot;,46,47],[&quot;punctuation&quot;,47,48],[&quot;punctuation&quot;,49,50],[&quot;function&quot;,51,56],[&quot;punctuation&quot;,56,57],[&quot;string&quot;,58,65],[&quot;punctuation&quot;,66,67],[&quot;punctuation&quot;,67,68],[&quot;punctuation&quot;,68,69],[&quot;string&quot;,70,77],[&quot;punctuation&quot;,77,78],[&quot;punctuation&quot;,78,79]]">// ['Hello', 'World']
+pluck([{ title: 'Hello' }, { title: 'World' }], 'title');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ collections.posts | pluck('data.title') | join(', ') }}</code></pre>
+</figure>
+
+		</section>
+	</article>
+</section>
+<section aria-labelledby="module-dates">
+	<h2 id="module-dates"><code>dates</code></h2>
+	<p>Date-related filters for Eleventy.</p>
+
+	<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,21,22],[&quot;punctuation&quot;,28,29],[&quot;punctuation&quot;,41,42],[&quot;punctuation&quot;,52,53],[&quot;punctuation&quot;,64,65],[&quot;punctuation&quot;,79,80],[&quot;punctuation&quot;,89,90],[&quot;punctuation&quot;,91,92],[&quot;keyword&quot;,93,97],[&quot;string&quot;,98,130],[&quot;punctuation&quot;,130,131]]">import {
+	toISOString,
+	year,
+	dateFormat,
+	longDate,
+	shortDate,
+	relativeDate,
+	timeAgo,
+} from '@allons-y/dashly/filters/dates';</code></pre>
+</figure>
+
+
+	<article aria-labelledby="toISOString">
+		<h3 id="toISOString"><code>toISOString(date)</code></h3>
+		<p>Convert a date-like value to an ISO 8601 string. Returns an empty string for
+falsy inputs or unparseable dates.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>date</code>
+							
+						</td>
+						<td><code>string | number | Date</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string</code>
+				
+			</p>
+		</section>
+
+		
+	</article>
+<article aria-labelledby="year">
+		<h3 id="year"><code>year(date)</code></h3>
+		<p>Extract the four-digit year from a date-like value. Returns an empty string
+for falsy or unparseable inputs.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>date</code>
+							
+						</td>
+						<td><code>string | number | Date</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>number | ''</code>
+				
+			</p>
+		</section>
+
+		
+	</article>
+<article aria-labelledby="dateFormat">
+		<h3 id="dateFormat"><code>dateFormat(value, options?, locale?)</code></h3>
+		<p>Format a date using <code>Intl.DateTimeFormat</code>. Returns the input unchanged on
+falsy or unparseable values so templates can render gracefully.</p>
+<p>Defaults to <code>timeZone: 'UTC'</code> so a date-only string like <code>'2026-01-15'</code>
+(which <code>Date</code> parses as midnight UTC) renders as "15 January" everywhere,
+not "14 January" on machines west of Greenwich. Pass <code>timeZone</code> in
+<code>options</code> to override.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string | number | Date</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.DateTimeFormatOptions</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>locale</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.LocalesArgument</code></td>
+						<td><code>'en-US'</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string | number | Date</code>
+				: The formatted string, or <code>value</code> unchanged when it is falsy or unparseable.
+			</p>
+		</section>
+
+		
+	</article>
+<article aria-labelledby="longDate">
+		<h3 id="longDate"><code>longDate(value, locale?)</code></h3>
+		<p>Format a date as a long-form date (e.g. "15 January 2026").</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string | number | Date</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>locale</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.LocalesArgument</code></td>
+						<td><code>'en-US'</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string | number | Date</code>
+				: The formatted date, or <code>value</code> unchanged when it is falsy or unparseable.
+			</p>
+		</section>
+
+		
+	</article>
+<article aria-labelledby="shortDate">
+		<h3 id="shortDate"><code>shortDate(value, locale?)</code></h3>
+		<p>Format a date as an abbreviated month-and-year (e.g. "Jan 2026").</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string | number | Date</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>locale</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.LocalesArgument</code></td>
+						<td><code>'en-US'</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string | number | Date</code>
+				: The formatted date, or <code>value</code> unchanged when it is falsy or unparseable.
+			</p>
+		</section>
+
+		
+	</article>
+<article aria-labelledby="relativeDate">
+		<h3 id="relativeDate"><code>relativeDate(value, locale?, options?)</code></h3>
+		<p>Format a date as a locale-aware relative phrase (e.g. "2 days ago",
+"in 3 months"). Wraps <code>Intl.RelativeTimeFormat</code>.</p>
+<p>The reference point is <code>now</code> by default but can be overridden — useful for
+stable build output and for testing.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string | number | Date</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>locale</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.LocalesArgument</code></td>
+						<td><code>'en-US'</code></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>object</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>options.now</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Date</code></td>
+						<td></td>
+						<td>Reference date to compare against. Defaults to <code>new Date()</code>.</td>
+					</tr>
+<tr>
+						<td>
+							<code>options.style</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.RelativeTimeFormatStyle</code></td>
+						<td><code>'long'</code></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>options.numeric</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>'auto' | 'always'</code></td>
+						<td><code>'auto'</code></td>
+						<td><code>'auto'</code> produces "yesterday" / "tomorrow"; <code>'always'</code> forces "1 day ago".</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,14],[&quot;function&quot;,15,27],[&quot;punctuation&quot;,27,28],[&quot;keyword&quot;,28,31],[&quot;function&quot;,32,36],[&quot;punctuation&quot;,36,37],[&quot;punctuation&quot;,41,42],[&quot;function&quot;,42,45],[&quot;punctuation&quot;,45,46],[&quot;punctuation&quot;,46,47],[&quot;punctuation&quot;,48,49],[&quot;number&quot;,50,60],[&quot;punctuation&quot;,60,61],[&quot;punctuation&quot;,61,62],[&quot;punctuation&quot;,62,63]]">// 'yesterday'
+relativeDate(new Date(Date.now() - 86_400_000));</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,14],[&quot;function&quot;,15,27],[&quot;punctuation&quot;,27,28],[&quot;string&quot;,28,40],[&quot;punctuation&quot;,40,41],[&quot;string&quot;,42,49],[&quot;punctuation&quot;,49,50],[&quot;punctuation&quot;,51,52],[&quot;function&quot;,53,56],[&quot;punctuation&quot;,56,57],[&quot;keyword&quot;,58,61],[&quot;function&quot;,62,66],[&quot;punctuation&quot;,66,67],[&quot;string&quot;,67,79],[&quot;punctuation&quot;,79,80],[&quot;punctuation&quot;,80,81],[&quot;function&quot;,82,87],[&quot;punctuation&quot;,87,88],[&quot;string&quot;,89,96],[&quot;punctuation&quot;,97,98],[&quot;punctuation&quot;,98,99],[&quot;punctuation&quot;,99,100]]">// '2 mo. ago'
+relativeDate('2026-01-15', 'en-US', { now: new Date('2026-03-20'), style: 'short' });</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ post.date | timeAgo }}</code></pre>
+</figure>
+
+		</section>
+	</article>
+<article aria-labelledby="timeAgo">
+		<h3 id="timeAgo"><code>timeAgo(value, locale?, options?)</code></h3>
+		<p>Alias for <code>relativeDate</code>. Some teams prefer the <code>| timeAgo</code> name.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string | number | Date</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>locale</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.LocalesArgument</code></td>
+						<td><code>'en-US'</code></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>object</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>options.now</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Date</code></td>
+						<td></td>
+						<td>Reference date to compare against. Defaults to <code>new Date()</code>.</td>
+					</tr>
+<tr>
+						<td>
+							<code>options.style</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.RelativeTimeFormatStyle</code></td>
+						<td><code>'long'</code></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>options.numeric</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>'auto' | 'always'</code></td>
+						<td><code>'auto'</code></td>
+						<td><code>'auto'</code> produces "yesterday" / "tomorrow"; <code>'always'</code> forces "1 day ago".</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,14],[&quot;function&quot;,15,27],[&quot;punctuation&quot;,27,28],[&quot;keyword&quot;,28,31],[&quot;function&quot;,32,36],[&quot;punctuation&quot;,36,37],[&quot;punctuation&quot;,41,42],[&quot;function&quot;,42,45],[&quot;punctuation&quot;,45,46],[&quot;punctuation&quot;,46,47],[&quot;punctuation&quot;,48,49],[&quot;number&quot;,50,60],[&quot;punctuation&quot;,60,61],[&quot;punctuation&quot;,61,62],[&quot;punctuation&quot;,62,63]]">// 'yesterday'
+relativeDate(new Date(Date.now() - 86_400_000));</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,14],[&quot;function&quot;,15,27],[&quot;punctuation&quot;,27,28],[&quot;string&quot;,28,40],[&quot;punctuation&quot;,40,41],[&quot;string&quot;,42,49],[&quot;punctuation&quot;,49,50],[&quot;punctuation&quot;,51,52],[&quot;function&quot;,53,56],[&quot;punctuation&quot;,56,57],[&quot;keyword&quot;,58,61],[&quot;function&quot;,62,66],[&quot;punctuation&quot;,66,67],[&quot;string&quot;,67,79],[&quot;punctuation&quot;,79,80],[&quot;punctuation&quot;,80,81],[&quot;function&quot;,82,87],[&quot;punctuation&quot;,87,88],[&quot;string&quot;,89,96],[&quot;punctuation&quot;,97,98],[&quot;punctuation&quot;,98,99],[&quot;punctuation&quot;,99,100]]">// '2 mo. ago'
+relativeDate('2026-01-15', 'en-US', { now: new Date('2026-03-20'), style: 'short' });</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ post.date | timeAgo }}</code></pre>
+</figure>
+
+		</section>
+	</article>
+</section>
+<section aria-labelledby="module-debug">
+	<h2 id="module-debug"><code>debug</code></h2>
+	<p>Debugging filters for rendering template data into output for inspection.</p>
+
+	<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,13,14],[&quot;punctuation&quot;,23,24],[&quot;keyword&quot;,25,29],[&quot;string&quot;,30,62],[&quot;punctuation&quot;,62,63]]">import { dump, jsonify } from '@allons-y/dashly/filters/debug';</code></pre>
+</figure>
+
+
+	<article aria-labelledby="dump">
+		<h3 id="dump"><code>dump(value, indent?)</code></h3>
+		<p>Serialize a value as pretty-printed JSON. Handles circular references,
+functions, BigInts, Dates, and RegExps so it never throws inside a template.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>unknown</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>indent</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>number</code></td>
+						<td><code>2</code></td>
+						<td>Indent width passed to <code>JSON.stringify</code>.</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,31]]">// &lt;pre&gt;{{ page | dump }}&lt;/pre&gt;</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ collections.posts[0] | dump(0) }}</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,12],[&quot;function&quot;,13,17],[&quot;punctuation&quot;,17,18],[&quot;punctuation&quot;,18,19],[&quot;function&quot;,20,21],[&quot;punctuation&quot;,21,22],[&quot;number&quot;,23,24],[&quot;punctuation&quot;,25,26],[&quot;punctuation&quot;,26,27],[&quot;number&quot;,28,29],[&quot;punctuation&quot;,29,30],[&quot;punctuation&quot;,30,31]]">// '{"a":1}'
+dump({ a: 1 }, 0);</code></pre>
+</figure>
+
+		</section>
+	</article>
+<article aria-labelledby="jsonify">
+		<h3 id="jsonify"><code>jsonify(value, indent?)</code></h3>
+		<p>Alias for <code>dump</code>. Some teams prefer the <code>| jsonify</code> name.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>unknown</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>indent</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>number</code></td>
+						<td><code>2</code></td>
+						<td>Indent width passed to <code>JSON.stringify</code>.</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,31]]">// &lt;pre&gt;{{ page | dump }}&lt;/pre&gt;</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ collections.posts[0] | dump(0) }}</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,12],[&quot;function&quot;,13,17],[&quot;punctuation&quot;,17,18],[&quot;punctuation&quot;,18,19],[&quot;function&quot;,20,21],[&quot;punctuation&quot;,21,22],[&quot;number&quot;,23,24],[&quot;punctuation&quot;,25,26],[&quot;punctuation&quot;,26,27],[&quot;number&quot;,28,29],[&quot;punctuation&quot;,29,30],[&quot;punctuation&quot;,30,31]]">// '{"a":1}'
+dump({ a: 1 }, 0);</code></pre>
+</figure>
+
+		</section>
+	</article>
+</section>
+<section aria-labelledby="module-html">
+	<h2 id="module-html"><code>html</code></h2>
+	<p>HTML-related filters for Eleventy.</p>
+<ul>
+<li><code>cleanForRSS</code> requires <code>posthtml</code> as a peer dependency.</li>
+<li><code>renderMarkdown</code> requires <code>markdown-it</code> as a peer dependency or a
+user-provided renderer instance.</li>
+<li>Both are async &amp; do not work in Handlebars; see each filter for why.</li>
+</ul>
+
+	<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,19,20],[&quot;punctuation&quot;,27,28],[&quot;punctuation&quot;,41,42],[&quot;punctuation&quot;,58,59],[&quot;punctuation&quot;,60,61],[&quot;keyword&quot;,62,66],[&quot;string&quot;,67,98],[&quot;punctuation&quot;,98,99]]">import {
+	stripTags,
+	nl2br,
+	cleanForRSS,
+	renderMarkdown,
+} from '@allons-y/dashly/filters/html';</code></pre>
+</figure>
+
+
+	<article aria-labelledby="stripTags">
+		<h3 id="stripTags"><code>stripTags(value)</code></h3>
+		<p>Strip every HTML tag from a string, leaving only text content. Zero-dep
+regex pass — for opinionated tag-aware stripping (RSS feeds, custom
+elements, permalinks), use <code>cleanForRSS</code> instead.</p>
+<p>Internal whitespace is collapsed and the result is trimmed.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,16],[&quot;function&quot;,17,26],[&quot;punctuation&quot;,26,27],[&quot;string&quot;,27,64],[&quot;punctuation&quot;,64,65],[&quot;punctuation&quot;,65,66]]">// 'Hello world'
+stripTags('&lt;p&gt;Hello &lt;strong&gt;world&lt;/strong&gt;&lt;/p&gt;');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ post.content | stripTags | excerpt(40) }}</code></pre>
+</figure>
+
+		</section>
+	</article>
+<article aria-labelledby="nl2br">
+		<h3 id="nl2br"><code>nl2br(value)</code></h3>
+		<p>Replace newline characters with <code>&lt;br&gt;</code> tags. Handles <code>\r\n</code>, <code>\r</code>, and <code>\n</code>.
+Useful for rendering plain-text strings (form responses, YAML data) as HTML
+while preserving line breaks. Preserves the trailing newline so the HTML
+source stays readable.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,28],[&quot;function&quot;,29,34],[&quot;punctuation&quot;,34,35],[&quot;string&quot;,35,52],[&quot;punctuation&quot;,52,53],[&quot;punctuation&quot;,53,54]]">// 'one&lt;br&gt;\ntwo&lt;br&gt;\nthree'
+nl2br('one\ntwo\nthree');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ user.bio | nl2br | safe }}</code></pre>
+</figure>
+
+		</section>
+	</article>
+<article aria-labelledby="cleanForRSS">
+		<h3 id="cleanForRSS"><code>cleanForRSS(html, options?)</code></h3>
+		<p>Strip tags and elements that are unsafe or undesirable in RSS/Atom feeds.</p>
+<p>By default this removes script/style/embed/etc. tags and <code>header-anchor</code>
+permalink <code>&lt;a&gt;</code> elements inserted by markdown-it-anchor. Pass <code>customTags</code>
+to strip additional tags (e.g. web components like <code>lite-youtube</code>).</p>
+<p>Async, so it does not work in Handlebars. The filter returns a Promise
+because it loads <code>posthtml</code> with a dynamic <code>import()</code> on first use.
+Nunjucks, Liquid, &amp; 11ty.js await it. Handlebars helpers are synchronous &amp;
+cannot await, so <code>{{cleanForRSS html}}</code> renders <code>[object Promise]</code>. Compute
+the value in a data file, <code>eleventyComputed</code>, or a JS template instead, &amp;
+pass the resulting string to the Handlebars template.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>html</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>object</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>options.unsafeTags</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>string[]</code></td>
+						<td></td>
+						<td>Override the default unsafe-tag list.</td>
+					</tr>
+<tr>
+						<td>
+							<code>options.customTags</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>string[]</code></td>
+						<td><code>[]</code></td>
+						<td>Additional tag names to strip (e.g. custom elements).</td>
+					</tr>
+<tr>
+						<td>
+							<code>options.stripPermalinks</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>boolean</code></td>
+						<td><code>true</code></td>
+						<td>Remove <code>&lt;a class="header-anchor"&gt;</code> nodes.</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>Promise&lt;string&gt;</code>
+				
+			</p>
+		</section>
+
+		
+	</article>
+<article aria-labelledby="renderMarkdown">
+		<h3 id="renderMarkdown"><code>renderMarkdown(value, options?)</code></h3>
+		
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>object</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>options.renderer</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>import('markdown-it').default</code></td>
+						<td></td>
+						<td>A pre-configured <code>markdown-it</code> instance.</td>
+					</tr>
+<tr>
+						<td>
+							<code>options.splitParagraphs</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>boolean</code></td>
+						<td><code>true</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>Promise&lt;string&gt;</code>
+				
+			</p>
+		</section>
+
+		
+	</article>
+</section>
+<section aria-labelledby="module-numbers">
+	<h2 id="module-numbers"><code>numbers</code></h2>
+	<p>Locale-aware number-formatting filters built on <code>Intl.NumberFormat</code>.</p>
+
+	<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,16,17],[&quot;punctuation&quot;,27,28],[&quot;punctuation&quot;,37,38],[&quot;punctuation&quot;,39,40],[&quot;keyword&quot;,41,45],[&quot;string&quot;,46,80],[&quot;punctuation&quot;,80,81]]">import {
+	number,
+	currency,
+	percent,
+} from '@allons-y/dashly/filters/numbers';</code></pre>
+</figure>
+
+
+	<article aria-labelledby="number">
+		<h3 id="number"><code>number(value, options?, locale?)</code></h3>
+		<p>Format a number using <code>Intl.NumberFormat</code>. Returns an empty string for
+non-numeric input so templates render gracefully.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>number | string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.NumberFormatOptions</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>locale</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.LocalesArgument</code></td>
+						<td><code>'en-US'</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,14],[&quot;function&quot;,15,21],[&quot;punctuation&quot;,21,22],[&quot;number&quot;,22,29],[&quot;punctuation&quot;,29,30],[&quot;punctuation&quot;,30,31]]">// '1,234,567'
+number(1234567);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,17],[&quot;function&quot;,18,24],[&quot;punctuation&quot;,24,25],[&quot;number&quot;,25,35],[&quot;punctuation&quot;,35,36],[&quot;punctuation&quot;,37,38],[&quot;function&quot;,39,60],[&quot;punctuation&quot;,60,61],[&quot;number&quot;,62,63],[&quot;punctuation&quot;,64,65],[&quot;punctuation&quot;,65,66],[&quot;string&quot;,67,74],[&quot;punctuation&quot;,74,75],[&quot;punctuation&quot;,75,76]]">// '1 234 567,89'
+number(1234567.89, { maximumFractionDigits: 2 }, 'fr-FR');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ stats.views | number }}</code></pre>
+</figure>
+
+		</section>
+	</article>
+<article aria-labelledby="currency">
+		<h3 id="currency"><code>currency(value, currencyCode?, locale?, options?)</code></h3>
+		<p>Format a number as a localized currency string.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>number | string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>currencyCode</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>string</code></td>
+						<td><code>'USD'</code></td>
+						<td>ISO 4217 currency code.</td>
+					</tr>
+<tr>
+						<td>
+							<code>locale</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.LocalesArgument</code></td>
+						<td><code>'en-US'</code></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.NumberFormatOptions</code></td>
+						<td></td>
+						<td>Extra <code>Intl.NumberFormat</code> options.</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,14],[&quot;function&quot;,15,23],[&quot;punctuation&quot;,23,24],[&quot;number&quot;,24,28],[&quot;punctuation&quot;,28,29],[&quot;punctuation&quot;,29,30]]">// '$1,299.00'
+currency(1299);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,15],[&quot;function&quot;,16,24],[&quot;punctuation&quot;,24,25],[&quot;number&quot;,25,29],[&quot;punctuation&quot;,29,30],[&quot;string&quot;,31,36],[&quot;punctuation&quot;,36,37],[&quot;string&quot;,38,45],[&quot;punctuation&quot;,45,46],[&quot;punctuation&quot;,46,47]]">// '1 299,00 €'
+currency(1299, 'EUR', 'fr-FR');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ product.price | currency('USD') }}</code></pre>
+</figure>
+
+		</section>
+	</article>
+<article aria-labelledby="percent">
+		<h3 id="percent"><code>percent(value, options?)</code></h3>
+		<p>Format a number as a localized percentage. Input is treated as a fraction by
+default (<code>0.25</code> → <code>25%</code>); pass <code>{ asFraction: false }</code> to format whole-number
+percentages (<code>25</code> → <code>25%</code>).</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>number | string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>object</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>options.asFraction</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>boolean</code></td>
+						<td><code>true</code></td>
+						<td>Treat input as a 0–1 fraction. Set false for whole-number percentages.</td>
+					</tr>
+<tr>
+						<td>
+							<code>options.maximumFractionDigits</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>number</code></td>
+						<td><code>0</code></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>options.locale</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.LocalesArgument</code></td>
+						<td><code>'en-US'</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,8],[&quot;function&quot;,9,16],[&quot;punctuation&quot;,16,17],[&quot;number&quot;,17,21],[&quot;punctuation&quot;,21,22],[&quot;punctuation&quot;,22,23]]">// '25%'
+percent(0.25);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,8],[&quot;function&quot;,9,16],[&quot;punctuation&quot;,16,17],[&quot;number&quot;,17,19],[&quot;punctuation&quot;,19,20],[&quot;punctuation&quot;,21,22],[&quot;function&quot;,23,33],[&quot;punctuation&quot;,33,34],[&quot;number&quot;,35,40],[&quot;punctuation&quot;,41,42],[&quot;punctuation&quot;,42,43],[&quot;punctuation&quot;,43,44]]">// '25%'
+percent(25, { asFraction: false });</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,10],[&quot;function&quot;,11,18],[&quot;punctuation&quot;,18,19],[&quot;number&quot;,19,24],[&quot;punctuation&quot;,24,25],[&quot;punctuation&quot;,26,27],[&quot;function&quot;,28,49],[&quot;punctuation&quot;,49,50],[&quot;number&quot;,51,52],[&quot;punctuation&quot;,53,54],[&quot;punctuation&quot;,54,55],[&quot;punctuation&quot;,55,56]]">// '25.5%'
+percent(0.255, { maximumFractionDigits: 1 });</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ survey.completionRate | percent }}</code></pre>
+</figure>
+
+		</section>
+	</article>
+</section>
+<section aria-labelledby="module-objects">
+	<h2 id="module-objects"><code>objects</code></h2>
+	<p>Object-related filters for Eleventy.</p>
+
+	<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,14,15],[&quot;keyword&quot;,16,20],[&quot;string&quot;,21,55],[&quot;punctuation&quot;,55,56]]">import { keys } from '@allons-y/dashly/filters/objects';</code></pre>
+</figure>
+
+
+	<article aria-labelledby="keys">
+		<h3 id="keys"><code>keys(value)</code></h3>
+		<p>Return the enumerable keys of an object. Returns an empty array for nullish
+or non-object values so templates can <code>{% for %}</code> safely.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>object</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string[]</code>
+				
+			</p>
+		</section>
+
+		
+	</article>
+</section>
+<section aria-labelledby="module-strings">
+	<h2 id="module-strings"><code>strings</code></h2>
+	<p>String-manipulation filters for Eleventy.</p>
+
+	<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,19,20],[&quot;punctuation&quot;,30,31],[&quot;punctuation&quot;,37,38],[&quot;punctuation&quot;,55,56],[&quot;punctuation&quot;,68,69],[&quot;punctuation&quot;,81,82],[&quot;punctuation&quot;,89,90],[&quot;punctuation&quot;,91,92],[&quot;keyword&quot;,93,97],[&quot;string&quot;,98,132],[&quot;punctuation&quot;,132,133]]">import {
+	firstWord,
+	lastWord,
+	trim,
+	stripWhitespace,
+	digitsOnly,
+	capitalize,
+	title,
+} from '@allons-y/dashly/filters/strings';</code></pre>
+</figure>
+
+
+	<article aria-labelledby="firstWord">
+		<h3 id="firstWord"><code>firstWord(value)</code></h3>
+		<p>Return the first whitespace-delimited word of a string.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string | undefined</code>
+				
+			</p>
+		</section>
+
+		
+	</article>
+<article aria-labelledby="lastWord">
+		<h3 id="lastWord"><code>lastWord(value)</code></h3>
+		<p>Return the last whitespace-delimited word of a string.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string | undefined</code>
+				
+			</p>
+		</section>
+
+		
+	</article>
+<article aria-labelledby="trim">
+		<h3 id="trim"><code>trim(value)</code></h3>
+		<p>Trim leading and trailing whitespace.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string | undefined</code>
+				
+			</p>
+		</section>
+
+		
+	</article>
+<article aria-labelledby="stripWhitespace">
+		<h3 id="stripWhitespace"><code>stripWhitespace(value)</code></h3>
+		<p>Remove all whitespace characters from a string.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string | undefined</code>
+				
+			</p>
+		</section>
+
+		
+	</article>
+<article aria-labelledby="digitsOnly">
+		<h3 id="digitsOnly"><code>digitsOnly(value)</code></h3>
+		<p>Strip every non-digit character from a string. Useful for phone-number
+normalization before formatting.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string | undefined</code>
+				
+			</p>
+		</section>
+
+		
+	</article>
+<article aria-labelledby="capitalize">
+		<h3 id="capitalize"><code>capitalize(value)</code></h3>
+		<p>Uppercase the first character of a string and lowercase the rest. Matches
+the semantics of Nunjucks/Liquid <code>capitalize</code>.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string | undefined</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,16],[&quot;function&quot;,17,27],[&quot;punctuation&quot;,27,28],[&quot;string&quot;,28,41],[&quot;punctuation&quot;,41,42],[&quot;punctuation&quot;,42,43]]">// 'Hello world'
+capitalize('hello WORLD');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ heading | capitalize }}</code></pre>
+</figure>
+
+		</section>
+	</article>
+<article aria-labelledby="title">
+		<h3 id="title"><code>title(value)</code></h3>
+		<p>Title-case a string by uppercasing the first letter of each whitespace-
+delimited word and lowercasing the rest. Useful for converting slugs or
+raw labels into display headings.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string | undefined</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,24],[&quot;function&quot;,25,30],[&quot;punctuation&quot;,30,31],[&quot;string&quot;,31,52],[&quot;punctuation&quot;,52,53],[&quot;punctuation&quot;,53,54]]">// 'The Quick Brown Fox'
+title('the QUICK brown fox');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ tag | title }}</code></pre>
+</figure>
+
+		</section>
+	</article>
+</section>
+<section aria-labelledby="module-tags">
+	<h2 id="module-tags"><code>tags</code></h2>
+	<p>Tag-list helpers for Eleventy. Use to clean Eleventy's system-tag noise
+(<code>all</code>, <code>post</code>, <code>posts</code>, etc.) out of a tag list before rendering it.</p>
+
+	<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,14,15],[&quot;keyword&quot;,16,20],[&quot;string&quot;,21,52],[&quot;punctuation&quot;,52,53]]">import { tags } from '@allons-y/dashly/filters/tags';</code></pre>
+</figure>
+
+
+	<article aria-labelledby="tags">
+		<h3 id="tags"><code>tags(tagList, extraExclude?, defaultExclude?)</code></h3>
+		<p>Filter an array of tag strings to exclude system tags and any additional
+names supplied either as plugin defaults or as a per-call extra list.</p>
+<p>The plugin wires its <code>tagsExclude</code> option into the default exclusion list
+so callers configure once in <code>eleventy.config.js</code>. Per-call extras are
+added on top, not replacing the defaults.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>tagList</code>
+							
+						</td>
+						<td><code>readonly string[]</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>extraExclude</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>readonly string[]</code></td>
+						<td></td>
+						<td>Names to exclude in addition to the configured defaults.</td>
+					</tr>
+<tr>
+						<td>
+							<code>defaultExclude</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>readonly string[]</code></td>
+						<td><code>DEFAULT_EXCLUDED_TAGS</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string[]</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,28],[&quot;function&quot;,29,33],[&quot;punctuation&quot;,33,34],[&quot;punctuation&quot;,34,35],[&quot;string&quot;,35,40],[&quot;punctuation&quot;,40,41],[&quot;string&quot;,42,48],[&quot;punctuation&quot;,48,49],[&quot;string&quot;,50,58],[&quot;punctuation&quot;,58,59],[&quot;string&quot;,60,73],[&quot;punctuation&quot;,73,74],[&quot;punctuation&quot;,74,75],[&quot;punctuation&quot;,75,76]]">// ['design', 'engineering']
+tags(['all', 'post', 'design', 'engineering']);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;function&quot;,0,4],[&quot;punctuation&quot;,4,5],[&quot;punctuation&quot;,5,6],[&quot;string&quot;,6,11],[&quot;punctuation&quot;,11,12],[&quot;string&quot;,13,19],[&quot;punctuation&quot;,19,20],[&quot;string&quot;,21,29],[&quot;punctuation&quot;,29,30],[&quot;string&quot;,31,38],[&quot;punctuation&quot;,38,39],[&quot;punctuation&quot;,39,40],[&quot;punctuation&quot;,41,42],[&quot;string&quot;,42,49],[&quot;punctuation&quot;,49,50],[&quot;punctuation&quot;,50,51],[&quot;punctuation&quot;,51,52]]">tags(['all', 'post', 'design', 'draft'], ['draft']);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{% for tag in collections.all | getAllTags | tags %} … {% endfor %}</code></pre>
+</figure>
+
+		</section>
+	</article>
+</section>
+<section aria-labelledby="module-text">
+	<h2 id="module-text"><code>text</code></h2>
+	<p>Text-analysis filters: word counting, excerpting, and reading-time
+estimation. Strip HTML so callers can feed rendered post content directly.</p>
+
+	<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,19,20],[&quot;punctuation&quot;,33,34],[&quot;punctuation&quot;,43,44],[&quot;punctuation&quot;,45,46],[&quot;keyword&quot;,47,51],[&quot;string&quot;,52,83],[&quot;punctuation&quot;,83,84]]">import {
+	wordCount,
+	readingTime,
+	excerpt,
+} from '@allons-y/dashly/filters/text';</code></pre>
+</figure>
+
+
+	<article aria-labelledby="wordCount">
+		<h3 id="wordCount"><code>wordCount(value)</code></h3>
+		<p>Count whitespace-delimited words in a string. HTML tags are stripped before
+counting so rendered post content can be passed in directly.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>number</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,12],[&quot;function&quot;,13,22],[&quot;punctuation&quot;,22,23],[&quot;string&quot;,23,50],[&quot;punctuation&quot;,50,51],[&quot;punctuation&quot;,51,52]]">// Returns 5
+wordCount('The quick brown fox jumps');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ post.content | wordCount }}</code></pre>
+</figure>
+
+		</section>
+	</article>
+<article aria-labelledby="readingTime">
+		<h3 id="readingTime"><code>readingTime(value, wpm?)</code></h3>
+		<p>Estimate reading time in minutes for a block of text. Strips HTML, counts
+words, divides by <code>wpm</code> (default 200), and rounds to the nearest whole
+minute with a floor of 1.</p>
+<p>Accepts either a string (counted internally) or a pre-computed word count
+number.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string | number</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>wpm</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>number</code></td>
+						<td><code>200</code></td>
+						<td>Words per minute.</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>number</code>
+				: Whole-minute estimate, minimum 1.
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,12],[&quot;function&quot;,13,24],[&quot;punctuation&quot;,24,25],[&quot;string&quot;,25,44],[&quot;punctuation&quot;,44,45],[&quot;punctuation&quot;,45,46]]">// Returns 3
+readingTime('…a 600-word post…');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ post.content | readingTime }} min read</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ 1200 | readingTime(250) }}</code></pre>
+</figure>
+
+		</section>
+	</article>
+<article aria-labelledby="excerpt">
+		<h3 id="excerpt"><code>excerpt(value, n?, unit?)</code></h3>
+		<p>Pull an excerpt from a string. Positive <code>n</code> returns the first N units;
+negative <code>n</code> returns the last |N| units. HTML tags are stripped first.
+Appends an ellipsis on the trimmed side when the input is actually cut.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+<tr>
+						<td>
+							<code>n</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>number</code></td>
+						<td><code>30</code></td>
+						<td>Word/char count. Negative for trailing slice.</td>
+					</tr>
+<tr>
+						<td>
+							<code>unit</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>'words' | 'chars'</code></td>
+						<td><code>'words'</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,31],[&quot;function&quot;,32,39],[&quot;punctuation&quot;,39,40],[&quot;string&quot;,40,85],[&quot;punctuation&quot;,85,86],[&quot;number&quot;,87,88],[&quot;punctuation&quot;,88,89],[&quot;punctuation&quot;,89,90]]">// "The quick brown fox jumps…"
+excerpt('The quick brown fox jumps over the lazy dog', 5);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,23],[&quot;function&quot;,24,31],[&quot;punctuation&quot;,31,32],[&quot;string&quot;,32,77],[&quot;punctuation&quot;,77,78],[&quot;punctuation&quot;,79,80],[&quot;number&quot;,80,81],[&quot;punctuation&quot;,81,82],[&quot;punctuation&quot;,82,83]]">// "…over the lazy dog"
+excerpt('The quick brown fox jumps over the lazy dog', -4);</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ post.content | excerpt(40) }}</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{{ post.content | excerpt(200, 'chars') }}</code></pre>
+</figure>
+
+		</section>
+	</article>
+</section>
+<section aria-labelledby="module-urls">
+	<h2 id="module-urls"><code>urls</code></h2>
+	<p>URL-related filters for Eleventy.</p>
+
+	<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,21,22],[&quot;punctuation&quot;,35,36],[&quot;punctuation&quot;,37,38],[&quot;keyword&quot;,39,43],[&quot;string&quot;,44,75],[&quot;punctuation&quot;,75,76]]">import {
+	validateURL,
+	absoluteUrl,
+} from '@allons-y/dashly/filters/urls';</code></pre>
+</figure>
+
+
+	<article aria-labelledby="validateURL">
+		<h3 id="validateURL"><code>validateURL(url)</code></h3>
+		<p>Ensure a URL is safe to render. Passes through <code>mailto:</code>, <code>tel:</code>, fragments,
+relative paths, and URLs already prefixed with <code>http(s):</code>. Everything else is
+prefixed with <code>https://</code>. All output is URI-encoded.</p>
+<p>Note: pass the full URL string. This filter is not context-aware.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>url</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string</code>
+				
+			</p>
+		</section>
+
+		
+	</article>
+<article aria-labelledby="absoluteUrl">
+		<h3 id="absoluteUrl"><code>absoluteUrl(path, baseUrl?)</code></h3>
+		<p>Resolve a path or URL against a base, producing an absolute URL. Useful for
+canonical tags, OpenGraph metadata, JSON-LD, and RSS/Atom feeds — anywhere a
+fully-qualified URL is required.</p>
+<p>Already-absolute URLs are returned unchanged. <code>mailto:</code>, <code>tel:</code>, and
+fragment-only (<code>#section</code>) inputs pass through as-is. Empty/nullish input
+returns an empty string.</p>
+
+
+		<section>
+			<h4>Parameters</h4>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>path</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td>A relative path, absolute path, or full URL.</td>
+					</tr>
+<tr>
+						<td>
+							<code>baseUrl</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td>The site's origin (e.g. <code>https://example.com</code>). Trailing slashes are tolerated. If omitted, the input is returned unchanged — useful during local development.</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>string</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,36],[&quot;function&quot;,37,48],[&quot;punctuation&quot;,48,49],[&quot;string&quot;,49,63],[&quot;punctuation&quot;,63,64],[&quot;string&quot;,65,86],[&quot;punctuation&quot;,86,87],[&quot;punctuation&quot;,87,88]]">// 'https://example.com/posts/hello'
+absoluteUrl('/posts/hello', 'https://example.com');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,36],[&quot;function&quot;,37,48],[&quot;punctuation&quot;,48,49],[&quot;string&quot;,49,62],[&quot;punctuation&quot;,62,63],[&quot;string&quot;,64,86],[&quot;punctuation&quot;,86,87],[&quot;punctuation&quot;,87,88]]">// 'https://example.com/posts/hello'
+absoluteUrl('posts/hello', 'https://example.com/');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,59],[&quot;function&quot;,60,71],[&quot;punctuation&quot;,71,72],[&quot;string&quot;,72,93],[&quot;punctuation&quot;,93,94],[&quot;string&quot;,95,116],[&quot;punctuation&quot;,116,117],[&quot;punctuation&quot;,117,118]]">// 'https://other.com/x' — already absolute, returned as-is
+absoluteUrl('https://other.com/x', 'https://example.com');</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code>{# canonical tag #}
+&lt;link rel="canonical" href="{{ page.url | absoluteUrl }}"&gt;</code></pre>
+</figure>
+
+		</section>
+	</article>
+</section>
+
+	<nav aria-label="Pager">
+	<a rel="prev" href="/dashly/preview/14/config/">Configuration</a>
+	<a rel="next" href="/dashly/preview/14/transforms/">Transforms</a>
+</nav>
+
+
+	</article>
+</div>
+
+
+		</main>
+		<footer>
+	<div>
+		<div>
+			<p><strong>dashly</strong></p>
+			<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+			<p>
+				<small>
+					Licensed under
+					<a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE" data-license="">MPL-2.0</a>
+				</small>
+			</p>
+		</div>
+		<nav aria-label="Project links">
+			<p><strong>Project</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+				<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+			</ul>
+		</nav>
+		<nav aria-label="Help links">
+			<p><strong>Help</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/CODE_OF_CONDUCT.md">Code of conduct</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/SECURITY.md">Security policy</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div>
+		<div data-studio="cta">
+	<p>Work with Allons-y Studio</p>
+	<p>Design systems, front-end engineering, &amp; accessibility consulting for teams that depend on open source.</p>
+	<a href="mailto:consulting@allons-y.studio">consulting@allons-y.studio</a>
+</div>
+
+		<a data-studio="footer" href="https://allons-y.studio">
+	<picture>
+		<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-dark.svg">
+		<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+	</picture>
+	
+</a>
+
+	</div>
+</footer>
+
+	
+
+</body>
+</html>

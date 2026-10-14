@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+		<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shortcodes: dashly</title>
+<meta name="description" content="A standard library of filters, transforms, &amp; shortcodes for Eleventy. One install, one plugin line, done.">
+<link rel="canonical" href="https://projects.allons-y.studio/dashly/">
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="dashly: A standard library of filters, transforms, &amp; shortcodes for Eleventy">
+<meta property="og:description" content="A standard library of filters, transforms, &amp; shortcodes for Eleventy. One install, one plugin line, done.">
+<meta property="og:url" content="https://projects.allons-y.studio/dashly/">
+
+<link rel="icon" href="/dashly/preview/14/assets/img/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Mono&amp;display=swap">
+
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/tokens.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/reset.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/layout.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/components.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/studio.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/project.css">
+<script type="module" src="/dashly/preview/14/assets/scripts/copy-code.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/code-highlight.js"></script>
+
+	</head>
+	<body>
+		<a href="#main">Skip to content</a>
+		<header>
+			<a data-studio="banner" href="https://allons-y.studio">
+	<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+</a>
+
+			<div>
+	<a rel="home" href="/dashly/preview/14/">
+		
+		<span>dashly</span>
+	</a>
+	<nav aria-label="Primary">
+		
+		
+		
+		<a href="/dashly/preview/14/getting-started/">Docs</a>
+		<a href="https://github.com/allonsy-studio/dashly">GitHub</a>
+		<a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+	</nav>
+</div>
+
+		</header>
+		<main id="main" tabindex="-1">
+			<div>
+	<nav aria-label="Documentation">
+	<ul>
+		<li>
+			<a href="/dashly/preview/14/getting-started/">Getting started</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/concepts/">How it works</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/config/">Configuration</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/filters/">Filters</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/transforms/">Transforms</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/shortcodes/" aria-current="page">Shortcodes</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/a-la-carte/">Use only what you need</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/output/">Format &amp; minify output</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a>
+		</li>
+	</ul>
+</nav>
+
+	<article>
+		<h1>Shortcodes</h1>
+		
+	<p>Shortcodes are registered with <code>addShortcode</code> &amp; called as <code>{% name %}</code> in
+templates. This entry re-exports every shortcode module.</p>
+
+
+<ul>
+	<li>
+		<a href="#module-year">year</a>: <span>Current-year shortcode for footer copyrights and similar.</span>
+	</li>
+</ul>
+
+<section aria-labelledby="module-year">
+	<h2 id="module-year"><code>year</code></h2>
+	<p>Current-year shortcode for footer copyrights and similar.</p>
+
+	<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;keyword&quot;,0,6],[&quot;punctuation&quot;,7,8],[&quot;punctuation&quot;,21,22],[&quot;keyword&quot;,23,27],[&quot;string&quot;,28,62],[&quot;punctuation&quot;,62,63]]">import { currentYear } from '@allons-y/dashly/shortcodes/year';</code></pre>
+</figure>
+
+
+	<article aria-labelledby="currentYear">
+		<h3 id="currentYear"><code>currentYear()</code></h3>
+		<p>Return the current four-digit year. Distinct from the <code>year</code> filter, which
+extracts the year from a passed-in date.</p>
+
+
+		
+
+		<section>
+			<h4>Returns</h4>
+			<p>
+				<code>number</code>
+				
+			</p>
+		</section>
+
+		<section>
+			<h4>Examples</h4>
+			<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,45]]">// &lt;p&gt;&amp;copy; {% currentYear %} Acme Corp.&lt;/p&gt;</code></pre>
+</figure>
+
+<figure>
+	
+	<pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,7],[&quot;function&quot;,8,19],[&quot;punctuation&quot;,19,20],[&quot;punctuation&quot;,20,21],[&quot;punctuation&quot;,21,22]]">// 2026
+currentYear();</code></pre>
+</figure>
+
+		</section>
+	</article>
+</section>
+
+	<nav aria-label="Pager">
+	<a rel="prev" href="/dashly/preview/14/transforms/">Transforms</a>
+	<a rel="next" href="/dashly/preview/14/guides/a-la-carte/">Use only what you need</a>
+</nav>
+
+
+	</article>
+</div>
+
+
+		</main>
+		<footer>
+	<div>
+		<div>
+			<p><strong>dashly</strong></p>
+			<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+			<p>
+				<small>
+					Licensed under
+					<a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE" data-license="">MPL-2.0</a>
+				</small>
+			</p>
+		</div>
+		<nav aria-label="Project links">
+			<p><strong>Project</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+				<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+			</ul>
+		</nav>
+		<nav aria-label="Help links">
+			<p><strong>Help</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/CODE_OF_CONDUCT.md">Code of conduct</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/SECURITY.md">Security policy</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div>
+		<div data-studio="cta">
+	<p>Work with Allons-y Studio</p>
+	<p>Design systems, front-end engineering, &amp; accessibility consulting for teams that depend on open source.</p>
+	<a href="mailto:consulting@allons-y.studio">consulting@allons-y.studio</a>
+</div>
+
+		<a data-studio="footer" href="https://allons-y.studio">
+	<picture>
+		<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-dark.svg">
+		<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+	</picture>
+	
+</a>
+
+	</div>
+</footer>
+
+	
+
+</body>
+</html>

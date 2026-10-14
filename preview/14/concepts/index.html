@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+		<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works: dashly</title>
+<meta name="description" content="A standard library of filters, transforms, &amp; shortcodes for Eleventy. One install, one plugin line, done.">
+<link rel="canonical" href="https://projects.allons-y.studio/dashly/">
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="dashly: A standard library of filters, transforms, &amp; shortcodes for Eleventy">
+<meta property="og:description" content="A standard library of filters, transforms, &amp; shortcodes for Eleventy. One install, one plugin line, done.">
+<meta property="og:url" content="https://projects.allons-y.studio/dashly/">
+
+<link rel="icon" href="/dashly/preview/14/assets/img/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Mono&amp;display=swap">
+
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/tokens.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/reset.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/layout.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/components.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/studio.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/project.css">
+<script type="module" src="/dashly/preview/14/assets/scripts/copy-code.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/code-highlight.js"></script>
+
+	</head>
+	<body>
+		<a href="#main">Skip to content</a>
+		<header>
+			<a data-studio="banner" href="https://allons-y.studio">
+	<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+</a>
+
+			<div>
+	<a rel="home" href="/dashly/preview/14/">
+		
+		<span>dashly</span>
+	</a>
+	<nav aria-label="Primary">
+		
+		
+		
+		<a href="/dashly/preview/14/getting-started/">Docs</a>
+		<a href="https://github.com/allonsy-studio/dashly">GitHub</a>
+		<a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+	</nav>
+</div>
+
+		</header>
+		<main id="main" tabindex="-1">
+			<div>
+	<nav aria-label="Documentation">
+	<ul>
+		<li>
+			<a href="/dashly/preview/14/getting-started/">Getting started</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/concepts/" aria-current="page">How it works</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/config/">Configuration</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/filters/">Filters</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/transforms/">Transforms</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/shortcodes/">Shortcodes</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/a-la-carte/">Use only what you need</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/output/">Format &amp; minify output</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a>
+		</li>
+	</ul>
+</nav>
+
+	<article>
+		<h1>How it works</h1>
+		
+	<h2>Three kinds of utility</h2>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Registered with</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/dashly/preview/14/filters/">Filters</a></td>
+<td><code>addFilter</code></td>
+<td>Templates: <code>{{ value | filter }}</code></td>
+</tr>
+<tr>
+<td><a href="/dashly/preview/14/transforms/">Transforms</a></td>
+<td><code>addTransform</code></td>
+<td>Built output, after templates render</td>
+</tr>
+<tr>
+<td><a href="/dashly/preview/14/shortcodes/">Shortcodes</a></td>
+<td><code>addShortcode</code></td>
+<td>Templates: <code>{% name %}</code></td>
+</tr>
+</tbody>
+</table>
+<p>Every utility is a small, pure function with its own JSDoc. The reference pages in this site are generated from that JSDoc, so they match the code.</p>
+<h2>What the plugin does</h2>
+<p><code>config.addPlugin(dashly, options)</code> walks a fixed list of names for each kind &amp; registers the ones that are not excluded. Options flow into the utilities that use them:</p>
+<ul>
+<li><code>dateLocale</code> is the default locale for <code>longDate</code>, <code>shortDate</code>, <code>relativeDate</code>, <code>timeAgo</code>, <code>number</code>, <code>currency</code>, &amp; <code>percent</code>.</li>
+<li><code>baseUrl</code> is the origin <code>absoluteUrl</code> resolves against.</li>
+<li><code>readingTimeWpm</code> is the default words-per-minute for <code>readingTime</code>.</li>
+<li><code>tagsExclude</code> is the list of system tags the <code>tags</code> filter removes.</li>
+</ul>
+<p>A per-call argument always wins over the plugin default. For example, <code>{{ post.content | readingTime(250) }}</code> ignores <code>readingTimeWpm</code>.</p>
+<h2>Plugin or a la carte</h2>
+<p>The plugin is a convenience. Every utility is also exported by name, so registering a single filter by hand is a one-liner. See <a href="/dashly/preview/14/guides/a-la-carte/">Use only what you need</a>.</p>
+<h2>Optional peers load on first use</h2>
+<p>dashly imports <code>prettier</code>, <code>html-minifier-terser</code>, <code>posthtml</code>, <code>markdown-it</code>, &amp; <code>postcss</code> lazily, at the moment a utility needs them. A missing package surfaces as an import error from that utility, not at startup.</p>
+<table>
+<thead>
+<tr>
+<th>Utility</th>
+<th>Loads</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prettier</code> transform</td>
+<td><code>prettier</code></td>
+<td>For every <code>.html</code>, <code>.xml</code>, &amp; <code>.svg</code> output</td>
+</tr>
+<tr>
+<td><code>htmlmin</code> transform</td>
+<td><code>html-minifier-terser</code></td>
+<td>For <code>.html</code> output, only when <code>ELEVENTY_ENV</code> is <code>production</code></td>
+</tr>
+<tr>
+<td><code>cleanForRSS</code> filter</td>
+<td><code>posthtml</code></td>
+<td>On each call</td>
+</tr>
+<tr>
+<td><code>renderMarkdown</code> filter</td>
+<td><code>markdown-it</code></td>
+<td>On each call, unless a <code>renderer</code> option is passed</td>
+</tr>
+</tbody>
+</table>
+<h2>Async utilities</h2>
+<p><code>cleanForRSS</code> &amp; <code>renderMarkdown</code> return promises because they load their peer on demand with a dynamic <code>import()</code>. Nunjucks, Liquid, &amp; 11ty.js await them. The reference lists the return type of every utility.</p>
+<h3>Not supported in Handlebars</h3>
+<p><strong>Do not use <code>cleanForRSS</code> or <code>renderMarkdown</code> in Handlebars templates.</strong> Every other filter works there. Handlebars helpers are synchronous: Handlebars calls the helper, takes whatever it returns, &amp; writes it into the page without waiting. An async filter returns a promise, so <code>{{cleanForRSS html}}</code> renders <code>[object Promise]</code>. There is no template-side fix: Handlebars has no way to wait on a helper, &amp; both filters need an async <code>import()</code> of an optional peer.</p>
+<p>To get their output onto a Handlebars page, resolve it before the template renders &amp; hand the template a finished string. Use <a href="https://www.11ty.dev/docs/data-computed/"><code>eleventyComputed</code></a> in a directory or template data file:</p>
+<figure><pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,19],[&quot;keyword&quot;,20,26],[&quot;punctuation&quot;,27,28],[&quot;punctuation&quot;,44,45],[&quot;keyword&quot;,46,50],[&quot;string&quot;,51,82],[&quot;punctuation&quot;,82,83],[&quot;keyword&quot;,85,91],[&quot;keyword&quot;,92,99],[&quot;punctuation&quot;,100,101],[&quot;function&quot;,103,119],[&quot;punctuation&quot;,119,120],[&quot;punctuation&quot;,121,122],[&quot;function&quot;,125,136],[&quot;punctuation&quot;,136,137],[&quot;keyword&quot;,138,143],[&quot;punctuation&quot;,144,145],[&quot;number&quot;,145,149],[&quot;punctuation&quot;,149,150],[&quot;punctuation&quot;,151,153],[&quot;function&quot;,154,168],[&quot;punctuation&quot;,168,169],[&quot;punctuation&quot;,173,174],[&quot;punctuation&quot;,181,182],[&quot;punctuation&quot;,183,184],[&quot;function&quot;,185,200],[&quot;punctuation&quot;,200,201],[&quot;number&quot;,202,207],[&quot;punctuation&quot;,208,209],[&quot;punctuation&quot;,209,210],[&quot;punctuation&quot;,210,211],[&quot;punctuation&quot;,213,214],[&quot;punctuation&quot;,214,215],[&quot;punctuation&quot;,216,217],[&quot;punctuation&quot;,217,218]]">// post.11tydata.js
+import { renderMarkdown } from '@allons-y/dashly/filters/html';
+
+export default {
+	eleventyComputed: {
+		summaryHtml: async (data) =&gt; renderMarkdown(data.summary, { splitParagraphs: false }),
+	},
+};
+</code></pre></figure>
+<p>Then write <code>{{{summaryHtml}}}</code> in the template. Or write that page in Nunjucks, Liquid, or 11ty.js, which await filters.</p>
+
+	<nav aria-label="Pager">
+	<a rel="prev" href="/dashly/preview/14/getting-started/">Getting started</a>
+	<a rel="next" href="/dashly/preview/14/config/">Configuration</a>
+</nav>
+
+
+	</article>
+</div>
+
+
+		</main>
+		<footer>
+	<div>
+		<div>
+			<p><strong>dashly</strong></p>
+			<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+			<p>
+				<small>
+					Licensed under
+					<a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE" data-license="">MPL-2.0</a>
+				</small>
+			</p>
+		</div>
+		<nav aria-label="Project links">
+			<p><strong>Project</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+				<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+			</ul>
+		</nav>
+		<nav aria-label="Help links">
+			<p><strong>Help</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/CODE_OF_CONDUCT.md">Code of conduct</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/SECURITY.md">Security policy</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div>
+		<div data-studio="cta">
+	<p>Work with Allons-y Studio</p>
+	<p>Design systems, front-end engineering, &amp; accessibility consulting for teams that depend on open source.</p>
+	<a href="mailto:consulting@allons-y.studio">consulting@allons-y.studio</a>
+</div>
+
+		<a data-studio="footer" href="https://allons-y.studio">
+	<picture>
+		<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-dark.svg">
+		<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+	</picture>
+	
+</a>
+
+	</div>
+</footer>
+
+	
+
+</body>
+</html>

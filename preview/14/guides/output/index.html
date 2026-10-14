@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+		<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Format &amp; minify output: dashly</title>
+<meta name="description" content="A standard library of filters, transforms, &amp; shortcodes for Eleventy. One install, one plugin line, done.">
+<link rel="canonical" href="https://projects.allons-y.studio/dashly/">
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="dashly: A standard library of filters, transforms, &amp; shortcodes for Eleventy">
+<meta property="og:description" content="A standard library of filters, transforms, &amp; shortcodes for Eleventy. One install, one plugin line, done.">
+<meta property="og:url" content="https://projects.allons-y.studio/dashly/">
+
+<link rel="icon" href="/dashly/preview/14/assets/img/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Mono&amp;display=swap">
+
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/tokens.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/reset.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/layout.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/components.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/studio.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/project.css">
+<script type="module" src="/dashly/preview/14/assets/scripts/copy-code.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/code-highlight.js"></script>
+
+	</head>
+	<body>
+		<a href="#main">Skip to content</a>
+		<header>
+			<a data-studio="banner" href="https://allons-y.studio">
+	<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+</a>
+
+			<div>
+	<a rel="home" href="/dashly/preview/14/">
+		
+		<span>dashly</span>
+	</a>
+	<nav aria-label="Primary">
+		
+		
+		
+		<a href="/dashly/preview/14/getting-started/">Docs</a>
+		<a href="https://github.com/allonsy-studio/dashly">GitHub</a>
+		<a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+	</nav>
+</div>
+
+		</header>
+		<main id="main" tabindex="-1">
+			<div>
+	<nav aria-label="Documentation">
+	<ul>
+		<li>
+			<a href="/dashly/preview/14/getting-started/">Getting started</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/concepts/">How it works</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/config/">Configuration</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/filters/">Filters</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/transforms/">Transforms</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/shortcodes/">Shortcodes</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/a-la-carte/">Use only what you need</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/output/" aria-current="page">Format &amp; minify output</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a>
+		</li>
+	</ul>
+</nav>
+
+	<article>
+		<h1>Format &amp; minify output</h1>
+		
+	<p>Three transforms act on built pages. Install the peer each one needs; see <a href="/dashly/preview/14/concepts/">How it works</a>.</p>
+<h2>Format with Prettier</h2>
+<p>The <code>prettier</code> transform formats <code>.html</code>, <code>.xml</code>, &amp; <code>.svg</code> output. Defaults favor readable source over line wrapping: <code>printWidth: 512</code>, <code>tabWidth: 2</code>, &amp; <code>bracketSameLine: true</code>.</p>
+<figure><pre tabindex="0"><code data-tokens="[[&quot;punctuation&quot;,6,7],[&quot;function&quot;,7,16],[&quot;punctuation&quot;,16,17],[&quot;punctuation&quot;,23,24],[&quot;punctuation&quot;,25,26],[&quot;function&quot;,28,38],[&quot;punctuation&quot;,38,39],[&quot;punctuation&quot;,40,41],[&quot;function&quot;,44,52],[&quot;punctuation&quot;,52,53],[&quot;punctuation&quot;,54,55],[&quot;function&quot;,59,69],[&quot;punctuation&quot;,69,70],[&quot;punctuation&quot;,71,72],[&quot;string&quot;,72,79],[&quot;punctuation&quot;,79,80],[&quot;punctuation&quot;,80,81],[&quot;function&quot;,85,93],[&quot;punctuation&quot;,93,94],[&quot;punctuation&quot;,95,96],[&quot;function&quot;,97,107],[&quot;punctuation&quot;,107,108],[&quot;number&quot;,109,112],[&quot;punctuation&quot;,113,114],[&quot;punctuation&quot;,114,115],[&quot;punctuation&quot;,118,119],[&quot;punctuation&quot;,119,120],[&quot;punctuation&quot;,122,123],[&quot;punctuation&quot;,123,124],[&quot;punctuation&quot;,125,126],[&quot;punctuation&quot;,126,127],[&quot;punctuation&quot;,127,128]]">config.addPlugin(dashly, {
+	transforms: {
+		prettier: {
+			extensions: [".html"],
+			prettier: { printWidth: 100 },
+		},
+	},
+});
+</code></pre></figure>
+<p><code>extensions</code> limits which outputs are formatted. <code>prettier</code> merges on top of the defaults.</p>
+<h2>Minify in production</h2>
+<p>The <code>htmlmin</code> transform minifies <code>.html</code> output, but only when <code>ELEVENTY_ENV</code> is <code>production</code>.</p>
+<figure><pre tabindex="0"><code data-tokens="[[&quot;punctuation&quot;,12,13]]">ELEVENTY_ENV=production npx @11ty/eleventy
+</code></pre></figure>
+<p>Pass <code>production: false</code> to minify in every build. Forward any <code>html-minifier-terser</code> option through <code>minifier</code>.</p>
+<figure><pre tabindex="0"><code data-tokens="[[&quot;punctuation&quot;,6,7],[&quot;function&quot;,7,16],[&quot;punctuation&quot;,16,17],[&quot;punctuation&quot;,23,24],[&quot;punctuation&quot;,25,26],[&quot;function&quot;,28,38],[&quot;punctuation&quot;,38,39],[&quot;punctuation&quot;,40,41],[&quot;function&quot;,44,51],[&quot;punctuation&quot;,51,52],[&quot;punctuation&quot;,53,54],[&quot;function&quot;,55,63],[&quot;punctuation&quot;,63,64],[&quot;punctuation&quot;,65,66],[&quot;function&quot;,67,88],[&quot;punctuation&quot;,88,89],[&quot;number&quot;,90,94],[&quot;punctuation&quot;,95,96],[&quot;punctuation&quot;,97,98],[&quot;punctuation&quot;,98,99],[&quot;punctuation&quot;,101,102],[&quot;punctuation&quot;,102,103],[&quot;punctuation&quot;,104,105],[&quot;punctuation&quot;,105,106],[&quot;punctuation&quot;,106,107]]">config.addPlugin(dashly, {
+	transforms: {
+		htmlmin: { minifier: { removeAttributeQuotes: true } },
+	},
+});
+</code></pre></figure>
+<h2>Clean leftover attributes</h2>
+<p>The <code>cleanAttrs</code> transform removes <code>eleventy:ignore=""</code> markers that Eleventy's image transform leaves on <code>&lt;img&gt;</code> elements inside <code>&lt;picture&gt;</code>. Add more attribute names with <code>attrs</code>. The list replaces the default, so include <code>eleventy:ignore</code> to keep it.</p>
+<h2>Order</h2>
+<p>The plugin registers <code>cleanAttrs</code>, then <code>prettier</code>, then <code>htmlmin</code>, so minification runs last.</p>
+
+	<nav aria-label="Pager">
+	<a rel="prev" href="/dashly/preview/14/guides/a-la-carte/">Use only what you need</a>
+	<a rel="next" href="/dashly/preview/14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a>
+</nav>
+
+
+	</article>
+</div>
+
+
+		</main>
+		<footer>
+	<div>
+		<div>
+			<p><strong>dashly</strong></p>
+			<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+			<p>
+				<small>
+					Licensed under
+					<a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE" data-license="">MPL-2.0</a>
+				</small>
+			</p>
+		</div>
+		<nav aria-label="Project links">
+			<p><strong>Project</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+				<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+			</ul>
+		</nav>
+		<nav aria-label="Help links">
+			<p><strong>Help</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/CODE_OF_CONDUCT.md">Code of conduct</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/SECURITY.md">Security policy</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div>
+		<div data-studio="cta">
+	<p>Work with Allons-y Studio</p>
+	<p>Design systems, front-end engineering, &amp; accessibility consulting for teams that depend on open source.</p>
+	<a href="mailto:consulting@allons-y.studio">consulting@allons-y.studio</a>
+</div>
+
+		<a data-studio="footer" href="https://allons-y.studio">
+	<picture>
+		<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-dark.svg">
+		<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+	</picture>
+	
+</a>
+
+	</div>
+</footer>
+
+	
+
+</body>
+</html>

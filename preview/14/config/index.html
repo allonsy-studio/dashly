@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+		<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Configuration: dashly</title>
+<meta name="description" content="A standard library of filters, transforms, &amp; shortcodes for Eleventy. One install, one plugin line, done.">
+<link rel="canonical" href="https://projects.allons-y.studio/dashly/">
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="dashly: A standard library of filters, transforms, &amp; shortcodes for Eleventy">
+<meta property="og:description" content="A standard library of filters, transforms, &amp; shortcodes for Eleventy. One install, one plugin line, done.">
+<meta property="og:url" content="https://projects.allons-y.studio/dashly/">
+
+<link rel="icon" href="/dashly/preview/14/assets/img/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Mono&amp;display=swap">
+
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/tokens.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/reset.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/layout.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/components.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/studio.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/project.css">
+<script type="module" src="/dashly/preview/14/assets/scripts/copy-code.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/code-highlight.js"></script>
+
+	</head>
+	<body>
+		<a href="#main">Skip to content</a>
+		<header>
+			<a data-studio="banner" href="https://allons-y.studio">
+	<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+</a>
+
+			<div>
+	<a rel="home" href="/dashly/preview/14/">
+		
+		<span>dashly</span>
+	</a>
+	<nav aria-label="Primary">
+		
+		
+		
+		<a href="/dashly/preview/14/getting-started/">Docs</a>
+		<a href="https://github.com/allonsy-studio/dashly">GitHub</a>
+		<a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+	</nav>
+</div>
+
+		</header>
+		<main id="main" tabindex="-1">
+			<div>
+	<nav aria-label="Documentation">
+	<ul>
+		<li>
+			<a href="/dashly/preview/14/getting-started/">Getting started</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/concepts/">How it works</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/config/" aria-current="page">Configuration</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/filters/">Filters</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/transforms/">Transforms</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/shortcodes/">Shortcodes</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/a-la-carte/">Use only what you need</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/output/">Format &amp; minify output</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a>
+		</li>
+	</ul>
+</nav>
+
+	<article>
+		<h1>Configuration</h1>
+		
+	<p>Pass options as the second argument to <code>addPlugin</code>:</p>
+<figure><pre tabindex="0"><code data-tokens="[[&quot;punctuation&quot;,6,7],[&quot;function&quot;,7,16],[&quot;punctuation&quot;,16,17],[&quot;punctuation&quot;,23,24],[&quot;punctuation&quot;,25,26],[&quot;function&quot;,28,38],[&quot;punctuation&quot;,38,39],[&quot;string&quot;,40,47],[&quot;punctuation&quot;,47,48],[&quot;function&quot;,50,57],[&quot;punctuation&quot;,57,58],[&quot;string&quot;,59,80],[&quot;punctuation&quot;,80,81],[&quot;function&quot;,83,97],[&quot;punctuation&quot;,97,98],[&quot;number&quot;,99,102],[&quot;punctuation&quot;,102,103],[&quot;function&quot;,105,115],[&quot;punctuation&quot;,115,116],[&quot;punctuation&quot;,117,118],[&quot;function&quot;,119,126],[&quot;punctuation&quot;,126,127],[&quot;punctuation&quot;,128,129],[&quot;string&quot;,129,138],[&quot;punctuation&quot;,138,139],[&quot;punctuation&quot;,140,141],[&quot;punctuation&quot;,141,142],[&quot;punctuation&quot;,143,144],[&quot;punctuation&quot;,144,145],[&quot;punctuation&quot;,145,146]]">config.addPlugin(dashly, {
+	dateLocale: "en-GB",
+	baseUrl: "https://example.com",
+	readingTimeWpm: 220,
+	transforms: { exclude: ["htmlmin"] },
+});
+</code></pre></figure>
+<h2>Defaults</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Affects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dateLocale</code></td>
+<td><code>Intl.LocalesArgument</code></td>
+<td><code>'en-US'</code></td>
+<td><code>longDate</code>, <code>shortDate</code>, <code>relativeDate</code>, <code>timeAgo</code>, <code>number</code>, <code>currency</code>, <code>percent</code></td>
+</tr>
+<tr>
+<td><code>baseUrl</code></td>
+<td><code>string</code></td>
+<td>none</td>
+<td><code>absoluteUrl</code>. Without it, paths are returned unchanged.</td>
+</tr>
+<tr>
+<td><code>readingTimeWpm</code></td>
+<td><code>number</code></td>
+<td><code>200</code></td>
+<td><code>readingTime</code></td>
+</tr>
+<tr>
+<td><code>tagsExclude</code></td>
+<td><code>string[]</code></td>
+<td><code>['all', 'post', 'posts']</code></td>
+<td><code>tags</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Choosing what registers</h2>
+<p><code>filters</code>, <code>transforms</code>, &amp; <code>shortcodes</code> each accept either <code>false</code> or an object.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>omitted</td>
+<td>Everything in the category registers</td>
+</tr>
+<tr>
+<td><code>false</code></td>
+<td>Nothing in the category registers</td>
+</tr>
+<tr>
+<td><code>{ exclude: ['name'] }</code></td>
+<td>Everything except the named utilities registers</td>
+</tr>
+</tbody>
+</table>
+<figure><pre tabindex="0"><code data-tokens="[[&quot;punctuation&quot;,6,7],[&quot;function&quot;,7,16],[&quot;punctuation&quot;,16,17],[&quot;punctuation&quot;,23,24],[&quot;punctuation&quot;,25,26],[&quot;function&quot;,28,35],[&quot;punctuation&quot;,35,36],[&quot;punctuation&quot;,37,38],[&quot;function&quot;,39,46],[&quot;punctuation&quot;,46,47],[&quot;punctuation&quot;,48,49],[&quot;string&quot;,49,56],[&quot;punctuation&quot;,56,57],[&quot;string&quot;,58,70],[&quot;punctuation&quot;,70,71],[&quot;punctuation&quot;,72,73],[&quot;punctuation&quot;,73,74],[&quot;function&quot;,76,86],[&quot;punctuation&quot;,86,87],[&quot;number&quot;,88,93],[&quot;punctuation&quot;,93,94],[&quot;punctuation&quot;,95,96],[&quot;punctuation&quot;,96,97],[&quot;punctuation&quot;,97,98]]">config.addPlugin(dashly, {
+	filters: { exclude: ["title", "capitalize"] },
+	shortcodes: false,
+});
+</code></pre></figure>
+<p>Use <code>exclude</code> to avoid a name clash with another plugin or with a filter that Nunjucks or Liquid already provides.</p>
+<h2>Transform options</h2>
+<p>The <code>transforms</code> object also carries per-transform options next to <code>exclude</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Options</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prettier</code></td>
+<td><code>extensions</code>, <code>prettier</code></td>
+<td><a href="/dashly/preview/14/transforms/#module-prettier">prettier</a></td>
+</tr>
+<tr>
+<td><code>htmlmin</code></td>
+<td><code>production</code>, <code>minifier</code></td>
+<td><a href="/dashly/preview/14/transforms/#module-htmlmin">htmlmin</a></td>
+</tr>
+<tr>
+<td><code>cleanAttrs</code></td>
+<td><code>attrs</code></td>
+<td><a href="/dashly/preview/14/transforms/#module-clean-attrs">clean-attrs</a></td>
+</tr>
+</tbody>
+</table>
+<figure><pre tabindex="0"><code data-tokens="[[&quot;punctuation&quot;,6,7],[&quot;function&quot;,7,16],[&quot;punctuation&quot;,16,17],[&quot;punctuation&quot;,23,24],[&quot;punctuation&quot;,25,26],[&quot;function&quot;,28,38],[&quot;punctuation&quot;,38,39],[&quot;punctuation&quot;,40,41],[&quot;function&quot;,44,51],[&quot;punctuation&quot;,51,52],[&quot;punctuation&quot;,53,54],[&quot;string&quot;,54,66],[&quot;punctuation&quot;,66,67],[&quot;punctuation&quot;,67,68],[&quot;function&quot;,71,79],[&quot;punctuation&quot;,79,80],[&quot;punctuation&quot;,81,82],[&quot;function&quot;,83,91],[&quot;punctuation&quot;,91,92],[&quot;punctuation&quot;,93,94],[&quot;function&quot;,95,105],[&quot;punctuation&quot;,105,106],[&quot;number&quot;,107,110],[&quot;punctuation&quot;,111,112],[&quot;punctuation&quot;,113,114],[&quot;punctuation&quot;,114,115],[&quot;function&quot;,118,125],[&quot;punctuation&quot;,125,126],[&quot;punctuation&quot;,127,128],[&quot;function&quot;,129,139],[&quot;punctuation&quot;,139,140],[&quot;number&quot;,141,146],[&quot;punctuation&quot;,147,148],[&quot;punctuation&quot;,148,149],[&quot;punctuation&quot;,151,152],[&quot;punctuation&quot;,152,153],[&quot;punctuation&quot;,154,155],[&quot;punctuation&quot;,155,156],[&quot;punctuation&quot;,156,157]]">config.addPlugin(dashly, {
+	transforms: {
+		exclude: ["cleanAttrs"],
+		prettier: { prettier: { printWidth: 100 } },
+		htmlmin: { production: false },
+	},
+});
+</code></pre></figure>
+
+	<nav aria-label="Pager">
+	<a rel="prev" href="/dashly/preview/14/concepts/">How it works</a>
+	<a rel="next" href="/dashly/preview/14/filters/">Filters</a>
+</nav>
+
+
+	</article>
+</div>
+
+
+		</main>
+		<footer>
+	<div>
+		<div>
+			<p><strong>dashly</strong></p>
+			<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+			<p>
+				<small>
+					Licensed under
+					<a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE" data-license="">MPL-2.0</a>
+				</small>
+			</p>
+		</div>
+		<nav aria-label="Project links">
+			<p><strong>Project</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+				<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+			</ul>
+		</nav>
+		<nav aria-label="Help links">
+			<p><strong>Help</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/CODE_OF_CONDUCT.md">Code of conduct</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/SECURITY.md">Security policy</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div>
+		<div data-studio="cta">
+	<p>Work with Allons-y Studio</p>
+	<p>Design systems, front-end engineering, &amp; accessibility consulting for teams that depend on open source.</p>
+	<a href="mailto:consulting@allons-y.studio">consulting@allons-y.studio</a>
+</div>
+
+		<a data-studio="footer" href="https://allons-y.studio">
+	<picture>
+		<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-dark.svg">
+		<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+	</picture>
+	
+</a>
+
+	</div>
+</footer>
+
+	
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+		<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started: dashly</title>
+<meta name="description" content="A standard library of filters, transforms, &amp; shortcodes for Eleventy. One install, one plugin line, done.">
+<link rel="canonical" href="https://projects.allons-y.studio/dashly/">
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="dashly: A standard library of filters, transforms, &amp; shortcodes for Eleventy">
+<meta property="og:description" content="A standard library of filters, transforms, &amp; shortcodes for Eleventy. One install, one plugin line, done.">
+<meta property="og:url" content="https://projects.allons-y.studio/dashly/">
+
+<link rel="icon" href="/dashly/preview/14/assets/img/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Mono&amp;display=swap">
+
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/tokens.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/reset.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/layout.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/components.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/studio.css">
+<link rel="stylesheet" href="/dashly/preview/14/assets/styles/project.css">
+<script type="module" src="/dashly/preview/14/assets/scripts/copy-code.js"></script>
+<script type="module" src="/dashly/preview/14/assets/scripts/code-highlight.js"></script>
+
+	</head>
+	<body>
+		<a href="#main">Skip to content</a>
+		<header>
+			<a data-studio="banner" href="https://allons-y.studio">
+	<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-banner.svg" alt="Brought to you by Allons-y Studio" width="1600" height="64">
+</a>
+
+			<div>
+	<a rel="home" href="/dashly/preview/14/">
+		
+		<span>dashly</span>
+	</a>
+	<nav aria-label="Primary">
+		
+		
+		
+		<a href="/dashly/preview/14/getting-started/">Docs</a>
+		<a href="https://github.com/allonsy-studio/dashly">GitHub</a>
+		<a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a>
+	</nav>
+</div>
+
+		</header>
+		<main id="main" tabindex="-1">
+			<div>
+	<nav aria-label="Documentation">
+	<ul>
+		<li>
+			<a href="/dashly/preview/14/getting-started/" aria-current="page">Getting started</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/concepts/">How it works</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/config/">Configuration</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/filters/">Filters</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/transforms/">Transforms</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/shortcodes/">Shortcodes</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/a-la-carte/">Use only what you need</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/output/">Format &amp; minify output</a>
+		</li>
+<li>
+			<a href="/dashly/preview/14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a>
+		</li>
+	</ul>
+</nav>
+
+	<article>
+		<h1>Getting started</h1>
+		
+	<h2>Requirements</h2>
+<ul>
+<li>Node.js 24 or newer</li>
+<li>Eleventy 3 or newer</li>
+</ul>
+<h2>Install</h2>
+<figure><pre tabindex="0"><code data-tokens="[[&quot;function&quot;,0,3],[&quot;function&quot;,4,11],[&quot;comment&quot;,40,44],[&quot;function&quot;,45,49],[&quot;function&quot;,50,53],[&quot;number&quot;,54,59]]">npm install --save-dev @allons-y/dashly
+# or
+yarn add --dev @allons-y/dashly
+</code></pre></figure>
+<p>dashly is currently in beta. The <code>latest</code> &amp; <code>beta</code> tags point at the same release.</p>
+<p>Heavy dependencies are optional peers. Install the ones that match what is in use:</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Needed by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prettier</code></td>
+<td>The <code>prettier</code> transform</td>
+</tr>
+<tr>
+<td><code>html-minifier-terser</code></td>
+<td>The <code>htmlmin</code> transform</td>
+</tr>
+<tr>
+<td><code>posthtml</code></td>
+<td>The <code>cleanForRSS</code> filter</td>
+</tr>
+<tr>
+<td><code>markdown-it</code></td>
+<td>The <code>renderMarkdown</code> filter</td>
+</tr>
+<tr>
+<td><code>postcss</code></td>
+<td>The <code>processCSS</code> helper</td>
+</tr>
+</tbody>
+</table>
+<h2>Register the plugin</h2>
+<figure><pre tabindex="0"><code data-tokens="[[&quot;comment&quot;,0,21],[&quot;keyword&quot;,22,28],[&quot;keyword&quot;,36,40],[&quot;string&quot;,41,59],[&quot;punctuation&quot;,59,60],[&quot;keyword&quot;,62,68],[&quot;keyword&quot;,69,76],[&quot;keyword&quot;,77,85],[&quot;punctuation&quot;,86,87],[&quot;number&quot;,87,93],[&quot;punctuation&quot;,93,94],[&quot;punctuation&quot;,95,96],[&quot;punctuation&quot;,104,105],[&quot;function&quot;,105,114],[&quot;punctuation&quot;,114,115],[&quot;punctuation&quot;,121,122],[&quot;punctuation&quot;,123,124],[&quot;function&quot;,127,137],[&quot;punctuation&quot;,137,138],[&quot;string&quot;,139,146],[&quot;punctuation&quot;,146,147],[&quot;function&quot;,150,157],[&quot;punctuation&quot;,157,158],[&quot;string&quot;,159,180],[&quot;punctuation&quot;,180,181],[&quot;punctuation&quot;,183,184],[&quot;punctuation&quot;,184,185],[&quot;punctuation&quot;,185,186],[&quot;punctuation&quot;,187,188]]">// eleventy.config.js
+import dashly from "@allons-y/dashly";
+
+export default function (config) {
+	config.addPlugin(dashly, {
+		dateLocale: "en-GB",
+		baseUrl: "https://example.com",
+	});
+}
+</code></pre></figure>
+<p>The plugin registers every filter, transform, &amp; shortcode. Plugin options set project-wide defaults: see <a href="/dashly/preview/14/config/">Configuration</a>.</p>
+<p>The default registration includes the <code>prettier</code> transform, which runs on every HTML, XML, &amp; SVG file. Either install <code>prettier</code> or exclude the transform:</p>
+<figure><pre tabindex="0"><code data-tokens="[[&quot;punctuation&quot;,6,7],[&quot;function&quot;,7,16],[&quot;punctuation&quot;,16,17],[&quot;punctuation&quot;,23,24],[&quot;punctuation&quot;,25,26],[&quot;function&quot;,27,37],[&quot;punctuation&quot;,37,38],[&quot;punctuation&quot;,39,40],[&quot;function&quot;,41,48],[&quot;punctuation&quot;,48,49],[&quot;punctuation&quot;,50,51],[&quot;string&quot;,51,61],[&quot;punctuation&quot;,61,62],[&quot;punctuation&quot;,63,64],[&quot;punctuation&quot;,65,66],[&quot;punctuation&quot;,66,67],[&quot;punctuation&quot;,67,68]]">config.addPlugin(dashly, { transforms: { exclude: ["prettier"] } });
+</code></pre></figure>
+<h2>Use it in templates</h2>
+<figure><pre tabindex="0"><code>{{ post.date | longDate }}        {# 15 January 2026 #}
+{{ post.content | readingTime }}  {# 4 #}
+{{ post.content | excerpt(40) }}  {# first 40 words, ellipsised #}
+{{ page.url | absoluteUrl }}      {# https://example.com/posts/hello/ #}
+{{ post.date | timeAgo }}         {# 2 days ago #}
+&amp;copy; {% currentYear %} Acme Corp.
+</code></pre></figure>
+<h2>Next steps</h2>
+<ul>
+<li><a href="/dashly/preview/14/concepts/">How it works</a></li>
+<li><a href="/dashly/preview/14/config/">Configuration</a></li>
+<li><a href="/dashly/preview/14/filters/">Filters</a></li>
+<li><a href="/dashly/preview/14/guides/a-la-carte/">Use only what you need</a></li>
+</ul>
+
+	<nav aria-label="Pager">
+	
+	<a rel="next" href="/dashly/preview/14/concepts/">How it works</a>
+</nav>
+
+
+	</article>
+</div>
+
+
+		</main>
+		<footer>
+	<div>
+		<div>
+			<p><strong>dashly</strong></p>
+			<p>A standard library of filters, transforms, &amp; shortcodes for Eleventy.</p>
+			<p>
+				<small>
+					Licensed under
+					<a href="https://github.com/allonsy-studio/dashly/blob/main/LICENSE" data-license="">MPL-2.0</a>
+				</small>
+			</p>
+		</div>
+		<nav aria-label="Project links">
+			<p><strong>Project</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly">GitHub</a></li>
+				<li><a href="https://www.npmjs.com/package/@allons-y/dashly">npm</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/CHANGELOG.md">Changelog</a></li>
+			</ul>
+		</nav>
+		<nav aria-label="Help links">
+			<p><strong>Help</strong></p>
+			<ul>
+				<li><a href="https://github.com/allonsy-studio/dashly/issues">Report an issue</a></li>
+				<li><a href="https://github.com/allonsy-studio/dashly/blob/main/.github/CONTRIBUTING.md">Contributing guide</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/CODE_OF_CONDUCT.md">Code of conduct</a></li>
+				<li><a href="https://github.com/allonsy-studio/.github/blob/main/SECURITY.md">Security policy</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div>
+		<div data-studio="cta">
+	<p>Work with Allons-y Studio</p>
+	<p>Design systems, front-end engineering, &amp; accessibility consulting for teams that depend on open source.</p>
+	<a href="mailto:consulting@allons-y.studio">consulting@allons-y.studio</a>
+</div>
+
+		<a data-studio="footer" href="https://allons-y.studio">
+	<picture>
+		<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-dark.svg">
+		<img src="https://raw.githubusercontent.com/allonsy-studio/.github/refs/heads/main/assets/svg/oss-footer-light.svg" alt="Brought to you by Allons-y Studio" width="440" height="75">
+	</picture>
+	
+</a>
+
+	</div>
+</footer>
+
+	
+
+</body>
+</html>
