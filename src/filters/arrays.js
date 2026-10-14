@@ -7,10 +7,10 @@
  */
 
 /**
- * Array-manipulation filters for Eleventy. Universal across template engines —
- * Nunjucks and Liquid have native `first` / `last` / `reverse` filters, but
- * Eleventy's JS templates and other engines do not. Registering these via
- * dashly makes them available everywhere.
+ * Array-manipulation filters for Eleventy. Nunjucks & Liquid have native
+ * `first` / `last` / `reverse` filters, but 11ty.js (JavaScript) templates &
+ * Handlebars do not. Registering these via dashly makes them available in all
+ * four, as checked by `test/engines.test.js`.
  *
  * @module @allons-y/dashly/filters/arrays
  */
