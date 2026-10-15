@@ -6,6 +6,12 @@
 	--font-display: "Your Display", var(--font-sans); */
 }
 
+/* The core's `block-size: auto` overrides the logo's height attribute, so size it here. */
+body > header a[rel="home"] img {
+	block-size: 2rem;
+	inline-size: auto;
+}
+
 body > header [data-tagline] {
 	flex: 1 1 14rem;
 	color: var(--fg-muted);
