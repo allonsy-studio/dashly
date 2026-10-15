@@ -77,7 +77,7 @@
 
 		/* Surfaces */
 		--bg: light-dark(#ffffff, #101216);
-		--bg-elev: light-dark(#f4f5f8, #181b21);
+		--bg-elev: light-dark(hsl(40, 14%, 96%), hsl(0, 0%, 11%));
 		--code-bg: light-dark(hsl(40, 14%, 94%), hsl(0, 0%, 14%));
 		--border: light-dark(#d3d8e2, #2d323e);
 
@@ -377,7 +377,7 @@
 	main > header > ul {
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--space-xs) var(--space-m);
+		gap: var(--space-l) var(--space-m);
 		color: var(--fg-muted);
 		font-size: 0.95rem;
 	}
@@ -559,7 +559,7 @@
 		align-items: center;
 		gap: 0.5em;
 		padding: 0.6rem 1.1rem;
-		border: 2px solid var(--accent-text);
+		border: 1px solid var(--accent);
 		border-radius: var(--radius);
 		background: var(--accent);
 		color: var(--on-accent);
