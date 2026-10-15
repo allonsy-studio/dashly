@@ -78,7 +78,7 @@
 		/* Surfaces */
 		--bg: light-dark(#ffffff, #101216);
 		--bg-elev: light-dark(#f4f5f8, #181b21);
-		--code-bg: light-dark(#eceef3, #1d212a);
+		--code-bg: light-dark(hsl(40, 14%, 94%), hsl(0, 0%, 14%));
 		--border: light-dark(#d3d8e2, #2d323e);
 
 		/* Text */
@@ -87,8 +87,11 @@
 
 		/* Placeholder, replaced by the project block. */
 		--accent: #2346d4;
-		/* Accent pulled toward the text color. */
-		--accent-text: color-mix(in oklab, var(--accent) 45%, var(--fg));
+		/* Accent for text & links: darkened on light surfaces, lightened on dark ones. */
+		--accent-text: light-dark(
+			color-mix(in oklch, var(--accent) 82%, black),
+			color-mix(in oklch, var(--accent) 55%, white)
+		);
 		/* Ink or white by accent lightness. */
 		--on-accent: oklab(from var(--accent) clamp(0, calc((0.58 - l) * 1000), 1) 0 0);
 
@@ -125,7 +128,7 @@
 		--feature-4: var(--studio-yellow);
 
 		/* Shape & rhythm */
-		--radius: 0.5rem;
+		--radius: 6px;
 		--space-xs: 0.5rem;
 		--space-s: 0.75rem;
 		--space-m: 1.25rem;
@@ -233,8 +236,19 @@
 	}
 
 	:focus-visible {
-		outline: 3px solid var(--accent-text);
+		outline: 2px solid var(--accent-text);
 		outline-offset: 2px;
+	}
+
+	/* Links in running text take a hairline ring; bold or large text, & controls, keep 2px. */
+	:is(p, li, dd, td, th, small, figcaption, nav) a:focus-visible {
+		outline-width: 1px;
+	}
+
+	:is(h1, h2, h3, strong) a:focus-visible,
+	main > header nav a:focus-visible,
+	[data-studio="cta"] a:focus-visible {
+		outline-width: 2px;
 	}
 
 	main:focus {
@@ -331,7 +345,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-xs);
-		font-size: clamp(1.9rem, 5vw, 3.1rem);
+		font-size: clamp(2rem, 5vw, 3.25rem);
 	}
 
 	main > header h1 > :first-child {
@@ -345,6 +359,7 @@
 
 	main > header > p {
 		max-inline-size: var(--measure);
+		color: var(--fg-muted);
 		font-size: 1.2rem;
 	}
 
@@ -362,7 +377,7 @@
 	main > header > ul {
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--space-xs);
+		gap: var(--space-xs) var(--space-m);
 		color: var(--fg-muted);
 		font-size: 0.95rem;
 	}
@@ -449,18 +464,22 @@
 		margin-inline: auto;
 	}
 
-	/* Lock-up: name, link columns, & the studio credit */
+	/* Lock-up: name, link columns, & the studio credit, which takes a fourth column when wide */
 	body > footer > div {
-		display: flex;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
 		align-items: start;
-		justify-content: space-between;
 		gap: var(--space-l);
 	}
 
-	body > footer > div > :first-child {
-		flex: 1 1 18rem;
-		max-inline-size: 28rem;
+	@media (min-width: 60rem) {
+		body > footer > div {
+			grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr));
+		}
+
+		body > footer > div:has(> [data-studio="footer"]) {
+			grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr)) minmax(0, 1.25fr);
+		}
 	}
 
 	body > footer > div > :first-child strong {
@@ -564,15 +583,11 @@
 		}
 	}
 
-	/* Chips */
+	/* Tags: an icon & a few words, no box */
 	main > header > ul > li {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.4em;
-		padding: 0.15rem 0.75rem;
-		border: 1px solid var(--border);
-		border-radius: 999px;
-		background: var(--bg-elev);
 		line-height: 1.5;
 	}
 
@@ -618,7 +633,7 @@
 		position: absolute;
 		inset: -1px;
 		inline-size: calc(100% + 2px);
-		block-size: 1em;
+		block-size: 0.6em;
 		border-radius: var(--radius) var(--radius) 0 0;
 		background: var(--feature);
 	}
@@ -651,6 +666,32 @@
 		color: var(--fg-muted);
 	}
 
+	/* Contents: a term & its description, in two columns when wide */
+	main > section > dl {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+		gap: var(--space-m) var(--space-l);
+	}
+
+	main > section > dl > div {
+		display: grid;
+		align-content: start;
+		gap: 0.25rem;
+		padding-block-end: var(--space-s);
+		border-block-end: 1px solid var(--border);
+	}
+
+	main > section > dl dt {
+		font-family: var(--font-display);
+		font-size: 1.1rem;
+		font-weight: 700;
+	}
+
+	main > section > dl dd {
+		margin: 0;
+		color: var(--fg-muted);
+	}
+
 	/* Prose: the body of a docs page */
 	main > div > article :is(h2, h3) {
 		margin-block-start: var(--space-s);
@@ -679,7 +720,7 @@
 
 	main > div > article table {
 		border-collapse: collapse;
-		border-block: 1px solid var(--border);
+		border-block-end: 1px solid var(--border);
 	}
 
 	main > div > article :is(th, td) {
@@ -887,6 +928,13 @@
 		color: var(--studio-ink);
 	}
 
+	/* The CTA closes main, above the footer. */
+	main > [data-studio="cta"] {
+		max-inline-size: 64rem;
+		margin-block: 4rem 0;
+		margin-inline: auto;
+	}
+
 	[data-studio="cta"] > img {
 		inline-size: 4.5rem;
 	}
@@ -897,11 +945,11 @@
 	}
 
 	[data-studio="cta"] > div > p:has(+ h2) {
-		color: var(--studio-link);
-		font-size: 0.8rem;
-		font-weight: 700;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
+		color: inherit;
+		font-size: inherit;
+		font-weight: 600;
+		letter-spacing: normal;
+		text-transform: none;
 	}
 
 	[data-studio="cta"] h2 {

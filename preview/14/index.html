@@ -49,7 +49,8 @@
 		
 		
 		
-		<a href="/dashly/preview/14/getting-started/">Docs</a>
+		<a href="/dashly/preview/14/getting-started/"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc. --><path fill="currentColor" d="M384 512L96 512c-53 0-96-43-96-96L0 96C0 43 43 0 96 0L400 0c26.5 0 48 21.5 48 48l0 288c0 20.9-13.4 38.7-32 45.3l0 66.7c17.7 0 32 14.3 32 32s-14.3 32-32 32l-32 0zM96 384c-17.7 0-32 14.3-32 32s14.3 32 32 32l256 0 0-64-256 0zm32-232c0 13.3 10.7 24 24 24l176 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-176 0c-13.3 0-24 10.7-24 24zm24 72c-13.3 0-24 10.7-24 24s10.7 24 24 24l176 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-176 0z"></path></svg>
+ Docs</a>
 		<a href="https://github.com/allonsy-studio/dashly"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc. --><path fill="currentColor" d="M216.5 362.5c-66-8-112.5-55.5-112.5-117 0-25 9-52 24-70-6.5-16.5-5.5-51.5 2-66 20-2.5 47 8 63 22.5 19-6 39-9 63.5-9s44.5 3 62.5 8.5c15.5-14 43-24.5 63-22 7 13.5 8 48.5 1.5 65.5 16 19 24.5 44.5 24.5 70.5 0 61.5-46.5 108-113.5 116.5 17 11 28.5 35 28.5 62.5l0 52C323 491.5 335.5 500 350.5 494 441 459.5 512 369 512 257 512 115.5 397 0 255.5 0S0 115.5 0 257c0 111 70.5 203 165.5 237.5 13.5 5 26.5-4 26.5-17.5l0-40c-7 3-16 5-24 5-33 0-52.5-18-66.5-51.5-5.5-13.5-11.5-21.5-23-23-6-.5-8-3-8-6 0-6 10-10.5 20-10.5 14.5 0 27 9 40 27.5 10 14.5 20.5 21 33 21s20.5-4.5 32-16c8.5-8.5 15-16 21-21z"></path></svg>
  GitHub</a>
 		<a href="https://www.npmjs.com/package/@allons-y/dashly"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc. --><path fill="currentColor" d="M288 288l-32 0 0-64 32 0 0 64zM576 160l0 192-288 0 0 32-128 0 0-32-160 0 0-192 576 0zM160 192l-128 0 0 128 64 0 0-96 32 0 0 96 32 0 0-128zm160 0l-128 0 0 160 64 0 0-32 64 0 0-128zm224 0l-192 0 0 128 64 0 0-96 32 0 0 96 32 0 0-96 32 0 0 96 32 0 0-128z"></path></svg>
@@ -173,12 +174,13 @@ export default function (config) {
 
 <section id="included" aria-labelledby="included-title">
 	<h2 id="included-title">What's included</h2>
+	<p>Three kinds of utility, each grouped into modules you can import on their own. The count is how many utilities of that kind you get: every filter, transform, &amp; shortcode is one.</p>
 	<table>
 		<thead>
 			<tr>
 				<th scope="col">Kind</th>
 				<th scope="col">Modules</th>
-				<th scope="col">Exports</th>
+				<th scope="col">Utilities</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -212,112 +214,47 @@ export default function (config) {
 
 <section aria-labelledby="docs-title">
 	<h2 id="docs-title">Documentation</h2>
-	<ul>
-		<li>
-			<article>
-	
-	<h3>
-		<a href="/dashly/preview/14/getting-started/">Getting started</a>
-		
-	</h3>
-	<p>Install dashly, register the plugin, &amp; use your first filter.</p>
-</article>
-
-		</li>
-<li>
-			<article>
-	
-	<h3>
-		<a href="/dashly/preview/14/concepts/">How it works</a>
-		
-	</h3>
-	<p>What the plugin registers, how options reach each utility, &amp; how optional peers load.</p>
-</article>
-
-		</li>
-<li>
-			<article>
-	
-	<h3>
-		<a href="/dashly/preview/14/config/">Configuration</a>
-		
-	</h3>
-	<p>Every plugin option, its default, &amp; what it affects.</p>
-</article>
-
-		</li>
-<li>
-			<article>
-	
-	<h3>
-		<a href="/dashly/preview/14/filters/">Filters</a>
-		
-	</h3>
-	<p>Filters are plain functions registered with addFilter, so they work in Nunjucks, Liquid, &amp; 11ty.js (JavaScript) templates.</p>
-</article>
-
-		</li>
-<li>
-			<article>
-	
-	<h3>
-		<a href="/dashly/preview/14/transforms/">Transforms</a>
-		
-	</h3>
-	<p>Transforms process built output.</p>
-</article>
-
-		</li>
-<li>
-			<article>
-	
-	<h3>
-		<a href="/dashly/preview/14/shortcodes/">Shortcodes</a>
-		
-	</h3>
-	<p>Shortcodes are registered with addShortcode &amp; called as {% name %} in templates.</p>
-</article>
-
-		</li>
-<li>
-			<article>
-	
-	<h3>
-		<a href="/dashly/preview/14/guides/a-la-carte/">Use only what you need</a>
-		
-	</h3>
-	<p>Register single utilities by hand or import from the narrowest subpath.</p>
-</article>
-
-		</li>
-<li>
-			<article>
-	
-	<h3>
-		<a href="/dashly/preview/14/guides/output/">Format &amp; minify output</a>
-		
-	</h3>
-	<p>Run Prettier &amp; HTML minification, &amp; control when each runs.</p>
-</article>
-
-		</li>
-<li>
-			<article>
-	
-	<h3>
-		<a href="/dashly/preview/14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a>
-		
-	</h3>
-	<p>Canonical tags, JSON-LD dates, &amp; RSS-safe content.</p>
-</article>
-
-		</li>
-	</ul>
+	<dl>
+		<div>
+			<dt><a href="/dashly/preview/14/getting-started/">Getting started</a></dt>
+			<dd>Install dashly, register the plugin, &amp; use your first filter.</dd>
+		</div>
+<div>
+			<dt><a href="/dashly/preview/14/concepts/">How it works</a></dt>
+			<dd>What the plugin registers, how options reach each utility, &amp; how optional peers load.</dd>
+		</div>
+<div>
+			<dt><a href="/dashly/preview/14/config/">Configuration</a></dt>
+			<dd>Every plugin option, its default, &amp; what it affects.</dd>
+		</div>
+<div>
+			<dt><a href="/dashly/preview/14/filters/">Filters</a></dt>
+			<dd>Filters are plain functions registered with addFilter, so they work in Nunjucks, Liquid, &amp; 11ty.js (JavaScript) templates.</dd>
+		</div>
+<div>
+			<dt><a href="/dashly/preview/14/transforms/">Transforms</a></dt>
+			<dd>Transforms process built output.</dd>
+		</div>
+<div>
+			<dt><a href="/dashly/preview/14/shortcodes/">Shortcodes</a></dt>
+			<dd>Shortcodes are registered with addShortcode &amp; called as {% name %} in templates.</dd>
+		</div>
+<div>
+			<dt><a href="/dashly/preview/14/guides/a-la-carte/">Use only what you need</a></dt>
+			<dd>Register single utilities by hand or import from the narrowest subpath.</dd>
+		</div>
+<div>
+			<dt><a href="/dashly/preview/14/guides/output/">Format &amp; minify output</a></dt>
+			<dd>Run Prettier &amp; HTML minification, &amp; control when each runs.</dd>
+		</div>
+<div>
+			<dt><a href="/dashly/preview/14/guides/metadata-and-feeds/">Metadata, feeds, &amp; absolute URLs</a></dt>
+			<dd>Canonical tags, JSON-LD dates, &amp; RSS-safe content.</dd>
+		</div>
+	</dl>
 </section>
 
-		</main>
-		<footer>
-	<section data-studio="cta">
+			<section data-studio="cta">
 	<img src="/dashly/preview/14/assets/img/studio/mark.svg" alt="" width="72" height="72" loading="lazy">
 	<div>
 		<p>Allons-y Studio</p>
@@ -334,6 +271,8 @@ export default function (config) {
 	</ul>
 </section>
 
+		</main>
+		<footer>
 	<div>
 		<div>
 			<p><strong>@allons-y/dashly</strong></p>
