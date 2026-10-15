@@ -459,7 +459,6 @@
 		display: grid;
 		align-content: start;
 		gap: var(--space-m);
-		max-inline-size: var(--measure);
 	}
 
 	main > div > article h1 {
