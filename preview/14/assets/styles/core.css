@@ -222,6 +222,10 @@
 		text-wrap: pretty;
 	}
 
+	p {
+		line-height: 1.4;
+	}
+
 	a {
 		color: var(--accent-text);
 		text-decoration: underline dotted;
@@ -282,7 +286,7 @@
 	}
 
 	:is(body > footer > div > *, li > article) {
-		gap: var(--space-xs);
+		gap: var(--space-s);
 	}
 
 	/* Header */
