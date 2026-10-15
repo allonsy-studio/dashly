@@ -27,6 +27,7 @@ module-level so it doesn't go stale every time a utility lands.
 ```bash
 yarn test                       # Run the Vitest suite once
 yarn test:watch                 # Watch mode
+yarn coverage                   # Run the suite with v8 coverage: a table in the terminal, HTML in coverage/
 yarn lint                       # opx lint (ESLint) over .js / .json / .md
 yarn format                     # yarn lint --fix
 yarn typecheck                  # tsc over src/ using the JSDoc types (checkJs, strict)
