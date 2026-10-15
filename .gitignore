@@ -142,5 +142,10 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
 
+# Docs site build output
+docs/_site/
+docs/_a11y/
+docs/cypress/screenshots/
+
 # opx lint cache
 .opx/cache/

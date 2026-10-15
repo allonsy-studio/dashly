@@ -1,0 +1,34 @@
+{
+	"tagline": "A standard library of filters, transforms, & shortcodes for Eleventy",
+	"lede": "Date formatting, reading time, excerpts, RSS-safe HTML, URL handling, locale-aware numbers, & more: bundled into one tree-shakeable package, registered with one plugin line.",
+	"install": "npm install --save-dev @allons-y/dashly",
+	"logo": "wordmark.svg",
+	"favicon": "favicon.svg",
+	"appleTouchIcon": "apple-touch-icon.png",
+	"usage": {
+		"language": "js",
+		"code": "// eleventy.config.js\nimport dashly from \"@allons-y/dashly\";\n\nexport default function (config) {\n\tconfig.addPlugin(dashly, { baseUrl: \"https://example.com\" });\n}"
+	},
+	"features": [
+		{
+			"icon": "plug",
+			"title": "One plugin line",
+			"body": "Every filter, transform, & shortcode registers under a sensible default name. Templates can use them straight away."
+		},
+		{
+			"icon": "gears",
+			"title": "Works across engines",
+			"body": "Filters register through addFilter, so Nunjucks, Liquid, 11ty.js, & Handlebars templates share the same behavior. Two async filters cannot run in Handlebars."
+		},
+		{
+			"icon": "feather-pointed",
+			"title": "Take only what you need",
+			"body": "Import from the narrowest subpath, or opt out per category or per name. Unused code never reaches the build."
+		},
+		{
+			"icon": "puzzle-piece",
+			"title": "Optional peers",
+			"body": "Heavy dependencies such as Prettier, PostCSS, & markdown-it are optional peers, installed only when a utility needs them."
+		}
+	]
+}

@@ -47,6 +47,9 @@
     "changeset": "changeset",
     "ci:test": "vitest run",
     "coverage": "vitest run --coverage",
+    "docs:build": "eleventy --config=docs/eleventy.config.js && pagefind --site docs/_site",
+    "docs:start": "eleventy --serve --config=docs/eleventy.config.js",
+    "docs:test": "cypress run --project docs",
     "format": "opx lint --fix",
     "lint": "opx lint",
     "postinstall": "husky && envoy || true",
@@ -87,7 +90,10 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy-fetch": "^5.1.0",
     "@11ty/eleventy-plugin-handlebars": "^1.0.0",
+    "@11ty/eleventy-plugin-webc": "^0.11.2",
+    "@allons-y/dashly": "workspace:*",
     "@allons-y/envoy": "^1.1.0",
     "@allons-y/opx-cli": "^0.1.0-beta.0",
     "@allons-y/opx-lint-js": "^0.1.0-beta.0",
@@ -95,10 +101,15 @@
     "@allons-y/opx-lint-md": "^0.1.0-beta.0",
     "@changesets/changelog-github": "^0.7.0",
     "@changesets/cli": "^2.31.0",
+    "@fortawesome/fontawesome-free": "^7.3.1",
     "@types/html-minifier-terser": "^7.0.2",
     "@types/markdown-it": "^14.2.0",
     "@types/node": "^24",
     "@vitest/eslint-plugin": "^1.6.20",
+    "axe-core": "^4.11.0",
+    "comment-parser": "^1.4.9",
+    "cypress": "^15.21.1",
+    "cypress-axe": "^1.7.0",
     "eslint": "^10.6.0",
     "eslint-plugin-license-header": "^0.9.0",
     "globals": "^17.7.0",
@@ -107,10 +118,12 @@
     "husky": "^9.1.7",
     "lint-staged": "^17.0.8",
     "markdown-it": "^14.2.0",
+    "pagefind": "^1.5.2",
     "pinst": "^3.0.0",
     "postcss": "^8.5.16",
     "posthtml": "^0.16.7",
     "prettier": "^3.9.3",
+    "prismjs": "^1.30.0",
     "typescript": "^6.0.2",
     "vitest": "^4.1.9"
   },
@@ -132,5 +145,9 @@
     ],
     ".github/renovate.json": "npx --yes --package renovate -- renovate-config-validator --strict"
   },
-  "packageManager": "yarn@4.17.0"
+  "packageManager": "yarn@4.17.0",
+  "oss-docs": {
+    "flavor": "docs",
+    "site": "docs"
+  }
 }

@@ -1,0 +1,14 @@
+<!--- Props: items, an array of { url, title, icon?, children? }. Marks the current page. --->
+<nav aria-label="Documentation">
+	<div data-search role="search"></div>
+	<ul>
+		<li webc:for="item of items">
+			<a :href="item.url" :aria-current="item.url === $data.page.url ? 'page' : (item.children || []).some((child) => child.url === $data.page.url) ? 'true' : undefined"><fa-icon webc:if="item.icon" :@name="item.icon"></fa-icon> <span @text="item.title"></span></a>
+			<ul webc:if="item.children && item.children.length">
+				<li webc:for="child of item.children">
+					<a :href="child.url" :aria-current="child.url === $data.page.url ? 'page' : undefined" @text="child.title"></a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</nav>

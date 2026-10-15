@@ -1,4 +1,5 @@
 import { defineConfig } from "eslint/config";
+import globals from "globals";
 
 import vitest from "@vitest/eslint-plugin";
 import licenseHeader from "eslint-plugin-license-header";
@@ -27,7 +28,15 @@ export default defineConfig([
 	...json,
 	...md,
 	{
-		ignores: [".cache/**", "coverage/**"],
+		ignores: [".cache/**", "coverage/**", "docs/_site/**", "docs/_a11y/**"],
+	},
+	{
+		files: ["docs/content/assets/scripts/**/*.js"],
+		languageOptions: { globals: globals.browser },
+	},
+	{
+		files: ["docs/cypress/**/*.js"],
+		languageOptions: { globals: { ...globals.mocha, Cypress: "readonly", cy: "readonly" } },
 	},
 	{
 		files: ["**/*.test.js"],
