@@ -45,6 +45,8 @@ npm install --save-dev @allons-y/dashly
 
 Heavy dependencies (`prettier`, `html-minifier-terser`, `posthtml`, `markdown-it`, `postcss`) are declared as **optional peers**. Install only the ones you use.
 
+Full documentation lives in [`docs`](docs) & is built with `yarn docs:build`.
+
 ## Quick start
 
 ```js

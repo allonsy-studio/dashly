@@ -1,0 +1,83 @@
+---
+layout: base.webc
+---
+<header class="hero">
+	<h1 webc:if="$data.headline">
+		<template webc:nokeep @html="$data.headline.replace($data.highlight, '<em>' + $data.highlight + '</em>')"></template>
+	</h1>
+	<h1 webc:else>
+		<span @text="$data.site.name"></span>
+		<span @text="$data.site.tagline"></span>
+	</h1>
+	<p @text="$data.project.lede || $data.site.description"></p>
+	<nav aria-label="Get started">
+		<ul>
+			<li webc:for="action of ($data.actions || ($data.collections.docs.length ? [{ label: 'Read the docs', href: $data.collections.docs[0].url, icon: 'book-open' }] : []))">
+				<a :href="action.href"><fa-icon webc:if="action.icon" :@name="action.icon"></fa-icon> <span @text="action.label"></span></a>
+			</li>
+			<li>
+				<a :href="$data.site.repo"><fa-icon @name="brands/github"></fa-icon> View on GitHub</a>
+			</li>
+		</ul>
+	</nav>
+	<ul>
+		<li><fa-icon @name="brands/osi"></fa-icon> <span @text="'Free & open source · ' + $data.site.license"></span></li>
+		<li webc:if="$data.site.eleventy"><fa-icon @name="plug"></fa-icon> <span @text="'Eleventy ' + $data.site.eleventy"></span></li>
+		<li webc:if="$data.site.node"><fa-icon @name="brands/node-js"></fa-icon> <span @text="'Node ' + $data.site.node"></span></li>
+		<li webc:if="$data.site.prerelease"><fa-icon @name="flask"></fa-icon> <span @text="'Currently in ' + $data.site.prerelease"></span></li>
+	</ul>
+	<code-sample
+		language="sh"
+		:@code="$data.project.install || 'npm install ' + $data.site.packageName"
+		@anchor="install"
+	></code-sample>
+</header>
+
+<section webc:if="$data.project.usage" id="usage" aria-labelledby="usage-title">
+	<h2 id="usage-title">Usage</h2>
+	<code-sample
+		:@language="$data.project.usage.language"
+		:@code="$data.project.usage.code"
+		:@caption="$data.project.usage.caption"
+	></code-sample>
+</section>
+
+<section webc:if="$data.project.features && $data.project.features.length" id="features" aria-labelledby="features-title">
+	<h2 id="features-title">Features</h2>
+	<feature-grid :@features="$data.project.features"></feature-grid>
+</section>
+
+<section id="included" aria-labelledby="included-title">
+	<h2 id="included-title">What's included</h2>
+	<p>Three kinds of utility, each grouped into modules you can import on their own. The count is how many utilities of that kind you get: every filter, transform, & shortcode is one.</p>
+	<div data-scroll tabindex="0">
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Kind</th>
+					<th scope="col">Modules</th>
+					<th scope="col">Utilities</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr webc:for="category of $data.reference.categories">
+					<td>
+						<a :href="'/' + category.key + '/'"><fa-icon :@name="category.icon"></fa-icon> <span @text="category.title"></span></a>
+					</td>
+					<td @text="category.pages.map((page) => page.slug).join(', ')"></td>
+					<td @text="category.exportCount"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>
+
+<section aria-labelledby="docs-title">
+	<h2 id="docs-title">Documentation</h2>
+	<dl>
+		<div webc:for="page of $data.collections.docs">
+			<dt><a :href="page.url" @text="page.data.title"></a></dt>
+			<dd @text="page.data.description"></dd>
+		</div>
+	</dl>
+</section>

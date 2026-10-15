@@ -56,6 +56,9 @@ yarn test                       # Run the Vitest suite once
 yarn test:watch                 # Watch mode
 yarn lint                       # opx lint (ESLint) over .js / .json / .md
 yarn format                     # yarn lint --fix
+yarn docs:start                 # Serve the docs site locally
+yarn docs:build                 # Build the docs site to docs/_site
+yarn docs:test                  # Audit the built docs with axe (WCAG 2.2 AA) in Cypress
 yarn typecheck                  # tsc over src/ using the JSDoc types (checkJs, strict)
 yarn changeset                  # Add a changeset for your PR (see below)
 ```
@@ -92,6 +95,7 @@ dashly/
 │   ├── transforms/             # HTML/CSS/format transforms
 │   └── shortcodes/             # Shortcodes
 ├── test/                       # Vitest specs mirroring src/
+├── docs/                       # Eleventy docs site; reference pages generate from src/ JSDoc
 ├── eslint.config.js
 ├── prettier.config.js
 ├── .changeset/                 # Pending changesets + Changesets config

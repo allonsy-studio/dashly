@@ -13,6 +13,7 @@ src/
   transforms/                   # prettier, htmlmin (production-gated), clean-attrs, postcss
   shortcodes/                   # year
 test/                           # Vitest specs mirroring src/ layout
+docs/                           # Eleventy docs site, scaffolded by the org's oss-docs-site skill (reference pages generate from src/ JSDoc)
 .changeset/                     # Pending changesets + Changesets config (versioning)
 .github/workflows/              # CI: test, lint, release, code review, PR auto-update
 ```
@@ -30,6 +31,9 @@ yarn lint                       # opx lint (ESLint) over .js / .json / .md
 yarn format                     # yarn lint --fix
 yarn typecheck                  # tsc over src/ using the JSDoc types (checkJs, strict)
 yarn ci:test                    # Test run used in CI
+yarn docs:start                 # Serve the docs site locally
+yarn docs:build                 # Build the docs site to docs/_site
+yarn docs:test                  # Audit the built docs with axe (WCAG 2.2 AA) in Cypress
 yarn changeset                  # Record a version bump for your PR
 yarn release                    # changeset publish (CI-only entry)
 ```
@@ -44,7 +48,7 @@ yarn release                    # changeset publish (CI-only entry)
     - Add the factory/function to the filters/transforms object inside `dashlyPlugin`.
     - If it consumes a plugin option (e.g. `baseUrl`, `dateLocale`), read it from `options` and curry the call.
 5. Write Vitest tests under `test/filters/<module>.test.js` mirroring the existing spec style. Cover nullish input, the happy path, and at least one edge case. For a filter or shortcode, also add a case to `test/engines.test.js` so it runs through real template engines; that spec fails if a registered utility has neither an engine case nor an entry in its `UNIT_ONLY` list (which should only shrink).
-6. Add the utility to the relevant table in `README.md`.
+6. Add the utility to the relevant table in `README.md`. The docs reference pages regenerate from the JSDoc in step 2, so they need no separate edit.
 7. Run `yarn changeset` and pick a bump type (`patch` for fixes, `minor` for new utilities, `major` for breaking changes). Commit the generated `.changeset/*.md` alongside your code: PRs without a changeset won't produce a release.
 
 ## Languages and tooling
@@ -52,7 +56,7 @@ yarn release                    # changeset publish (CI-only entry)
 - **Node.js ≥ 24** (pinned in `.nvmrc`; package targets `engines.node >= 24`)
 - **Yarn 4** (pinned via the `packageManager` field)
 - **Vitest** for the test suite
-- **ESLint + Prettier** for linting and formatting
+- **opx** (`@allons-y/opx-lint-*`, built on ESLint + @stylistic) for linting and formatting
 - **Husky + lint-staged** wire formatters into pre-commit
 - **Changesets** drives versioning + npm publish from `main`
 - Conventional Commits are encouraged for scannable git history but are no longer enforced: version bumps come from changesets, not commit messages

@@ -1,0 +1,18 @@
+---
+layout: base.webc
+---
+<docs-shell
+	:@items="$data.collections.docs.map((page) => ({
+		url: page.url,
+		title: page.data.title,
+		icon: page.data.icon,
+		children: ($data.reference.categories.find((category) => category.key === page.data.category?.key)?.pages || []).map((module) => ({
+			url: module.url,
+			title: module.slug,
+		})),
+	}))"
+	:@heading="$data.title"
+>
+	<template webc:nokeep @html="content"></template>
+	<docs-pager webc:if="!$data.module"></docs-pager>
+</docs-shell>

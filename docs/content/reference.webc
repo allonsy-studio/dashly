@@ -1,0 +1,31 @@
+---
+layout: docs.webc
+pagination:
+  data: reference.categories
+  size: 1
+  alias: category
+  addAllPagesToCollections: true
+---
+<!--- One page per category, generated from the JSDoc in src/ by _data/reference.js. --->
+<template webc:nokeep @html="$data.category.introHtml"></template>
+
+<section webc:for="module of $data.category.pages" :aria-labelledby="'module-' + module.slug">
+	<h2 :id="'module-' + module.slug"><a :href="module.url"><code @text="module.slug"></code></a></h2>
+	<template webc:nokeep @html="module.descriptionHtml"></template>
+	<div data-scroll tabindex="0">
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Export</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr webc:for="entry of module.exports.map((item) => ({ ...item, href: module.url + '#' + item.name }))">
+					<td><a :href="entry.href"><code @text="entry.signature"></code></a></td>
+					<td @text="entry.summary"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>

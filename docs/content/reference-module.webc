@@ -1,0 +1,61 @@
+---
+layout: docs-module.webc
+pagination:
+  data: reference.pages
+  size: 1
+  alias: module
+---
+<!--- One page per module, generated from the JSDoc in src/ by _data/reference.js. --->
+<p>In <a :href="'/' + $data.module.category + '/'" @text="$data.module.categoryTitle"></a></p>
+<template webc:nokeep @html="$data.module.descriptionHtml"></template>
+<code-sample language="js" :@code="$data.module.importStatement"></code-sample>
+
+<article webc:for="entry of $data.module.exports" :aria-labelledby="entry.name">
+	<h2 :id="entry.name"><code><template webc:nokeep @html="entry.signatureHtml"></template></code></h2>
+	<template webc:nokeep @html="entry.descriptionHtml"></template>
+
+	<section webc:if="entry.params.length">
+		<h3>Parameters</h3>
+		<div data-scroll tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr webc:for="param of entry.params">
+						<td>
+							<code @text="param.name"></code>
+							<small webc:if="param.optional">(optional)</small>
+						</td>
+						<td><code @text="param.type"></code></td>
+						<td><code webc:if="param.default" @text="param.default"></code></td>
+						<td><template webc:nokeep @html="param.descriptionHtml"></template></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+	<section webc:if="entry.returns && entry.returns.type">
+		<h3>Returns</h3>
+		<p>
+			<code @text="entry.returns.type"></code>
+			<template webc:if="entry.returns.description" webc:nokeep>: <template webc:nokeep @html="entry.returns.descriptionHtml"></template></template>
+		</p>
+	</section>
+
+	<section webc:if="entry.examples.length">
+		<h3 @text="entry.examples.length > 1 ? 'Examples' : 'Example'"></h3>
+		<code-sample webc:for="example of entry.examples" :@language="example.lang" :@code="example.code"></code-sample>
+	</section>
+</article>
+
+<nav aria-label="Pager">
+	<a rel="prev" :href="$data.module.prev.url" @text="$data.module.prev.title"></a>
+	<a webc:if="$data.module.next" rel="next" :href="$data.module.next.url" @text="$data.module.next.title"></a>
+</nav>

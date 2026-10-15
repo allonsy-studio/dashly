@@ -1,0 +1,4 @@
+---
+layout: docs.webc
+---
+<template webc:nokeep @html="content"></template>
