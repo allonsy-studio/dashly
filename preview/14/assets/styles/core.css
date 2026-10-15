@@ -478,11 +478,14 @@
 
 	@media (min-width: 60rem) {
 		body > footer > div {
-			grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr));
+			grid-template-columns: minmax(0, 25rem) repeat(2, minmax(min-content, max-content));
+			justify-content: space-between;
 		}
 
 		body > footer > div:has(> [data-studio="footer"]) {
-			grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr)) minmax(0, 1.25fr);
+			grid-template-columns:
+				minmax(0, 25rem) repeat(2, minmax(min-content, max-content))
+				minmax(0, 13.75rem);
 		}
 	}
 
@@ -504,6 +507,18 @@
 
 	body > footer small {
 		font-size: 0.9rem;
+	}
+
+	/* npm badges: shown only once the package has a release */
+	body > footer [data-badges] {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-xs);
+	}
+
+	body > footer [data-badges] img {
+		inline-size: auto;
+		block-size: 20px;
 	}
 
 	@media (max-width: 40rem) {
@@ -995,9 +1010,15 @@
 		}
 	}
 
+	/* The footer art is 880 x 150 with about 250 of blank canvas on each side: show the middle 380. */
 	[data-studio="footer"] {
 		display: block;
-		max-inline-size: 100%;
-		margin-inline-start: auto;
+		max-inline-size: min(100%, 20rem);
+	}
+
+	[data-studio="footer"] img {
+		inline-size: 100%;
+		aspect-ratio: 380 / 150;
+		object-fit: cover;
 	}
 }
