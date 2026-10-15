@@ -181,34 +181,36 @@
 
 
 <article aria-labelledby="toISOString">
-	<h2 id="toISOString"><code>toISOString(date)</code></h2>
+	<h2 id="toISOString"><code>toISOString(<wbr>date)</code></h2>
 	<p>Convert a date-like value to an ISO 8601 string. Returns an empty string for
 falsy inputs or unparseable dates.</p>
 
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>date</code>
-						
-					</td>
-					<td><code>string | number | Date</code></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>date</code>
+							
+						</td>
+						<td><code>string | number | Date</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -222,34 +224,36 @@ falsy inputs or unparseable dates.</p>
 	
 </article>
 <article aria-labelledby="year">
-	<h2 id="year"><code>year(date)</code></h2>
+	<h2 id="year"><code>year(<wbr>date)</code></h2>
 	<p>Extract the four-digit year from a date-like value. Returns an empty string
 for falsy or unparseable inputs.</p>
 
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>date</code>
-						
-					</td>
-					<td><code>string | number | Date</code></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>date</code>
+							
+						</td>
+						<td><code>string | number | Date</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -263,7 +267,7 @@ for falsy or unparseable inputs.</p>
 	
 </article>
 <article aria-labelledby="dateFormat">
-	<h2 id="dateFormat"><code>dateFormat(value, options?, locale?)</code></h2>
+	<h2 id="dateFormat"><code>dateFormat(<wbr>value, options?, locale?)</code></h2>
 	<p>Format a date using <code>Intl.DateTimeFormat</code>. Returns the input unchanged on
 falsy or unparseable values so templates can render gracefully.</p>
 <p>Defaults to <code>timeZone: 'UTC'</code> so a date-only string like <code>'2026-01-15'</code>
@@ -274,45 +278,47 @@ not "14 January" on machines west of Greenwich. Pass <code>timeZone</code> in
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>string | number | Date</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string | number | Date</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>Intl.DateTimeFormatOptions</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.DateTimeFormatOptions</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>locale</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>Intl.LocalesArgument</code></td>
-					<td><code>'en-US'</code></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>locale</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.LocalesArgument</code></td>
+						<td><code>'en-US'</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -326,42 +332,44 @@ not "14 January" on machines west of Greenwich. Pass <code>timeZone</code> in
 	
 </article>
 <article aria-labelledby="longDate">
-	<h2 id="longDate"><code>longDate(value, locale?)</code></h2>
+	<h2 id="longDate"><code>longDate(<wbr>value, locale?)</code></h2>
 	<p>Format a date as a long-form date (e.g. "15 January 2026").</p>
 
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>string | number | Date</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string | number | Date</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>locale</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>Intl.LocalesArgument</code></td>
-					<td><code>'en-US'</code></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>locale</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.LocalesArgument</code></td>
+						<td><code>'en-US'</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -375,42 +383,44 @@ not "14 January" on machines west of Greenwich. Pass <code>timeZone</code> in
 	
 </article>
 <article aria-labelledby="shortDate">
-	<h2 id="shortDate"><code>shortDate(value, locale?)</code></h2>
+	<h2 id="shortDate"><code>shortDate(<wbr>value, locale?)</code></h2>
 	<p>Format a date as an abbreviated month-and-year (e.g. "Jan 2026").</p>
 
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>string | number | Date</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string | number | Date</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>locale</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>Intl.LocalesArgument</code></td>
-					<td><code>'en-US'</code></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>locale</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.LocalesArgument</code></td>
+						<td><code>'en-US'</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -424,7 +434,7 @@ not "14 January" on machines west of Greenwich. Pass <code>timeZone</code> in
 	
 </article>
 <article aria-labelledby="relativeDate">
-	<h2 id="relativeDate"><code>relativeDate(value, locale?, options?)</code></h2>
+	<h2 id="relativeDate"><code>relativeDate(<wbr>value, locale?, options?)</code></h2>
 	<p>Format a date as a locale-aware relative phrase (e.g. "2 days ago",
 "in 3 months"). Wraps <code>Intl.RelativeTimeFormat</code>.</p>
 <p>The reference point is <code>now</code> by default but can be overridden — useful for
@@ -433,72 +443,74 @@ stable build output and for testing.</p>
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>string | number | Date</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string | number | Date</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>locale</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>Intl.LocalesArgument</code></td>
-					<td><code>'en-US'</code></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>locale</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.LocalesArgument</code></td>
+						<td><code>'en-US'</code></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>object</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>object</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options.now</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>Date</code></td>
-					<td></td>
-					<td>Reference date to compare against. Defaults to <code>new Date()</code>.</td>
-				</tr>
+						<td>
+							<code>options.now</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Date</code></td>
+						<td></td>
+						<td>Reference date to compare against. Defaults to <code>new Date()</code>.</td>
+					</tr>
 <tr>
-					<td>
-						<code>options.style</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>Intl.RelativeTimeFormatStyle</code></td>
-					<td><code>'long'</code></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>options.style</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.RelativeTimeFormatStyle</code></td>
+						<td><code>'long'</code></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options.numeric</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>'auto' | 'always'</code></td>
-					<td><code>'auto'</code></td>
-					<td><code>'auto'</code> produces "yesterday" / "tomorrow"; <code>'always'</code> forces "1 day ago".</td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>options.numeric</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>'auto' | 'always'</code></td>
+						<td><code>'auto'</code></td>
+						<td><code>'auto'</code> produces "yesterday" / "tomorrow"; <code>'always'</code> forces "1 day ago".</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -531,78 +543,80 @@ relativeDate('2026-01-15', 'en-US', { now: new Date('2026-03-20'), style: 'short
 	</section>
 </article>
 <article aria-labelledby="timeAgo">
-	<h2 id="timeAgo"><code>timeAgo(value, locale?, options?)</code></h2>
+	<h2 id="timeAgo"><code>timeAgo(<wbr>value, locale?, options?)</code></h2>
 	<p>Alias for <code>relativeDate</code>. Some teams prefer the <code>| timeAgo</code> name.</p>
 
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>string | number | Date</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string | number | Date</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>locale</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>Intl.LocalesArgument</code></td>
-					<td><code>'en-US'</code></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>locale</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.LocalesArgument</code></td>
+						<td><code>'en-US'</code></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>object</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>object</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options.now</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>Date</code></td>
-					<td></td>
-					<td>Reference date to compare against. Defaults to <code>new Date()</code>.</td>
-				</tr>
+						<td>
+							<code>options.now</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Date</code></td>
+						<td></td>
+						<td>Reference date to compare against. Defaults to <code>new Date()</code>.</td>
+					</tr>
 <tr>
-					<td>
-						<code>options.style</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>Intl.RelativeTimeFormatStyle</code></td>
-					<td><code>'long'</code></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>options.style</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.RelativeTimeFormatStyle</code></td>
+						<td><code>'long'</code></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options.numeric</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>'auto' | 'always'</code></td>
-					<td><code>'auto'</code></td>
-					<td><code>'auto'</code> produces "yesterday" / "tomorrow"; <code>'always'</code> forces "1 day ago".</td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>options.numeric</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>'auto' | 'always'</code></td>
+						<td><code>'auto'</code></td>
+						<td><code>'auto'</code> produces "yesterday" / "tomorrow"; <code>'always'</code> forces "1 day ago".</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>

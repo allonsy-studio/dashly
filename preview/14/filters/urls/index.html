@@ -176,7 +176,7 @@
 
 
 <article aria-labelledby="validateURL">
-	<h2 id="validateURL"><code>validateURL(url)</code></h2>
+	<h2 id="validateURL"><code>validateURL(<wbr>url)</code></h2>
 	<p>Ensure a URL is safe to render. Passes through <code>mailto:</code>, <code>tel:</code>, fragments,
 relative paths, and URLs already prefixed with <code>http(s):</code>. Everything else is
 prefixed with <code>https://</code>. All output is URI-encoded.</p>
@@ -185,27 +185,29 @@ prefixed with <code>https://</code>. All output is URI-encoded.</p>
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>url</code>
-						
-					</td>
-					<td><code>string</code></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>url</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -219,7 +221,7 @@ prefixed with <code>https://</code>. All output is URI-encoded.</p>
 	
 </article>
 <article aria-labelledby="absoluteUrl">
-	<h2 id="absoluteUrl"><code>absoluteUrl(path, baseUrl?)</code></h2>
+	<h2 id="absoluteUrl"><code>absoluteUrl(<wbr>path, baseUrl?)</code></h2>
 	<p>Resolve a path or URL against a base, producing an absolute URL. Useful for
 canonical tags, OpenGraph metadata, JSON-LD, and RSS/Atom feeds — anywhere a
 fully-qualified URL is required.</p>
@@ -230,36 +232,38 @@ returns an empty string.</p>
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>path</code>
-						
-					</td>
-					<td><code>string</code></td>
-					<td></td>
-					<td>A relative path, absolute path, or full URL.</td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>path</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td>A relative path, absolute path, or full URL.</td>
+					</tr>
 <tr>
-					<td>
-						<code>baseUrl</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>string</code></td>
-					<td></td>
-					<td>The site's origin (e.g. <code>https://example.com</code>). Trailing slashes are tolerated. If omitted, the input is returned unchanged — useful during local development.</td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>baseUrl</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td>The site's origin (e.g. <code>https://example.com</code>). Trailing slashes are tolerated. If omitted, the input is returned unchanged — useful during local development.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>

@@ -404,13 +404,14 @@
 		flex-direction: column;
 		align-self: start;
 		max-block-size: calc(100dvh - 2 * var(--space-m));
-		font-size: 0.95rem;
+		font-size: 0.92rem;
 	}
 
+	/* Padding with an equal negative margin gives focus rings room: overflow clips them at the box edge. */
 	nav[aria-label="Documentation"] > ul {
 		min-block-size: 0;
-		margin-inline-start: -0.75rem;
-		padding-inline-start: 0.75rem;
+		margin: -6px;
+		padding: 6px;
 		overflow-y: auto;
 		overscroll-behavior: contain;
 	}
@@ -418,13 +419,40 @@
 	nav[aria-label="Documentation"] ul {
 		display: flex;
 		flex-direction: column;
-		gap: 0.4rem;
+		gap: 0.15rem;
+	}
+
+	/* Pages nested under a page: a rule down the left. */
+	nav[aria-label="Documentation"] ul ul {
+		margin: 0.15rem 0 0.5rem 0.5rem;
+		padding-inline-start: 0.75rem;
+		border-inline-start: 1px solid var(--border);
+	}
+
+	nav[aria-label="Documentation"] a {
+		display: flex;
+		align-items: baseline;
+		gap: 0.55rem;
+		padding: 0.25rem 0.5rem;
+		border-radius: 0 4px 4px 0;
+		color: var(--fg-muted);
+		text-decoration: none;
+	}
+
+	nav[aria-label="Documentation"] a > svg {
+		color: var(--accent-text);
+	}
+
+	nav[aria-label="Documentation"] a:hover {
+		background: var(--bg-elev);
+		color: var(--fg);
 	}
 
 	nav[aria-label="Documentation"] a[aria-current="page"] {
-		color: var(--fg);
-		font-weight: 700;
-		text-decoration: none;
+		background: var(--bg-elev);
+		box-shadow: inset 3px 0 0 var(--accent);
+		color: var(--accent-text);
+		font-weight: 600;
 	}
 
 	main > div > article {
@@ -442,6 +470,7 @@
 	main > div > article :is(article, section) {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
+		min-inline-size: 0;
 		align-content: start;
 		gap: var(--space-s);
 	}
@@ -554,8 +583,6 @@
 		}
 
 		nav[aria-label="Documentation"] > ul {
-			margin-inline-start: 0;
-			padding-inline-start: 0;
 			overflow-y: visible;
 		}
 	}
@@ -779,6 +806,11 @@
 		padding: var(--space-xs) var(--space-s);
 		border-block-end: 1px solid var(--border);
 		text-align: start;
+	}
+
+	/* A wide table scrolls sideways inside its own focusable region. */
+	[data-scroll] {
+		overflow-x: auto;
 	}
 
 	main > div > article hr {
@@ -1051,7 +1083,7 @@
 		}
 	}
 
-	/* The footer art is 880 x 150 with about 250 of blank canvas on each side: show the middle 380. */
+	/* The footer art is 880 x 150 with about 270 of blank canvas on each side: crop to a 300 x 135 box. */
 	[data-studio="footer"] {
 		display: block;
 		max-inline-size: min(100%, 20rem);
@@ -1059,7 +1091,7 @@
 
 	[data-studio="footer"] img {
 		inline-size: 100%;
-		aspect-ratio: 380 / 150;
+		aspect-ratio: 300 / 135;
 		object-fit: cover;
 	}
 }

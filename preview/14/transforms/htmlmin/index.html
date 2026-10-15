@@ -176,7 +176,7 @@ Requires <code>html-minifier-terser</code> as a peer dependency.</p>
 
 
 <article aria-labelledby="createHtmlMinTransform">
-	<h2 id="createHtmlMinTransform"><code>createHtmlMinTransform(options?)</code></h2>
+	<h2 id="createHtmlMinTransform"><code>createHtmlMinTransform(<wbr>options?)</code></h2>
 	<p>Create the HTML minification transform. By default it runs only when
 <code>process.env.ELEVENTY_ENV === 'production'</code>; pass <code>production: false</code> to
 always run or <code>production: true</code> to enforce the gate explicitly.</p>
@@ -184,45 +184,47 @@ always run or <code>production: true</code> to enforce the gate explicitly.</p>
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>options</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>object</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>object</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options.production</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>boolean</code></td>
-					<td></td>
-					<td>When true, only run in production. Defaults to true.</td>
-				</tr>
+						<td>
+							<code>options.production</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>boolean</code></td>
+						<td></td>
+						<td>When true, only run in production. Defaults to true.</td>
+					</tr>
 <tr>
-					<td>
-						<code>options.minifier</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>import('html-minifier-terser').Options</code></td>
-					<td></td>
-					<td>Options forwarded to html-minifier-terser.</td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>options.minifier</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>import('html-minifier-terser').Options</code></td>
+						<td></td>
+						<td>Options forwarded to html-minifier-terser.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>

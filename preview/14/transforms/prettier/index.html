@@ -176,52 +176,54 @@ Requires <code>prettier</code> as a peer dependency.</p>
 
 
 <article aria-labelledby="createPrettierTransform">
-	<h2 id="createPrettierTransform"><code>createPrettierTransform(options?)</code></h2>
+	<h2 id="createPrettierTransform"><code>createPrettierTransform(<wbr>options?)</code></h2>
 	<p>Create the Prettier transform. Bind to an Eleventy transform with
 <code>config.addTransform('prettier', createPrettierTransform())</code>.</p>
 
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>options</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>object</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>object</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options.extensions</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>string[]</code></td>
-					<td></td>
-					<td>File extensions to format (default: html/xml/svg).</td>
-				</tr>
+						<td>
+							<code>options.extensions</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>string[]</code></td>
+						<td></td>
+						<td>File extensions to format (default: html/xml/svg).</td>
+					</tr>
 <tr>
-					<td>
-						<code>options.prettier</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>import('prettier').Options</code></td>
-					<td></td>
-					<td>Prettier options (merged on top of dashly defaults).</td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>options.prettier</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>import('prettier').Options</code></td>
+						<td></td>
+						<td>Prettier options (merged on top of dashly defaults).</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>

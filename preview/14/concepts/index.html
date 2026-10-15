@@ -164,6 +164,7 @@
 		<h1>How it works</h1>
 		
 	<h2>Three kinds of utility</h2>
+<div data-scroll="" tabindex="0">
 <table>
 <thead>
 <tr>
@@ -190,6 +191,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>Every utility is a small, pure function with its own JSDoc. The reference pages in this site are generated from that JSDoc, so they match the code.</p>
 <h2>What the plugin does</h2>
 <p><code>config.addPlugin(dashly, options)</code> walks a fixed list of names for each kind &amp; registers the ones that are not excluded. Options flow into the utilities that use them:</p>
@@ -204,6 +206,7 @@
 <p>The plugin is a convenience. Every utility is also exported by name, so registering a single filter by hand is a one-liner. See <a href="/dashly/preview/14/guides/a-la-carte/">Use only what you need</a>.</p>
 <h2>Optional peers load on first use</h2>
 <p>dashly imports <code>prettier</code>, <code>html-minifier-terser</code>, <code>posthtml</code>, <code>markdown-it</code>, &amp; <code>postcss</code> lazily, at the moment a utility needs them. A missing package surfaces as an import error from that utility, not at startup.</p>
+<div data-scroll="" tabindex="0">
 <table>
 <thead>
 <tr>
@@ -235,6 +238,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h2>Async utilities</h2>
 <p><code>cleanForRSS</code> &amp; <code>renderMarkdown</code> return promises because they load their peer on demand with a dynamic <code>import()</code>. Nunjucks, Liquid, &amp; 11ty.js await them. The reference lists the return type of every utility.</p>
 <h3>Not supported in Handlebars</h3>

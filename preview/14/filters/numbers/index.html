@@ -177,52 +177,54 @@
 
 
 <article aria-labelledby="number">
-	<h2 id="number"><code>number(value, options?, locale?)</code></h2>
+	<h2 id="number"><code>number(<wbr>value, options?, locale?)</code></h2>
 	<p>Format a number using <code>Intl.NumberFormat</code>. Returns an empty string for
 non-numeric input so templates render gracefully.</p>
 
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>number | string</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>number | string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>Intl.NumberFormatOptions</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.NumberFormatOptions</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>locale</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>Intl.LocalesArgument</code></td>
-					<td><code>'en-US'</code></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>locale</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.LocalesArgument</code></td>
+						<td><code>'en-US'</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -255,60 +257,62 @@ number(1234567.89, { maximumFractionDigits: 2 }, 'fr-FR');</code></pre>
 	</section>
 </article>
 <article aria-labelledby="currency">
-	<h2 id="currency"><code>currency(value, currencyCode?, locale?, options?)</code></h2>
+	<h2 id="currency"><code>currency(<wbr>value, currencyCode?, locale?, options?)</code></h2>
 	<p>Format a number as a localized currency string.</p>
 
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>number | string</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>number | string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>currencyCode</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>string</code></td>
-					<td><code>'USD'</code></td>
-					<td>ISO 4217 currency code.</td>
-				</tr>
+						<td>
+							<code>currencyCode</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>string</code></td>
+						<td><code>'USD'</code></td>
+						<td>ISO 4217 currency code.</td>
+					</tr>
 <tr>
-					<td>
-						<code>locale</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>Intl.LocalesArgument</code></td>
-					<td><code>'en-US'</code></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>locale</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.LocalesArgument</code></td>
+						<td><code>'en-US'</code></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>Intl.NumberFormatOptions</code></td>
-					<td></td>
-					<td>Extra <code>Intl.NumberFormat</code> options.</td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.NumberFormatOptions</code></td>
+						<td></td>
+						<td>Extra <code>Intl.NumberFormat</code> options.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -341,7 +345,7 @@ currency(1299, 'EUR', 'fr-FR');</code></pre>
 	</section>
 </article>
 <article aria-labelledby="percent">
-	<h2 id="percent"><code>percent(value, options?)</code></h2>
+	<h2 id="percent"><code>percent(<wbr>value, options?)</code></h2>
 	<p>Format a number as a localized percentage. Input is treated as a fraction by
 default (<code>0.25</code> → <code>25%</code>); pass <code>{ asFraction: false }</code> to format whole-number
 percentages (<code>25</code> → <code>25%</code>).</p>
@@ -349,63 +353,65 @@ percentages (<code>25</code> → <code>25%</code>).</p>
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>number | string</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>number | string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>object</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>object</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options.asFraction</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>boolean</code></td>
-					<td><code>true</code></td>
-					<td>Treat input as a 0–1 fraction. Set false for whole-number percentages.</td>
-				</tr>
+						<td>
+							<code>options.asFraction</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>boolean</code></td>
+						<td><code>true</code></td>
+						<td>Treat input as a 0–1 fraction. Set false for whole-number percentages.</td>
+					</tr>
 <tr>
-					<td>
-						<code>options.maximumFractionDigits</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>number</code></td>
-					<td><code>0</code></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>options.maximumFractionDigits</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>number</code></td>
+						<td><code>0</code></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options.locale</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>Intl.LocalesArgument</code></td>
-					<td><code>'en-US'</code></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>options.locale</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>Intl.LocalesArgument</code></td>
+						<td><code>'en-US'</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>

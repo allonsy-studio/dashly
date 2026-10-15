@@ -173,43 +173,45 @@
 
 
 <article aria-labelledby="dump">
-	<h2 id="dump"><code>dump(value, indent?)</code></h2>
+	<h2 id="dump"><code>dump(<wbr>value, indent?)</code></h2>
 	<p>Serialize a value as pretty-printed JSON. Handles circular references,
 functions, BigInts, Dates, and RegExps so it never throws inside a template.</p>
 
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>unknown</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>unknown</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>indent</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>number</code></td>
-					<td><code>2</code></td>
-					<td>Indent width passed to <code>JSON.stringify</code>.</td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>indent</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>number</code></td>
+						<td><code>2</code></td>
+						<td>Indent width passed to <code>JSON.stringify</code>.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -241,42 +243,44 @@ dump({ a: 1 }, 0);</code></pre>
 	</section>
 </article>
 <article aria-labelledby="jsonify">
-	<h2 id="jsonify"><code>jsonify(value, indent?)</code></h2>
+	<h2 id="jsonify"><code>jsonify(<wbr>value, indent?)</code></h2>
 	<p>Alias for <code>dump</code>. Some teams prefer the <code>| jsonify</code> name.</p>
 
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>unknown</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>unknown</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>indent</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>number</code></td>
-					<td><code>2</code></td>
-					<td>Indent width passed to <code>JSON.stringify</code>.</td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>indent</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>number</code></td>
+						<td><code>2</code></td>
+						<td>Indent width passed to <code>JSON.stringify</code>.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>

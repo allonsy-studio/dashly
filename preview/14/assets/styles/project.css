@@ -77,49 +77,14 @@ pre {
 	text-align: end;
 }
 
-/* Docs sidebar: icons, nested modules, & search. */
+/* Docs sidebar: the category that holds the current module page. */
 nav[aria-label="Documentation"] {
 	min-inline-size: 0;
 }
 
-nav[aria-label="Documentation"] a {
-	display: inline-flex;
-	align-items: flex-start;
-	gap: 0.45rem;
-}
-
-nav[aria-label="Documentation"] a > svg {
-	margin-block-start: 0.3em;
-}
-
-nav[aria-label="Documentation"] a[aria-current="page"] {
-	padding-inline-start: 0.5rem;
-	margin-inline-start: -0.65rem;
-	border-inline-start: 3px solid var(--accent);
-}
-
-/* A category that holds the current module page. */
 nav[aria-label="Documentation"] a[aria-current="true"] {
 	color: var(--fg);
-	font-weight: 700;
-	text-decoration: none;
-}
-
-nav[aria-label="Documentation"] li > ul a[aria-current="page"] {
-	color: var(--fg);
-	font-weight: 700;
-	text-decoration: none;
-}
-
-nav[aria-label="Documentation"] li > ul {
-	gap: 0.25rem;
-	margin-block: 0.4rem 0.2rem;
-	padding-inline-start: 1.55rem;
-	font-size: 0.9rem;
-}
-
-nav[aria-label="Documentation"] li > ul a {
-	color: var(--fg-muted);
+	font-weight: 600;
 }
 
 /* Search: Pagefind UI, themed from the site tokens. Results float over the page. */
@@ -170,9 +135,4 @@ main > div > article {
 
 main > div > article figure {
 	grid-template-columns: minmax(0, 1fr);
-}
-
-main > div > article code:not(pre code),
-main > div > article :is(td, th) {
-	overflow-wrap: anywhere;
 }

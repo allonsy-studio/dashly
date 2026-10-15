@@ -176,114 +176,120 @@ directly from a subpath (e.g. <code>@allons-y/dashly/filters/dates</code>).</p>
 Handlebars do not. Registering these via dashly makes them available in all
 four, as checked by <code>test/engines.test.js</code>.</p>
 
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">Export</th>
-				<th scope="col">Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><a href="/dashly/preview/14/filters/arrays/#first"><code>first(value, n?)</code></a></td>
-				<td>Return the first item of an array, or the first n items if a count is supplied.</td>
-			</tr>
+	<div data-scroll="" tabindex="0">
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Export</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="/dashly/preview/14/filters/arrays/#first"><code>first(value, n?)</code></a></td>
+					<td>Return the first item of an array, or the first n items if a count is supplied.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/arrays/#last"><code>last(value, n?)</code></a></td>
-				<td>Return the last item of an array, or the last n items if a count is supplied.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/arrays/#last"><code>last(value, n?)</code></a></td>
+					<td>Return the last item of an array, or the last n items if a count is supplied.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/arrays/#reverse"><code>reverse(value)</code></a></td>
-				<td>Reverse an array or a string without mutating the input.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/arrays/#reverse"><code>reverse(value)</code></a></td>
+					<td>Reverse an array or a string without mutating the input.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/arrays/#groupBy"><code>groupBy(value, keyOrFn)</code></a></td>
-				<td>Group array items by a key, a dot-path, or a function.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/arrays/#groupBy"><code>groupBy(value, keyOrFn)</code></a></td>
+					<td>Group array items by a key, a dot-path, or a function.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/arrays/#sortBy"><code>sortBy(value, keyOrFn, order?)</code></a></td>
-				<td>Sort an array by a key, dot-path, or selector function, without mutating the input.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/arrays/#sortBy"><code>sortBy(value, keyOrFn, order?)</code></a></td>
+					<td>Sort an array by a key, dot-path, or selector function, without mutating the input.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/arrays/#chunk"><code>chunk(value, size)</code></a></td>
-				<td>Split an array into N-sized chunks.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/arrays/#chunk"><code>chunk(value, size)</code></a></td>
+					<td>Split an array into N-sized chunks.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/arrays/#where"><code>where(value, keyOrFn, expected?)</code></a></td>
-				<td>Filter an array by a key/dot-path equality check.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/arrays/#where"><code>where(value, keyOrFn, expected?)</code></a></td>
+					<td>Filter an array by a key/dot-path equality check.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/arrays/#pluck"><code>pluck(value, keyOrFn)</code></a></td>
-				<td>Project an array of objects onto a single key or dot-path.</td>
-			</tr>
-		</tbody>
-	</table>
+					<td><a href="/dashly/preview/14/filters/arrays/#pluck"><code>pluck(value, keyOrFn)</code></a></td>
+					<td>Project an array of objects onto a single key or dot-path.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </section>
 <section aria-labelledby="module-dates">
 	<h2 id="module-dates"><a href="/dashly/preview/14/filters/dates/"><code>dates</code></a></h2>
 	<p>Date-related filters for Eleventy.</p>
 
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">Export</th>
-				<th scope="col">Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><a href="/dashly/preview/14/filters/dates/#toISOString"><code>toISOString(date)</code></a></td>
-				<td>Convert a date-like value to an ISO 8601 string.</td>
-			</tr>
+	<div data-scroll="" tabindex="0">
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Export</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="/dashly/preview/14/filters/dates/#toISOString"><code>toISOString(date)</code></a></td>
+					<td>Convert a date-like value to an ISO 8601 string.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/dates/#year"><code>year(date)</code></a></td>
-				<td>Extract the four-digit year from a date-like value.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/dates/#year"><code>year(date)</code></a></td>
+					<td>Extract the four-digit year from a date-like value.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/dates/#dateFormat"><code>dateFormat(value, options?, locale?)</code></a></td>
-				<td>Format a date using Intl.DateTimeFormat.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/dates/#dateFormat"><code>dateFormat(value, options?, locale?)</code></a></td>
+					<td>Format a date using Intl.DateTimeFormat.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/dates/#longDate"><code>longDate(value, locale?)</code></a></td>
-				<td>Format a date as a long-form date (e.g.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/dates/#longDate"><code>longDate(value, locale?)</code></a></td>
+					<td>Format a date as a long-form date (e.g.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/dates/#shortDate"><code>shortDate(value, locale?)</code></a></td>
-				<td>Format a date as an abbreviated month-and-year (e.g.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/dates/#shortDate"><code>shortDate(value, locale?)</code></a></td>
+					<td>Format a date as an abbreviated month-and-year (e.g.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/dates/#relativeDate"><code>relativeDate(value, locale?, options?)</code></a></td>
-				<td>Format a date as a locale-aware relative phrase (e.g.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/dates/#relativeDate"><code>relativeDate(value, locale?, options?)</code></a></td>
+					<td>Format a date as a locale-aware relative phrase (e.g.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/dates/#timeAgo"><code>timeAgo(value, locale?, options?)</code></a></td>
-				<td>Alias for relativeDate.</td>
-			</tr>
-		</tbody>
-	</table>
+					<td><a href="/dashly/preview/14/filters/dates/#timeAgo"><code>timeAgo(value, locale?, options?)</code></a></td>
+					<td>Alias for relativeDate.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </section>
 <section aria-labelledby="module-debug">
 	<h2 id="module-debug"><a href="/dashly/preview/14/filters/debug/"><code>debug</code></a></h2>
 	<p>Debugging filters for rendering template data into output for inspection.</p>
 
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">Export</th>
-				<th scope="col">Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><a href="/dashly/preview/14/filters/debug/#dump"><code>dump(value, indent?)</code></a></td>
-				<td>Serialize a value as pretty-printed JSON.</td>
-			</tr>
+	<div data-scroll="" tabindex="0">
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Export</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="/dashly/preview/14/filters/debug/#dump"><code>dump(value, indent?)</code></a></td>
+					<td>Serialize a value as pretty-printed JSON.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/debug/#jsonify"><code>jsonify(value, indent?)</code></a></td>
-				<td>Alias for dump.</td>
-			</tr>
-		</tbody>
-	</table>
+					<td><a href="/dashly/preview/14/filters/debug/#jsonify"><code>jsonify(value, indent?)</code></a></td>
+					<td>Alias for dump.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </section>
 <section aria-labelledby="module-html">
 	<h2 id="module-html"><a href="/dashly/preview/14/filters/html/"><code>html</code></a></h2>
@@ -295,192 +301,206 @@ user-provided renderer instance.</li>
 <li>Both are async &amp; do not work in Handlebars; see each filter for why.</li>
 </ul>
 
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">Export</th>
-				<th scope="col">Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><a href="/dashly/preview/14/filters/html/#stripTags"><code>stripTags(value)</code></a></td>
-				<td>Strip every HTML tag from a string, leaving only text content.</td>
-			</tr>
+	<div data-scroll="" tabindex="0">
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Export</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="/dashly/preview/14/filters/html/#stripTags"><code>stripTags(value)</code></a></td>
+					<td>Strip every HTML tag from a string, leaving only text content.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/html/#nl2br"><code>nl2br(value)</code></a></td>
-				<td>Replace newline characters with &lt;br&gt; tags.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/html/#nl2br"><code>nl2br(value)</code></a></td>
+					<td>Replace newline characters with &lt;br&gt; tags.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/html/#cleanForRSS"><code>cleanForRSS(html, options?)</code></a></td>
-				<td>Strip tags and elements that are unsafe or undesirable in RSS/Atom feeds.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/html/#cleanForRSS"><code>cleanForRSS(html, options?)</code></a></td>
+					<td>Strip tags and elements that are unsafe or undesirable in RSS/Atom feeds.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/html/#renderMarkdown"><code>renderMarkdown(value, options?)</code></a></td>
-				<td></td>
-			</tr>
-		</tbody>
-	</table>
+					<td><a href="/dashly/preview/14/filters/html/#renderMarkdown"><code>renderMarkdown(value, options?)</code></a></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </section>
 <section aria-labelledby="module-numbers">
 	<h2 id="module-numbers"><a href="/dashly/preview/14/filters/numbers/"><code>numbers</code></a></h2>
 	<p>Locale-aware number-formatting filters built on <code>Intl.NumberFormat</code>.</p>
 
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">Export</th>
-				<th scope="col">Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><a href="/dashly/preview/14/filters/numbers/#number"><code>number(value, options?, locale?)</code></a></td>
-				<td>Format a number using Intl.NumberFormat.</td>
-			</tr>
+	<div data-scroll="" tabindex="0">
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Export</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="/dashly/preview/14/filters/numbers/#number"><code>number(value, options?, locale?)</code></a></td>
+					<td>Format a number using Intl.NumberFormat.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/numbers/#currency"><code>currency(value, currencyCode?, locale?, options?)</code></a></td>
-				<td>Format a number as a localized currency string.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/numbers/#currency"><code>currency(value, currencyCode?, locale?, options?)</code></a></td>
+					<td>Format a number as a localized currency string.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/numbers/#percent"><code>percent(value, options?)</code></a></td>
-				<td>Format a number as a localized percentage.</td>
-			</tr>
-		</tbody>
-	</table>
+					<td><a href="/dashly/preview/14/filters/numbers/#percent"><code>percent(value, options?)</code></a></td>
+					<td>Format a number as a localized percentage.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </section>
 <section aria-labelledby="module-objects">
 	<h2 id="module-objects"><a href="/dashly/preview/14/filters/objects/"><code>objects</code></a></h2>
 	<p>Object-related filters for Eleventy.</p>
 
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">Export</th>
-				<th scope="col">Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><a href="/dashly/preview/14/filters/objects/#keys"><code>keys(value)</code></a></td>
-				<td>Return the enumerable keys of an object.</td>
-			</tr>
-		</tbody>
-	</table>
+	<div data-scroll="" tabindex="0">
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Export</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="/dashly/preview/14/filters/objects/#keys"><code>keys(value)</code></a></td>
+					<td>Return the enumerable keys of an object.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </section>
 <section aria-labelledby="module-strings">
 	<h2 id="module-strings"><a href="/dashly/preview/14/filters/strings/"><code>strings</code></a></h2>
 	<p>String-manipulation filters for Eleventy.</p>
 
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">Export</th>
-				<th scope="col">Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><a href="/dashly/preview/14/filters/strings/#firstWord"><code>firstWord(value)</code></a></td>
-				<td>Return the first whitespace-delimited word of a string.</td>
-			</tr>
+	<div data-scroll="" tabindex="0">
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Export</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="/dashly/preview/14/filters/strings/#firstWord"><code>firstWord(value)</code></a></td>
+					<td>Return the first whitespace-delimited word of a string.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/strings/#lastWord"><code>lastWord(value)</code></a></td>
-				<td>Return the last whitespace-delimited word of a string.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/strings/#lastWord"><code>lastWord(value)</code></a></td>
+					<td>Return the last whitespace-delimited word of a string.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/strings/#trim"><code>trim(value)</code></a></td>
-				<td>Trim leading and trailing whitespace.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/strings/#trim"><code>trim(value)</code></a></td>
+					<td>Trim leading and trailing whitespace.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/strings/#stripWhitespace"><code>stripWhitespace(value)</code></a></td>
-				<td>Remove all whitespace characters from a string.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/strings/#stripWhitespace"><code>stripWhitespace(value)</code></a></td>
+					<td>Remove all whitespace characters from a string.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/strings/#digitsOnly"><code>digitsOnly(value)</code></a></td>
-				<td>Strip every non-digit character from a string.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/strings/#digitsOnly"><code>digitsOnly(value)</code></a></td>
+					<td>Strip every non-digit character from a string.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/strings/#capitalize"><code>capitalize(value)</code></a></td>
-				<td>Uppercase the first character of a string and lowercase the rest.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/strings/#capitalize"><code>capitalize(value)</code></a></td>
+					<td>Uppercase the first character of a string and lowercase the rest.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/strings/#title"><code>title(value)</code></a></td>
-				<td>Title-case a string by uppercasing the first letter of each whitespace- delimited word and lowercasing the rest.</td>
-			</tr>
-		</tbody>
-	</table>
+					<td><a href="/dashly/preview/14/filters/strings/#title"><code>title(value)</code></a></td>
+					<td>Title-case a string by uppercasing the first letter of each whitespace- delimited word and lowercasing the rest.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </section>
 <section aria-labelledby="module-tags">
 	<h2 id="module-tags"><a href="/dashly/preview/14/filters/tags/"><code>tags</code></a></h2>
 	<p>Tag-list helpers for Eleventy. Use to clean Eleventy's system-tag noise
 (<code>all</code>, <code>post</code>, <code>posts</code>, etc.) out of a tag list before rendering it.</p>
 
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">Export</th>
-				<th scope="col">Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><a href="/dashly/preview/14/filters/tags/#tags"><code>tags(tagList, extraExclude?, defaultExclude?)</code></a></td>
-				<td>Filter an array of tag strings to exclude system tags and any additional names supplied either as plugin defaults or as a per-call extra list.</td>
-			</tr>
-		</tbody>
-	</table>
+	<div data-scroll="" tabindex="0">
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Export</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="/dashly/preview/14/filters/tags/#tags"><code>tags(tagList, extraExclude?, defaultExclude?)</code></a></td>
+					<td>Filter an array of tag strings to exclude system tags and any additional names supplied either as plugin defaults or as a per-call extra list.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </section>
 <section aria-labelledby="module-text">
 	<h2 id="module-text"><a href="/dashly/preview/14/filters/text/"><code>text</code></a></h2>
 	<p>Text-analysis filters: word counting, excerpting, and reading-time
 estimation. Strip HTML so callers can feed rendered post content directly.</p>
 
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">Export</th>
-				<th scope="col">Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><a href="/dashly/preview/14/filters/text/#wordCount"><code>wordCount(value)</code></a></td>
-				<td>Count whitespace-delimited words in a string.</td>
-			</tr>
+	<div data-scroll="" tabindex="0">
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Export</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="/dashly/preview/14/filters/text/#wordCount"><code>wordCount(value)</code></a></td>
+					<td>Count whitespace-delimited words in a string.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/text/#readingTime"><code>readingTime(value, wpm?)</code></a></td>
-				<td>Estimate reading time in minutes for a block of text.</td>
-			</tr>
+					<td><a href="/dashly/preview/14/filters/text/#readingTime"><code>readingTime(value, wpm?)</code></a></td>
+					<td>Estimate reading time in minutes for a block of text.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/text/#excerpt"><code>excerpt(value, n?, unit?)</code></a></td>
-				<td>Pull an excerpt from a string.</td>
-			</tr>
-		</tbody>
-	</table>
+					<td><a href="/dashly/preview/14/filters/text/#excerpt"><code>excerpt(value, n?, unit?)</code></a></td>
+					<td>Pull an excerpt from a string.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </section>
 <section aria-labelledby="module-urls">
 	<h2 id="module-urls"><a href="/dashly/preview/14/filters/urls/"><code>urls</code></a></h2>
 	<p>URL-related filters for Eleventy.</p>
 
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">Export</th>
-				<th scope="col">Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><a href="/dashly/preview/14/filters/urls/#validateURL"><code>validateURL(url)</code></a></td>
-				<td>Ensure a URL is safe to render.</td>
-			</tr>
+	<div data-scroll="" tabindex="0">
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Export</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="/dashly/preview/14/filters/urls/#validateURL"><code>validateURL(url)</code></a></td>
+					<td>Ensure a URL is safe to render.</td>
+				</tr>
 <tr>
-				<td><a href="/dashly/preview/14/filters/urls/#absoluteUrl"><code>absoluteUrl(path, baseUrl?)</code></a></td>
-				<td>Resolve a path or URL against a base, producing an absolute URL.</td>
-			</tr>
-		</tbody>
-	</table>
+					<td><a href="/dashly/preview/14/filters/urls/#absoluteUrl"><code>absoluteUrl(path, baseUrl?)</code></a></td>
+					<td>Resolve a path or URL against a base, producing an absolute URL.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </section>
 
 	<nav aria-label="Pager">

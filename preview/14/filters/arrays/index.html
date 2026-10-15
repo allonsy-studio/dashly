@@ -185,7 +185,7 @@ four, as checked by <code>test/engines.test.js</code>.</p>
 
 
 <article aria-labelledby="first">
-	<h2 id="first"><code>first(value, n?)</code></h2>
+	<h2 id="first"><code>first(<wbr>value, n?)</code></h2>
 	<p>Return the first item of an array, or the first <code>n</code> items if a count is
 supplied. With no count, matches Nunjucks <code>first</code> (single item). With a
 count, returns the first N items — covers the "limit / head" use case.</p>
@@ -193,36 +193,38 @@ count, returns the first N items — covers the "limit / head" use case.</p>
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>readonly T[]</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>readonly T[]</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>n</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>number</code></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>n</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>number</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -260,43 +262,45 @@ first(['a', 'b', 'c'], 2);</code></pre>
 	</section>
 </article>
 <article aria-labelledby="last">
-	<h2 id="last"><code>last(value, n?)</code></h2>
+	<h2 id="last"><code>last(<wbr>value, n?)</code></h2>
 	<p>Return the last item of an array, or the last <code>n</code> items if a count is
 supplied. Mirror of <code>first</code>.</p>
 
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>readonly T[]</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>readonly T[]</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>n</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>number</code></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>n</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>number</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -329,33 +333,35 @@ last(['a', 'b', 'c'], 2);</code></pre>
 	</section>
 </article>
 <article aria-labelledby="reverse">
-	<h2 id="reverse"><code>reverse(value)</code></h2>
+	<h2 id="reverse"><code>reverse(<wbr>value)</code></h2>
 	<p>Reverse an array or a string without mutating the input.</p>
 
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>readonly T[] | string</code></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>readonly T[] | string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -388,43 +394,45 @@ reverse('abc');</code></pre>
 	</section>
 </article>
 <article aria-labelledby="groupBy">
-	<h2 id="groupBy"><code>groupBy(value, keyOrFn)</code></h2>
+	<h2 id="groupBy"><code>groupBy(<wbr>value, keyOrFn)</code></h2>
 	<p>Group array items by a key, a dot-path, or a function. Returns a plain
 object keyed by the grouping value, with each value an array of items.</p>
 
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>readonly T[]</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>readonly T[]</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>keyOrFn</code>
-						
-					</td>
-					<td><code>string | ((item: T) =&gt; unknown)</code></td>
-					<td></td>
-					<td>Property name (dot-paths supported, e.g. <code>'data.year'</code>) or selector function.</td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>keyOrFn</code>
+							
+						</td>
+						<td><code>string | ((item: T) =&gt; unknown)</code></td>
+						<td></td>
+						<td>Property name (dot-paths supported, e.g. <code>'data.year'</code>) or selector function.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -456,7 +464,7 @@ groupBy(posts, 'data.year');</code></pre>
 	</section>
 </article>
 <article aria-labelledby="sortBy">
-	<h2 id="sortBy"><code>sortBy(value, keyOrFn, order?)</code></h2>
+	<h2 id="sortBy"><code>sortBy(<wbr>value, keyOrFn, order?)</code></h2>
 	<p>Sort an array by a key, dot-path, or selector function, without mutating
 the input. String values are compared with <code>localeCompare</code>; everything else
 with standard <code>&lt;</code> / <code>&gt;</code>.</p>
@@ -464,45 +472,47 @@ with standard <code>&lt;</code> / <code>&gt;</code>.</p>
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>readonly T[]</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>readonly T[]</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>keyOrFn</code>
-						
-					</td>
-					<td><code>string | ((item: T) =&gt; unknown)</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>keyOrFn</code>
+							
+						</td>
+						<td><code>string | ((item: T) =&gt; unknown)</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>order</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>'asc' | 'desc'</code></td>
-					<td><code>'asc'</code></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>order</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>'asc' | 'desc'</code></td>
+						<td><code>'asc'</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -528,43 +538,45 @@ with standard <code>&lt;</code> / <code>&gt;</code>.</p>
 	</section>
 </article>
 <article aria-labelledby="chunk">
-	<h2 id="chunk"><code>chunk(value, size)</code></h2>
+	<h2 id="chunk"><code>chunk(<wbr>value, size)</code></h2>
 	<p>Split an array into N-sized chunks. The final chunk may be smaller than
 <code>size</code>. Returns an empty array for non-array or invalid-size input.</p>
 
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>readonly T[]</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>readonly T[]</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>size</code>
-						
-					</td>
-					<td><code>number</code></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>size</code>
+							
+						</td>
+						<td><code>number</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -592,7 +604,7 @@ chunk([1, 2, 3, 4, 5], 2);</code></pre>
 	</section>
 </article>
 <article aria-labelledby="where">
-	<h2 id="where"><code>where(value, keyOrFn, expected?)</code></h2>
+	<h2 id="where"><code>where(<wbr>value, keyOrFn, expected?)</code></h2>
 	<p>Filter an array by a key/dot-path equality check. When <code>expected</code> is
 omitted, items where the keyed value is truthy are kept (useful for
 <code>where(posts, 'data.featured')</code>).</p>
@@ -600,45 +612,47 @@ omitted, items where the keyed value is truthy are kept (useful for
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>readonly T[]</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>readonly T[]</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>keyOrFn</code>
-						
-					</td>
-					<td><code>string | ((item: T) =&gt; unknown)</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>keyOrFn</code>
+							
+						</td>
+						<td><code>string | ((item: T) =&gt; unknown)</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>expected</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>unknown</code></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>expected</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>unknown</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -664,42 +678,44 @@ omitted, items where the keyed value is truthy are kept (useful for
 	</section>
 </article>
 <article aria-labelledby="pluck">
-	<h2 id="pluck"><code>pluck(value, keyOrFn)</code></h2>
+	<h2 id="pluck"><code>pluck(<wbr>value, keyOrFn)</code></h2>
 	<p>Project an array of objects onto a single key or dot-path.</p>
 
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>readonly T[]</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>readonly T[]</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>keyOrFn</code>
-						
-					</td>
-					<td><code>string | ((item: T) =&gt; unknown)</code></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>keyOrFn</code>
+							
+						</td>
+						<td><code>string | ((item: T) =&gt; unknown)</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>

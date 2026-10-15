@@ -184,7 +184,7 @@ user-provided renderer instance.</li>
 
 
 <article aria-labelledby="stripTags">
-	<h2 id="stripTags"><code>stripTags(value)</code></h2>
+	<h2 id="stripTags"><code>stripTags(<wbr>value)</code></h2>
 	<p>Strip every HTML tag from a string, leaving only text content. Zero-dep
 regex pass — for opinionated tag-aware stripping (RSS feeds, custom
 elements, permalinks), use <code>cleanForRSS</code> instead.</p>
@@ -193,27 +193,29 @@ elements, permalinks), use <code>cleanForRSS</code> instead.</p>
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>string</code></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -240,7 +242,7 @@ stripTags('&lt;p&gt;Hello &lt;strong&gt;world&lt;/strong&gt;&lt;/p&gt;');</code>
 	</section>
 </article>
 <article aria-labelledby="nl2br">
-	<h2 id="nl2br"><code>nl2br(value)</code></h2>
+	<h2 id="nl2br"><code>nl2br(<wbr>value)</code></h2>
 	<p>Replace newline characters with <code>&lt;br&gt;</code> tags. Handles <code>\r\n</code>, <code>\r</code>, and <code>\n</code>.
 Useful for rendering plain-text strings (form responses, YAML data) as HTML
 while preserving line breaks. Preserves the trailing newline so the HTML
@@ -249,27 +251,29 @@ source stays readable.</p>
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>string</code></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -296,7 +300,7 @@ nl2br('one\ntwo\nthree');</code></pre>
 	</section>
 </article>
 <article aria-labelledby="cleanForRSS">
-	<h2 id="cleanForRSS"><code>cleanForRSS(html, options?)</code></h2>
+	<h2 id="cleanForRSS"><code>cleanForRSS(<wbr>html, options?)</code></h2>
 	<p>Strip tags and elements that are unsafe or undesirable in RSS/Atom feeds.</p>
 <p>By default this removes script/style/embed/etc. tags and <code>header-anchor</code>
 permalink <code>&lt;a&gt;</code> elements inserted by markdown-it-anchor. Pass <code>customTags</code>
@@ -311,63 +315,65 @@ pass the resulting string to the Handlebars template.</p>
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>html</code>
-						
-					</td>
-					<td><code>string</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>html</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>object</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>object</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options.unsafeTags</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>string[]</code></td>
-					<td></td>
-					<td>Override the default unsafe-tag list.</td>
-				</tr>
+						<td>
+							<code>options.unsafeTags</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>string[]</code></td>
+						<td></td>
+						<td>Override the default unsafe-tag list.</td>
+					</tr>
 <tr>
-					<td>
-						<code>options.customTags</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>string[]</code></td>
-					<td><code>[]</code></td>
-					<td>Additional tag names to strip (e.g. custom elements).</td>
-				</tr>
+						<td>
+							<code>options.customTags</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>string[]</code></td>
+						<td><code>[]</code></td>
+						<td>Additional tag names to strip (e.g. custom elements).</td>
+					</tr>
 <tr>
-					<td>
-						<code>options.stripPermalinks</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>boolean</code></td>
-					<td><code>true</code></td>
-					<td>Remove <code>&lt;a class="header-anchor"&gt;</code> nodes.</td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>options.stripPermalinks</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>boolean</code></td>
+						<td><code>true</code></td>
+						<td>Remove <code>&lt;a class="header-anchor"&gt;</code> nodes.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -381,59 +387,61 @@ pass the resulting string to the Handlebars template.</p>
 	
 </article>
 <article aria-labelledby="renderMarkdown">
-	<h2 id="renderMarkdown"><code>renderMarkdown(value, options?)</code></h2>
+	<h2 id="renderMarkdown"><code>renderMarkdown(<wbr>value, options?)</code></h2>
 	
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>string</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>object</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>options</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>object</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>options.renderer</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>import('markdown-it').default</code></td>
-					<td></td>
-					<td>A pre-configured <code>markdown-it</code> instance.</td>
-				</tr>
+						<td>
+							<code>options.renderer</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>import('markdown-it').default</code></td>
+						<td></td>
+						<td>A pre-configured <code>markdown-it</code> instance.</td>
+					</tr>
 <tr>
-					<td>
-						<code>options.splitParagraphs</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>boolean</code></td>
-					<td><code>true</code></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>options.splitParagraphs</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>boolean</code></td>
+						<td><code>true</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>

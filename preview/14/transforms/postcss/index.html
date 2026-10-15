@@ -174,7 +174,7 @@ setups. Requires <code>postcss</code> as a peer dependency.</p>
 
 
 <article aria-labelledby="processCSS">
-	<h2 id="processCSS"><code>processCSS(content, inputPath, outputPath, config?)</code></h2>
+	<h2 id="processCSS"><code>processCSS(<wbr>content, inputPath, outputPath, config?)</code></h2>
 	<p>Run a CSS string through PostCSS using the plugins and options supplied in
 <code>config</code> (the shape returned by <code>postcss-load-config</code>). If a source map is
 produced it is written next to the CSS output as <code>&lt;name&gt;.css.map</code>.</p>
@@ -182,54 +182,56 @@ produced it is written next to the CSS output as <code>&lt;name&gt;.css.map</cod
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>content</code>
-						
-					</td>
-					<td><code>string</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>content</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>inputPath</code>
-						
-					</td>
-					<td><code>string</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>inputPath</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>outputPath</code>
-						
-					</td>
-					<td><code>string</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+						<td>
+							<code>outputPath</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>config</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>{ plugins?: import('postcss').AcceptedPlugin[], options?: import('postcss').ProcessOptions }</code></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>config</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>{ plugins?: import('postcss').AcceptedPlugin[], options?: import('postcss').ProcessOptions }</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>

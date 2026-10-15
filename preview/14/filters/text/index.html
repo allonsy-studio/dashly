@@ -178,34 +178,36 @@ estimation. Strip HTML so callers can feed rendered post content directly.</p>
 
 
 <article aria-labelledby="wordCount">
-	<h2 id="wordCount"><code>wordCount(value)</code></h2>
+	<h2 id="wordCount"><code>wordCount(<wbr>value)</code></h2>
 	<p>Count whitespace-delimited words in a string. HTML tags are stripped before
 counting so rendered post content can be passed in directly.</p>
 
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>string</code></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -232,7 +234,7 @@ wordCount('The quick brown fox jumps');</code></pre>
 	</section>
 </article>
 <article aria-labelledby="readingTime">
-	<h2 id="readingTime"><code>readingTime(value, wpm?)</code></h2>
+	<h2 id="readingTime"><code>readingTime(<wbr>value, wpm?)</code></h2>
 	<p>Estimate reading time in minutes for a block of text. Strips HTML, counts
 words, divides by <code>wpm</code> (default 200), and rounds to the nearest whole
 minute with a floor of 1.</p>
@@ -242,36 +244,38 @@ number.</p>
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>string | number</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string | number</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>wpm</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>number</code></td>
-					<td><code>200</code></td>
-					<td>Words per minute.</td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>wpm</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>number</code></td>
+						<td><code>200</code></td>
+						<td>Words per minute.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
@@ -303,7 +307,7 @@ readingTime('…a 600-word post…');</code></pre>
 	</section>
 </article>
 <article aria-labelledby="excerpt">
-	<h2 id="excerpt"><code>excerpt(value, n?, unit?)</code></h2>
+	<h2 id="excerpt"><code>excerpt(<wbr>value, n?, unit?)</code></h2>
 	<p>Pull an excerpt from a string. Positive <code>n</code> returns the first N units;
 negative <code>n</code> returns the last |N| units. HTML tags are stripped first.
 Appends an ellipsis on the trimmed side when the input is actually cut.</p>
@@ -311,45 +315,47 @@ Appends an ellipsis on the trimmed side when the input is actually cut.</p>
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>value</code>
-						
-					</td>
-					<td><code>string</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>value</code>
+							
+						</td>
+						<td><code>string</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>n</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>number</code></td>
-					<td><code>30</code></td>
-					<td>Word/char count. Negative for trailing slice.</td>
-				</tr>
+						<td>
+							<code>n</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>number</code></td>
+						<td><code>30</code></td>
+						<td>Word/char count. Negative for trailing slice.</td>
+					</tr>
 <tr>
-					<td>
-						<code>unit</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>'words' | 'chars'</code></td>
-					<td><code>'words'</code></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>unit</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>'words' | 'chars'</code></td>
+						<td><code>'words'</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>

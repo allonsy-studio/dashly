@@ -174,7 +174,7 @@
 
 
 <article aria-labelledby="tags">
-	<h2 id="tags"><code>tags(tagList, extraExclude?, defaultExclude?)</code></h2>
+	<h2 id="tags"><code>tags(<wbr>tagList, extraExclude?, defaultExclude?)</code></h2>
 	<p>Filter an array of tag strings to exclude system tags and any additional
 names supplied either as plugin defaults or as a per-call extra list.</p>
 <p>The plugin wires its <code>tagsExclude</code> option into the default exclusion list
@@ -184,45 +184,47 @@ added on top, not replacing the defaults.</p>
 
 	<section>
 		<h3>Parameters</h3>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Default</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<code>tagList</code>
-						
-					</td>
-					<td><code>readonly string[]</code></td>
-					<td></td>
-					<td></td>
-				</tr>
+		<div data-scroll="" tabindex="0">
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>tagList</code>
+							
+						</td>
+						<td><code>readonly string[]</code></td>
+						<td></td>
+						<td></td>
+					</tr>
 <tr>
-					<td>
-						<code>extraExclude</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>readonly string[]</code></td>
-					<td></td>
-					<td>Names to exclude in addition to the configured defaults.</td>
-				</tr>
+						<td>
+							<code>extraExclude</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>readonly string[]</code></td>
+						<td></td>
+						<td>Names to exclude in addition to the configured defaults.</td>
+					</tr>
 <tr>
-					<td>
-						<code>defaultExclude</code>
-						<small>(optional)</small>
-					</td>
-					<td><code>readonly string[]</code></td>
-					<td><code>DEFAULT_EXCLUDED_TAGS</code></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+						<td>
+							<code>defaultExclude</code>
+							<small>(optional)</small>
+						</td>
+						<td><code>readonly string[]</code></td>
+						<td><code>DEFAULT_EXCLUDED_TAGS</code></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 
 	<section>
