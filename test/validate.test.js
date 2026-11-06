@@ -144,7 +144,7 @@ describe("intl", () => {
 
 	it("re-throws an Intl RangeError as a DashlyArgumentError naming the filter", () => {
 		expect(() => intl("number", "locale or options", () => new Intl.NumberFormat("xx_INVALID"))).toThrow(
-			"dashly: number(): Intl rejected the arguments (Incorrect locale information provided). Check locale or options.",
+			/^dashly: number\(\): Intl rejected the arguments \(.+\)\. Check locale or options\.$/,
 		);
 	});
 
