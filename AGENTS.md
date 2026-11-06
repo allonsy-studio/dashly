@@ -15,7 +15,7 @@ src/
 test/                           # Vitest specs mirroring src/ layout
 docs/                           # Eleventy docs site, scaffolded by the org's oss-docs-site skill (reference pages generate from src/ JSDoc)
 .changeset/                     # Pending changesets + Changesets config (versioning)
-.github/workflows/              # CI: test, lint, release, code review, PR auto-update
+.github/workflows/              # CI: test, lint, release, code review
 ```
 
 Each category directory has an `index.js` re-exporting its modules. The README tables
