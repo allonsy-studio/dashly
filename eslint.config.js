@@ -53,9 +53,4 @@ export default defineConfig([
 			"license-header/header": ["error", MPL_HEADER],
 		},
 	},
-	{
-		// Eleventy's callbacks take arbitrary arguments.
-		files: ["types/**/*.d.ts"],
-		rules: { "@typescript-eslint/no-explicit-any": "off" },
-	},
 ]);

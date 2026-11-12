@@ -147,5 +147,6 @@ docs/_site/
 docs/_a11y/
 docs/cypress/screenshots/
 
-# opx lint cache
-.opx/cache/
+# opx local files (lint cache and state); only the config is tracked
+.opx/*
+!.opx/config.json

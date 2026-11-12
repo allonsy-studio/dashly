@@ -110,12 +110,12 @@ export const excerpt = (value, n, unit) => {
 
 	if (unitOfLength === "chars") {
 		if (text.length <= count) return text;
-		return fromEnd ? "…" + text.slice(-count) : text.slice(0, count) + "…";
+		return fromEnd ? `…${text.slice(-count)}` : `${text.slice(0, count)}…`;
 	}
 
 	const tokens = text.split(/\s+/);
 	if (tokens.length <= count) return text;
 	return fromEnd
-		? "… " + tokens.slice(-count).join(" ")
-		: tokens.slice(0, count).join(" ") + "…";
+		? `… ${tokens.slice(-count).join(" ")}`
+		: `${tokens.slice(0, count).join(" ")}…`;
 };
