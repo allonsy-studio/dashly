@@ -23,7 +23,7 @@ const circularSafeReplacer = () => {
 			seen.add(value);
 		}
 		if (typeof value === "function") return `[Function: ${value.name || "anonymous"}]`;
-		if (typeof value === "bigint") return value.toString() + "n";
+		if (typeof value === "bigint") return `${value.toString()}n`;
 		if (value instanceof Date) return value.toISOString();
 		if (value instanceof RegExp) return value.toString();
 		return value;
