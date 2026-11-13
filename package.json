@@ -44,7 +44,7 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "changeset": "changeset",
+    "changeset": "opx release add",
     "ci:test": "vitest run",
     "coverage": "vitest run --coverage",
     "docs:build": "eleventy --config=docs/eleventy.config.js && pagefind --site docs/_site",
@@ -57,11 +57,11 @@
     "precommit": "lint-staged",
     "prepack": "pinst --disable",
     "prepare": "husky",
-    "release": "changeset publish",
+    "release": "opx release publish",
     "test": "vitest run",
     "test:watch": "vitest watch",
     "typecheck": "tsc -p jsconfig.json",
-    "version": "changeset version"
+    "version": "opx release version && yarn install --mode update-lockfile"
   },
   "peerDependencies": {
     "@11ty/eleventy": ">=3.0.0",
@@ -99,8 +99,7 @@
     "@allons-y/opx-lint-js": "^1.0.0",
     "@allons-y/opx-lint-json": "^0.1.0",
     "@allons-y/opx-lint-md": "^0.1.0",
-    "@changesets/changelog-github": "^0.7.0",
-    "@changesets/cli": "^2.31.0",
+    "@allons-y/opx-release": "^0.1.1",
     "@fortawesome/fontawesome-free": "^7.3.1",
     "@types/html-minifier-terser": "^7.0.2",
     "@types/markdown-it": "^14.2.0",

@@ -60,10 +60,11 @@ jobs:
         uses: changesets/action@v1
         with:
           publish: yarn release
-          version: yarn changeset version
+          version: yarn run version
           commit: "chore(release): version packages"
           title: "chore(release): version packages"
           commitMode: github-api
+          createGithubReleases: false
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
