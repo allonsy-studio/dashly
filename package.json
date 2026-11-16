@@ -149,5 +149,8 @@
   "oss-docs": {
     "flavor": "docs",
     "site": "docs"
+  },
+  "allons-y": {
+    "discussions": true
   }
 }
